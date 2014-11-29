@@ -1,0 +1,18 @@
+.header {
+	text-align: center;
+}
+
+.subnav {
+	
+	display: inline-block;
+	border-size: 2px;
+	border-color: black;
+	text-align: center;
+	width: 200px;
+	height: 50px;
+
+}
+
+h3 {
+	font-size: 20px;
+}
