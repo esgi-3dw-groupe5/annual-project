@@ -10,10 +10,10 @@
 			<a href=""><h3>E-sport</h3></a>
 		</div>
 		<div class="subnav">
-			<a href=""><h3>Cinéma/Série</h3></a>
+			<a href=""><h3>Musique</h3></a>
 		</div>
 		<div class="subnav">
-			<a href=""><h3>Cinéma/Série</h3></a>
+			<a href=""><h3>Sport</h3></a>
 		</div>
 	</nav>
 </header>
