@@ -7,7 +7,7 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])) {
     switch($action) {
         case 'valider' : 
         		echo signin($_POST);
-        		// debug($_POST);
+        		// debug($_POST['email']);
         	break;
 		default:
 			

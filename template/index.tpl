@@ -11,8 +11,8 @@
         <link href="assets/css/form.css" rel="stylesheet" media="all"/>
         <link href="assets/css/main.css" rel="stylesheet" media="all"/>
 
-        <script type="text/javascript" src="//cdn.sublimevideo.net/js/8tsd8kyn.js"></script>
-
+        <script type="text/javascript" src="assets/js/libs/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="assets/js/coreAjax.js"></script>
 
     </head>
     <body>
@@ -76,6 +76,5 @@
         </aside>
 
         <?php include("footer.tpl"); ?>
-       
     </body>
 </html>
