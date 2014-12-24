@@ -48,16 +48,43 @@
                     <a href="">S'inscrire</a>
 
                     <form method="POST" action="index.php" class="login">
+                        <div id="error"><?php //echo $displayErr ?></div>
                         <input type="radio" name="genre" value="homme" checked required> Monsieur
-                        <input type="radio" name="genre" value="femme" required> Madame</br></br>
-                        Nom <input type="text" name="nom" required></br></br>
-                        Prenom <input type="text" name="prenom" required></br></br>
-                        Email <input type="email" name="email" required></br></br>
-                        Confirmation Email <input type="email" name="confirmEmail" required></br></br>
-                        Pseudo <input type="login" name="pseudo" required></br></br>
-                        Mot de passe <input type="password" name="mdp" maxlength="8" required></br></br>
-                        Confirmation Mdp<input type="password" name="confirmMdp" maxlength="8" required></br></br>
-                        Date de naissance <input type="date" name="dateNaissance" placeholder="JJ/MM/AAAA" required></br></br>
+                        <input type="radio" name="genre" value="femme" required> Madame
+                        <span id="msgErr_gender"><?php if(!empty($msgErr_gender))echo $msgErr_gender ?></span>
+                            </br></br>
+                        Nom <input type="text" name="nom" required>
+                        <span id="msgErr_name"><?php if(!empty($msgErr_name))echo $msgErr_name ?></span>
+                            </br></br>
+                        Prenom <input type="text" name="prenom" required>
+                        <span id="msgErr_fistName"><?php if(!empty($msgErr_fistName))echo $msgErr_fistName ?></span>
+                            </br></br>
+                        Email <input type="email" name="email" required>
+                        <span id="msgErr_mail_1">
+                            <?php if(!empty($msgErr_mail_1)){
+                                echo $msgErr_mail_1;
+                            }if(!empty($msgErr_mail_2)){
+                                echo $msgErr_mail_2;
+                            }if(!empty($msgErr_mail_3)){
+                                echo $msgErr_mail_3;
+                            } ?>
+                        </span>
+                            </br></br>
+                        Confirmation Email <input type="email" name="confirmEmail" required>
+                        <span id="msgErr_mail_2"><?php //if(!empty($))echo  ?></span>
+                            </br></br>
+                        Pseudo <input type="login" name="pseudo" required>
+                        <span id="msgErr_pseudo"><?php //if(!empty($))echo  ?></span>
+                            </br></br>
+                        Mot de passe <input type="password" name="mdp" maxlength="8" required>
+                        <span id="msgErr_psw_1"><?php //if(!empty($))echo  ?></span>
+                            </br></br>
+                        Confirmation Mdp<input type="password" name="confirmMdp" maxlength="8" required>
+                        <span id="msgErr_psw_2"><?php //if(!empty($))echo  ?></span>
+                            </br></br>
+                        Date de naissance <input type="date" name="dateNaissance" placeholder="JJ/MM/AAAA" required>
+                        <span id="msgErr_date"><?php //if(!empty($))echo  ?></span>
+                            </br></br>
                         <input type="submit" name="valider" value="valider"></br></br>
                     </form>
                 </div>
