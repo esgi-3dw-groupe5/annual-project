@@ -3,7 +3,7 @@ if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-pr
 require_once(__ROOT__."/controller/accessControle.php");
 require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
-require_once(__ROOT__."/controller/coreAjax.php");
+require_once(__ROOT__."/controller/corePHP.php");
 
 // echo 'Hello Pinnackl<br>';
 

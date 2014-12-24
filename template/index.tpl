@@ -47,7 +47,7 @@
                     </form>
                     <a href="">S'inscrire</a>
 
-                    <form method="POST" action="index.php" class="login">
+                    <form method="POST" action="corePHP.php" class="">
                         <div id="error"><?php //echo $displayErr ?></div>
                         <input type="radio" name="genre" value="homme" checked required> Monsieur
                         <input type="radio" name="genre" value="femme" required> Madame

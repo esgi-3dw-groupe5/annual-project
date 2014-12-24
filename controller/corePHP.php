@@ -21,7 +21,7 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])) {
             // 6 -> Pseudo given do not respect requirement 
             // 7 -> Pseudo given already exit
 
-            $displayErr = json_encode($displayErr);
+            // $displayErr = json_decode($displayErr);
 
             // $msgErr_gender  = $displayErr[];
             // $msgErr_name  = $displayErr[];
@@ -35,7 +35,6 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])) {
                 $msgErr_psw_1  = $displayErr[4];
                 $msgErr_psw_2  = $displayErr[5];
 
-            echo $displayErr;
             // $msgErr_date  = $displayErr[];
     		// echo json_encode( $displayErr );
             return;

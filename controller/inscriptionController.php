@@ -99,8 +99,8 @@ function signin($POST){
 		// Database register
 		// if nb error = 0 -> Register
 	}
-	echo json_encode( $messageErreur );	
-	return;
+
+	return $messageErreur;
 }
 function get_error($item, $parm1, $parm2 = null, $erreur){
 	$msg = "";
