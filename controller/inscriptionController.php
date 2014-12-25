@@ -65,6 +65,9 @@ function signin($POST){
 			// FIXME : Check the date format
 		}
 		if( !empty($POST["mdp"]) && !empty($POST["confirmMdp"]) ){
+		/*******************************************************************/
+		/*******************************PASSWORD****************************/
+		/*******************************************************************/
 			$mdp 		  = $POST["mdp"];
 			$confirmMdp	  = $POST["confirmMdp"];
 
@@ -103,6 +106,7 @@ function signin($POST){
 	return $messageErreur;
 }
 function get_error($item, $parm1, $parm2 = null, $erreur){
+	// get error memssage from db
 	$msg = "";
 	switch ($item) {
 		case 'validemail':
