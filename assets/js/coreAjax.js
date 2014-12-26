@@ -13,11 +13,6 @@ function signin(){
 		var send = {valider:"valider", email:$('input[name="email"]').val(),confirmEmail:item};
 		ajax_send_signin(send);
 	});
-	$('input[name="pseudo"]').change(function(){
-		var item = $(this).val();
-		var send = {valider:"valider", pseudo:item};
-		ajax_send_signin(send);
-	});
 	$('input[name="password"]').change(function(){
 		var item = $(this).val();
 		var send = {valider:"valider", password:item};
@@ -72,28 +67,52 @@ function write_error(error){
 	// msgErr_psw_1
 	// msgErr_psw_2
 	// msgErr_date
+	
 	if( error[0] != '' ){
 		// $('#').html(error[0]);
+	}else{
+		$('#').html('');
 	}
+
 	if( error[1] != '' ){
 		$('#msgErr_mail_1').html(error[1]);
+	}else{
+		$('#msgErr_mail_1').html('');
 	}
+
 	if( error[2] != '' ){
 		$('#msgErr_mail_2').html(error[2]);
+	}else{
+		$('#msgErr_mail_2').html('');
 	}
+
 	if( error[3] != '' ){
 		$('#msgErr_mail_3').html(error[3]);
+	}else{
+		$('#msgErr_mail_3').html('');
 	}
+
 	if( error[4] != '' ){
-		$('#').html(error[4]);
+		// $('#').html(error[4]);
+	}else{
+		// $('#').html('');
 	}
+
 	if( error[5] != '' ){
 		$('#msgErr_psw_2').html(error[5]);
+	}else{
+		$('#msgErr_psw_2').html('');
 	}
+
 	if( error[6] != '' ){
 		// $('#').html(error[6]);
+	}else{
+		 // $('#').html('');
 	}
+
 	if( error[7] != '' ){
 		$('#msgErr_pseudo').html(error[7]);
+	}else{
+		$('#msgErr_pseudo').html('');
 	}
 }
