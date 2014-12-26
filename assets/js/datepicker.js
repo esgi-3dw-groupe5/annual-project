@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('#date').focus(function(){
 		$('#core-datebox').toggle(true);
 	});
-	$('#date').focusout(function(){
+	$('#close').click(function(){
 		$('#core-datebox').toggle(false);
 	});
 });
@@ -30,6 +30,7 @@ function datebox(){
 								'<button type="button" id="day">day</button>'+
 								'<button type="button" id="month">month</button>'+
 								'<button type="button" id="year">year</button>'+
+								'<button type="button" id="close"> x </button>'+
 							'</span>'+
 							'<div id="current-date">'+
 								day+'/'+month+'/'+year+
@@ -265,9 +266,11 @@ function daysInMonth(month,year,day) {
     }
     for(i=1;i<=nbDay;i++){
 	    var current = "";
+        var o = "";
     	idx++;
     	if(day==i){current="selected"}
-    	daynumber += '<span class="picker-day '+current+'">'+i+'</span>';
+    	if(i<10){o=0;}
+    	daynumber += '<span class="picker-day '+current+'">'+o+i+'</span>';
     	if(idx%7==0)daynumber+='<br>';
     }
     return daynumber;
