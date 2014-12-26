@@ -13,6 +13,7 @@
 
         <script type="text/javascript" src="assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="assets/js/coreAjax.js"></script>
+        <script type="text/javascript" src="assets/js/datepicker.js"></script>
 
     </head>
     <body>
@@ -47,7 +48,7 @@
                     </form>
                     <a href="">S'inscrire</a> -->
 
-                    <form method="POST" action="corePHP.php" class="">
+                    <form method="POST" action="index.php" class="">
                         <!-- <div id="error"><?php //echo $displayErr ?></div> -->
                         <div>
                             <input id="male" type="radio" name="genre" value="homme" checked required><label for="male">Monsieur</label>
@@ -84,7 +85,10 @@
                             <span id="msgErr_psw_2"><?php if(!empty($msgErr_psw_2))echo $msgErr_psw_2; ?></span>
                         </div>
                         <div>
-                            <label for="date">Date de naissance</label><input id="date" type="date" name="dateNaissance" placeholder="  JJ/MM/AAAA" required></br>
+                            <label for="date">Date de naissance</label>
+                            <div style="display:inline-block;">
+                                <input id="date" type="date" name="dateNaissance" placeholder="  JJ/MM/AAAA" required>
+                            </div></br>
                             <span id="msgErr_date"><?php if(!empty($msgErr_date))echo $msgErr_date; ?></span>
                         </div>
                         <div>
@@ -107,5 +111,10 @@
         </aside>
 
         <?php include("footer.tpl"); ?>
+        <style type="text/css">
+        span{
+            color:darkred;
+        }
+        </style>
     </body>
 </html>

@@ -4,33 +4,46 @@ $(document).ready(function(){
 
 function signin(){
 	$('input[name="email"]').change(function(){
-		var item = $(this).val();
-		var send = {valider:"valider", email:item};
+		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
 	$('input[name="confirmEmail"]').change(function(){
-		var item = $(this).val();
-		var send = {valider:"valider", email:$('input[name="email"]').val(),confirmEmail:item};
+		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
 	$('input[name="password"]').change(function(){
-		var item = $(this).val();
-		var send = {valider:"valider", password:item};
+		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
 	$('input[name="confirmMdp"]').change(function(){
-		var item = $(this).val();
-		var send = {valider:"valider", confirmMdp:item};
+		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
 	$('input[name="pseudo"]').change(function(){
-		var item = $(this).val();
-		var send = {valider:"valider", pseudo:item};
+		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
 
 }
+function get_form_values(form){
+	switch(form){
+		case 'signin' :
+			var send = {};
+			send.valider 		=	"valider";
+			send.email 			=	$('input[name="email"]').val();
+			send.confirmEmail	=	$('input[name="confirmEmail"]').val();
+			send.password 		=	$('input[name="mdp"]').val();
+			send.confirmMdp		=	$('input[name="confirmMdp"]').val();
+			send.pseudo 		=	$('input[name="pseudo"]').val();
+		break;
 
+		default:
+			return;
+		break;
+	}
+
+	return send;
+}
 function ajax_send_signin(send){
 	$.ajax({
 		type: "POST",
@@ -77,6 +90,7 @@ function write_error(error){
 	if( error[1] != '' ){
 		$('#msgErr_mail_1').html(error[1]);
 	}else{
+		// if( $('#msgErr_mail_1').html() != '' )
 		$('#msgErr_mail_1').html('');
 	}
 
