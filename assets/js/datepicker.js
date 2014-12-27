@@ -94,6 +94,8 @@ function datebox(){
 		$('#y_left').click(function(){
 			d.setFullYear(d.getFullYear()-1);
 			year = d.getFullYear();
+			month = d.getMonth()+1;
+			day = d.getDate();
 			var daynumber = daysInMonth(month,year,day);
 			$('#head-number').html('');
 			$('#head-number').append(daynumber);
@@ -117,6 +119,8 @@ function datebox(){
 		$('#y_right').click(function(){
 			d.setFullYear(d.getFullYear()+1);
 			year = d.getFullYear();
+			month = d.getMonth()+1;
+			day = d.getDate();
 			var daynumber = daysInMonth(month,year,day);
 			$('#head-number').html('');
 			$('#head-number').append(daynumber);
@@ -139,7 +143,9 @@ function datebox(){
 		// ------Event trigger------
 		$('#m_left').click(function(){
 			d.setMonth(d.getMonth()-1);
+			year = d.getFullYear();
 			month = d.getMonth()+1;
+			day = d.getDate();
 			var daynumber = daysInMonth(month,year,day);
 			$('#head-number').html('');
 			$('#head-number').append(daynumber);
@@ -162,7 +168,9 @@ function datebox(){
 
 		$('#m_right').click(function(){
 			d.setMonth(d.getMonth()+1);
+			year = d.getFullYear();
 			month = d.getMonth()+1;
+			day = d.getDate();
 			var daynumber = daysInMonth(month,year,day);
 			$('#head-number').html('');
 			$('#head-number').append(daynumber);
@@ -185,6 +193,8 @@ function datebox(){
 		// ------Event trigger------
 		$('#d_left').click(function(){
 			d.setDate(d.getDate()-1);
+			year = d.getFullYear();
+			month = d.getMonth()+1;
 			day = d.getDate();
 			var daynumber = daysInMonth(month,year,day);
 			$('#head-number').html('');
@@ -208,6 +218,8 @@ function datebox(){
 
 		$('#d_right').click(function(){
 			d.setDate(d.getDate()+1);
+			year = d.getFullYear();
+			month = d.getMonth()+1;
 			day = d.getDate();
 			var daynumber = daysInMonth(month,year,day);
 			$('#head-number').html('');
