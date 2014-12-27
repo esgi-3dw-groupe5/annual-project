@@ -106,8 +106,12 @@ function datebox(){
 						.css('background-color','lightwhite')
 						.css('border','solid #ccc 1px');
 				$('.selected').css('background-color','lightgrey');
-			$('#date').val(day+'/'+month+'/'+year);
-			$('#current-date').html(day+'/'+month+'/'+year);
+			var o = "";
+			var u = "";
+			if(day<10){o="0";}
+			if(month<10){u="0";}
+			$('#date').val(o+day+'/'+u+month+'/'+year);
+			$('#current-date').html(o+day+'/'+u+month+'/'+year);
 		});
 
 		$('#y_right').click(function(){
@@ -125,8 +129,12 @@ function datebox(){
 						.css('background-color','lightwhite')
 						.css('border','solid #ccc 1px');
 				$('.selected').css('background-color','lightgrey');
-			$('#date').val(day+'/'+month+'/'+year);
-			$('#current-date').html(day+'/'+month+'/'+year);
+			var o = "";
+			var u = "";
+			if(day<10){o="0";}
+			if(month<10){u="0";}
+			$('#date').val(o+day+'/'+u+month+'/'+year);
+			$('#current-date').html(o+day+'/'+u+month+'/'+year);
 		});
 		// ------Event trigger------
 		$('#m_left').click(function(){
@@ -144,8 +152,12 @@ function datebox(){
 						.css('background-color','lightwhite')
 						.css('border','solid #ccc 1px');
 				$('.selected').css('background-color','lightgrey');
-			$('#date').val(day+'/'+month+'/'+year);
-			$('#current-date').html(day+'/'+month+'/'+year);
+			var o = "";
+			var u = "";
+			if(day<10){o="0";}
+			if(month<10){u="0";}
+			$('#date').val(o+day+'/'+u+month+'/'+year);
+			$('#current-date').html(o+day+'/'+u+month+'/'+year);
 		});
 
 		$('#m_right').click(function(){
@@ -163,8 +175,12 @@ function datebox(){
 						.css('background-color','lightwhite')
 						.css('border','solid #ccc 1px');
 				$('.selected').css('background-color','lightgrey');
-			$('#date').val(day+'/'+month+'/'+year);
-			$('#current-date').html(day+'/'+month+'/'+year);
+			var o = "";
+			var u = "";
+			if(day<10){o="0";}
+			if(month<10){u="0";}
+			$('#date').val(o+day+'/'+u+month+'/'+year);
+			$('#current-date').html(o+day+'/'+u+month+'/'+year);
 		});
 		// ------Event trigger------
 		$('#d_left').click(function(){
@@ -182,8 +198,12 @@ function datebox(){
 						.css('background-color','lightwhite')
 						.css('border','solid #ccc 1px');
 				$('.selected').css('background-color','lightgrey');
-			$('#date').val(day+'/'+month+'/'+year);
-			$('#current-date').html(day+'/'+month+'/'+year);
+			var o = "";
+			var u = "";
+			if(day<10){o="0";}
+			if(month<10){u="0";}
+			$('#date').val(o+day+'/'+u+month+'/'+year);
+			$('#current-date').html(o+day+'/'+u+month+'/'+year);
 		});
 
 		$('#d_right').click(function(){
@@ -201,8 +221,12 @@ function datebox(){
 						.css('background-color','lightwhite')
 						.css('border','solid #ccc 1px');
 				$('.selected').css('background-color','lightgrey');
-			$('#date').val(day+'/'+month+'/'+year);
-			$('#current-date').html(day+'/'+month+'/'+year);
+			var o = "";
+			var u = "";
+			if(day<10){o="0";}
+			if(month<10){u="0";}
+			$('#date').val(o+day+'/'+u+month+'/'+year);
+			$('#current-date').html(o+day+'/'+u+month+'/'+year);
 		});
 
 		$('#centre').click(function(){
@@ -221,15 +245,19 @@ function datebox(){
 						.css('background-color','lightwhite')
 						.css('border','solid #ccc 1px');
 				$('.selected').css('background-color','lightgrey');
-			$('#date').val(day+'/'+month+'/'+year);
-			$('#current-date').html(day+'/'+month+'/'+year);
+			var o = "";
+			var u = "";
+			if(day<10){o="0";}
+			if(month<10){u="0";}
+			$('#date').val(o+day+'/'+u+month+'/'+year);
+			$('#current-date').html(o+day+'/'+u+month+'/'+year);
 		});
 
 	$('#core-datebox')
 		.css('border','solid #ccc 1px')
 		.css('float','right')
 		// .css('width','225px')	
-		.css('position','relative')
+		.css('position','absolute')
 		.css('top','0')
 		.css('background-color','#f5f5dc');
 	$('.picker-day-letter')

@@ -86,7 +86,7 @@
                         </div>
                         <div>
                             <label for="date">Date de naissance</label>
-                            <div style="display:inline-block;">
+                            <div style="display:inline-block;position:relative;width:300px;">
                                 <input id="date" type="date" name="dateNaissance" placeholder="  JJ/MM/AAAA" required>
                             </div></br>
                             <span id="msgErr_date"><?php if(!empty($msgErr_date))echo $msgErr_date; ?></span>
