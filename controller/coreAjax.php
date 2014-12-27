@@ -1,14 +1,13 @@
 <?php
 if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
 require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
 $displayErr=null;
 if(isset($_POST['valider']) && !empty($_POST['valider'])) {
     $action = $_POST['valider'];
     switch($action) {
         case 'valider' : 
-            $displayErr =  signin($_POST);
+            $displayErr =  validate_field($_POST);
             /*****************/
             /*****CodeErr*****/
             /*****************/

@@ -242,6 +242,7 @@ function datebox(){
 		});
 
 		$('#centre').click(function(){
+			d = new Date();
 			year = d.getFullYear();
 			month = d.getMonth()+1;
 			day = d.getDate();

@@ -2,24 +2,32 @@ $(document).ready(function(){
 	 signin();
 });
 
+
+
+
+
 function signin(){
-	$('input[name="email"]').change(function(){
+	$('input[name="si_email"]').change(function(){
 		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
-	$('input[name="confirmEmail"]').change(function(){
+	$('input[name="si_conf_email"]').change(function(){
 		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
-	$('input[name="password"]').change(function(){
+	$('input[name="si_psw"]').change(function(){
 		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
-	$('input[name="confirmMdp"]').change(function(){
+	$('input[name="si_conf_psw"]').change(function(){
 		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
-	$('input[name="pseudo"]').change(function(){
+	$('input[name="si_pseudo"]').change(function(){
+		var send = get_form_values('signin');
+		ajax_send_signin(send);
+	});
+	$('input[name="date"]').change(function(){
 		var send = get_form_values('signin');
 		ajax_send_signin(send);
 	});
@@ -30,11 +38,12 @@ function get_form_values(form){
 		case 'signin' :
 			var send = {};
 			send.valider 		=	"valider";
-			send.email 			=	$('input[name="email"]').val();
-			send.confirmEmail	=	$('input[name="confirmEmail"]').val();
-			send.password 		=	$('input[name="mdp"]').val();
-			send.confirmMdp		=	$('input[name="confirmMdp"]').val();
-			send.pseudo 		=	$('input[name="pseudo"]').val();
+			send.si_email 			=	$('input[name="si_email"]').val();
+			send.si_conf_email	=	$('input[name="si_conf_email"]').val();
+			send.si_psw 		=	$('input[name="si_psw"]').val();
+			send.si_conf_psw		=	$('input[name="si_conf_psw"]').val();
+			send.si_pseudo 		=	$('input[name="si_pseudo"]').val();
+			send.date 		=	$('input[name="date"]').val();
 		break;
 
 		default:
@@ -84,13 +93,12 @@ function write_error(error){
 	if( error[0] != '' ){
 		// $('#').html(error[0]);
 	}else{
-		$('#').html('');
+		// $('#').html('');
 	}
 
 	if( error[1] != '' ){
 		$('#msgErr_mail_1').html(error[1]);
 	}else{
-		// if( $('#msgErr_mail_1').html() != '' )
 		$('#msgErr_mail_1').html('');
 	}
 

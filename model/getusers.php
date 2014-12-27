@@ -20,3 +20,7 @@ function db_get_user($link, $value, $case = "email"){
 	}
 	return $req;
 }
+
+// function db_create_user($link, $name, $fistname, $email, $password, $pseudo, $date){
+	
+// }

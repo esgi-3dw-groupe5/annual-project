@@ -4,8 +4,8 @@ require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/model/dbconnect.php");
 require_once(__ROOT__."/model/getusers.php");
 
-function signin($POST){
-	$erreur = 0;
+function validate_field($POST){
+	$error = 0;
 	// $messageErreur="";
 	$messageErreur = array(
 		'0' => "",
@@ -15,7 +15,9 @@ function signin($POST){
 		'4' => "", 
 		'5' => "", 
 		'6' => "", 
-		'7' => ""
+		'7' => "",
+		'8' => "",
+		'9' => ""
 	);
 
 	$pseudo		  = "";
@@ -24,8 +26,9 @@ function signin($POST){
 	$genre  	  = "";
 	$email  	  = "";
 	$confirmEmail = "";
-	$mdp = "";
-	$confirmMdp	 = "";
+	$mdp 		  = "";
+	$confirmMdp	  = "";
+	$date	  	  = "";
 	/*****************/
 	/*****CodeErr*****/
 	/*****************/
@@ -37,6 +40,8 @@ function signin($POST){
 	// 5 -> Both password given are not the same
 	// 6 -> Pseudo given do not respect requirement 
 	// 7 -> Pseudo given already exit
+	// 8 -> Date given is not a date
+	// 9 -> Date given does not exit
 
 	if(isset($POST["valider"])){ // AJAX later on
 
@@ -47,65 +52,71 @@ function signin($POST){
 		if( !empty($POST["genre"]) ){
 			$genre  	  = variable_control($POST["genre"]);
 		}
-		if( !empty($POST["nom"]) ){
-			$nom 		  = variable_control($POST["nom"]);
+		if( !empty($POST["si_name"]) ){
+			$nom 		  = variable_control($POST["si_name"]);
 		}
-		if( !empty($POST["prenom"]) ){
-			$prenom 	  = variable_control($POST["prenom"]);
+		if( !empty($POST["si_fistname"]) ){
+			$prenom 	  = variable_control($POST["si_fistname"]);
 		}
 
 		/*******************************************************************/
 		/****************************REQUIRE********************************/
 		/*******************************************************************/
 		// On regarde si il n'y a pas de champs vides
-		if( !empty($POST["dateNaissance"]) ){
+		if( !empty($POST["date"]) ){
 		/*******************************************************************/
 		/********************************DATE*******************************/
 		/*******************************************************************/
-			// FIXME : Check the date format
+			$date 		  = $POST["date"];
+
+				$messageErreur[8] = get_error("dateformat", $date, null, $error);
+				$messageErreur[9] = get_error("date", $date, null, $error);
 		}
-		if( !empty($POST["mdp"]) && !empty($POST["confirmMdp"]) ){
+		if( !empty($POST["si_psw"]) && !empty($POST["si_conf_psw"]) ){
 		/*******************************************************************/
 		/*******************************PASSWORD****************************/
 		/*******************************************************************/
-			$mdp 		  = $POST["mdp"];
-			$confirmMdp	  = $POST["confirmMdp"];
+			$mdp 		  = $POST["si_psw"];
+			$confirmMdp	  = $POST["si_conf_psw"];
 
-				$messageErreur[5] = get_error("password", $mdp, $confirmMdp, $erreur);
+				$messageErreur[5] = get_error("password", $mdp, $confirmMdp, $error);
 			// FIXME : Check for password
 		}
-		if( !empty($POST["email"]) ){
-			$email  	  = variable_control_full($POST["email"]);
+		if( !empty($POST["si_email"]) ){
+			$email  	  = variable_control_full($POST["si_email"]);
 
-				$messageErreur[1] = get_error("validemail", $email, null, $erreur);
-				$messageErreur[2] = get_error("existemail", $email, null, $erreur);
+				$messageErreur[1] = get_error("validemail", $email, null, $error);
+				$messageErreur[2] = get_error("existemail", $email, null, $error);
 		}
-		if( !empty($POST["email"]) && !empty($POST["confirmEmail"]) ){
+		if( !empty($POST["si_email"]) && !empty($POST["si_conf_email"]) ){
 		/*******************************************************************/
 		/********************************EMAIL******************************/
 		/*******************************************************************/
-			$email  	  = variable_control_full($POST["email"]);
-			$confirmEmail = variable_control_full($POST["confirmEmail"]);
+			$email  	  = variable_control_full($POST["si_email"]);
+			$confirmEmail = variable_control_full($POST["si_conf_email"]);
 
-				$messageErreur[3] = get_error("email", $email, $confirmEmail, $erreur);
-				$messageErreur[1] = get_error("validemail", $email, null, $erreur);
-				$messageErreur[2] = get_error("existemail", $email, null, $erreur);
+				$messageErreur[3] = get_error("email", $email, $confirmEmail, $error);
+				$messageErreur[1] = get_error("validemail", $email, null, $error);
+				$messageErreur[2] = get_error("existemail", $email, null, $error);
 		}
-		if(!empty($POST["pseudo"])){
+		if(!empty($POST["si_pseudo"])){
 			/*******************************************************************/
 			/********************************PSEUDO*****************************/
 			/*******************************************************************/
-			$pseudo 	  = variable_control($POST["pseudo"]);
+			$pseudo 	  = variable_control($POST["si_pseudo"]);
 
-				$messageErreur[7] = get_error("existpseudo", $pseudo, null, $erreur);
+				$messageErreur[7] = get_error("existpseudo", $pseudo, null, $error);
 		}
 		// Database register
 		// if nb error = 0 -> Register
+		if($error == 0 ){
+			register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date);
+		}
 	}
 
 	return $messageErreur;
 }
-function get_error($item, $parm1, $parm2 = null, $erreur){
+function get_error($item, $parm1, $parm2 = null, $error){
 	// get error memssage from db
 	$msg = "";
 	switch ($item) {
@@ -114,7 +125,7 @@ function get_error($item, $parm1, $parm2 = null, $erreur){
 				// $codeErr = 1;
 				$msg = "Vous devez saisir une adresse email valide.";
 				
-				$erreur++;
+				$error++;
 			}
 			break;
 
@@ -125,7 +136,7 @@ function get_error($item, $parm1, $parm2 = null, $erreur){
 				// $codeErr = 2;
 				$msg = "Cette adresse email est déjà utilisé.";
 				
-				$erreur++;
+				$error++;
 			}
 			break;
 
@@ -134,9 +145,18 @@ function get_error($item, $parm1, $parm2 = null, $erreur){
 				// $codeErr = 3;
 				$msg = "Les champs ".$item." doivent être identique.";
 				
-				$erreur++;
+				$error++;
 
 			}
+			break;
+
+		case 'validpassword':
+			// if(){
+				// $codeErr = 4;
+				$msg = "Le mot de passe ne respecte pas les carractère requis";
+				
+				$error++;
+			// }
 			break;
 
 		case 'password':
@@ -144,7 +164,7 @@ function get_error($item, $parm1, $parm2 = null, $erreur){
 				// $codeErr = 5;
 				$msg = "Les champs ".$item." doivent être identique.";
 				
-				$erreur++;
+				$error++;
 			}
 			break;
 
@@ -155,16 +175,61 @@ function get_error($item, $parm1, $parm2 = null, $erreur){
 				// $codeErr = 6;
 				$msg = "Ce pseudo est déjà utilisé.";
 				
-				$erreur++;
+				$error++;
 			}
+			break;
+
+		case 'dateformat':
+			$p=0;
+			if(preg_match("/^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){
+				$p=1;
+			}
+			else if(preg_match("/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){
+				$p=1;
+			}
+			else if(preg_match("/^(\d\d\d\d)[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])$/", $parm1, $dateArr)==1){
+				$p=1;
+			}
+				if( $p==0 ){
+					// $codeErr = 8;
+					$msg = "Ceci n'est pas une date";
+					
+					$error++;
+				}
+			break;
+
+		case 'date':
+			$p=0;
+			if(preg_match("/^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){
+				$p=1;
+			}
+			else if(preg_match("/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){
+				$p=1;
+			}
+			else if(preg_match("/^(\d\d\d\d)[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])$/", $parm1, $dateArr)==1){
+				$p=1;
+			}
+				if( $p==1 && $dateArr[0] == 10){
+					if( !checkdate($dateArr[2], $dateArr[1], $dateArr[3]) ){
+						// $codeErr = 9;
+						$msg = "Cette date n`exist pas";
+						
+						$error++;
+					}
+				}
 			break;
 		
 		default:
 				// $codeErr = 0;
 				$msg = "Vous n'avez pas rempli tous les champs obligatoires(*).";
 				
-				$erreur++;
+				$error++;
 			break;
 	}
 	return $msg;
+}
+
+function register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date){
+	$link = db_connect();
+		password_hash("rasmuslerdorf", PASSWORD_DEFAULT);	
 }

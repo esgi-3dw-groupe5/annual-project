@@ -9,3 +9,4 @@ require_once(__ROOT__."/controller/corePHP.php");
 
 access_control();
 require_once(__ROOT__."/template/index.tpl");
+// debug($_SESSION);
