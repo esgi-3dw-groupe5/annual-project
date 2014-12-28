@@ -21,6 +21,30 @@ function db_get_user($link, $value, $case = "email"){
 	return $req;
 }
 
-// function db_create_user($link, $name, $fistname, $email, $password, $pseudo, $date){
-	
-// }
+function db_create_user($link, $genre, $name, $fistname, $email, $password, $pseudo, $date){
+	try{
+		$req = $link -> prepare("INSERT INTO utilisateur 
+			(genre, nom, prenom, email, pseudo, mdp, date_naissance, statut)
+			VALUES( :genre,
+					:nom,
+					:prenom,
+					:email,
+					:pseudo,
+					:mdp,
+					:date_naissance,
+					:statut)");
+		$req->exucute(array(
+					':genre' => $genre,
+					':nom' => $name,
+					':prenom' => $fistname,
+					':email' => $email,
+					':pseudo' => $pseudo,
+					':mdp' => $password,
+					':date_naissance' => $date,
+					':statut' => 1
+				));
+	}
+	catch( PDOException $e ){
+		
+	}
+}

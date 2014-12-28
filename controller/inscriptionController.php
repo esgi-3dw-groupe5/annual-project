@@ -83,9 +83,13 @@ function validate_field($POST){
 			// FIXME : Check for password
 		}
 		if( !empty($POST["si_email"]) ){
+		/*******************************************************************/
+		/********************************EMAIL******************************/
+		/*******************************************************************/
 			$email  	  = variable_control_full($POST["si_email"]);
-
+echo 'before error : '.$error;
 				$messageErreur[1] = get_error("validemail", $email, null, $error);
+echo 'after error : '.$error;
 				$messageErreur[2] = get_error("existemail", $email, null, $error);
 		}
 		if( !empty($POST["si_email"]) && !empty($POST["si_conf_email"]) ){
@@ -109,8 +113,9 @@ function validate_field($POST){
 		}
 		// Database register
 		// if nb error = 0 -> Register
+		echo $error;
 		if($error == 0 ){
-			register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date);
+			// register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date);
 		}
 	}
 
@@ -126,6 +131,7 @@ function get_error($item, $parm1, $parm2 = null, $error){
 				$msg = "Vous devez saisir une adresse email valide.";
 				
 				$error++;
+				echo 'in error : '.$error;
 			}
 			break;
 
@@ -181,15 +187,9 @@ function get_error($item, $parm1, $parm2 = null, $error){
 
 		case 'dateformat':
 			$p=0;
-			if(preg_match("/^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){
-				$p=1;
-			}
-			else if(preg_match("/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){
-				$p=1;
-			}
-			else if(preg_match("/^(\d\d\d\d)[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])$/", $parm1, $dateArr)==1){
-				$p=1;
-			}
+			if(preg_match("/^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){$p=1;}
+			else if(preg_match("/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){$p=1;}
+			else if(preg_match("/^(\d\d\d\d)[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])$/", $parm1, $dateArr)==1){$p=1;}
 				if( $p==0 ){
 					// $codeErr = 8;
 					$msg = "Ceci n'est pas une date";
@@ -200,15 +200,9 @@ function get_error($item, $parm1, $parm2 = null, $error){
 
 		case 'date':
 			$p=0;
-			if(preg_match("/^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){
-				$p=1;
-			}
-			else if(preg_match("/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){
-				$p=1;
-			}
-			else if(preg_match("/^(\d\d\d\d)[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])$/", $parm1, $dateArr)==1){
-				$p=1;
-			}
+			if(preg_match("/^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){$p=1;}
+			else if(preg_match("/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](\d\d\d\d)$/", $parm1, $dateArr)==1){$p=1;}
+			else if(preg_match("/^(\d\d\d\d)[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])$/", $parm1, $dateArr)==1){$p=1;}
 				if( $p==1 && $dateArr[0] == 10){
 					if( !checkdate($dateArr[2], $dateArr[1], $dateArr[3]) ){
 						// $codeErr = 9;
@@ -231,5 +225,26 @@ function get_error($item, $parm1, $parm2 = null, $error){
 
 function register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date){
 	$link = db_connect();
-		password_hash("rasmuslerdorf", PASSWORD_DEFAULT);	
+	
+	$hash_psw = password_hash($mdp, PASSWORD_DEFAULT);
+
+	$db_date="";
+	if(preg_match("/^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](\d\d\d\d)$/", $date, $dateArr)==1){
+		debug($dateArr);
+		$db_date = $dateArr[3]."-".$dateArr[2]."-".$dateArr[1];
+		echo $db_date;
+	}
+	else if(preg_match("/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](\d\d\d\d)$/", $date, $dateArr)==1){
+		debug($dateArr);
+		$db_date = $dateArr[3]."-".$dateArr[1]."-".$dateArr[2];
+		echo $db_date;
+	}
+	else if(preg_match("/^(\d\d\d\d)[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])$/", $date, $dateArr)==1){
+		debug($dateArr);
+		$db_date = $dateArr[1]."-".$dateArr[3]."-".$dateArr[2];
+		echo $db_date;
+	}
+
+
+	// db_create_user($link, $genre, $name, $fistname, $email, $password, $pseudo, $db_date);
 }

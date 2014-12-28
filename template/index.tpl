@@ -51,8 +51,8 @@
                     <form method="POST" action="index.php" class="">
                         <!-- <div id="error"><?php //echo $displayErr ?></div> -->
                         <div>
-                            <input id="male" type="radio" name="genre" value="homme" <?php echo $gender_male ?> required><label for="male">Monsieur</label>
-                            <input id="female" type="radio" name="genre" value="femme" <?php echo $gender_female ?> required><label for="female">Madame</label>
+                            <input id="male" type="radio" name="genre" value="homme" <?php if(!empty($gender_male))echo $gender_male ?> required><label for="male">Monsieur</label>
+                            <input id="female" type="radio" name="genre" value="femme" <?php if(!empty($gender_female))echo $gender_female ?> required><label for="female">Madame</label>
                             </br><span id="msgErr_gender"><?php if(!empty($msgErr_gender))echo $msgErr_gender ?></span>
                         </div>
                         <div>
