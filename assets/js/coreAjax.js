@@ -78,7 +78,8 @@ function write_error(error){
 	// 5 -> Both password given are not the same
 	// 6 -> Pseudo given do not respect requirement 
 	// 7 -> Pseudo given already exit
-	// 8 -> Date is not right
+	// 8 -> Date given is not a date
+	// 9 -> Date given does not exit
 	
 	// msgErr_name
 	// msgErr_fistName
@@ -115,9 +116,9 @@ function write_error(error){
 	}
 
 	if( error[4] != '' ){
-		// $('#').html(error[4]);
+		$('#').html(error[4]);
 	}else{
-		// $('#').html('');
+		$('#').html('');
 	}
 
 	if( error[5] != '' ){

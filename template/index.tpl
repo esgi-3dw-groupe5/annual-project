@@ -14,6 +14,7 @@
         <script type="text/javascript" src="assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="assets/js/coreAjax.js"></script>
         <script type="text/javascript" src="assets/js/datepicker.js"></script>
+        <script type="text/javascript" src="assets/js/clock.js"></script>
 
     </head>
     <body>
@@ -82,11 +83,11 @@
                             <span id="msgErr_pseudo"><?php if(!empty($msgErr_pseudo))echo $msgErr_pseudo; ?></span>
                         </div>
                         <div>
-                            <label for="password">Mot de passe</label><input id="password" type="password" name="si_psw" maxlength="" required></br>
+                            <label for="password">Mot de passe</label><input id="password" type="password" name="si_psw" minlength="8" maxlength="20" required></br>
                             <span id="msgErr_psw_1"><?php if(!empty($msgErr_psw_1))echo $msgErr_psw_1; ?></span>
                         </div>
                         <div>
-                            <label for="password_2">Confirmation Mdp</label><input id="password_2" type="password" name="si_conf_psw" maxlength="" required></br>
+                            <label for="password_2">Confirmation Mdp</label><input id="password_2" type="password" minlength="8" maxlength="20" name="si_conf_psw" maxlength="" required></br>
                             <span id="msgErr_psw_2"><?php if(!empty($msgErr_psw_2))echo $msgErr_psw_2; ?></span>
                         </div>
                         <div>
@@ -106,10 +107,9 @@
             </section>
 
             <section class="">
-                <div>
+                <div id="clock">
 
                 </div>
-
             </section>
         </div>
 
@@ -120,5 +120,11 @@
         <style type="text/css">
         span{
             color:darkred;
+        }
+
+        .clock-display span{
+            color: #000 !important;
+            font-weight:  bold;
+            font-size:  40px;
         }
         </style>

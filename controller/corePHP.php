@@ -19,6 +19,8 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])) {
             // 5 -> Both password given are not the same
             // 6 -> Pseudo given do not respect requirement 
             // 7 -> Pseudo given already exit
+            // 8 -> Date given is not a date
+            // 9 -> Date given does not exit
 
             $msgErr_mail_1  = $displayErr[1];
             $msgErr_mail_2  = $displayErr[2];

@@ -6,8 +6,8 @@ require_once(__ROOT__."/model/getusers.php");
 
 function validate_field($POST){
 	$error = 0;
-	// $messageErreur="";
-	$messageErreur = array(
+	// $errorMessage="";
+	$errorMessage = array(
 		'0' => "",
 		'1' => "", 
 		'2' => "", 
@@ -21,13 +21,13 @@ function validate_field($POST){
 	);
 
 	$pseudo		  = "";
-	$nom 		  = "";
-	$prenom 	  = "";
-	$genre  	  = "";
+	$name 		  = "";
+	$firstname 	  = "";
+	$gender  	  = "";
 	$email  	  = "";
 	$confirmEmail = "";
-	$mdp 		  = "";
-	$confirmMdp	  = "";
+	$password 		  = "";
+	$confirmPsw	  = "";
 	$date	  	  = "";
 	/*****************/
 	/*****CodeErr*****/
@@ -50,13 +50,13 @@ function validate_field($POST){
 		/*******************************************************************/
 		// On regarde si il n'y a pas de champs vides
 		if( !empty($POST["genre"]) ){
-			$genre  	  = variable_control($POST["genre"]);
+			$gender  	  = variable_control($POST["genre"]);
 		}
 		if( !empty($POST["si_name"]) ){
-			$nom 		  = variable_control($POST["si_name"]);
+			$name 		  = variable_control($POST["si_name"]);
 		}
 		if( !empty($POST["si_fistname"]) ){
-			$prenom 	  = variable_control($POST["si_fistname"]);
+			$firstname 	  = variable_control($POST["si_fistname"]);
 		}
 
 		/*******************************************************************/
@@ -69,28 +69,34 @@ function validate_field($POST){
 		/*******************************************************************/
 			$date 		  = $POST["date"];
 
-				$messageErreur[8] = get_error("dateformat", $date, null, $error);
-				$messageErreur[9] = get_error("date", $date, null, $error);
+				$errorMessage[8] = get_error("dateformat", $date, null);
+				$errorMessage[9] = get_error("date", $date, null);
+					if($errorMessage[8]!= "" || $errorMessage[9]!= "")
+						$error++;
 		}
 		if( !empty($POST["si_psw"]) && !empty($POST["si_conf_psw"]) ){
 		/*******************************************************************/
 		/*******************************PASSWORD****************************/
 		/*******************************************************************/
-			$mdp 		  = $POST["si_psw"];
-			$confirmMdp	  = $POST["si_conf_psw"];
+			$password 		  = $POST["si_psw"];
+			$confirmPsw	  = $POST["si_conf_psw"];
 
-				$messageErreur[5] = get_error("password", $mdp, $confirmMdp, $error);
+				$errorMessage[4] = get_error("validpassword", $password);
+				$errorMessage[5] = get_error("password", $password, $confirmPsw);
 			// FIXME : Check for password
+					if($errorMessage[5]!= "")
+						$error++;
 		}
 		if( !empty($POST["si_email"]) ){
 		/*******************************************************************/
 		/********************************EMAIL******************************/
 		/*******************************************************************/
 			$email  	  = variable_control_full($POST["si_email"]);
-echo 'before error : '.$error;
-				$messageErreur[1] = get_error("validemail", $email, null, $error);
-echo 'after error : '.$error;
-				$messageErreur[2] = get_error("existemail", $email, null, $error);
+
+				$errorMessage[1] = get_error("validemail", $email, null);
+				$errorMessage[2] = get_error("existemail", $email, null);
+					if($errorMessage[1]!= "" || $errorMessage[1]!= "")
+						$error++;
 		}
 		if( !empty($POST["si_email"]) && !empty($POST["si_conf_email"]) ){
 		/*******************************************************************/
@@ -99,9 +105,11 @@ echo 'after error : '.$error;
 			$email  	  = variable_control_full($POST["si_email"]);
 			$confirmEmail = variable_control_full($POST["si_conf_email"]);
 
-				$messageErreur[3] = get_error("email", $email, $confirmEmail, $error);
-				$messageErreur[1] = get_error("validemail", $email, null, $error);
-				$messageErreur[2] = get_error("existemail", $email, null, $error);
+				$errorMessage[3] = get_error("email", $email, $confirmEmail);
+				$errorMessage[1] = get_error("validemail", $email, null);
+				$errorMessage[2] = get_error("existemail", $email, null);
+					if($errorMessage[1]!= "" || $errorMessage[2]!= "" || $errorMessage[3]!= "")
+						$error++;
 		}
 		if(!empty($POST["si_pseudo"])){
 			/*******************************************************************/
@@ -109,19 +117,20 @@ echo 'after error : '.$error;
 			/*******************************************************************/
 			$pseudo 	  = variable_control($POST["si_pseudo"]);
 
-				$messageErreur[7] = get_error("existpseudo", $pseudo, null, $error);
+				$errorMessage[7] = get_error("existpseudo", $pseudo, null);
+					if($errorMessage[7]!= "")
+						$error++;
 		}
-		// Database register
+
 		// if nb error = 0 -> Register
-		echo $error;
 		if($error == 0 ){
-			// register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date);
+			register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date);
 		}
 	}
 
-	return $messageErreur;
+	return $errorMessage;
 }
-function get_error($item, $parm1, $parm2 = null, $error){
+function get_error($item, $parm1, $parm2 = null){
 	// get error memssage from db
 	$msg = "";
 	switch ($item) {
@@ -129,9 +138,6 @@ function get_error($item, $parm1, $parm2 = null, $error){
 			if(!filter_var($parm1, FILTER_VALIDATE_EMAIL)){
 				// $codeErr = 1;
 				$msg = "Vous devez saisir une adresse email valide.";
-				
-				$error++;
-				echo 'in error : '.$error;
 			}
 			break;
 
@@ -141,8 +147,6 @@ function get_error($item, $parm1, $parm2 = null, $error){
 			if( $result->fetch()[0] == "1"){
 				// $codeErr = 2;
 				$msg = "Cette adresse email est déjà utilisé.";
-				
-				$error++;
 			}
 			break;
 
@@ -150,27 +154,25 @@ function get_error($item, $parm1, $parm2 = null, $error){
 			if($parm1 != $parm2){
 				// $codeErr = 3;
 				$msg = "Les champs ".$item." doivent être identique.";
-				
-				$error++;
 
 			}
 			break;
 
 		case 'validpassword':
-			// if(){
-				// $codeErr = 4;
-				$msg = "Le mot de passe ne respecte pas les carractère requis";
-				
-				$error++;
-			// }
+
+			// if (!preg_match("/.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/", $parm1)){
+			if (!preg_match("/.*^(?=.{8,20})(?=.*[a-z])(?=.*[0-9])(?=.*\W).*$/", $parm1)
+					|| strlen($parm1) < 8 
+					|| strlen($parm1) > 20 
+					){
+ 				$msg = "Le mot de passe ne respecte pas les carractère requis";
+			}
 			break;
 
 		case 'password':
 			if($parm1 != $parm2){
 				// $codeErr = 5;
 				$msg = "Les champs ".$item." doivent être identique.";
-				
-				$error++;
 			}
 			break;
 
@@ -180,8 +182,6 @@ function get_error($item, $parm1, $parm2 = null, $error){
 			if( $result->fetch()[0] == "1"){
 				// $codeErr = 6;
 				$msg = "Ce pseudo est déjà utilisé.";
-				
-				$error++;
 			}
 			break;
 
@@ -193,8 +193,6 @@ function get_error($item, $parm1, $parm2 = null, $error){
 				if( $p==0 ){
 					// $codeErr = 8;
 					$msg = "Ceci n'est pas une date";
-					
-					$error++;
 				}
 			break;
 
@@ -207,8 +205,7 @@ function get_error($item, $parm1, $parm2 = null, $error){
 					if( !checkdate($dateArr[2], $dateArr[1], $dateArr[3]) ){
 						// $codeErr = 9;
 						$msg = "Cette date n`exist pas";
-						
-						$error++;
+	
 					}
 				}
 			break;
@@ -216,14 +213,12 @@ function get_error($item, $parm1, $parm2 = null, $error){
 		default:
 				// $codeErr = 0;
 				$msg = "Vous n'avez pas rempli tous les champs obligatoires(*).";
-				
-				$error++;
 			break;
 	}
 	return $msg;
 }
 
-function register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date){
+function register($pseudo,$name,$firstname,$gender,$email,$mdp,$date){
 	$link = db_connect();
 	
 	$hash_psw = password_hash($mdp, PASSWORD_DEFAULT);
@@ -246,5 +241,5 @@ function register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date){
 	}
 
 
-	// db_create_user($link, $genre, $name, $fistname, $email, $password, $pseudo, $db_date);
+	db_create_user($link, $gender, $name, $firstname, $email, $hash_psw, $pseudo, $db_date);
 }
