@@ -33,18 +33,21 @@ function db_create_user($link, $genre, $name, $firstname, $email, $password, $ps
 					:mdp,
 					:date_naissance,
 					:statut)");
-		$req->exucute(array(
+		$success = $req->execute(array(
 					':genre' => $genre,
 					':nom' => $name,
-					':prenom' => $fistname,
+					':prenom' => $firstname,
 					':email' => $email,
 					':pseudo' => $pseudo,
 					':mdp' => $password,
 					':date_naissance' => $date,
 					':statut' => 1
 				));
+		return $success;
 	}
 	catch( PDOException $e ){
 		
+		debug($e);
+		die();
 	}
 }

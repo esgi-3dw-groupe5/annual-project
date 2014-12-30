@@ -1,11 +1,21 @@
 <?php
 if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
 require_once(__ROOT__."/controller/common.php");
+require_once(__ROOT__."/controller/accessControl.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
 $displayErr=null;
-if(isset($_POST['valider']) && !empty($_POST['valider'])) {
-    $action = $_POST['valider'];
-    switch($action) {
+
+if( isset($_POST['si_submit']) && !empty($_POST['si_submit']) ) {
+    $action = $_POST['si_submit'];
+    _switch($action);
+}
+if( isset($_GET['act']) && !empty($_GET['act']) ) {
+    $action = $_GET['act'];
+    _switch($action);
+}
+
+function _switch($action){
+   switch($action) {
         case 'valider' : 
             $displayErr =  validate_field($_POST);
             /*****************/
@@ -22,14 +32,15 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])) {
             // 8 -> Date given is not a date
             // 9 -> Date given does not exit
 
+            $msgErr       = $displayErr[0];
             $msgErr_mail_1  = $displayErr[1];
             $msgErr_mail_2  = $displayErr[2];
             $msgErr_mail_3  = $displayErr[3];
 
             $msgErr_pseudo  = $displayErr[7];
 
-            $msgErr_psw_1  = $displayErr[4];
-            $msgErr_psw_2  = $displayErr[5];
+            $msgErr_psw_1   = $displayErr[4];
+            $msgErr_psw_2   = $displayErr[5];
 
             /***************************/
             /******Keep formm value*****/
@@ -55,10 +66,16 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])) {
 
             return;
 
-        	break;
-		default:
-			
-			break;
+            break;
+        case 'logout':
+                
+                end_session();
+                redirect();
+            break;
+
+        default:
+            
+            break;
     }
     return;
 }

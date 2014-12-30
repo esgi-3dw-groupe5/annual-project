@@ -3,8 +3,15 @@ if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-pr
 require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
 $displayErr=null;
-if(isset($_POST['valider']) && !empty($_POST['valider'])) {
-    $action = $_POST['valider'];
+if(isset($_POST['si_submit']) && !empty($_POST['si_submit'])) {
+    $action = $_POST['si_submit'];
+    _switch($action);
+}
+if( isset($_POST['act']) && !empty($_POST['act']) ) {
+    $action = $_POST['act'];
+    _switch($action);
+}
+function _switch($action){
     switch($action) {
         case 'valider' : 
             $displayErr =  validate_field($_POST);
@@ -38,14 +45,14 @@ if(isset($_POST['valider']) && !empty($_POST['valider'])) {
 
             echo $displayErr;
             // $msgErr_date  = $displayErr[];
-    		// echo json_encode( $displayErr );
+            // echo json_encode( $displayErr );
             return;
             // debug( signin($_POST) );
 
-        	break;
-		default:
-			
-			break;
+            break;
+        default:
+            
+            break;
     }
     return;
 }

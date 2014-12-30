@@ -1,6 +1,7 @@
 <?php
 if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
 require_once(__ROOT__."/controller/common.php");
+require_once(__ROOT__."/controller/accessControl.php");
 require_once(__ROOT__."/model/dbconnect.php");
 require_once(__ROOT__."/model/getusers.php");
 
@@ -26,7 +27,7 @@ function validate_field($POST){
 	$gender  	  = "";
 	$email  	  = "";
 	$confirmEmail = "";
-	$password 		  = "";
+	$password 	  = "";
 	$confirmPsw	  = "";
 	$date	  	  = "";
 	/*****************/
@@ -43,7 +44,7 @@ function validate_field($POST){
 	// 8 -> Date given is not a date
 	// 9 -> Date given does not exit
 
-	if(isset($POST["valider"])){ // AJAX later on
+	if(isset($POST["si_submit"])){ // AJAX later on
 
 		/*******************************************************************/
 		/****************************NOT REQUIRE****************************/
@@ -62,6 +63,16 @@ function validate_field($POST){
 		/*******************************************************************/
 		/****************************REQUIRE********************************/
 		/*******************************************************************/
+		// if( empty($POST["dateNaissance"]) 
+		// 	&& empty($POST["password"]) 
+		// 		&& empty($POST["confirmPsw"]) 
+		// 			&& empty($POST["email"]) 
+		// 				&& empty($POST["confirmEmail"]) 
+		// 					&& empty($POST["pseudo"])
+		// 						&& empty($POST["date"]) ){
+		// 		$errorMessage[0] = get_error("default", null);
+		// 			$error++;
+		// }
 		// On regarde si il n'y a pas de champs vides
 		if( !empty($POST["date"]) ){
 		/*******************************************************************/
@@ -74,17 +85,26 @@ function validate_field($POST){
 					if($errorMessage[8]!= "" || $errorMessage[9]!= "")
 						$error++;
 		}
+		if( !empty($POST["si_psw"]) ){
+		/*******************************************************************/
+		/*******************************PASSWORD****************************/
+		/*******************************************************************/
+			$password 	  = $POST["si_psw"];
+
+				$errorMessage[4] = get_error("validpassword", $password);
+					if($errorMessage[4]!= "")
+						$error++;
+		}
 		if( !empty($POST["si_psw"]) && !empty($POST["si_conf_psw"]) ){
 		/*******************************************************************/
 		/*******************************PASSWORD****************************/
 		/*******************************************************************/
-			$password 		  = $POST["si_psw"];
+			$password 	  = $POST["si_psw"];
 			$confirmPsw	  = $POST["si_conf_psw"];
 
 				$errorMessage[4] = get_error("validpassword", $password);
 				$errorMessage[5] = get_error("password", $password, $confirmPsw);
-			// FIXME : Check for password
-					if($errorMessage[5]!= "")
+					if($errorMessage[4]!= "" || $errorMessage[5]!= "")
 						$error++;
 		}
 		if( !empty($POST["si_email"]) ){
@@ -95,7 +115,7 @@ function validate_field($POST){
 
 				$errorMessage[1] = get_error("validemail", $email, null);
 				$errorMessage[2] = get_error("existemail", $email, null);
-					if($errorMessage[1]!= "" || $errorMessage[1]!= "")
+					if($errorMessage[1]!= "" || $errorMessage[2]!= "")
 						$error++;
 		}
 		if( !empty($POST["si_email"]) && !empty($POST["si_conf_email"]) ){
@@ -123,8 +143,21 @@ function validate_field($POST){
 		}
 
 		// if nb error = 0 -> Register
-		if($error == 0 ){
-			register($pseudo,$nom,$prenom,$genre,$email,$mdp,$date);
+		if( $error == 0 
+			&& !empty($pseudo)
+			&& !empty($email)
+			&& !empty($confirmEmail)
+			&& !empty($password)
+			&& !empty($confirmPsw)
+			&& !empty($date)
+			&& isset($POST['si_submit'])
+		){
+		// $success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date);
+		// set_user_session($success, $pseudo, $email);
+		// access_control();
+			// echo'plop';
+		set_user_session(true, $pseudo, $email);
+			header('location: http://127.0.0.1/annual-project/');
 		}
 	}
 
@@ -153,7 +186,7 @@ function get_error($item, $parm1, $parm2 = null){
 		case 'email':
 			if($parm1 != $parm2){
 				// $codeErr = 3;
-				$msg = "Les champs ".$item." doivent être identique.";
+				$msg = "Les champs email doivent être identique.";
 
 			}
 			break;
@@ -161,10 +194,9 @@ function get_error($item, $parm1, $parm2 = null){
 		case 'validpassword':
 
 			// if (!preg_match("/.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/", $parm1)){
-			if (!preg_match("/.*^(?=.{8,20})(?=.*[a-z])(?=.*[0-9])(?=.*\W).*$/", $parm1)
-					|| strlen($parm1) < 8 
-					|| strlen($parm1) > 20 
-					){
+			if (!preg_match("/.*^(?=.{8,20})(?=.*[a-z])(?=.*[0-9])(?=.*\W).*$/",$parm1) 
+					|| strlen($parm1)<8
+					|| strlen($parm1)>20){
  				$msg = "Le mot de passe ne respecte pas les carractère requis";
 			}
 			break;
@@ -172,7 +204,7 @@ function get_error($item, $parm1, $parm2 = null){
 		case 'password':
 			if($parm1 != $parm2){
 				// $codeErr = 5;
-				$msg = "Les champs ".$item." doivent être identique.";
+				$msg = "Les champs password doivent être identique.";
 			}
 			break;
 
@@ -218,28 +250,28 @@ function get_error($item, $parm1, $parm2 = null){
 	return $msg;
 }
 
-function register($pseudo,$name,$firstname,$gender,$email,$mdp,$date){
+function register($pseudo,$name,$firstname,$gender,$email,$password,$date){
 	$link = db_connect();
 	
-	$hash_psw = password_hash($mdp, PASSWORD_DEFAULT);
+	$hash_psw = password_hash($password, PASSWORD_DEFAULT);
 
 	$db_date="";
 	if(preg_match("/^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](\d\d\d\d)$/", $date, $dateArr)==1){
-		debug($dateArr);
+		// debug($dateArr);
 		$db_date = $dateArr[3]."-".$dateArr[2]."-".$dateArr[1];
-		echo $db_date;
+		// echo $db_date;
 	}
 	else if(preg_match("/^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](\d\d\d\d)$/", $date, $dateArr)==1){
-		debug($dateArr);
+		// debug($dateArr);
 		$db_date = $dateArr[3]."-".$dateArr[1]."-".$dateArr[2];
-		echo $db_date;
+		// echo $db_date;
 	}
 	else if(preg_match("/^(\d\d\d\d)[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])$/", $date, $dateArr)==1){
-		debug($dateArr);
+		// debug($dateArr);
 		$db_date = $dateArr[1]."-".$dateArr[3]."-".$dateArr[2];
-		echo $db_date;
+		// echo $db_date;
 	}
 
-
-	db_create_user($link, $gender, $name, $firstname, $email, $hash_psw, $pseudo, $db_date);
+	$req = db_create_user($link, $gender, $name, $firstname, $email, $hash_psw, $pseudo, $db_date);
+	return $req;
 }
