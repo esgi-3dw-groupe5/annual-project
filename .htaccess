@@ -4,8 +4,8 @@ IndexIgnore */*
 RewriteEngine On
 #  Règles
 # Empêche la redirection automatique sur index.php, ce qui est le cas par défaut, lorsque l'URL correspond à un fichier réel
-RewriteCond %{REQUEST_FILENAME} !-f 
+#	RewriteCond %{REQUEST_FILENAME} !-f 
 # Exclut les sous-répertoires
-RewriteCond %{REQUEST_FILENAME} !-d
+#	RewriteCond %{REQUEST_FILENAME} !-d
 # Demande le remplacement de l'expression régulière par l'adresse /index.php
-RewriteRule . index.php
+#	RewriteRule . index.php
