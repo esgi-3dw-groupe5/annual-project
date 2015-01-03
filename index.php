@@ -9,7 +9,8 @@ require_once(__ROOT__."/controller/corePHP.php");
 
 access_control();
 require_once(__ROOT__."/template/index.tpl");
-debug($_SESSION);
+// debug($_SESSION);
+// debug($_SERVER);
 
 
 include(__ROOT__."/template/footer.tpl");

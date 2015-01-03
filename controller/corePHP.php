@@ -4,23 +4,26 @@ require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/accessControl.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
 $displayErr=null;
+$action=null;
 
 if( isset($_POST['si_submit']) && !empty($_POST['si_submit']) ) {
     $action = $_POST['si_submit'];
-    _switch($action);
 }
-if( isset($_GET['act']) && !empty($_GET['act']) ) {
-    $action = $_GET['act'];
-    _switch($action);
+if( isset($_POST['li_submit']) && !empty($_POST['li_submit']) ) {
+    $action = $_POST['li_submit'];
 }
 
-function _switch($action){
+if( isset($_GET['act']) && !empty($_GET['act']) ) {
+    $action = $_GET['act'];
+}
+
    switch($action) {
         case 'valider' : 
             $displayErr =  validate_field($_POST);
             /*****************/
             /*****CodeErr*****/
             /*****************/
+            // ********************Singin********************
             // 0 -> All required field not filled
             // 1 -> Un-valid email address given
             // 2 -> Email given already exit
@@ -31,16 +34,20 @@ function _switch($action){
             // 7 -> Pseudo given already exit
             // 8 -> Date given is not a date
             // 9 -> Date given does not exit
+            // *********************Login*********************
+            // 10 -> Un-valid email address given
+            // 11 -> All required field not filled
+            // 12 -> Bad login given
 
-            $msgErr       = $displayErr[0];
-            $msgErr_mail_1  = $displayErr[1];
-            $msgErr_mail_2  = $displayErr[2];
-            $msgErr_mail_3  = $displayErr[3];
+            $si_msgErr         = $displayErr[0];
+            $si_msgErr_mail_1  = $displayErr[1];
+            $si_msgErr_mail_2  = $displayErr[2];
+            $si_msgErr_mail_3  = $displayErr[3];
 
-            $msgErr_pseudo  = $displayErr[7];
+            $si_msgErr_pseudo  = $displayErr[7];
 
-            $msgErr_psw_1   = $displayErr[4];
-            $msgErr_psw_2   = $displayErr[5];
+            $si_msgErr_psw_1   = $displayErr[4];
+            $si_msgErr_psw_2   = $displayErr[5];
 
             /***************************/
             /******Keep formm value*****/
@@ -48,7 +55,7 @@ function _switch($action){
 
             $gender_male="checked";
             $gender_female="";
-            if($_POST['genre'] == 'homme'){
+            if($_POST['gender'] == '0'){
                 $gender_male = "checked";
                 $gender_female = "";
             }
@@ -67,8 +74,15 @@ function _switch($action){
             return;
 
             break;
-        case 'logout':
-                
+        case 'connexion' :
+            $displayErr =  validate_field($_POST);
+
+            $li_msgErr          =   $displayErr[12];
+            $li_msgErr_login    =   $displayErr[10];
+            $li_msgErr_psw      =   $displayErr[11];
+            break;
+
+        case 'logout':                
                 end_session();
                 redirect();
             break;
@@ -77,5 +91,3 @@ function _switch($action){
             
             break;
     }
-    return;
-}

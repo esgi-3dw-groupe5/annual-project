@@ -3,9 +3,11 @@ if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-pr
 require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/accessControl.php");
 require_once(__ROOT__."/model/dbconnect.php");
-require_once(__ROOT__."/model/getusers.php");
+require_once(__ROOT__."/model/dbusers.php");
 
 function validate_field($POST){
+	$ajax = null;
+
 	$error = 0;
 	// $errorMessage="";
 	$errorMessage = array(
@@ -18,7 +20,10 @@ function validate_field($POST){
 		'6' => "", 
 		'7' => "",
 		'8' => "",
-		'9' => ""
+		'9' => "",
+		'10' => "",
+		'11' => "",
+		'12' => ""
 	);
 
 	$pseudo		  = "";
@@ -33,6 +38,7 @@ function validate_field($POST){
 	/*****************/
 	/*****CodeErr*****/
 	/*****************/
+	// ********************Singin********************
 	// 0 -> All required field not filled
 	// 1 -> Un-valid email address given
 	// 2 -> Email given already exit
@@ -43,15 +49,21 @@ function validate_field($POST){
 	// 7 -> Pseudo given already exit
 	// 8 -> Date given is not a date
 	// 9 -> Date given does not exit
+	// *********************Login*********************
+	// 10 -> Un-valid email address given
+	// 11 -> All required field not filled
+	// 12 -> Bad login given
 
 	if(isset($POST["si_submit"])){ // AJAX later on
+
+		if(isset($POST['ajax'])) $ajax = $POST['ajax'];
 
 		/*******************************************************************/
 		/****************************NOT REQUIRE****************************/
 		/*******************************************************************/
 		// On regarde si il n'y a pas de champs vides
-		if( !empty($POST["genre"]) ){
-			$gender  	  = variable_control($POST["genre"]);
+		if( !empty($POST["gender"]) ){
+			$gender  	  = variable_control($POST["gender"]);
 		}
 		if( !empty($POST["si_name"]) ){
 			$name 		  = variable_control($POST["si_name"]);
@@ -63,16 +75,14 @@ function validate_field($POST){
 		/*******************************************************************/
 		/****************************REQUIRE********************************/
 		/*******************************************************************/
-		// if( empty($POST["dateNaissance"]) 
-		// 	&& empty($POST["password"]) 
-		// 		&& empty($POST["confirmPsw"]) 
-		// 			&& empty($POST["email"]) 
-		// 				&& empty($POST["confirmEmail"]) 
-		// 					&& empty($POST["pseudo"])
-		// 						&& empty($POST["date"]) ){
-		// 		$errorMessage[0] = get_error("default", null);
-		// 			$error++;
-		// }
+		if(	empty($POST["si_email"]) &&
+			empty($POST["si_conf_email"]) &&
+			empty($POST["si_psw"]) &&
+			empty($POST["si_conf_psw"]) &&
+			empty($POST["si_pseudo"]) ){
+				$errorMessage[0] = get_error("default", null);
+					$error++;
+		}
 		// On regarde si il n'y a pas de champs vides
 		if( !empty($POST["date"]) ){
 		/*******************************************************************/
@@ -150,14 +160,65 @@ function validate_field($POST){
 			&& !empty($password)
 			&& !empty($confirmPsw)
 			&& !empty($date)
+			&& $ajax === null
 			&& isset($POST['si_submit'])
 		){
-		// $success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date);
-		// set_user_session($success, $pseudo, $email);
-		// access_control();
-			// echo'plop';
+		$success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date);
+		access_control();
 		set_user_session(true, $pseudo, $email);
 			header('location: http://127.0.0.1/annual-project/');
+		}
+	}
+
+	if(isset($POST['li_submit'])){
+		
+		if( !empty($POST['li_login']) ){
+		/*******************************************************************/
+		/********************************EMAIL******************************/
+		/*******************************************************************/
+			$email 	=	$POST['li_login'];
+
+				$errorMessage[10] = get_error("validemail", $email, null);
+					if($errorMessage[10]!= "")
+						$error++;
+		}
+		if( empty($POST['li_password']) ){
+		/*******************************************************************/
+		/*******************************PASSWORD****************************/
+		/*******************************************************************/
+			$password 	=	$POST['li_password'];
+
+				$errorMessage[11] = get_error("notfill", $password, null);
+					if($errorMessage[11]!= "")
+						$error++;
+		}
+		if( !empty($POST['li_password']) && !empty($POST['li_login']) ){
+		/*******************************************************************/
+		/*******************************CONNEXION***************************/
+		/*******************************************************************/
+			$email 		=	$POST['li_login'];
+			$password 	=	$POST['li_password'];
+
+				$errorMessage[10] = get_error("validemail", $email, null);
+					if($errorMessage[10]!= "")
+						$error++;
+		}
+		// if nb error = 0 -> Connect
+		if( $error == 0 
+			&& !empty($email)
+			&& !empty($password)
+			&& $ajax === null
+			&& isset($POST['li_submit'])
+		){
+			$connection = get_error("connection", $email, $password);
+			if( isset($connection['pseudo']) ){
+				access_control();
+				set_user_session( true, $connection['pseudo'], $connection['email'], $connection['role'] );
+					header('location: http://127.0.0.1/annual-project/');
+			}
+			else{
+				$errorMessage[12] = $connection;
+			}
 		}
 	}
 
@@ -241,7 +302,33 @@ function get_error($item, $parm1, $parm2 = null){
 					}
 				}
 			break;
-		
+
+		case 'connection':
+			$link = db_connect();
+			$result = db_get_user($link, $parm1, "connexion");
+			$data = $result->fetch();
+
+				if( password_verify($parm2, $data['password']) ){
+					$connection = array(
+						'pseudo' 	=> $data['pseudo'], 
+						'email' 	=> $data['email'], 
+						'password' 	=> $data['password'], 
+						'status' 	=> $data['status'], 
+						'role' 		=> $data['role'] 
+						);
+					return $connection;
+				}
+				else{
+					$msg = "Login ou mot de passe invalide,\n\r
+					si vous ne vous souvenez plus de vos identifiant cliquer ici pour les réinitialiser ";	
+				}
+			break;
+
+		case 'notfill' :
+				// $codeErr = 11;
+				$msg = "Vous n'avez pas rempli tous les champs obligatoires(*).";
+			break;
+
 		default:
 				// $codeErr = 0;
 				$msg = "Vous n'avez pas rempli tous les champs obligatoires(*).";
