@@ -17,6 +17,14 @@
         <script type="text/javascript" src="assets/js/coreAjax.js"></script>
         <script type="text/javascript" src="assets/js/datepicker.js"></script>
         <script type="text/javascript" src="assets/js/clock.js"></script>
+        <script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea"
+         });
+
+        </script>
+
 
     </head>
     <body>
@@ -53,6 +61,7 @@
 
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
+                <?php if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
 
                 </div>
 
