@@ -20,8 +20,15 @@
         <script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript">
         tinymce.init({
-            selector: "textarea"
-         });
+            selector: "textarea",
+            width : 1000,
+            height : 500,
+            plugins: "textcolor media preview image",
+            toolbar: [
+            "undo redo | styleselect | bold italic | link image | forecolor | backcolor | preview",
+            "alignleft aligncenter alignright"
+            ]
+        });
 
         </script>
 
