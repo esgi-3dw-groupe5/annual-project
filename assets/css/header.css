@@ -5,7 +5,7 @@
 .subnav {
 	
 	display: inline-block;
-	border-size: 2px;
+	/*border-size: 2px;*/
 	border-color: black;
 	text-align: center;
 	width: 200px;
