@@ -3,6 +3,7 @@ if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-pr
 require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/accessControl.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
+require_once(__ROOT__."/controller/articleController.php");
 $displayErr=null;
 $action=null;
 
@@ -11,6 +12,10 @@ if( isset($_POST['si_submit']) && !empty($_POST['si_submit']) ) {
 }
 if( isset($_POST['li_submit']) && !empty($_POST['li_submit']) ) {
     $action = $_POST['li_submit'];
+}
+
+if( isset($_POST['at_submit']) && !empty($_POST['at_submit']) ) {
+    $action = $_POST['at_submit'];
 }
 
 if( isset($_GET['act']) && !empty($_GET['act']) ) {
@@ -85,6 +90,11 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
         case 'logout':                
                 end_session();
                 redirect();
+            break;
+
+        case 'Envoyer' :
+                $displayErr     =   validate_article($_POST);
+                $at_msgErr      =   $displayErr[0];
             break;
 
         default:
