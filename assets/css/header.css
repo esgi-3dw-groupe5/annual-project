@@ -1,18 +1,47 @@
-.header {
-	text-align: center;
+@media screen and (max-width: 1920px)
+{
+	.header {
+		text-align: center;
+		border: solid black 3px;
+		background-color: grey;
+	}
+	.subnav {
+		
+		background-color: orange;
+		display: inline-block;
+		text-align: center;
+		border: solid black;
+		border-radius: 10px;
+		width: 200px;
+		height: 50px;
+		padding-bottom: 10px;
+	}
 }
-
-.subnav {
-	
-	display: inline-block;
-	/*border-size: 2px;*/
-	border-color: black;
-	text-align: center;
-	width: 200px;
-	height: 50px;
-
+@media screen and (max-width: 480px)
+{
+	.header {
+		text-align: center;
+		border: solid black 3px;
+		background-color: red;
+	}
+	.subnav {
+		
+		background-color: orange;
+		display: inline-block;
+		text-align: center;
+		border: solid black;
+		border-radius: 10px;
+		width: 200px;
+		height: 50px;
+		padding-bottom: 10px;
+	}
 }
-
 h3 {
 	font-size: 20px;
 }
+/*.clock
+{
+	float: right;
+	text-align: center;
+	font-size: 50%;
+}*/

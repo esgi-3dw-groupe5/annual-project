@@ -1,0 +1,592 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"margin-",
+				"margin-bottom"
+			],
+			[
+				"marg",
+				"margin-right"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"position",
+				"position_x"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"nom",
+				"nom_image"
+			],
+			[
+				"read",
+				"readfile"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"fput",
+				"fputs"
+			],
+			[
+				"imageE",
+				"imageEllipse"
+			],
+			[
+				"max",
+				"maxsize_octet"
+			],
+			[
+				"ma",
+				"maxsize_octet"
+			],
+			[
+				"str_",
+				"str_replace"
+			],
+			[
+				"ini_",
+				"ini_get"
+			],
+			[
+				"lis",
+				"list_of_name"
+			],
+			[
+				"tab",
+				"tab2"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "controller/accessControl.php",
+			"settings":
+			{
+				"buffer_size": 1508,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 539,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "model/dbconnect.php",
+			"settings":
+			{
+				"buffer_size": 310,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "view/inscriptionView.php",
+			"settings":
+			{
+				"buffer_size": 1231,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "template/footer.tpl",
+			"settings":
+			{
+				"buffer_size": 193,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "template/formLogin.tpl",
+			"settings":
+			{
+				"buffer_size": 918,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "template/formSignin.tpl",
+			"settings":
+			{
+				"buffer_size": 3711,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "template/header.tpl",
+			"settings":
+			{
+				"buffer_size": 392,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "template/index.tpl",
+			"settings":
+			{
+				"buffer_size": 2172,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 389.0,
+		"selected_items":
+		[
+			[
+				"",
+				"HTML: Wrap Selection With Tag"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/wamp/www/annual-project/template/index.tpl",
+		"/C/AdwCleaner/AdwCleaner[S5].txt",
+		"/C/wamp/www/GitHub/annual-project/controller/accessControl.php",
+		"/C/wamp/www/GitHub/annual-project/index.php",
+		"/F/script1.sh",
+		"/C/wamp/www/DevWeb/DataSol/formInscription.php",
+		"/C/wamp/www/DevWeb/DataSol/chat.php",
+		"/C/wamp/www/DevWeb/DataSol/connexion.php",
+		"/C/Users/Tristan/Documents/Cours/Java/09-12-14/corrigé TP3 ex1ex2/EssaiComparateur.java",
+		"/C/wamp/www/DevWeb/uploadImg.php",
+		"/C/wamp/www/DevWeb/UploadImgTest.php",
+		"/C/wamp/www/DevWeb/image.php",
+		"/C/wamp/www/DevWeb/index.php",
+		"/C/Users/Tristan/Documents/Cours/Java/09-12-14/corrigé TP3 ex1ex2/EssaiTri.java",
+		"/C/AdwCleaner/AdwCleaner[S4].txt",
+		"/C/AdwCleaner/AdwCleaner[S3].txt",
+		"/C/AdwCleaner/AdwCleaner[S2].txt",
+		"/C/Users/Tristan/Desktop/Adobe Illustrator/majax31.ws  Adobe CC 2014.html",
+		"/C/wamp/www/DevWeb/FormInscription/connexion.php",
+		"/C/Users/Tristan/Desktop/ZHPDiag.txt",
+		"/C/AdwCleaner/AdwCleaner[S0].txt",
+		"/C/Users/Tristan/Downloads/uploadImgTest.php",
+		"/C/wamp/www/DevWeb/fileEdit.php",
+		"/C/wamp/www/DevWeb/cookie.php",
+		"/C/wamp/www/DevWeb/test.php",
+		"/C/wamp/www/Algo/TableauTri/triBulleCorrect.php",
+		"/C/wamp/www/Algo/test.php",
+		"/C/wamp/www/DevWeb/FormInscription/formInscription.php",
+		"/C/wamp/www/DevWeb/pdo.php",
+		"/F/FormInscription/formInscription.php",
+		"/F/FormInscription/verifInscription.php",
+		"/C/wamp/www/DevWeb/FormInscription/verifInscription.php",
+		"/C/wamp/www/DevWeb/formInscription.php",
+		"/C/wamp/www/DevWeb/formInscription",
+		"/F/TP2java/src/Agence.java",
+		"/C/wamp/www/image.php",
+		"/C/wamp/www/DevWeb/tp1.php",
+		"/C/wamp/www/Algo/RechercheSequentielle/dichotomie.php",
+		"/C/wamp/www/Algo/TableauTri/triPermu.php",
+		"/C/wamp/www/Algo/TableauTri/triBulleInv.php",
+		"/C/wamp/www/Algo/RechercheSequentielle/image.php",
+		"/C/wamp/www/image.php.txt",
+		"/C/wamp/www/index.php",
+		"/C/wamp/www/Algo/TableauTri/test.php",
+		"/C/wamp/www/Algo/TableauTri/triTab.php",
+		"/C/wamp/www/Algo/TableauTri/triTabBulleInv.php",
+		"/C/wamp/www/Algo/TableauTri/triTabBulle.php",
+		"/C/wamp/www/Algo/TableauTri/triBulleCorrect",
+		"/C/wamp/www/Algo/Recherche séquentielle/dichotomie",
+		"/C/wamp/www/Five/wordpress/wp-admin/user/index.php",
+		"/C/wamp/www/Five/wordpress/wp-admin/user/admin.php",
+		"/C/Users/Tristan/Documents/Cours/Developpement Web/fichierHtmlType.html",
+		"/C/Users/Tristan/Desktop/hey/Projet ESGI/index.php",
+		"/C/Users/Tristan/Documents/Cours/Developpement Web/Exercices et corrections.html",
+		"/C/wamp/www/DevWeb/tp1",
+		"/C/wamp/www/Dev Web/test.php",
+		"/C/wamp/www/test.php",
+		"/C/wamp/www/TableauTri/triTabBulle.php",
+		"/C/wamp/www/fichierHtmlType.html",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/wamp/www/fichierHtmlType.php.html",
+		"/C/Users/Tristan/Documents/Cours/Developpement Web/Cours1.odt",
+		"/C/wamp/www/triTab.php",
+		"/C/wamp/www/TableauTri/test.php",
+		"/C/Users/Tristan/Desktop/TP1 bases cast/Clavier.java",
+		"/C/wamp/www/triTabPermu.php"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"access_control",
+			"tp1",
+			"cases"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"size"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "controller/accessControl.php",
+					"settings":
+					{
+						"buffer_size": 1508,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.php",
+					"settings":
+					{
+						"buffer_size": 539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								405,
+								405
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "model/dbconnect.php",
+					"settings":
+					{
+						"buffer_size": 310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								84,
+								95
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "view/inscriptionView.php",
+					"settings":
+					{
+						"buffer_size": 1231,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "template/footer.tpl",
+					"settings":
+					{
+						"buffer_size": 193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "template/formLogin.tpl",
+					"settings":
+					{
+						"buffer_size": 918,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "template/formSignin.tpl",
+					"settings":
+					{
+						"buffer_size": 3711,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								860,
+								860
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 364.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "template/header.tpl",
+					"settings":
+					{
+						"buffer_size": 392,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22,
+								28
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "template/index.tpl",
+					"settings":
+					{
+						"buffer_size": 2172,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1383,
+								1383
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 322.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

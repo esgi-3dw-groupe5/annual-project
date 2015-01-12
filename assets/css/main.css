@@ -1,17 +1,26 @@
-.content {
+@media screen and (max-width: 1920px)
+{
+	.content {
 
-	width:80%;
-	padding: 10px;
-	margin-left: 150px;
-	height: 100%;
+		width:80%;
+		padding: 10px;
+		margin-left: 150px;
+		height: 100%;
+		border: solid black 2px;
+	}
+
+	.login {
+
+		background-color:#D6984F;
+		width : 200px;
+		height: 250px;
+		padding: 15px;
+
+	}
 }
-
-
-.login {
-
-	background-color:#D6984F;
-	width : 200px;
-	height: 250px;
-	padding: 15px;
-
-}
+/*h1
+{
+	text-align: center;
+	text-decoration: underline;
+	color: red;
+}*/
