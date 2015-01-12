@@ -1,0 +1,12 @@
+.form-error{
+    color:darkred;
+}
+.form-error:before{
+	/*content:"x";*/
+}
+
+.clock-display span{
+    color: #000 !important;
+    font-weight:  bold;
+    font-size:  40px;
+}

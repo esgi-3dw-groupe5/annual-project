@@ -1,18 +1,23 @@
 <?php
 if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
 require_once(__ROOT__."/controller/common.php");
+require_once(__ROOT__."/controller/accessControl.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
 $displayErr=null;
 $action=null;
 
-if(isset($_POST['si_submit']) && !empty($_POST['si_submit'])) {
+if( isset($_POST['si_submit']) && !empty($_POST['si_submit']) ) {
     $action = $_POST['si_submit'];
 }
-if( isset($_POST['act']) && !empty($_POST['act']) ) {
-    $action = $_POST['act'];
+if( isset($_POST['li_submit']) && !empty($_POST['li_submit']) ) {
+    $action = $_POST['li_submit'];
 }
 
-    switch($action) {
+if( isset($_GET['act']) && !empty($_GET['act']) ) {
+    $action = $_GET['act'];
+}
+
+   switch($action) {
         case 'valider' : 
             $displayErr =  validate_field($_POST);
             /*****************/
@@ -34,9 +39,7 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             // 11 -> All required field not filled
             // 12 -> Bad login given
 
-            $displayErr = json_encode($displayErr);
-
-            $si_msgErr       = $displayErr[0];
+            $si_msgErr         = $displayErr[0];
             $si_msgErr_mail_1  = $displayErr[1];
             $si_msgErr_mail_2  = $displayErr[2];
             $si_msgErr_mail_3  = $displayErr[3];
@@ -46,10 +49,44 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             $si_msgErr_psw_1   = $displayErr[4];
             $si_msgErr_psw_2   = $displayErr[5];
 
-            echo $displayErr;
+            /***************************/
+            /******Keep formm value*****/
+            /***************************/
+
+            $gender_male="checked";
+            $gender_female="";
+            if($_POST['gender'] == '0'){
+                $gender_male = "checked";
+                $gender_female = "";
+            }
+            else{
+                $gender_male = "";
+                $gender_female = "checked";
+            }
+            $value_name = $_POST['si_name'];
+            $value_firstname = $_POST['si_fistname'];
+
+            $value_mail_1 = $_POST['si_email'];
+            $value_mail_2 = $_POST['si_conf_email'];
+            $value_pseudo = $_POST['si_pseudo'];
+            $value_date = $_POST['date'];
+
             return;
 
             break;
+        case 'connexion' :
+            $displayErr =  validate_field($_POST);
+
+            $li_msgErr          =   $displayErr[12];
+            $li_msgErr_login    =   $displayErr[10];
+            $li_msgErr_psw      =   $displayErr[11];
+            break;
+
+        case 'logout':                
+                end_session();
+                redirect();
+            break;
+
         default:
             
             break;

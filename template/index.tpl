@@ -11,8 +11,12 @@
         <link href="assets/css/form.css" rel="stylesheet" media="all"/>
         <link href="assets/css/main.css" rel="stylesheet" media="all"/>
 
-        <script type="text/javascript" src="//cdn.sublimevideo.net/js/8tsd8kyn.js"></script>
+        <link href="assets/css/formSignin.css" rel="stylesheet" media="all"/>
 
+        <script type="text/javascript" src="assets/js/libs/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="assets/js/coreAjax.js"></script>
+        <script type="text/javascript" src="assets/js/datepicker.js"></script>
+        <script type="text/javascript" src="assets/js/clock.js"></script>
 
     </head>
     <body>
@@ -37,45 +41,29 @@
 
         <div  class="content">
             <section >
+                <h1>
+                    <?php
+                        if( $_SESSION['user']['pseudo'] ){
+                            print($_SESSION['user']['pseudo']);
+                            print("<a href='?act=logout'>logout</a>");
+                        }
+                    ?>
+                </h1>
                 <div>
-                    <form method="post" action="controller/formControle.php" class="login">
-                        <label>Login</label>
-                        <input type="text" name="pseudo"><br>
-                        <label>Password*</label>
-                        <input type="password" name="mdp"><br>
-                        <input type="submit" value="Connexion" name="signin">
-                    </form>
-                    <a href="">S'inscrire</a>
 
-                    <form method="POST" action="index.php" class="login">
-                        <input type="radio" name="genre" value="homme" checked required> Monsieur
-                        <input type="radio" name="genre" value="femme" required> Madame</br></br>
-                        Nom <input type="text" name="nom" required></br></br>
-                        Prenom <input type="text" name="prenom" required></br></br>
-                        Email <input type="email" name="email" required></br></br>
-                        Confirmation Email <input type="email" name="confirmEmail" required></br></br>
-                        Pseudo <input type="login" name="pseudo" required></br></br>
-                        Mot de passe <input type="password" name="mdp" maxlength="8" required></br></br>
-                        Confirmation Mdp<input type="password" name="confirmMdp" maxlength="8" required></br></br>
-                        Date de naissance <input type="date" name="dateNaissance" placeholder="JJ/MM/AAAA" required></br></br>
-                        <input type="submit" name="valider" value="valider"></br></br>
-                    </form>
+                <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
+                <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
+
                 </div>
 
             </section>
 
             <section class="">
-                <div>
+                <div id="clock">
 
                 </div>
-
             </section>
         </div>
 
         <aside>
         </aside>
-
-        <?php include("footer.tpl"); ?>
-       
-    </body>
-</html>
