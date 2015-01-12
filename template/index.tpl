@@ -50,15 +50,9 @@
                     ?>
                 </h1>
                 <div>
-<!--                     <form method="post" action="controller/formControle.php" class="login">
-                        <label>Login</label>
-                        <input type="text" name="pseudo"><br>
-                        <label>Password*</label>
-                        <input type="password" name="mdp"><br>
-                        <input type="submit" value="Connexion" name="signin">
-                    </form>
-                    <a href="">S'inscrire</a> -->
-        <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
+
+                <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
+                <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
 
                 </div>
 

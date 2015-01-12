@@ -56,7 +56,7 @@ function datepicker(){};
 				var daynumber = datepicker.date.daysInMonth(month,year,day);
 				$('#head-number').append(daynumber);
 
-				$('#date').val(day+'/'+month+'/'+year);
+				datepicker.date.initialize(month,year,day);
 
 					$('#day').click(function(){
 						$('#d_left').toggle(true);
@@ -279,14 +279,14 @@ function datepicker(){};
 					.css('text-align','center')
 					.css('padding','0 4px')
 					.css('width','28px')
-					.css('border-bottom','0 4px')
+					.css('border-bottom','4px')
 					.css('color','#000')
 					.css('background-color','lightgrey')
 					.css('border','solid #ccc 1px');
 				$('.picker-day')
 						.css('display','inline-block')
 						.css('text-align','center')
-						.css('padding','0 4px')
+						.css('padding','4px')
 						.css('width','28px')
 						.css('color','#000')
 						.css('background-color','#f5f5f5')
@@ -331,6 +331,15 @@ function datepicker(){};
 
 						// return weekday[day];
 						return day;
-						}
+					},
+
+		initialize : function initialize(month,year,day){
+						var o = "";
+						var u = "";
+						if(day<10){o="0";}
+						if(month<10){u="0";}
+						$('#date').val(o+day+'/'+u+month+'/'+year);
+						$('#current-date').html(o+day+'/'+u+month+'/'+year);
+				}
 
 }

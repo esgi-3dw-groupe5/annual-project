@@ -3,10 +3,6 @@ $(document).ready(function(){
 	 prevent_empty_form();
 });
 
-
-
-
-
 function signin(){
 	$('input[name="si_email"]').change(function(){
 		var send = get_form_values('signin');
@@ -39,6 +35,7 @@ function get_form_values(form){
 		case 'signin' :
 			var send = {};
 			send.si_submit 		=	"valider";
+			send.ajax 			=	"ajax";
 			send.si_email 		=	$('input[name="si_email"]').val();
 			send.si_conf_email	=	$('input[name="si_conf_email"]').val();
 			send.si_psw 		=	$('input[name="si_psw"]').val();
@@ -93,7 +90,7 @@ function write_error(error){
 	// msgErr_date
 
 	if( error[0] != '' ){
-		$('#msgErr').html(error[0]);
+		$('#si_msgErr').html(error[0]);
 			$('#si_form').submit(function(event){
 				enablePreventDefault(event);
 			});
@@ -103,6 +100,7 @@ function write_error(error){
 
 	if( error[1] != '' ){
 		$('#msgErr_mail_1').html(error[1]);
+		$('#msgErr').html("");
 			$('#si_form').submit(function(event){
 				enablePreventDefault(event);
 			});
@@ -112,6 +110,7 @@ function write_error(error){
 
 	if( error[2] != '' ){
 		$('#msgErr_mail_2').html(error[2]);
+		$('#msgErr').html("");
 			$('#si_form').submit(function(event){
 				enablePreventDefault(event);
 			});
@@ -121,6 +120,7 @@ function write_error(error){
 
 	if( error[3] != '' ){
 		$('#msgErr_mail_3').html(error[3]);
+		$('#msgErr').html("");
 			$('#si_form').submit(function(event){
 				enablePreventDefault(event);
 			});
@@ -130,6 +130,7 @@ function write_error(error){
 
 	if( error[4] != '' ){
 		$('#msgErr_psw_1').html(error[4]);
+		$('#msgErr').html("");
 			$('#si_form').submit(function(event){
 				enablePreventDefault(event);
 			});
@@ -139,6 +140,7 @@ function write_error(error){
 
 	if( error[5] != '' ){
 		$('#msgErr_psw_2').html(error[5]);
+		$('#msgErr').html("");
 			$('#si_form').submit(function(event){
 				enablePreventDefault(event);
 			});
@@ -154,6 +156,7 @@ function write_error(error){
 
 	if( error[7] != '' ){
 		$('#msgErr_pseudo').html(error[7]);
+		$('#msgErr').html("");
 			$('#si_form').submit(function(event){
 				enablePreventDefault(event);
 			});
@@ -161,7 +164,21 @@ function write_error(error){
 		$('#msgErr_pseudo').html('');
 	}
 
-	if(error[0]=='' && error[1]=='' && error[2]=='' && error[3]=='' && error[4]=='' && error[5]=='' && error[6]=='' && error[7]==''){
+	if(error[0]=='' && 
+	   error[1]=='' &&
+	   error[2]=='' &&
+	   error[3]=='' &&
+	   error[4]=='' &&
+	   error[5]=='' &&
+	   error[6]=='' &&
+	   error[7]=='' &&
+	   $('input[name="si_email"]').val() 		!= "" &&
+	   $('input[name="si_conf_email"]').val() 	!= "" &&
+	   $('input[name="si_psw"]').val() 			!= "" &&
+	   $('input[name="si_conf_psw"]').val() 	!= "" &&
+	   $('input[name="si_pseudo"]').val() 		!= "" &&
+	   $('input[name="date"]').val() 			!= ""
+	   ){
 		$('#si_form').unbind('submit');
 	}
 }
@@ -171,16 +188,18 @@ function enablePreventDefault(event){
 }
 
 function prevent_empty_form(){
-	if(	$('input[name="si_email"]').val() == "" &&
-		$('input[name="si_conf_email"]').val() == "" &&
-		$('input[name="si_psw"]').val() == "" &&
-		$('input[name="si_conf_psw"]').val() == "" &&
-		$('input[name="si_pseudo"]').val() == "" &&
-		$('input[name="date"]').val() == "" )
+	if(
+		$('input[name="si_email"]').val() 		== "" &&
+		$('input[name="si_conf_email"]').val() 	== "" &&
+		$('input[name="si_psw"]').val() 		== "" &&
+		$('input[name="si_conf_psw"]').val() 	== "" &&
+		$('input[name="si_pseudo"]').val() 		== "" 
+	)
 	{
 
 		$('#si_form').submit(function(event){
 			enablePreventDefault(event);
+			// $('#msgErr').html("Vous devez remplire tous les champs obligatoire !");
 		});
 	}
 }
