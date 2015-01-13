@@ -1,27 +1,9 @@
-@media screen and (max-width: 1920px)
-{
-	.footer
-	{
-		position: center;
-		top:100%;
-		/*height: 100px;*/
-		text-align: center;
-		left: 40%;
-		border: solid black 2px;
-		width: 100%;
-	}
-}
-@media screen and (max-width: 1920px)
-{
-	.footer
-	{
-		position: center;
-		top:100%;
-		display: inline-block;
-		/*height: 100px;*/
-		text-align: center;
-		left: 40%;
-		border: solid black 2px;
-		width: 100%;
-	}
+.footer {
+	position: fixed;
+	top:97%;
+	height: 100px;
+	text-align: center;
+	left: 40%;
+
+
 }

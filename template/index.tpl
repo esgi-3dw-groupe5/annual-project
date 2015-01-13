@@ -12,7 +12,6 @@
         <link href="assets/css/main.css" rel="stylesheet" media="all"/>
 
         <link href="assets/css/formSignin.css" rel="stylesheet" media="all"/>
-        <link href="assets/css/formLogin.css" rel="stylesheet" media="all"/>
 
         <script type="text/javascript" src="assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="assets/js/coreAjax.js"></script>
@@ -52,6 +51,9 @@
             $command = array_values($requestURI);
         ?>
         
+        <?php include("header.tpl"); ?>
+
+
         <div  class="content">
             <section >
                 <h1>
@@ -63,7 +65,7 @@
                     ?>
                 </h1>
                 <div>
-                
+
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
