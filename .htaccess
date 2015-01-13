@@ -1,11 +1,24 @@
-Options +FollowSymLinks
-IndexIgnore */*
-# Active RewriteEngine
 RewriteEngine On
-#  Règles
-# Empêche la redirection automatique sur index.php, ce qui est le cas par défaut, lorsque l'URL correspond à un fichier réel
-#	RewriteCond %{REQUEST_FILENAME} !-f 
-# Exclut les sous-répertoires
-#	RewriteCond %{REQUEST_FILENAME} !-d
-# Demande le remplacement de l'expression régulière par l'adresse /index.php
-#	RewriteRule . index.php
+RewriteBase /annual-project
+#	home access
+RewriteRule    ^home/([a-z0-9]+)/?$    index.php?p=home&usr=$1	   [NC,L]
+
+#	categorie access
+RewriteRule    ^cine/?$    index.php?p=cine			   		[NC,L]
+RewriteRule    ^serie/?$   index.php?p=serie			   	[NC,L]
+RewriteRule    ^techno/?$  index.php?p=techno			   	[NC,L]
+RewriteRule    ^esport/?$  index.php?p=esport			   	[NC,L]
+RewriteRule    ^music/?$   index.php?p=music			   	[NC,L]
+RewriteRule    ^sport/?$   index.php?p=sport			   	[NC,L]
+
+#	article categorie access
+RewriteRule    ^cine/([a-z0-9_-]+)/?$    index.php?p=cine&article=$1			   	[NC,L]
+RewriteRule    ^serie/([a-z0-9_-]+)/?$   index.php?p=serie&article=$1			   	[NC,L]
+RewriteRule    ^techno/([a-z0-9_-]+)/?$  index.php?p=techno&article=$1			   	[NC,L]
+RewriteRule    ^esport/([a-z0-9_-]+)/?$  index.php?p=esport&article=$1			   	[NC,L]
+RewriteRule    ^music/([a-z0-9_-]+)/?$   index.php?p=music&article=$1			   	[NC,L]
+RewriteRule    ^sport/([a-z0-9_-]+)/?$   index.php?p=sport&article=$1			   	[NC,L]
+
+#	document error
+ErrorDocument 403 /annual-project/template/documents/403.html
+ErrorDocument 404 /annual-project/template/documents/404.html

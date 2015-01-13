@@ -35,22 +35,6 @@
 
     </head>
     <body>
-
-        <?php
-            $requestURI = explode('/', $_SERVER['REQUEST_URI']);
-            $scriptName = explode('/',$_SERVER['SCRIPT_NAME']);
-             
-            for($i= 0;$i < sizeof($scriptName);$i++)
-                    {
-                  if ($requestURI[$i] == $scriptName[$i])
-                          {
-                            unset($requestURI[$i]);
-                        }
-                  }
-             
-            $command = array_values($requestURI);
-        ?>
-        
         <?php include("header.tpl"); ?>
 
 
@@ -68,7 +52,7 @@
 
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
-                <?php if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
+                <?php // if( $_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
 
                 </div>
 
@@ -76,7 +60,6 @@
 
             <section class="">
                 <div id="clock">
-
                 </div>
             </section>
         </div>
