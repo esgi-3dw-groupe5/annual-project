@@ -166,7 +166,8 @@ function validate_field($POST){
 		$success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date);
 		access_control();
 		set_user_session(true, $pseudo, $email);
-			header('location: http://127.0.0.1/annual-project/');
+			// header('location: http://127.0.0.1/annual-project/');
+			header('location: '.$_SESSION['url']);
 		}
 	}
 
@@ -214,7 +215,8 @@ function validate_field($POST){
 			if( isset($connection['pseudo']) ){
 				access_control();
 				set_user_session( true, $connection['pseudo'], $connection['email'], $connection['role'] );
-					header('location: http://127.0.0.1/annual-project/');
+					header('location: '.$_SESSION['url']);
+					// header('location: /');
 			}
 			else{
 				$errorMessage[12] = $connection;
@@ -224,6 +226,7 @@ function validate_field($POST){
 
 	return $errorMessage;
 }
+// FIXME : rename functinon in get error connectino
 function get_error($item, $parm1, $parm2 = null){
 	// get error memssage from db
 	$msg = "";

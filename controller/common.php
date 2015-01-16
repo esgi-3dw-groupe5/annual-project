@@ -27,3 +27,18 @@ echo '<pre>';
 	var_dump($var);
 echo '</pre>';
 }
+
+function is_submited($type){
+	if($type == '_POST'){
+		if( count($_POST) > 0)
+			return true;
+		else
+			return false;
+	}
+	else{
+		if( count($_GET) > 0)
+			return true;
+		else
+			return false;
+	}
+}

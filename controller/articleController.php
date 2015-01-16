@@ -8,6 +8,7 @@ require_once(__ROOT__."/model/dbarticle.php");
 
 
 function validate_article($POST){
+	$ajax = null;
 	$eror = 0;
 	$errorMessage = array(
 		'0' => ""
@@ -55,7 +56,9 @@ function validate_article($POST){
 		}
 		$sucess = submit_article($title, $content, $id_category);
 	}
-
+	if( $error == 0 ){
+		header('location: '.$_SESSION['url']);
+	}
 	return $errorMessage;
 }
 
@@ -73,7 +76,8 @@ function get_error_article($item, $parm1){
 function submit_article($title,$content,$id_category)
 {
 	$link = db_connect();
-	$req = db_create_article($link,$title,$content,$id_category);
+	$title_id = htmlentities( preg_replace('/-/', ' ', strtolower($title)) );
+	$req = db_create_article($link,$title_id,$title,$content,$id_category);
 	return $req;
 }
 

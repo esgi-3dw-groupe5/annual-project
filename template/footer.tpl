@@ -1,11 +1,18 @@
-<footer>
+		    </section>
+		</div>
 
-	<div class="footer">
+		<aside>
+		</aside>
+		<footer>
 
-		<a href="">Mentions Légales</a> -
-		<a href="">Conditions génerales d'utilisation</a> -
-		<a href="">lien 3</a> -
-		<a href="">lien 4</a> 
+			<div class="footer">
 
-	</div>
-</footer>
+				<a href="">Mentions Légales</a> -
+				<a href="">Conditions génerales d'utilisation</a> -
+				<a href="">lien 3</a> -
+				<a href="">lien 4</a> 
+
+			</div>
+		</footer>
+	</body>
+</html>
