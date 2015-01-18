@@ -31,7 +31,7 @@ function db_get_articles($link){
 
 function db_get_category_tag($link, $value){
 
-	$req = $link -> prepare("SELECT * FROM pp_article, pp_categorie WHERE pp_article.id_category=pp_categorie.id AND pp_article.id = :id");
+	$req = $link -> prepare("SELECT * FROM pp_categorie WHERE pp_categorie.id = :id");
 	$req->execute(array(
 		':id' => $value
 	));
@@ -40,7 +40,7 @@ function db_get_category_tag($link, $value){
 	
 function db_get_article($link, $value){
 
-	$req = $link -> prepare("SELECT * FROM pp_article WHERE title = :value");
+	$req = $link -> prepare("SELECT * FROM pp_article WHERE title_id = :value");
 	$req->execute(array(
 		':value' => $value
 	));

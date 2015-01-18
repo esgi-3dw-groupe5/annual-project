@@ -9,10 +9,9 @@
 			while ( $data = $result -> fetch() ){
 				$result_cat = db_get_category_tag($link, $data['id_category']);
 				$data_cat = $result_cat -> fetch();
-				echo $data['title_id'];
 	?>
 			<div class="article-line inline">
-				<?php printf('<a href="/annual-project/%s/%s">', $data_cat['tag'], preg_replace('/\s+/', '-', strtolower($data['title_id'])) ); ?>
+				<?php printf('<a href="%s/%s/%s">',$config['source'], $data_cat['tag'], preg_replace('/\s+/', '-', strtolower($data['title_id'])) ); ?>
 					<span class="article-image">
 						<img src="">
 					</span>

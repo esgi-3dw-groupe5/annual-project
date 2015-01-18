@@ -1,5 +1,6 @@
 <?php
 	function render_article($article){
+		require('config.php');
 		$link = db_connect();
 		switch ($page) {
 			case 'cine':
@@ -13,6 +14,7 @@
 		}
 	}
 	function render_articles($page){
+		require('config.php');
 		$link = db_connect();
 		switch ($page) {
 			case 'cine':

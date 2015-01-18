@@ -76,7 +76,7 @@ function get_error_article($item, $parm1){
 function submit_article($title,$content,$id_category)
 {
 	$link = db_connect();
-	$title_id = htmlentities( preg_replace('/-/', ' ', strtolower($title)) );
+	$title_id = wd_remove_accents($title);
 	$req = db_create_article($link,$title_id,$title,$content,$id_category);
 	return $req;
 }
