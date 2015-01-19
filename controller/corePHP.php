@@ -18,6 +18,10 @@ if( isset($_POST['at_submit']) && !empty($_POST['at_submit']) ) {
     $action = $_POST['at_submit'];
 }
 
+if( isset($_POST['at_delete']) && !empty($_POST['at_delete']) ) {
+    $action = $_POST['at_delete'];
+}
+
 if( isset($_GET['act']) && !empty($_GET['act']) ) {
     $action = $_GET['act'];
 }

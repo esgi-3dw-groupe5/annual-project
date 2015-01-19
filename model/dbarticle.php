@@ -55,3 +55,19 @@ function db_get_article($link, $value, $id_category){
 	));
 	return $req;
 }
+
+function db_delete_article($link, $value){
+	$req = $link -> prepare("DELETE FROM pp_article WHERE id = :value");
+	$req->execute(array(
+		':value' => $value
+	));
+
+function db_update_article($link,$title,$content,$value){
+	$req = $link -> prepare("UPDATE FROM pp_article SET title   = :title,
+														content = :content WHERE id = :value");
+	$req->execute(array(
+		':title'   => $title,
+		':content' => $content,
+		':value'   => $value
+	));
+}
