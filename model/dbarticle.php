@@ -61,6 +61,7 @@ function db_delete_article($link, $value){
 	$req->execute(array(
 		':value' => $value
 	));
+}
 
 function db_update_article($link,$title,$content,$value){
 	$req = $link -> prepare("UPDATE FROM pp_article SET title   = :title,
