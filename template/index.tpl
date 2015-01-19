@@ -55,3 +55,4 @@
             <section class="">
                 <div id="clock">
                 </div>
+                <div class="core-article">
