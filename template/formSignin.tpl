@@ -3,7 +3,7 @@
 <!--*************************************-->
 <span class="form-error" id="si_msgErr"><?php if( !empty( $si_msgErr ) ){ echo $si_msgErr; }?></span>
 <?php if( !isset( $gender_male ) ){ $gender_male="checked"; }?>
-<form method="POST" action="http://127.0.0.1/annual-project/" class="" id="si_form" name="si_form">
+<form method="POST" action="<?php print($_SESSION['url']); ?>" class="" id="si_form" name="si_form">
     <div>
         <input id="male" type="radio" name="gender" value="0" <?php if(!empty($gender_male))echo $gender_male ?> ><label for="male">Monsieur</label>
         <input id="female" type="radio" name="gender" value="1" <?php if(!empty($gender_female))echo $gender_female ?> ><label for="female">Madame</label>
