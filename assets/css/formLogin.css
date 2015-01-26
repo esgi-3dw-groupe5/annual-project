@@ -1,7 +1,7 @@
-#si_form {
-   	float: right;
-   	margin-top: 50px;
-   	margin-right: 150px;
+#li_form {
+	float: left;
+	margin-top: 50px;
+	margin-left: 130px;
    	margin-bottom: 100px;
 	text-align: center;
 	border: 2px solid black;
@@ -12,11 +12,10 @@
 	background-color: #696969;
 }
 @media screen and (max-width: 1200px) and (min-width: 960px) {
-	#si_form{font-size: 90%; width: 280px; margin-right: 50px;}
+	#li_form{font-size: 90%; width: 280px; margin-left: 50px;}
 }
 @media screen and (max-width: 960px) and (min-width: 480px) {
-	#si_form{font-size: 80%; width: 280px; margin-left: auto; margin-right: auto; float: center;}
+	#li_form{font-size: 80%; width: 280px; margin-left: auto; margin-right: auto; float: center;}
 }
 @media screen and (max-width: 480px) {
-	#si_form{font-size: 70%; width: 230px; margin-left: auto; margin-right: auto; float: center;}
-}
+	#li_form{font-size: 70%; width: 230px; margin-left: auto; margin-right: auto; float: center;}

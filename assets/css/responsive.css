@@ -1,0 +1,235 @@
+module
+h1
+{
+
+}
+h2
+{
+	
+}
+.left
+{
+	float: left;
+}
+.right
+{
+	float: right;
+}
+.mid
+{
+	float: center;
+}
+
+
+---------------
+main
+
+
+@media screen and (max-width: 1920px)
+{
+	.content {
+.content {
+
+		width:80%;
+		padding: 10px;
+		margin-left: 150px;
+		height: 100%;
+		border: solid black 2px;
+	}
+	width:80%;
+	padding: 10px;
+	margin-left: 150px;
+	height: 100%;
+}
+
+	.login {
+
+		background-color:#D6984F;
+		width : 200px;
+		height: 250px;
+		padding: 15px;
+.login {
+
+	}
+}
+/*h1
+{
+	text-align: center;
+	text-decoration: underline;
+	color: red;
+}*/
+ No newline at end of file
+	background-color:#D6984F;
+	width : 200px;
+	height: 250px;
+	padding: 15px;
+
+}
+
+----------------
+header
+
+@media screen and (max-width: 1920px)
+{
+	.header {
+		text-align: center;
+		border: solid black 3px;
+		background-color: grey;
+	}
+	.subnav {
+		
+		background-color: orange;
+		display: inline-block;
+		text-align: center;
+		border: solid black;
+		border-radius: 10px;
+		width: 200px;
+		height: 50px;
+		padding-bottom: 10px;
+	}
+.header {
+	text-align: center;
+}
+@media screen and (max-width: 480px)
+{
+	.header {
+		text-align: center;
+		border: solid black 3px;
+		background-color: red;
+	}
+	.subnav {
+		
+		background-color: orange;
+		display: inline-block;
+		text-align: center;
+		border: solid black;
+		border-radius: 10px;
+		width: 200px;
+		height: 50px;
+		padding-bottom: 10px;
+	}
+
+.subnav {
+	
+	display: inline-block;
+	/*border-size: 2px;*/
+	border-color: black;
+	text-align: center;
+	width: 200px;
+	height: 50px;
+
+}
+
+h3 {
+	font-size: 20px;
+}
+/*.clock
+{
+	float: right;
+	text-align: center;
+	font-size: 50%;
+}*/
+}
+
+----------------------
+formsi
+#si_form
+{
+	margin-left: auto;
+   	margin-right: auto;
+   	margin-top: 5%;
+	text-align: center;
+	border: 2px solid black;
+	border-radius: 10px;
+	padding: 10px;
+	width: 300px;
+	box-shadow: 8px 8px 10px #D83F3D;
+	background-color: #696969;
+	float: right;
+	margin-right: 100px;
+}
+
+---
+
+form li
+for.form-error{
+    color:darkred;
+}
+.form-error:before{
+	/*content:"x";*/
+}
+
+.clock-display span{
+    color: #000 !important;
+    font-weight:  bold;
+    font-size:  40px;
+}
+#li_form
+{
+	margin-left: auto;
+   	margin-right: auto;
+   	margin-top: 5%;
+	text-align: center;
+	border: 2px solid black;
+	border-radius: 10px;
+	padding: 10px;
+	width: 300px;
+	box-shadow: 8px 8px 10px #D83F3D;
+	background-color: #696969;
+	float: left;
+	margin-left: 100px;
+}
+
+--------------------------
+
+clock
+/*#clock
+{
+	position: center;
+	color: red;
+}*/
+h1
+{
+	text-align: center;
+	text-decoration: underline;
+	color: grey;
+}
+
+----------
+
+footer
+@media screen and (max-width: 1920px)
+{
+	.footer
+	{
+		position: center;
+		top:100%;
+		/*height: 100px;*/
+		text-align: center;
+		left: 40%;
+		border: solid black 2px;
+		width: 100%;
+	}
+}
+@media screen and (max-width: 1920px)
+{
+	.footer
+	{
+		position: center;
+		top:100%;
+		display: inline-block;
+		/*height: 100px;*/
+		text-align: center;
+		left: 40%;
+		border: solid black 2px;
+		width: 100%;
+	}
+.footer {
+	position: fixed;
+	top:97%;
+	height: 100px;
+	text-align: center;
+	left: 40%;
+
+
+}

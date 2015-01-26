@@ -12,6 +12,7 @@
         <link href="assets/css/main.css" rel="stylesheet" media="all"/>
 
         <link href="assets/css/formSignin.css" rel="stylesheet" media="all"/>
+        <link href="assets/css/formLogin.css" rel="stylesheet" media="all"/>
 
         <script type="text/javascript" src="assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="assets/js/coreAjax.js"></script>
@@ -54,32 +55,24 @@
         <?php include("header.tpl"); ?>
 
 
-        <div  class="content">
-            <section >
-                <h1>
-                    <?php
-                        if( $_SESSION['user']['pseudo'] ){
-                            print($_SESSION['user']['pseudo']);
-                            print("<a href='?act=logout'>logout</a>");
-                        }
-                    ?>
-                </h1>
-                <div>
-
+        <section class="content">
+            <h1>
+                <?php
+                    if( $_SESSION['user']['pseudo'] ){
+                        print($_SESSION['user']['pseudo']);
+                        print("<a href='?act=logout'>logout</a>");
+                    }
+                ?>
+            </h1>
+            <div>
+                <h1>Bienvenue sur notre site d'actualités diverses et variées !</h1>
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
-                <?php if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
+                <?php //if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
+            </div>
 
-                </div>
 
-            </section>
-
-            <section class="">
-                <div id="clock">
-
-                </div>
-            </section>
-        </div>
+        </section>
 
         <aside>
         </aside>
