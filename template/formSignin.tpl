@@ -2,7 +2,7 @@
 <!--********** SIGNIN TEMPLATE **********-->
 <!--*************************************-->
 <?php if( !isset( $gender_male ) ){ $gender_male="checked"; }?>
-<form method="POST" action="http://127.0.0.1/annual-project/" class="" id="si_form" name="si_form">
+<form method="POST" action="<?php print($_SESSION['url']); ?>" class="" id="si_form" name="si_form">
     <h2>S'inscrire</h2>
     <div>
         <input id="male" type="radio" name="gender" value="0" <?php if(!empty($gender_male))echo $gender_male ?> ><label for="male">Monsieur</label>

@@ -6,26 +6,31 @@
 	<div id="clock">
 
     </div>
+
 	<nav class="nav">
-		<a href="">
-		<div class="subnav" id="cine">
-			<h3>Cinéma/Série</h3>
-		</div></a>
-		<a href="">
+		<div class="subnav" id="index">
+			<a href="/annual-project"><h3>index</h3></a>
+		</div>
+		<div class="subnav">
+			<a href="http://127.0.0.1/annual-project/cine-serie"><h3>Cinéma/Série</h3></a>
+		</div>
 		<div class="subnav" id="techno">
-			<h3>Technologies</h3>
-		</div></a>
-		<a href="">
+			<a href="http://127.0.0.1/annual-project/technologie"><h3>Technologies</h3></a>
+		</div>
 		<div class="subnav" id="esport">
-			<h3>E-sport</h3>
-		</div></a>
-		<a href="">
+			<a href="http://127.0.0.1/annual-project/jeux-video"><h3>E-sport</h3></a>
+		</div>
 		<div class="subnav" id="musique">
-			<h3>Musique</h3>
-		</div></a>
-		<a href="">
+			<a href="http://127.0.0.1/annual-project/musique"><h3>Musique</h3></a>
+		</div>
 		<div class="subnav" id="sport">
-			<h3>Sport</h3>
-		</div></a>
+			<a href="http://127.0.0.1/annual-project/sport"><h3>Sport</h3></a>
+		</div>
+		<div class="subnav" id="compte">
+			<?php 
+				if($_SESSION['user']['connected'])
+					printf('<a href="http://127.0.0.1/annual-project/home/%s"><h3>home</h3></a>',strtolower($_SESSION['user']['pseudo']));
+			?>
+		</div>
 	</nav>
 </header>

@@ -15,3 +15,24 @@ function db_connect(){
 	}
 	return $link;
 }
+// Do no use yet
+// class Database {
+// 	public function findId($id, $tab){
+// 		$link = db_connect();
+// 		$query = sprintf('SELECT * FROM %s WHERE id = :id', $tab);
+// 		$result = $link -> prepare($query);
+// 		$result -> execute(array(
+// 			':id' => $id,
+// 		));
+// 		return $data = $result -> fetch();
+// 	}
+// 	public function findPseudo($pseudo, $tab = 'pp_users'){
+// 		$link = db_connect();
+// 		$query = sprintf('SELECT * FROM %s WHERE pseudo = :pseudo', $tab);
+// 		$result = $link -> prepare($query);
+// 		$result -> execute(array(
+// 			':pseudo' => $pseudo,
+// 		));
+// 		return $data = $result -> fetch();
+// 	}
+// }

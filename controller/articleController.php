@@ -73,7 +73,21 @@ function get_error_article($item, $parm1){
 function submit_article($title,$content,$id_category)
 {
 	$link = db_connect();
-	$req = db_create_article($link,$title,$content,$id_category);
+	$req  = db_create_article($link,$title,$content,$id_category);
+	return $req;
+}
+
+function delete_article($id_category)
+{
+	$link = db_connect();
+	$req  = db_delete_article($link,$id_category);
+	return $req;
+}
+
+function update_article($title, $content, $id_category)
+{
+	$link = db_connect();
+	$req  = db_update_article($link, $title, $content, $id_category);
 	return $req;
 }
 
