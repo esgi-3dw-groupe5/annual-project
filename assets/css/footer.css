@@ -1,11 +1,16 @@
-.footer
+footer
 {
+	bottom: 0;
+	color: white;
 	background-color: black;
 	display: inline-block;
 	text-align: center;
 	margin-left: -5px;
-	margin-bottom: -15px;
 	padding: 2px;
 	border: solid black 1px;
 	width: 100%;
 }
+a#footer {
+	color: white;
+}
+a#footer:hover{color: blue;}

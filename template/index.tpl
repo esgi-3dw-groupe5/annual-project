@@ -45,27 +45,31 @@
     <body>
         <?php include("header.tpl"); ?>
 
-            <section class="content">
-                <h1>
-                    <?php
-                        if( $_SESSION['user']['connected'] ){
-                            print($_SESSION['user']['pseudo']);
-                            printf("<a href='%s?act=logout'>logout</a>",$config['source']);
-                        }
-                    ?>
-                </h1>
-                <div>
+        <section class="content">
+            <h1>
+                <?php
+                    if( $_SESSION['user']['connected'] ){
+                        print($_SESSION['user']['pseudo']);
+                        printf("<a href='%s?act=logout'>logout</a>",$config['source']);
+                    }
+                ?>
+            </h1>
+            <div>
 
-                <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
-                <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
-                <?php //if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
+            <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
+            <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
+            <?php //if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
 
-                </div>
+            </div>
 
-            </section>
+        </section>
 
-            <section class="">
-                <div id="clock">
-                </div>
-                <div class="core-article">
-            </section>
+        <section class="">
+            <div id="clock">
+            </div>
+            <div class="core-article">s
+            </div>
+        </section>
+
+        <aside>
+        </aside>
