@@ -6,7 +6,26 @@
 			case 'cine':
 				debug('plop');
 				break;
-			
+			case 'technologie' :
+			$value = 4;
+			display_article($value);
+				break;
+			case 'jeux-video' :
+			$value = 2;
+			display_article($value);
+				break;
+			case 'cine-serie' :
+			$value = 5;
+			display_article($value);
+				break;
+			case 'musique' :
+			$value = 3;
+			display_article($value);
+				break;
+			case 'sport' :
+			$value = 1;
+			display_article($value);
+				break;				
 			default:
 				$article = get_param('article', '');
 				$page = get_param('p', '');
@@ -30,11 +49,22 @@
 						require(__ROOT__.'/template/articleRead.tpl');
 					}
 					else{
-						// requier tpl
-						echo '<h1>Oups,<br>Aucun article trouver !<br><b>:-/</b></h1>';
+						// require tpl
+						echo '<h1>Oups,<br>Aucun article trouvé !<br><b>:-/</b></h1>';
 					}
 				}
 				break;
+		}
+	}
+
+	function display_article($value){
+		require('config.php');
+		$link = db_connect();
+		$req = db_get_articles_by_cat($link, $value);
+		while($data = $req->fetch()){
+			$result_cat = db_get_category_tag($link, $data['id_category']);
+			$data_cat = $result_cat -> fetch();
+				require(__ROOT__.'/template/articleList.tpl');
 		}
 	}
 ?>

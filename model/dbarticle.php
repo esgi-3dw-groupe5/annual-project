@@ -29,6 +29,15 @@ function db_get_articles($link){
 	return $req;
 }
 
+function db_get_articles_by_cat($link, $value){
+
+	$req = $link -> prepare("SELECT * FROM pp_article WHERE pp_article.id_category = :id");
+	$req->execute(array(
+		':id' => $value
+	));
+	return $req;
+}
+
 function db_get_category_tag($link, $value){
 
 	$req = $link -> prepare("SELECT * FROM pp_categorie WHERE pp_categorie.id = :id");
