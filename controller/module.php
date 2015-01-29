@@ -3,9 +3,6 @@
 		require('config.php');
 		$link = db_connect();
 		switch ($page) {
-			case 'cine':
-				debug('plop');
-				break;
 			case 'technologie' :
 			$value = 4;
 			display_article($value);
@@ -65,6 +62,24 @@
 			$result_cat = db_get_category_tag($link, $data['id_category']);
 			$data_cat = $result_cat -> fetch();
 				require(__ROOT__.'/template/articleList.tpl');
+			$article = get_param('article', '');
+			$page = get_param('p', '');
+			if($article != ''){
+				$title_id = html_entity_decode( preg_replace('/-/', ' ', $article) );
+					
+				$result_cat = db_get_category_id($link, $page);
+				$data_cat = $result_cat -> fetch();
+
+				$result = db_get_article($link, $title_id, $data_cat['id']);
+				$data = $result -> fetch();
+			if( $result -> rowCount() > 0){
+				require(__ROOT__.'/template/articleRead.tpl');
+			}
+			else{
+				// require tpl
+				echo '<h1>Oups,<br>Aucun article trouvé !<br><b>:-/</b></h1>';
+				}
+			}
 		}
 	}
 ?>
