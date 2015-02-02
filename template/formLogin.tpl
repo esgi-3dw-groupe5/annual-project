@@ -2,7 +2,7 @@
 <!--*********** LOGIN TEMPLATE **********-->
 <!--*************************************-->
 <span class="form-error" id="li_msgErr"><?php if( !empty( $li_msgErr ) ){ echo $li_msgErr; }?></span>
-<form method="post" action="http://127.0.0.1/annual-project/" class="" id="li_form" name="li_form">
+<form method="post" action="<?php print($_SESSION['url']); ?>" class="" id="li_form" name="li_form">
     <div>
     	<label for="li_login">Login : </label>
     		<input id="li_login" type="text" name="li_login" required><br>
