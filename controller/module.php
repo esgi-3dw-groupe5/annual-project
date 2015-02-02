@@ -2,7 +2,7 @@
 	function render_articles($page){
 		require('config.php');
 		$link = db_connect();
-		switch ($page) {
+		switch ($page) { /* FAIRE INDEX ET INIT VAR GLOBALES*/
 			case 'technologie' :
 			display_article();
 				break;
@@ -50,6 +50,8 @@
 	}
 
 	function display_article(){
+		global $co_msgErr;
+
 		require('config.php');
 		$link = db_connect();
 		$page = get_param('p', '');
@@ -74,7 +76,8 @@
 				echo $_SESSION['user']['pseudo'];*/
 			if( $result -> rowCount() > 0){
 				require(__ROOT__.'/template/articleRead.tpl');
-				require(__ROOT__.'/template/formComment.tpl');
+				if( $_SESSION['user']['connected'] ){require(__ROOT__.'/template/formComment.tpl');}
+				
 				$result_id = db_get_comments($link, $data['id']);
 				while($data_comment = $result_id ->fetch()){
 					require(__ROOT__.'/template/commentRead.tpl');
