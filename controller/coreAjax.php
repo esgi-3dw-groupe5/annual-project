@@ -8,6 +8,9 @@ $action=null;
 if(isset($_POST['si_submit']) && !empty($_POST['si_submit'])) {
     $action = $_POST['si_submit'];
 }
+if(isset($_POST['co_submit']) && !empty($_POST['co_submit'])) {
+    $action = $_POST['co_submit'];
+}
 if( isset($_POST['act']) && !empty($_POST['act']) ) {
     $action = $_POST['act'];
 }
@@ -45,6 +48,15 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
 
             $si_msgErr_psw_1   = $displayErr[4];
             $si_msgErr_psw_2   = $displayErr[5];
+
+            echo $displayErr;
+            return;
+
+            break;
+        case 'Commenter' :
+            $displayErr = validate_comment($_POST);
+            $displayErr = json_encode($displayErr);
+            $co_msgErr  = $displayErr[0];
 
             echo $displayErr;
             return;

@@ -6,9 +6,10 @@ require_once(__ROOT__."/model/dbconnect.php");
 require_once(__ROOT__."/model/dbusers.php");
 require_once(__ROOT__."/model/dbarticle.php");
 require_once(__ROOT__."/model/dbcomment.php");
-session_start();
+
 
 function validate_comment($POST){
+	access_control();
 	$error = 0;
 	$errorMessage = array(
 		'0' => ""
@@ -17,7 +18,7 @@ function validate_comment($POST){
 	/*****************/
 	/*****CodeErr*****/
 	/*****************/
-	// ********************Article********************
+	// ********************Comment********************
 	// 0 -> All required field not filled
 
 	if(isset($POST["co_submit"])){
@@ -30,11 +31,15 @@ function validate_comment($POST){
 					$error++;
 		}
 
-		if(!empty($POST["co_content"])){
+		if(!empty($POST["co_content"]) && strlen($POST["co_content"])>7){
 		/*******************************************************************/
 		/*******************************CONTENT******************************/
 		/*******************************************************************/
 			$content = $POST["co_content"];
+		}
+		else{
+				$errorMessage[0] = get_error_comment("default", null);
+					$error++;
 		}
 		//FIXME : access to $id_article and $id_author
 		$link =db_connect();
@@ -52,7 +57,10 @@ function validate_comment($POST){
 		$result = db_get_article($link,$title_id,$data_cat['id']);
 		$data = $result -> fetch();
 
-		$sucess = submit_comment($content, $data['id'], $id_author);
+		// if nb error = 0 -> COmment
+		if($error == 0){
+			$sucess = submit_comment($content, $data['id'], $id_author);
+		}
 	}
 
 	return $errorMessage;

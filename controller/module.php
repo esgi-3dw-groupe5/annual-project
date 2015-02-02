@@ -1,8 +1,35 @@
 <?php
+if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
+require_once(__ROOT__."/controller/common.php");
+require_once(__ROOT__."/controller/accessControl.php");
+require_once(__ROOT__."/model/dbconnect.php");
+require_once(__ROOT__."/model/dbusers.php");
+require_once(__ROOT__."/model/dbcontent.php");
+	function render_contents($content){
+		$link = db_connect();
+		switch ($content) {
+			case 'connection':
+				$result = db_get_content($link);
+				if( !$_SESSION['user']['connected'] ){include_once(__ROOT__."/template/formLogin.tpl");} 
+				if( !$_SESSION['user']['connected'] ){include_once(__ROOT__."/template/formSignin.tpl");}
+				break;
+			case 'menu':
+				$result = db_get_content($link);
+				while ($data = $result -> fetch()) {
+					require(__ROOT__.'/template/contentList.tpl');
+				}
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	}
+
 	function render_articles($page){
 		require('config.php');
 		$link = db_connect();
-		switch ($page) {
+		switch ($page) { /* FAIRE INDEX ET INIT VAR GLOBALES*/
 			case 'technologie' :
 			display_article();
 				break;
@@ -50,6 +77,8 @@
 	}
 
 	function display_article(){
+		global $co_msgErr;
+
 		require('config.php');
 		$link = db_connect();
 		$page = get_param('p', '');
@@ -74,7 +103,8 @@
 				echo $_SESSION['user']['pseudo'];*/
 			if( $result -> rowCount() > 0){
 				require(__ROOT__.'/template/articleRead.tpl');
-				require(__ROOT__.'/template/formComment.tpl');
+				if( $_SESSION['user']['connected'] ){require(__ROOT__.'/template/formComment.tpl');}
+				
 				$result_id = db_get_comments($link, $data['id']);
 				while($data_comment = $result_id ->fetch()){
 					require(__ROOT__.'/template/commentRead.tpl');

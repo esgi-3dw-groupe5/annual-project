@@ -107,6 +107,8 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
             break;
         case 'Commenter' :
                 $displayErr     =   validate_comment($_POST);
+                $co_msgErr      =   $displayErr[0];
+                debug($co_msgErr);
             break;
         default:
             
