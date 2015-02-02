@@ -30,7 +30,9 @@
         </script>
     </head>
     <body>
-        <?php include("header.tpl"); ?>
+        <?php 
+        include("header.tpl"); 
+        ?>
 
         <div  class="content">
             <section >
@@ -43,11 +45,7 @@
                     ?>
                 </h1>
                 <div>
-
-                <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
-                <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
-                <?php //if(  $_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
-
+                    <?php render_contents('connection') ?>
                 </div>
 
             </section>
