@@ -21,10 +21,20 @@ function db_create_article($link, $title_id, $title, $content, $id_category){
 		die();
 	}
 }
+
 function db_get_articles($link){
 
 	$req = $link -> prepare("SELECT * FROM pp_article");
 	$req->execute(array(
+	));
+	return $req;
+}
+
+function db_get_articles_by_cat($link, $value){
+
+	$req = $link -> prepare("SELECT * FROM pp_article WHERE pp_article.id_category = :id");
+	$req->execute(array(
+		':id' => $value
 	));
 	return $req;
 }
