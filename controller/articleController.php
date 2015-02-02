@@ -53,7 +53,7 @@ function validate_article($POST){
 		/*******************************************************************/
 			$id_category = $POST["at_category"];
 		}
-		$sucess = submit_article($title, $content, $id_category);
+		$sucess = submit_article($title, $title, $content, $id_category);
 	}
 
 	return $errorMessage;
@@ -70,10 +70,10 @@ function get_error_article($item, $parm1){
 	return $msg;
 }
 
-function submit_article($title,$content,$id_category)
+function submit_article($title,$title,$content,$id_category)
 {
 	$link = db_connect();
-	$req  = db_create_article($link,$title,$content,$id_category);
+	$req  = db_create_article($link,$title,$title,$content,$id_category);
 	return $req;
 }
 

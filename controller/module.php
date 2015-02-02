@@ -2,26 +2,21 @@
 	function render_articles($page){
 		require('config.php');
 		$link = db_connect();
-		switch ($page) {
+		switch ($page) { /* FAIRE INDEX ET INIT VAR GLOBALES*/
 			case 'technologie' :
-			$value = 4;
-			display_article($value);
+			display_article();
 				break;
 			case 'jeux-video' :
-			$value = 2;
-			display_article($value);
+			display_article();
 				break;
 			case 'cine-serie' :
-			$value = 5;
-			display_article($value);
+			display_article();
 				break;
 			case 'musique' :
-			$value = 3;
-			display_article($value);
+			display_article();
 				break;
 			case 'sport' :
-			$value = 1;
-			display_article($value);
+			display_article();
 				break;				
 			default:
 				$article = get_param('article', '');
@@ -54,16 +49,21 @@
 		}
 	}
 
-	function display_article($value){
+	function display_article(){
+		global $co_msgErr;
+
 		require('config.php');
 		$link = db_connect();
+		$page = get_param('p', '');
+		$result = db_get_category_id($link, $page);
+		$data = $result -> fetch();
+		$value = $data['id']; 
 		$req = db_get_articles_by_cat($link, $value);
 		while($data = $req->fetch()){
 			$result_cat = db_get_category_tag($link, $data['id_category']);
 			$data_cat = $result_cat -> fetch();
 				require(__ROOT__.'/template/articleList.tpl');
 			$article = get_param('article', '');
-			$page = get_param('p', '');
 			if($article != ''){
 				$title_id = html_entity_decode( preg_replace('/-/', ' ', $article) );
 					
@@ -72,8 +72,16 @@
 
 				$result = db_get_article($link, $title_id, $data_cat['id']);
 				$data = $result -> fetch();
+				/*echo $data['id'];
+				echo $_SESSION['user']['pseudo'];*/
 			if( $result -> rowCount() > 0){
 				require(__ROOT__.'/template/articleRead.tpl');
+				if( $_SESSION['user']['connected'] ){require(__ROOT__.'/template/formComment.tpl');}
+				
+				$result_id = db_get_comments($link, $data['id']);
+				while($data_comment = $result_id ->fetch()){
+					require(__ROOT__.'/template/commentRead.tpl');
+				}
 			}
 			else{
 				// require tpl
