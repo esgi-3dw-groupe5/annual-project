@@ -43,16 +43,11 @@
         </script>
     </head>
     <body>
-<<<<<<< HEAD
-        
-        
-        
-        <?php include("header.tpl"); ?>
-=======
+
         <?php 
         include("header.tpl"); 
         ?>
->>>>>>> origin/Syu93WorkSpace
+
 
         <div  class="content">
             <section >
