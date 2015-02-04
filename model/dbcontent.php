@@ -1,17 +1,37 @@
 <?php
 
 function db_get_content($link, $content = null){
-	
+	access_control();
 	switch ($content) {
-		case 'value':
-			# code...
-			break;
-		
+		case 'menu':
+			if($_SESSION['user']['connected']){ // makea connectedf status table
+				$connected = 'yes';
+			}
+			else{
+				$connected = 'no';
+			}
+
+			if($_SESSION['user']['role'] == 'administrator'){ // makea connectedf status table
+				$role = 'admin';
+			}
+			else{
+				$role = '';
+			}
+
+		$query = "SELECT * FROM pp_categorie WHERE connected IN (SELECT connected FROM pp_categorie WHERE connected = :connected ) OR 
+					connected IN (SELECT connected FROM pp_categorie WHERE connected = :role)
+					OR connected = 'all'";
+
+		$req	=	$link -> prepare($query);
+		$req	->	execute(array(
+		':connected' => $connected,
+		':role' => $role
+		));
+		break;
+
 		default:
-			$query 	=	"SELECT * FROM pp_pinnackl.pp_categorie WHERE pp_categorie.display = 'yes' ORDER BY pp_categorie.order";
-			$req	=	$link -> prepare($query);
-			$req	->	execute();
-			break;
+
+		break;
 	}
 	return $req;
 }

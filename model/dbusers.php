@@ -55,4 +55,23 @@ function db_create_user($link, $gender, $name, $firstname, $email, $password, $p
 		debug($e);
 		die();
 	}
+
+
 }
+
+function db_get_all_user($link){
+
+	$req = $link -> prepare("SELECT * FROM pp_users");
+	$req->execute();
+	return $req;
+}
+
+function db_get_role_user($link,$value){
+
+	$req = $link -> prepare("SELECT role FROM pp_users WHERE id:value");
+	$req->execute(array(
+		':value'   => $value
+	));
+	return $req;
+}
+

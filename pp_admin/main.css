@@ -1,0 +1,67 @@
+body{
+	background-image: url('../images/fond.jpg');
+}
+header {
+	height: 90px;
+	padding: 10px 10px 10px 10px;
+}
+
+h1 {
+	margin-left: 40%;
+	display: inline-block;
+	position: relative;
+	top:-25px;
+	font-size: 30px;
+}
+.img-top-left {
+	width: 100px;
+	height: 80px;
+
+}
+.left-block {
+
+		width:19%;
+		display: inline-block;
+		vertical-align: top;
+		min-height: 600px;
+		background: rgba(54, 25, 25, .3);
+		margin:auto;
+		padding: 10px;
+		margin-right:5px;
+}
+
+ul {
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+}
+h3{
+	display: inline-block;
+	width:15%;
+}
+
+.email{
+	width:350px;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+li{
+	width: 100%;
+	list-style: none;
+	height: 30px;
+	margin-bottom : 20px;
+	display: inline-block;
+}
+
+.right-block {
+		width:78%;
+		display: inline-block;
+		vertical-align: top;
+}

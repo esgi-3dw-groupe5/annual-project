@@ -9,17 +9,18 @@ require_once(__ROOT__."/model/dbcontent.php");
 		$link = db_connect();
 		switch ($content) {
 			case 'connection':
-				$result = db_get_content($link);
+				/*$result = db_get_content($link);*/
 				if( !$_SESSION['user']['connected'] ){include_once(__ROOT__."/template/formLogin.tpl");} 
 				if( !$_SESSION['user']['connected'] ){include_once(__ROOT__."/template/formSignin.tpl");}
 				break;
 			case 'menu':
-				$result = db_get_content($link);
+				$result = db_get_content($link,'menu');
+
 				while ($data = $result -> fetch()) {
 					require(__ROOT__.'/template/contentList.tpl');
 				}
+
 				break;
-			
 			default:
 				# code...
 				break;

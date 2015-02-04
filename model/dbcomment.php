@@ -42,3 +42,10 @@ function db_update_comment($link,$content,$value){
 		':value'   => $value
 	));
 }
+
+function db_get_all_comments($link){
+
+	$req = $link -> prepare("SELECT * FROM pp_comment");
+	$req->execute();
+	return $req;
+}

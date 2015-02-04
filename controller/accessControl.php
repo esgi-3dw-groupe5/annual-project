@@ -10,6 +10,8 @@ function access_control(){
     $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         if(!is_submited('_POST'))
             $_SESSION['url']                =   $url;
+
+    //isAdmin();
 }
 
 function set_user_session($success, $pseudo = null, $email = null, $role = null){
@@ -59,4 +61,9 @@ function end_session(){
 function redirect(){
     // redirect user to his current location after login
     header('location: http://127.0.0.1/annual-project/');
+}
+
+function isAdmin() {
+    if ($_SESSION['user']['role']!='administrator')
+        render_contents('connection');
 }
