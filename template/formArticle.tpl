@@ -29,6 +29,6 @@
   </p>
     <span class="form-error" id="at_msgErr"><?php if(!empty($si_msgErr_psw_1))echo $si_msgErr_psw_1; ?></span>
   <div>
-    <input type="submit" name="at_submit" value="Envoyer">
+    <input type="submit" name="at_submit" value="envoyer">
   </div>
 </form>

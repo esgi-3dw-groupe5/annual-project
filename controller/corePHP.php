@@ -19,6 +19,10 @@ if( isset($_POST['at_submit']) && !empty($_POST['at_submit']) ) {
     $action = $_POST['at_submit'];
 }
 
+if( isset($_POST['at_update_submit']) && !empty($_POST['at_update_submit']) ) {
+    $action = $_POST['at_update_submit'];
+}
+
 if( isset($_POST['at_delete']) && !empty($_POST['at_delete']) ) {
     $action = $_POST['at_delete'];
 }
@@ -105,12 +109,19 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
                 redirect();
             break;
 
-        case 'Envoyer' :
-                $displayErr     =   validate_article($_POST);
+        case 'envoyer' :
+                $value = "create";
+                $displayErr     =   validate_article($_POST,$value);
                 $at_msgErr      =   $displayErr[0];
             break;
 
-        case 'Commenter' :
+        case 'modifier' :
+                $value = "update";
+                $displayErr     =   validate_article($_POST,$value);
+                $at_msgErr      =   $displayErr[0];
+            break;
+            
+        case 'commenter' :
                 $displayErr     =   validate_comment($_POST);
                 $co_msgErr      =   $displayErr[0];
             break;

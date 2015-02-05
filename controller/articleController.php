@@ -7,7 +7,8 @@ require_once(__ROOT__."/model/dbusers.php");
 require_once(__ROOT__."/model/dbarticle.php");
 
 
-function validate_article($POST){
+function validate_article($POST,$value){
+	access_control();
 	$eror = 0;
 	$errorMessage = array(
 		'0' => ""
@@ -54,8 +55,12 @@ function validate_article($POST){
 			$id_category = $POST["at_category"];
 		}
 		$author = $_SESSION['user']['pseudo'];
-
-		$sucess = submit_article($title, $title, $content, $id_category, $author);
+		if($value == "create"){
+			$sucess = submit_article($title, $title, $content, $id_category, $author);
+		}
+		elseif ($value == "update") {
+			$success = update_article($title, $title,$content,$id_category,$value);
+		}
 	}
 
 	return $errorMessage;
@@ -79,17 +84,17 @@ function submit_article($title,$title,$content,$id_category,$author)
 	return $req;
 }
 
-function delete_article($id_category)
+function delete_article($id)
 {
 	$link = db_connect();
-	$req  = db_delete_article($link,$id_category);
+	$req  = db_delete_article($link,$id);
 	return $req;
 }
 
-function update_article($title, $content, $id_category)
+function update_article($title,$title,$content,$id_category,$value)
 {
 	$link = db_connect();
-	$req  = db_update_article($link, $title, $content, $id_category);
+	$req  = db_update_article($link, $title,$title,$content,$id_category,$value);
 	return $req;
 }
 

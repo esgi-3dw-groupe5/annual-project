@@ -82,12 +82,16 @@ function db_delete_article($link, $value){
 	));
 }
 
-function db_update_article($link,$title,$content,$value){
+function db_update_article($link,$title,$title_id,$content,$id_category,$value){
 	$req = $link -> prepare("UPDATE FROM pp_article SET title   = :title,
-														content = :content WHERE id = :value");
+														content = :content, 
+														title_id = :title_id, 
+														id_category = :id_category WHERE id = :value");
 	$req->execute(array(
 		':title'   => $title,
 		':content' => $content,
+		':title_id'=> $title_id,
+		':id_category'=> $id_category,
 		':value'   => $value
 	));
 }
