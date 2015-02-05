@@ -3,7 +3,8 @@
 <!--*************************************-->
 <?php if( !isset( $gender_male ) ){ $gender_male="checked"; }?>
 <form method="POST" action="<?php print($_SESSION['url']); ?>" class="" id="si_form" name="si_form">
-    <h2>S'inscrire</h2>
+    <h2>Inscription</h2>
+</br>
     <div>
         <input id="male" type="radio" name="gender" value="0" <?php if(!empty($gender_male))echo $gender_male ?> ><label for="male">Monsieur</label>
         <input id="female" type="radio" name="gender" value="1" <?php if(!empty($gender_female))echo $gender_female ?> ><label for="female">Madame</label>

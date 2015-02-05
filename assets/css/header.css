@@ -1,30 +1,27 @@
+*{padding: 0; margin: 0;}
 header {
-	border: solid black;
-	background-image: url("http://127.0.01/annual-project/images/montagnes.jpg");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-}
-.titre {
-	float: center;
-	margin-top: 10px;
-	margin-left: 400px;
+	height: 50px;
+	background-color: #434343;
+	margin-top: auto;
 }
 .logo {
-	position: absolute;
-	top: 25px;
-	left: 20px;
-	width: 20%;
-	height: 20%;
-	margin-top: -10px;
-	opacity: 0.7;
-
+	position: relative;
+	background-color: #434343;
+	margin-left: 40px;
+	margin-top: -20px; 
+}
+.logo2 {
+	position: relative;
+	width: 4%;
+	margin-left: 110px;
+	margin-top: 0px; 
 }
 .clock-display span {
     color: #000 !important;
     font-weight: bold;
     font-size: 30px;
 }
-#clock {	
+#clock {
 	margin-top: 5px;
 	margin-right: 5px;
 	position: absolute;
@@ -32,56 +29,61 @@ header {
 	right: 10px;
 }
 .nav {
+	position: absolute;
+	top: 5px;
+	left: 300px;
 	text-align: center;
-	margin-left: 90px;
+	margin: 10px;
 }
-h3 {
-	margin-top: 5%;
-}
-.subnav {
-	background-color: #B8860B;
-	color: black;
-	display: inline-block;
-	text-align: center;
-	font-size: 90%;
-	border: solid black 1px;
-	border-radius: 10px;
-	width: 200px;
-	height: 40px;
-	margin-right: 9px;
-}
-.subnav:hover {
-	opacity: 0.7;
+/*@font-face {
+    font-family: "MeriendaOne-Regular";
+    src: url('/MeriendaOne-Regular.ttf');
+}*/
+a.subnav {
+	/*font-family: "MeriendaOne-Regular";*/
 	color: white;
-}
-.subnav#cine:hover{background-color: blue;}
-.subnav#techno:hover{background-color: #FF4500;}
-.subnav#esport:hover{background-color: purple;}
-.subnav#musique:hover{background-color: green;}
-.subnav#sport:hover{background-color: red;}
-a {
+	font-size: 130%;
 	text-decoration: none;
+	text-align: center;
+	margin-right: 40px;
 }
+a.subnav:hover {
+	color: black;
+}
+/*
+.subnav#compte {
+	position: absolute;
+	right: 20px;
+	top: 80px;
+}*/
+
+	/*.subnav#cine:hover{background-color: blue;}
+	.subnav#techno:hover{background-color: #FF4500;}
+	.subnav#esport:hover{background-color: purple;}
+	.subnav#musique:hover{background-color: green;}
+	.subnav#sport:hover{background-color: red;}
+	.subnav#compte:hover{background-color: grey;}*/
 @media screen and (max-width: 1200px) and (min-width: 960px) {
-	.logo{width: 20%; height: 15%;}
-	.titre{margin-left: 200px;}
-	.nav{margin-left: 0px;}
+	/*.titre{margin-left: 200px;}
+	.nav{margin-left: 80px;}
 	.subnav{font-size: 80%;	width: 160px; height: 40px;	margin-right: 0px;}
-	.clock-display span{font-size: 25px;}
+	.clock-display span{font-size: 25px;}*/
 }
 @media screen and (max-width: 960px) and (min-width: 480px) {
-	.logo{width: 20%; height: 15%;}
-	.titre{width: 50%; height: 50%;margin-left: 150px;}
-	.nav{margin-left: 0px;}
-	.subnav{ font-size: 65%; width: 80px; height: 30px;	margin-right: 0px;}
+	/*.logo{margin-left: 180px; width: 30%;}
+	.titre{width: 50%; height: 50%; margin-left: 150px;}
+	.nav{margin-left: 0px; margin-top: 0px;}
+	.subnav{font-size: 65%; width: 75px; height: 30px;	margin-right: 0px;}
+	/*.subnav#compte {position: absolute;	left: 20px;	top: 120px; font-size: 55%;}*/
 	.clock-display span{font-size: 20px;}
-	h3{margin: 10%;}
+	h3{margin: 10%;}*/
 }
 @media screen and (max-width: 480px) {
-	.logo{width: 20%; height: 10%;}
-	.titre{width: 40%; height: 40%;margin-left: 100px;}
-	.nav{margin-left: 0px;}
+	/*.logo{margin-left: 100px; width: 30%;}
+	.titre{width: 40%; height: 40%; margin-left: 100px;}
+	.nav{margin-left: 0px; margin-top: 0px;}
 	.subnav	{ font-size: 46%; width: 50px; height: 20px; margin-right: 0px;}
+	.subnav#compte {position: absolute;	left: 20px;	top: 150px;}
 	.clock-display span{font-size: 15px;}
-	h3{margin: none;}
+	h3{margin: none;}*/
 }

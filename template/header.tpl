@@ -1,37 +1,29 @@
 <header>
-	<!-- <h1>Pinnackl</h1> -->
-	<img class="titre" src="images/titre.gif">
-	<img class="logo" src="images/logo-gris.gif">
+	<?php if(!$_SESSION['user']['connected']) { ?>
+		<img class="logo" src="images/logo-gris.png">
+	<?php } else { ?>
+		<img class="logo2" src="images/logo-gris.png">
+	<?php } ?>
+
+	<!-- <img class="logo" src="images/logo-gris.png"> -->
 	<!-- <img src="images/fond.png"> -->
 	<div id="clock">
 
     </div>
 
 	<nav class="nav">
-		<!-- <div class="subnav" id="index">
-			<a href="/annual-project"><h3>index</h3></a>
-		</div> -->
-		<a href="http://127.0.0.1/annual-project/cine-serie"><div class="subnav" id="cine">
-			<h3>Cinéma/Série</h3>
-		</div></a>
-		<a href="http://127.0.0.1/annual-project/technologie"><div class="subnav" id="techno">
-			<h3>Technologies</h3>
-		</div></a>
-		<a href="http://127.0.0.1/annual-project/jeux-video"><div class="subnav" id="esport">
-			<h3>E-sport</h3>
-		</div></a>
-		<a href="http://127.0.0.1/annual-project/musique"><div class="subnav" id="musique">
-			<h3>Musique</h3>
-		</div></a>
-		<a href="http://127.0.0.1/annual-project/sport"><div class="subnav" id="sport">
-			<h3>Sport</h3>
-		</div></a>
+		<a class="subnav" id="index" href="/annual-project">Accueil</a>
+		<a class="subnav" id="cine" href="http://127.0.0.1/annual-project/cine-serie">Cinéma/Série</a>
+		<a class="subnav" id="techno" href="http://127.0.0.1/annual-project/technologie">Technologies</a>
+		<a class="subnav" id="esport" href="http://127.0.0.1/annual-project/jeux-video">E-sport</a>
+		<a class="subnav" id="musique" href="http://127.0.0.1/annual-project/musique">Musique</a>
+		<a class="subnav" id="sport" href="http://127.0.0.1/annual-project/sport">Sport</a>
 		<?php if($_SESSION['user']['connected']) { ?>
-			<a href="http://127.0.0.1/annual-project/home/%s"><div class="subnav" id="compte">
+			<a class="subnav" id="compte" href="http://127.0.0.1/annual-project/home/%s">
 				<?php
-					printf('<h3>Mon Compte</h3>',strtolower($_SESSION['user']['pseudo']));
+					printf('Mon Compte',strtolower($_SESSION['user']['pseudo']));
 				?>
-			</div></a>
+			</a>
 		<?php } ?>
 	</nav>
 </header>

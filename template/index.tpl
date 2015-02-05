@@ -10,9 +10,6 @@
         <link href="assets/css/form.css" rel="stylesheet" media="all"/>
         <link href="assets/css/main.css" rel="stylesheet" media="all"/>
 
-        <link href="assets/css/formSignin.css" rel="stylesheet" media="all"/>
-        <link href="assets/css/formLogin.css" rel="stylesheet" media="all"/>
-
         <script type="text/javascript" src="assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="assets/js/coreAjax.js"></script>
         <script type="text/javascript" src="assets/js/datepicker.js"></script>
@@ -20,9 +17,9 @@
         <script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
         <link href="<?php print($config['source']); ?>/assets/css/header.css" rel="stylesheet" media="all"/>
         <link href="<?php print($config['source']); ?>/assets/css/footer.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/form.css" rel="stylesheet" media="all"/>
         <link href="<?php print($config['source']); ?>/assets/css/main.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/formSignin.css" rel="stylesheet" media="all"/>
+        <link href="<?php print($config['source']); ?>/assets/css/form.css" rel="stylesheet" media="all"/>
+        <link href="<?php print($config['source']); ?>/assets/css/sidebar.css" rel="stylesheet" media="all"/>
 
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/coreAjax.js"></script>
@@ -45,18 +42,14 @@
     <body>
         <?php include("header.tpl"); ?>
 
+        <section class="sidebar">
+            <?php include_once("sidebar.tpl"); ?>
+        </section>
+
         <section class="content">
-            <h1>
-                <?php
-                    if( $_SESSION['user']['connected'] ){
-                        print($_SESSION['user']['pseudo']);
-                        printf("<a href='%s?act=logout'>logout</a>",$config['source']);
-                    }
-                ?>
-            </h1>
+            
             <div>
 
-            <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
             <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
             <?php //if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
 
@@ -67,7 +60,7 @@
         <section class="">
             <div id="clock">
             </div>
-            <div class="core-article">s
+            <div class="core-article">
             </div>
         </section>
 
