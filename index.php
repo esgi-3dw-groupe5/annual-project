@@ -8,17 +8,20 @@ if(!file_exists('config.php')){
 	die();
 }
 require('config.php');
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
+if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project"); // php function ?
 require_once(__ROOT__."/controller/accessControl.php");
 require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
 require_once(__ROOT__."/controller/corePHP.php");
 require_once(__ROOT__."/controller/module.php");
 access_control();
-$page = get_param('p', '');
+// if($_GET['p'] == 'pp_admin')
+// 	header('Location: /annual-project/pp_admin/plop/');
+
+$page = get_param('p', '');debug($_GET);
 $article = get_param('article', '');
-require_once(__ROOT__."/template/index.tpl");
-	render_articles($page);
-include(__ROOT__."/template/footer.tpl");
+// require_once(__ROOT__."/template/index.tpl");
+	// render_articles($page);
+// include(__ROOT__."/template/footer.tpl");
 // debug($_SESSION);
-// debug($_SERVER);
+debug($_SERVER['REQUEST_URI']);

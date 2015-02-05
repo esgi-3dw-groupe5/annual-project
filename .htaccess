@@ -1,17 +1,21 @@
 RewriteEngine On
 RewriteBase /annual-project/
-#	home access
-RewriteRule    ^home/([a-z0-9]+)/?$    index.php?p=home&usr=$1	   			[NC,L]
 
+
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^([a-z0-9_-]+)/?$  /annual-project/pp_admin/index.php?p=test [L]
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 #	categorie access
-RewriteRule    ^([a-z0-9_-]+)/?$    	index.php?p=$1					   	[NC,L]
+RewriteRule    ^([a-z0-9_-]+)/?$    				index.php?p=$1				[NC,L]
 
 #	article categorie access
-RewriteRule    ^([a-z0-9_-]+)/([a-z0-9_-]+)/?$    index.php?p=$1&article=$2	[NC,L]
+#RewriteRule    ^([a-z0-9_-]+)/([a-z0-9_-]+)/?$    	index.php?p=%{REQUEST_URI}&article=$2	[NC,L]
 
 #	document error
 ErrorDocument 403 /annual-project/template/documents/403.html
 ErrorDocument 404 /annual-project/template/documents/404.html
-
-#	pp_admin access
-#RewriteRule    ^pp_admin/([a-z0-9]+)/?$    index.php?p=admin		   		[NC,L]

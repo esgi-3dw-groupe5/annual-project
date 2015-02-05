@@ -1,5 +1,5 @@
-RewriteEngine On
-RewriteBase /annual-project/
+#RewriteEngine On
+#RewriteBase /annual-project/
 
 #	pp_admin access
-RewriteRule    ^pp_admin/([a-z0-9]+)/?$    index.php?p=admin		   		[NC,L]
+#RewriteRule    ^pp_admin/([a-z0-9]+)/?$    pp_admin/index.php?p=admin		   		[NC,L]

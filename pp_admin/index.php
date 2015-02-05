@@ -1,7 +1,13 @@
-
 <?php
 if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
 require_once(__ROOT__."/pp_admin/controller/adminController.php");
+
+
+$page = get_param('p', '');
+echo 'Admin';
+debug($_GET);
+debug($_SERVER['REQUEST_URI']);
+die();
 ?>
 <!DOCTYPE html>
 <html>

@@ -24,8 +24,8 @@ function db_create_article($link, $title_id, $title, $content, $id_category){
 
 function db_get_articles($link){
 
-	$req = $link -> prepare("SELECT * FROM pp_article");
-	$req->execute();
+	$req = $link -> query("SELECT * FROM pp_article");
+	// $req->execute();
 	return $req;
 }
 

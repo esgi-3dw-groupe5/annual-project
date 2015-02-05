@@ -20,7 +20,8 @@ function db_get_content($link, $content = null){
 
 		$query = "SELECT * FROM pp_categorie WHERE connected IN (SELECT connected FROM pp_categorie WHERE connected = :connected ) OR 
 					connected IN (SELECT connected FROM pp_categorie WHERE connected = :role)
-					OR connected = 'all'";
+					OR connected = 'all'
+					ORDER BY pp_categorie.order";
 
 		$req	=	$link -> prepare($query);
 		$req	->	execute(array(

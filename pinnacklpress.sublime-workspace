@@ -147,7 +147,7 @@
 			"file": "template/index.tpl",
 			"settings":
 			{
-				"buffer_size": 2675,
+				"buffer_size": 2808,
 				"line_ending": "Windows"
 			}
 		},
@@ -155,7 +155,7 @@
 			"file": "template/header.tpl",
 			"settings":
 			{
-				"buffer_size": 301,
+				"buffer_size": 272,
 				"line_ending": "Windows"
 			}
 		},
@@ -163,7 +163,7 @@
 			"file": "template/footer.tpl",
 			"settings":
 			{
-				"buffer_size": 281,
+				"buffer_size": 233,
 				"line_ending": "Windows"
 			}
 		},
@@ -179,7 +179,7 @@
 			"file": "template/formSignin.tpl",
 			"settings":
 			{
-				"buffer_size": 3712,
+				"buffer_size": 3798,
 				"line_ending": "Windows"
 			}
 		},
@@ -187,7 +187,7 @@
 			"file": "template/formLogin.tpl",
 			"settings":
 			{
-				"buffer_size": 919,
+				"buffer_size": 1023,
 				"line_ending": "Windows"
 			}
 		},
@@ -212,7 +212,7 @@
 			"file": "template/contentList.tpl",
 			"settings":
 			{
-				"buffer_size": 143,
+				"buffer_size": 146,
 				"line_ending": "Windows"
 			}
 		},
@@ -220,7 +220,7 @@
 			"file": "controller/module.php",
 			"settings":
 			{
-				"buffer_size": 1692,
+				"buffer_size": 3560,
 				"line_ending": "Windows",
 				"name": "<?php"
 			}
@@ -229,7 +229,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 896,
+				"buffer_size": 887,
 				"line_ending": "Windows"
 			}
 		},
@@ -237,7 +237,7 @@
 			"file": "controller/common.php",
 			"settings":
 			{
-				"buffer_size": 1179,
+				"buffer_size": 1176,
 				"line_ending": "Windows"
 			}
 		},
@@ -245,15 +245,25 @@
 			"file": "controller/accessControl.php",
 			"settings":
 			{
-				"buffer_size": 1896,
+				"buffer_size": 2029,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 109 files for \"is_submited\"\n\nD:\\Developpement\\EasyPHP-DevServer\\data\\localweb\\annual-project\\controller\\accessControl.php:\n    9      }\n   10      $url = \"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]\";\n   11:         if(!is_submited('_POST'))\n   12              $_SESSION['url']                =   $url;\n   13  }\n   ..\n   24          $_SESSION['user']['role']       =   $role;\n   25          $_SESSION['user']['connected']  =   true;\n   26:         if(!is_submited('_POST'))\n   27              $_SESSION['url']                =   $url;\n   28      }\n   ..\n   33          $_SESSION['user']['role']       =   'viewer';\n   34          $_SESSION['user']['connected']  =   false;\n   35:         if(!is_submited('_POST'))\n   36              $_SESSION['url']                =   $url;\n   37      }\n\nD:\\Developpement\\EasyPHP-DevServer\\data\\localweb\\annual-project\\controller\\common.php:\n   29  }\n   30  \n   31: function is_submited($type){\n   32  	if($type == '_POST'){\n   33  		if( count($_POST) > 0)\n\n4 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 1031,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
 			}
 		},
 		{
 			"file": "controller/corePHP.php",
 			"settings":
 			{
-				"buffer_size": 3534,
+				"buffer_size": 3892,
 				"line_ending": "Windows"
 			}
 		},
@@ -261,7 +271,7 @@
 			"file": "controller/coreAjax.php",
 			"settings":
 			{
-				"buffer_size": 1922,
+				"buffer_size": 2267,
 				"line_ending": "Windows"
 			}
 		},
@@ -277,7 +287,7 @@
 			"file": "controller/articleController.php",
 			"settings":
 			{
-				"buffer_size": 2733,
+				"buffer_size": 2755,
 				"line_ending": "Windows"
 			}
 		},
@@ -285,7 +295,15 @@
 			"file": "config.php",
 			"settings":
 			{
-				"buffer_size": 214,
+				"buffer_size": 176,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "pp_admin/index.php",
+			"settings":
+			{
+				"buffer_size": 2324,
 				"line_ending": "Windows"
 			}
 		},
@@ -293,7 +311,7 @@
 			"file": ".htaccess",
 			"settings":
 			{
-				"buffer_size": 568,
+				"buffer_size": 569,
 				"line_ending": "Windows"
 			}
 		},
@@ -301,15 +319,15 @@
 			"file": "pp_admin/.htaccess",
 			"settings":
 			{
-				"buffer_size": 138,
+				"buffer_size": 148,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "model/dbarticle.php",
+			"file": "/D/Developpement/EasyPHP-DevServer/data/localweb/Split/form/validateSignUp.php",
 			"settings":
 			{
-				"buffer_size": 1830,
+				"buffer_size": 15630,
 				"line_ending": "Windows"
 			}
 		},
@@ -322,10 +340,18 @@
 			}
 		},
 		{
+			"file": "model/dbarticle.php",
+			"settings":
+			{
+				"buffer_size": 2023,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "model/dbcontent.php",
 			"settings":
 			{
-				"buffer_size": 336,
+				"buffer_size": 827,
 				"line_ending": "Windows"
 			}
 		},
@@ -336,6 +362,14 @@
 				"buffer_size": 507,
 				"line_ending": "Windows",
 				"name": "<?php"
+			}
+		},
+		{
+			"file": "model/dbcomment.php",
+			"settings":
+			{
+				"buffer_size": 1177,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -363,6 +397,17 @@
 	},
 	"file_history":
 	[
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/form/init.php",
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/include/mail.php",
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/include/header.php",
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/form/session.php",
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/action.php",
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/form/validate.php",
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/include/mail.tpl",
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/form/req.php",
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/include/message.tpl",
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/Split/gameManage/addLibrary.php",
+		"/D/Developpement/TopAnimeStream/webkit/package.json",
 		"/D/Developpement/EasyPHP-DevServer/data/localweb/annual-project/template/mainArticle.tpl",
 		"/D/Developpement/EasyPHP-DevServer/data/localweb/annual-project/assets/js/datepicker.js",
 		"/D/Developpement/EasyPHP-DevServer/data/localweb/annual-project/view/inscriptionView.php",
@@ -431,6 +476,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"mail(",
+			"is_submited",
 			"dbarticle.php",
 			"required",
 			"confirmPsw",
@@ -472,7 +519,7 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -480,15 +527,15 @@
 					"file": "template/index.tpl",
 					"settings":
 					{
-						"buffer_size": 2675,
+						"buffer_size": 2808,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1749,
-								1749
+								2147,
+								2147
 							]
 						],
 						"settings":
@@ -508,15 +555,15 @@
 					"file": "template/header.tpl",
 					"settings":
 					{
-						"buffer_size": 301,
+						"buffer_size": 272,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								66,
-								66
+								0,
+								0
 							]
 						],
 						"settings":
@@ -535,15 +582,15 @@
 					"file": "template/footer.tpl",
 					"settings":
 					{
-						"buffer_size": 281,
+						"buffer_size": 233,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9,
-								9
+								0,
+								0
 							]
 						],
 						"settings":
@@ -589,15 +636,15 @@
 					"file": "template/formSignin.tpl",
 					"settings":
 					{
-						"buffer_size": 3712,
+						"buffer_size": 3798,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								362,
-								362
+								0,
+								0
 							]
 						],
 						"settings":
@@ -617,15 +664,15 @@
 					"file": "template/formLogin.tpl",
 					"settings":
 					{
-						"buffer_size": 919,
+						"buffer_size": 1023,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								265,
-								298
+								0,
+								0
 							]
 						],
 						"settings":
@@ -698,15 +745,15 @@
 					"file": "template/contentList.tpl",
 					"settings":
 					{
-						"buffer_size": 143,
+						"buffer_size": 146,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								129,
-								129
+								0,
+								0
 							]
 						],
 						"settings":
@@ -722,7 +769,7 @@
 			]
 		},
 		{
-			"selected": 9,
+			"selected": 10,
 			"sheets":
 			[
 				{
@@ -730,15 +777,15 @@
 					"file": "controller/module.php",
 					"settings":
 					{
-						"buffer_size": 1692,
+						"buffer_size": 3560,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								556,
-								556
+								855,
+								700
 							]
 						],
 						"settings":
@@ -747,7 +794,7 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 45.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -758,15 +805,15 @@
 					"file": "index.php",
 					"settings":
 					{
-						"buffer_size": 896,
+						"buffer_size": 887,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								611,
-								625
+								674,
+								687
 							]
 						],
 						"settings":
@@ -784,15 +831,15 @@
 					"file": "controller/common.php",
 					"settings":
 					{
-						"buffer_size": 1179,
+						"buffer_size": 1176,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								117,
-								117
+								266,
+								275
 							]
 						],
 						"settings":
@@ -801,7 +848,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -811,15 +858,15 @@
 					"file": "controller/accessControl.php",
 					"settings":
 					{
-						"buffer_size": 1896,
+						"buffer_size": 2029,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1768,
-								1776
+								0,
+								0
 							]
 						],
 						"settings":
@@ -836,25 +883,52 @@
 				},
 				{
 					"buffer": 13,
-					"file": "controller/corePHP.php",
 					"settings":
 					{
-						"buffer_size": 3534,
+						"buffer_size": 1031,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										234,
+										245
+									],
+									[
+										466,
+										477
+									],
+									[
+										706,
+										717
+									],
+									[
+										923,
+										934
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								323,
-								323
+								926,
+								926
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"detect_indentation": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -864,18 +938,18 @@
 				},
 				{
 					"buffer": 14,
-					"file": "controller/coreAjax.php",
+					"file": "controller/corePHP.php",
 					"settings":
 					{
-						"buffer_size": 1922,
+						"buffer_size": 3892,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								207,
-								207
+								401,
+								401
 							]
 						],
 						"settings":
@@ -892,6 +966,34 @@
 				},
 				{
 					"buffer": 15,
+					"file": "controller/coreAjax.php",
+					"settings":
+					{
+						"buffer_size": 2267,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 569.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
 					"file": "controller/inscriptionController.php",
 					"settings":
 					{
@@ -902,35 +1004,8 @@
 						"selection":
 						[
 							[
-								7860,
-								7898
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "controller/articleController.php",
-					"settings":
-					{
-						"buffer_size": 2733,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								338,
-								6
+								5215,
+								5215
 							]
 						],
 						"settings":
@@ -946,94 +1021,10 @@
 				},
 				{
 					"buffer": 17,
-					"file": "config.php",
+					"file": "controller/articleController.php",
 					"settings":
 					{
-						"buffer_size": 214,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								214,
-								3
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": ".htaccess",
-					"settings":
-					{
-						"buffer_size": 568,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								267,
-								267
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "pp_admin/.htaccess",
-					"settings":
-					{
-						"buffer_size": 138,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								138,
-								138
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 2,
-			"sheets":
-			[
-				{
-					"buffer": 20,
-					"file": "model/dbarticle.php",
-					"settings":
-					{
-						"buffer_size": 1830,
+						"buffer_size": 2755,
 						"regions":
 						{
 						},
@@ -1056,7 +1047,146 @@
 					"type": "text"
 				},
 				{
+					"buffer": 18,
+					"file": "config.php",
+					"settings":
+					{
+						"buffer_size": 176,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "pp_admin/index.php",
+					"settings":
+					{
+						"buffer_size": 2324,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								205,
+								205
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": ".htaccess",
+					"settings":
+					{
+						"buffer_size": 569,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								496,
+								496
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
 					"buffer": 21,
+					"file": "pp_admin/.htaccess",
+					"settings":
+					{
+						"buffer_size": 148,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								65,
+								65
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 22,
+					"file": "/D/Developpement/EasyPHP-DevServer/data/localweb/Split/form/validateSignUp.php",
+					"settings":
+					{
+						"buffer_size": 15630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13734,
+								13739
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5156.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 23,
 					"file": "model/dbconnect.php",
 					"settings":
 					{
@@ -1083,18 +1213,45 @@
 					"type": "text"
 				},
 				{
-					"buffer": 22,
-					"file": "model/dbcontent.php",
+					"buffer": 24,
+					"file": "model/dbarticle.php",
 					"settings":
 					{
-						"buffer_size": 336,
+						"buffer_size": 2023,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								249,
+								687,
+								687
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 127.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "model/dbcontent.php",
+					"settings":
+					{
+						"buffer_size": 827,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								336,
 								249
 							]
 						],
@@ -1104,14 +1261,14 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 27.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 26,
 					"file": "model/sql.php",
 					"settings":
 					{
@@ -1129,6 +1286,33 @@
 						"settings":
 						{
 							"auto_name": "<?php",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "model/dbcomment.php",
+					"settings":
+					{
+						"buffer_size": 1177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -1175,8 +1359,8 @@
 		"cols":
 		[
 			0.0,
-			0.0425894378194,
-			0.957410562181,
+			0.0454545454545,
+			0.954545454545,
 			1.0
 		],
 		"rows":
@@ -1211,6 +1395,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 106.0,
+	"side_bar_width": 180.0,
 	"status_bar_visible": true
 }
