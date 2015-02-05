@@ -41,7 +41,6 @@ function validate_comment($POST){
 				$errorMessage[0] = get_error_comment("default", null);
 					$error++;
 		}
-		//FIXME : access to $id_article and $id_author
 		$link =db_connect();
 
 		$id_author = $_SESSION['user']['pseudo'];
@@ -64,6 +63,14 @@ function validate_comment($POST){
 	}
 
 	return $errorMessage;
+}
+
+function report_comment($POST){
+	//FIXME access id_comment
+	$link = db_connect();
+	$id_comment = $data_comment;
+	$req = db_report_comment($link,$id_comment);
+	return $req;
 }
 
 function get_error_comment($item, $parm1){

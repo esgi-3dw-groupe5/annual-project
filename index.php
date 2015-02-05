@@ -17,10 +17,10 @@ require_once(__ROOT__."/controller/module.php");
 access_control();
 $page = get_param('p', '');
 $article = get_param('article', '');
-echo $page;
+/*echo $page;
 echo '<br>';
 echo $article;
-//debug($co_msgErr);
+debug($co_msgErr);*/
 require_once(__ROOT__."/template/index.tpl");
 	render_articles($page);
 include(__ROOT__."/template/footer.tpl");

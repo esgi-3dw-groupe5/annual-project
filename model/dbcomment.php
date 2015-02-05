@@ -42,3 +42,11 @@ function db_update_comment($link,$content,$value){
 		':value'   => $value
 	));
 }
+
+function db_report_comment($link, $id_comment){
+	$req = $link -> prepare("UPDATE FROM pp_comment SET status = :status WHERE id = :value");
+	$req->execute(array(
+		':status' => 1,
+		':value'  => $value
+		));
+}

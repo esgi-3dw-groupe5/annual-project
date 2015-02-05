@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Pinnackl</title>
         <meta name="description" content="description de ma page">
-
+        <link rel="alternate" type="application/rss+xml" title="RSSFLUX" href="../fluxrss.php" />
         <link href="<?php print($config['source']); ?>/assets/css/header.css" rel="stylesheet" media="all"/>
         <link href="<?php print($config['source']); ?>/assets/css/footer.css" rel="stylesheet" media="all"/>
         <link href="<?php print($config['source']); ?>/assets/css/form.css" rel="stylesheet" media="all"/>
@@ -58,8 +58,8 @@
                 <div>
 
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
-                <?php //if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
-                <?php //if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
+                <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
+                <?php if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
 
                 </div>
 

@@ -27,6 +27,10 @@ if( isset($_POST['co_submit']) && !empty($_POST['co_submit']) ) {
     $action = $_POST['co_submit'];
 }
 
+if( isset($_POST['co_report']) && !empty($_POST['co_report']) ) {
+    $action = $_POST['co_report'];
+}
+
 if( isset($_GET['act']) && !empty($_GET['act']) ) {
     $action = $_GET['act'];
 }
@@ -105,10 +109,14 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
                 $displayErr     =   validate_article($_POST);
                 $at_msgErr      =   $displayErr[0];
             break;
+
         case 'Commenter' :
                 $displayErr     =   validate_comment($_POST);
                 $co_msgErr      =   $displayErr[0];
-                debug($co_msgErr);
+            break;
+
+        case 'signaler' : 
+                report_comment($_POST);
             break;
         default:
             

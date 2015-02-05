@@ -1,18 +1,20 @@
 <?php
-function db_create_article($link, $title_id, $title, $content, $id_category){
+function db_create_article($link, $title_id, $title, $content, $id_category, $author){
 	// FIXME crate an article title column with : strtolower and a preg replace special character as éèà...
 	try{
 		$req = $link -> prepare("INSERT INTO pp_article 
-			(title_id, title, content, id_category)
+			(title_id, title, content, id_category, author)
 			VALUES( :title_id,
 					:title,
 					:content,
-					:id_category) ");
+					:id_category,
+					:author) ");
 		$success = $req->execute(array(
 					':title_id' => $title_id,
 					':title' => $title,
 					':content' => $content,
-					':id_category' => $id_category
+					':id_category' => $id_category,
+					':author' => $author
 				));
 		return $success;
 	}
@@ -36,6 +38,13 @@ function db_get_articles_by_cat($link, $value){
 	$req->execute(array(
 		':id' => $value
 	));
+	return $req;
+}
+
+function db_get_category($link){
+
+	$req = $link -> prepare("SELECT tag FROM pp_categorie");
+	$req->execute();
 	return $req;
 }
 
