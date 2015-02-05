@@ -31,7 +31,7 @@ header {
 .nav {
 	position: absolute;
 	top: 5px;
-	left: 300px;
+	left: 350px;
 	text-align: center;
 	margin: 10px;
 }
@@ -42,7 +42,7 @@ header {
 a.subnav {
 	/*font-family: "MeriendaOne-Regular";*/
 	color: white;
-	font-size: 130%;
+	font-size: 120%;
 	text-decoration: none;
 	text-align: center;
 	margin-right: 40px;
