@@ -4,7 +4,7 @@
 		$link = db_connect();
 		$result = db_get_category($link);
 		while($data = $result -> fetch()){
-			if($page == "home"){}
+			if($page == "index"){}
 			elseif($data['tag'] == $page){
 				display_article();
 			}

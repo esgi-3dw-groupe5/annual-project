@@ -43,7 +43,7 @@ function db_get_articles_by_cat($link, $value){
 
 function db_get_category($link){
 
-	$req = $link -> prepare("SELECT tag FROM pp_categorie");
+	$req = $link -> prepare("SELECT * FROM pp_categorie");
 	$req->execute();
 	return $req;
 }
