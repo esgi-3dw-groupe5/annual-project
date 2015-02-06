@@ -59,6 +59,7 @@
                 </h1>
                 <div>
                     <?php render_contents('connection') ?>
+                    <?php render_contents('inscription') ?>
                 </div>
 
             </section>

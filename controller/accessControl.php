@@ -7,11 +7,21 @@ function access_control(){
         $_SESSION['user'] = [];
         set_user_session(false);
     }
+
+    $page = get_param('p', '');
+    debug($_SESSION);
+    if( $page == "pp_admin" ){
+    //     if(!isset($_SESSION['admin'] )){
+    // //         $_SESSION['admin'] = [];
+    //         // render_contents('connection');
+    // //         die();
+    // //         // set_admin_session(false);
+    //     }
+    }
+
     $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         if(!is_submited('_POST'))
             $_SESSION['url']                =   $url;
-
-    //isAdmin();
 }
 
 function set_user_session($success, $pseudo = null, $email = null, $role = null){
@@ -34,6 +44,22 @@ function set_user_session($success, $pseudo = null, $email = null, $role = null)
         $_SESSION['user']['type']       =   'visitor';
         $_SESSION['user']['role']       =   'viewer';
         $_SESSION['user']['connected']  =   false;
+        if(!is_submited('_POST'))
+            $_SESSION['url']                =   $url;
+    }
+}
+
+function set_admin_session($success, $pseudo = null, $email = null, $role = null){
+    if(is_session_started() === FALSE){
+       session_start();
+    }
+    $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    if( $success ){
+        $_SESSION['admin']['pseudo']     =   $pseudo;
+        $_SESSION['admin']['email']      =   $email;
+        $_SESSION['admin']['type']       =   "member";
+        $_SESSION['admin']['role']       =   $role;
+        $_SESSION['admin']['connected']  =   true;
         if(!is_submited('_POST'))
             $_SESSION['url']                =   $url;
     }

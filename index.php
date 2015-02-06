@@ -10,18 +10,22 @@ if(!file_exists('config.php')){
 require('config.php');
 if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project"); // php function ?
 require_once(__ROOT__."/controller/accessControl.php");
+require_once(__ROOT__."/controller/routeControl.php");
 require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
 require_once(__ROOT__."/controller/corePHP.php");
 require_once(__ROOT__."/controller/module.php");
 access_control();
-// if($_GET['p'] == 'pp_admin')
-// 	header('Location: /annual-project/pp_admin/plop/');
+route_control();
 
-$page = get_param('p', '');debug($_GET);
+
+$page = get_param('p', '');
 $article = get_param('article', '');
-// require_once(__ROOT__."/template/index.tpl");
-	// render_articles($page);
-// include(__ROOT__."/template/footer.tpl");
-// debug($_SESSION);
-debug($_SERVER['REQUEST_URI']);
+	
+// debug($_GET);
+// debug($_SERVER['REQUEST_URI']);
+require_once(__ROOT__."/template/index.tpl");
+	render_articles($page);
+include(__ROOT__."/template/footer.tpl");
+debug($_SESSION);
+// debug($_SERVER['REQUEST_URI']);

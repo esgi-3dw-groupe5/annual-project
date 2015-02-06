@@ -12,7 +12,7 @@ function db_get_content($link, $content = null){
 			}
 
 			if($_SESSION['user']['role'] == 'administrator'){ // makea connectedf status table
-				$role = 'admin';
+				$role = $_SESSION['user']['role'];
 			}
 			else{
 				$role = '';
