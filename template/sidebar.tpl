@@ -1,7 +1,8 @@
-<?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
-<?php
-    if($_SESSION['user']['connected'] ){
-        print("<p>".$_SESSION['user']['pseudo']."<p>");
+<p>Recherche <input></p>
+<?php 
+    if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");
+    } else {
+        print("<p>".$_SESSION['user']['pseudo']."</p>");
         printf("<a class='logout' href='%s?act=logout'>logout</a>",$config['source']);
     }
 ?>

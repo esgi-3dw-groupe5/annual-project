@@ -4,6 +4,7 @@ require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/accessControl.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
 require_once(__ROOT__."/controller/articleController.php");
+require_once(__ROOT__."/controller/commentController.php");
 $displayErr=null;
 $action=null;
 
@@ -20,6 +21,14 @@ if( isset($_POST['at_submit']) && !empty($_POST['at_submit']) ) {
 
 if( isset($_POST['at_delete']) && !empty($_POST['at_delete']) ) {
     $action = $_POST['at_delete'];
+}
+
+if( isset($_POST['co_submit']) && !empty($_POST['co_submit']) ) {
+    $action = $_POST['co_submit'];
+}
+
+if( isset($_POST['co_report']) && !empty($_POST['co_report']) ) {
+    $action = $_POST['co_report'];
 }
 
 if( isset($_GET['act']) && !empty($_GET['act']) ) {
@@ -101,6 +110,14 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
                 $at_msgErr      =   $displayErr[0];
             break;
 
+        case 'Commenter' :
+                $displayErr     =   validate_comment($_POST);
+                $co_msgErr      =   $displayErr[0];
+            break;
+
+        case 'signaler' : 
+                report_comment($_POST);
+            break;
         default:
             
             break;

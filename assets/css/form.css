@@ -5,9 +5,6 @@
 .form-error:before {
 	/*content:"x";*/
 }
-span {
-	text-align: center;
-}
 a {
 	color: white;
 }
@@ -29,25 +26,23 @@ label {
 	color: #D9D9D9;
 }
 #li_form {
-   	margin: 5px;
-	margin-top: 130px;
+	margin-top: 10px;
 	margin-bottom: 30px;
 	text-align: center;
 	/*border: 2px solid black;*/
-	padding: 10px;
-	width: 250px;
+	width: 100%;
 	/*box-shadow: 8px 8px 10px #D83F3D;*/
-	background-color: #434343;
+	background-color: #222222;
 }
 #si_form {
-	float: right;
+	/*float: right;*/
 	text-align: center;
 	/*border: 2px solid black;*/
 	padding: 10px;
 	margin-right: 300px;
 	width: 400px;
 	/*box-shadow: 8px 8px 10px #D83F3D;*/
-	background-color: #434343;
+	background-color: #222222;
 }
 @media screen and (max-width: 1200px) and (min-width: 960px) {
 	#li_form{font-size: 90%; width: 280px; margin-left: 50px;}

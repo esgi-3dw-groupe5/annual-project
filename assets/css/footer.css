@@ -1,6 +1,8 @@
 footer
 {
-	bottom: 0;
+	position: fixed;
+  	left: 0;
+  	bottom: 0;
 	color: white;
 	background-color: black;
 	display: inline-block;

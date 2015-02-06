@@ -1,23 +1,31 @@
 *{padding: 0; margin: 0;}
-header {
-	height: 50px;
-	background-color: #434343;
-	margin-top: auto;
+@font-face {
+	font-family: "MeriendaOne-Regular"; 
+	src: url('MeriendaOne-Regular.ttf');
 }
-.logo {
+header {
+	height: 9%;
+	background-color: #222222;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 11;
+	width: 100%;
+}
+/*.logo {
 	position: relative;
 	background-color: #434343;
-	margin-left: 40px;
-	margin-top: -20px; 
-}
-.logo2 {
+	margin-left: 20px;
+	margin-top: -15px; 
+}*/
+.logo {
 	position: relative;
 	width: 4%;
 	margin-left: 110px;
 	margin-top: 0px; 
 }
 .clock-display span {
-    color: #000 !important;
+    color: #fff !important;
     font-weight: bold;
     font-size: 30px;
 }
@@ -29,18 +37,15 @@ header {
 	right: 10px;
 }
 .nav {
+	font-family: MeriendaOne-Regular;
+	font-size: 80%;
 	position: absolute;
 	top: 5px;
-	left: 350px;
+	left: 300px;
 	text-align: center;
 	margin: 10px;
 }
-/*@font-face {
-    font-family: "MeriendaOne-Regular";
-    src: url('/MeriendaOne-Regular.ttf');
-}*/
 a.subnav {
-	/*font-family: "MeriendaOne-Regular";*/
 	color: white;
 	font-size: 120%;
 	text-decoration: none;
@@ -57,12 +62,12 @@ a.subnav:hover {
 	top: 80px;
 }*/
 
-	/*.subnav#cine:hover{background-color: blue;}
-	.subnav#techno:hover{background-color: #FF4500;}
-	.subnav#esport:hover{background-color: purple;}
-	.subnav#musique:hover{background-color: green;}
-	.subnav#sport:hover{background-color: red;}
-	.subnav#compte:hover{background-color: grey;}*/
+/*.subnav#cine:hover{background-color: blue;}
+.subnav#techno:hover{background-color: #FF4500;}
+.subnav#esport:hover{background-color: purple;}
+.subnav#musique:hover{background-color: green;}
+.subnav#sport:hover{background-color: red;}
+.subnav#compte:hover{background-color: grey;}*/
 @media screen and (max-width: 1200px) and (min-width: 960px) {
 	/*.titre{margin-left: 200px;}
 	.nav{margin-left: 80px;}
@@ -74,7 +79,7 @@ a.subnav:hover {
 	.titre{width: 50%; height: 50%; margin-left: 150px;}
 	.nav{margin-left: 0px; margin-top: 0px;}
 	.subnav{font-size: 65%; width: 75px; height: 30px;	margin-right: 0px;}
-	/*.subnav#compte {position: absolute;	left: 20px;	top: 120px; font-size: 55%;}*/
+	.subnav#compte {position: absolute;	left: 20px;	top: 120px; font-size: 55%;}
 	.clock-display span{font-size: 20px;}
 	h3{margin: 10%;}*/
 }

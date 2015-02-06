@@ -1,9 +1,5 @@
 <header>
-	<?php if(!$_SESSION['user']['connected']) { ?>
-		<img class="logo" src="images/logo-gris.png">
-	<?php } else { ?>
-		<img class="logo2" src="images/logo-gris.png">
-	<?php } ?>
+	<img class="logo" src="images/logo-gris.png">
 
 	<!-- <img class="logo" src="images/logo-gris.png"> -->
 	<!-- <img src="images/fond.png"> -->
