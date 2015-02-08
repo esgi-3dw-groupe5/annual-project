@@ -43,6 +43,8 @@
         </script>
     </head>
     <body>
+        
+        
         <?php include("header.tpl"); ?>
 
         <div  class="content">
@@ -58,7 +60,7 @@
                 <div>
 
                 <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
-                <?php //if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
+                <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
                 <?php //if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
 
                 </div>

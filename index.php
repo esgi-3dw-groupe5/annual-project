@@ -25,4 +25,4 @@ require_once(__ROOT__."/template/index.tpl");
 	render_articles($page);
 include(__ROOT__."/template/footer.tpl");
 // debug($_SESSION);
-// debug($_SERVER);
+//debug($_SERVER);
