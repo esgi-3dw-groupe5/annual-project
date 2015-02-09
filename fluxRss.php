@@ -1,5 +1,4 @@
 <?php
-
 function update_fluxRSS(){
         
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';

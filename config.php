@@ -1,8 +1,8 @@
 <?php
 	$config = array(
-		'source' => 'http://127.0.0.1/annual-project',
-		'include_path' => 'D:\Developpement\EasyPHP-DevServer\data\localweb\annual-project',
-		'db_login' => 'admin',
+		'source' => "/annual-project/",
+		'include_path' => $_SERVER['DOCUMENT_ROOT']."/annual-project/",
+		'db_login' => 'root',
 		'db_password' => '',
 	);
 ?>

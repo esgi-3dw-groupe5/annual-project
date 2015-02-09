@@ -4,12 +4,7 @@
         <meta charset="UTF-8">
         <title>Pinnackl</title>
         <meta name="description" content="description de ma page">
-        <link rel="alternate" type="application/rss+xml" title="RSSFLUX" href="../fluxrss.php" />
-        <link href="<?php print($config['source']); ?>/assets/css/header.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/footer.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/form.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/main.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/formSignin.css" rel="stylesheet" media="all"/>
+
 
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/coreAjax.js"></script>
@@ -43,7 +38,9 @@
         </script>
     </head>
     <body>
-        <?php include("header.tpl"); ?>
+        <?php 
+        include("header.tpl"); 
+        ?>
 
         <div  class="content">
             <section >
@@ -56,11 +53,9 @@
                     ?>
                 </h1>
                 <div>
-
-                <?php if( !$_SESSION['user']['connected'] ){include_once("formLogin.tpl");} ?>
-                <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
-                <?php if( $_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
-
+                    <?php render_contents('connection') ?>
+                    <?php render_contents('inscription') ?>
+                     <?php if( $_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
                 </div>
 
             </section>

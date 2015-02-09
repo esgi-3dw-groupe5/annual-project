@@ -1,18 +1,87 @@
-.header {
-	text-align: center;
+header {
+	border: solid black;
+	background-image: url("http://127.0.01/annual-project/images/montagnes.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
-
-.subnav {
-	
-	display: inline-block;
-	/*border-size: 2px;*/
-	border-color: black;
-	text-align: center;
-	width: 200px;
-	height: 50px;
+.titre {
+	float: center;
+	margin-top: 10px;
+	margin-left: 400px;
+}
+.logo {
+	position: absolute;
+	top: 25px;
+	left: 20px;
+	width: 20%;
+	height: 20%;
+	margin-top: -10px;
+	opacity: 0.7;
 
 }
-
+.clock-display span {
+    color: #000 !important;
+    font-weight: bold;
+    font-size: 30px;
+}
+#clock {	
+	margin-top: 5px;
+	margin-right: 5px;
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+.nav {
+	text-align: center;
+	margin-left: 90px;
+}
 h3 {
-	font-size: 20px;
+	margin-top: 5%;
+}
+.subnav {
+	background-color: #B8860B;
+	color: black;
+	display: inline-block;
+	text-align: center;
+	font-size: 90%;
+	border: solid black 1px;
+	border-radius: 10px;
+	width: 200px;
+	height: 40px;
+	margin-right: 9px;
+}
+.subnav:hover {
+	opacity: 0.7;
+	color: white;
+}
+.subnav#cine:hover{background-color: blue;}
+.subnav#techno:hover{background-color: #FF4500;}
+.subnav#esport:hover{background-color: purple;}
+.subnav#musique:hover{background-color: green;}
+.subnav#sport:hover{background-color: red;}
+a {
+	text-decoration: none;
+}
+@media screen and (max-width: 1200px) and (min-width: 960px) {
+	.logo{width: 20%; height: 15%;}
+	.titre{margin-left: 200px;}
+	.nav{margin-left: 0px;}
+	.subnav{font-size: 80%;	width: 160px; height: 40px;	margin-right: 0px;}
+	.clock-display span{font-size: 25px;}
+}
+@media screen and (max-width: 960px) and (min-width: 480px) {
+	.logo{width: 20%; height: 15%;}
+	.titre{width: 50%; height: 50%;margin-left: 150px;}
+	.nav{margin-left: 0px;}
+	.subnav{ font-size: 65%; width: 80px; height: 30px;	margin-right: 0px;}
+	.clock-display span{font-size: 20px;}
+	h3{margin: 10%;}
+}
+@media screen and (max-width: 480px) {
+	.logo{width: 20%; height: 10%;}
+	.titre{width: 40%; height: 40%;margin-left: 100px;}
+	.nav{margin-left: 0px;}
+	.subnav	{ font-size: 46%; width: 50px; height: 20px; margin-right: 0px;}
+	.clock-display span{font-size: 15px;}
+	h3{margin: none;}
 }

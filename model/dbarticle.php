@@ -27,9 +27,8 @@ function db_create_article($link, $title, $title_id, $content, $id_category, $au
 
 function db_get_articles($link){
 
-	$req = $link -> prepare("SELECT * FROM pp_article");
-	$req->execute(array(
-	));
+	$req = $link -> query("SELECT * FROM pp_article");
+	// $req->execute();
 	return $req;
 }
 
@@ -42,6 +41,7 @@ function db_get_articles_rss($link,$limitation,$index_selection){
 	));
 	return $req;
 }
+
 
 function db_get_articles_by_cat($link, $value){
 
@@ -85,6 +85,15 @@ function db_get_article($link, $value, $id_category){
 	));
 	return $req;
 }
+
+function db_get_one_article($link,$value){
+
+	 $req = $link -> prepare("SELECT * FROM pp_article WHERE id = :value");
+	 $req->execute(array(
+	  ':value' => $value
+	 ));
+	 return $req;
+	}
 
 function db_delete_article($link, $value){
 	$req = $link -> prepare("DELETE FROM pp_article WHERE id = :value");

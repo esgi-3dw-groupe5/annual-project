@@ -8,23 +8,23 @@ if(!file_exists('config.php')){
 	die();
 }
 require('config.php');
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
-require_once(__ROOT__."/controller/accessControl.php");
-require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/inscriptionController.php");
-require_once(__ROOT__."/controller/corePHP.php");
-require_once(__ROOT__."/controller/module.php");
-include_once(__ROOT__."/fluxRss.php");
-update_fluxRSS();
+
+$source = $config['include_path'];
+require_once($source."controller/common.php");
+require_once($source."controller/accessControl.php");
+require_once($source."controller/routeControl.php");
+require_once($source."controller/corePHP.php");
+require_once($source."controller/inscriptionController.php");
+require_once($source."fluxRss.php");
+
+require_once($source."controller/module.php");
+
 access_control();
+route_control();
+
 $page = get_param('p', '');
 $article = get_param('article', '');
-/*echo $page;
-echo '<br>';
-echo $article;
-debug($co_msgErr);*/
-require_once(__ROOT__."/template/index.tpl");
+
+require_once($source."template/index.tpl");
 	render_articles($page);
-include(__ROOT__."/template/footer.tpl");
-// debug($_SESSION);
-// debug($_SERVER);
+include($source."template/footer.tpl");
