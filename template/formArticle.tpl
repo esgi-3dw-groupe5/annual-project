@@ -11,7 +11,7 @@
   </div>
   <div>
     <label for="at_content">Texte : </label>
-      <textarea name="at_content" id="at_content"></textarea>
+      <textarea name="at_content" id="at_content" required></textarea>
   </div>
   <p>Catégorie :<br/>
     <select name="at_category" id="at_category">

@@ -10,8 +10,7 @@
 				<a href="">Mentions Légales</a> -
 				<a href="">Conditions génerales d'utilisation</a> -
 				<a href="">lien 3</a> -
-				
-				<a href="">RSS</a> 
+				<a href="http://localhost/annual-project/flux_rss.xml">RSS</a>
 
 
 			</div>

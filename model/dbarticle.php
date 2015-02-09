@@ -1,6 +1,7 @@
 <?php
-function db_create_article($link, $title_id, $title, $content, $id_category, $author){
+function db_create_article($link, $title, $title_id, $content, $id_category, $author){
 	// FIXME crate an article title column with : strtolower and a preg replace special character as éèà...
+
 	try{
 		$req = $link -> prepare("INSERT INTO pp_article 
 			(title_id, title, content, id_category, author)
@@ -28,6 +29,16 @@ function db_get_articles($link){
 
 	$req = $link -> prepare("SELECT * FROM pp_article");
 	$req->execute(array(
+	));
+	return $req;
+}
+
+function db_get_articles_rss($link,$limitation,$index_selection){
+
+	$req = $link -> prepare("SELECT * FROM pp_article ORDER BY `date` DESC LIMIT 0, 10");
+	$req->execute(array(
+		/*':index_selection' => $index_selection,
+		':limitation' => $limitation*/
 	));
 	return $req;
 }

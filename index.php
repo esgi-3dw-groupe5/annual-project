@@ -14,6 +14,8 @@ require_once(__ROOT__."/controller/common.php");
 require_once(__ROOT__."/controller/inscriptionController.php");
 require_once(__ROOT__."/controller/corePHP.php");
 require_once(__ROOT__."/controller/module.php");
+include_once(__ROOT__."/fluxRss.php");
+update_fluxRSS();
 access_control();
 $page = get_param('p', '');
 $article = get_param('article', '');

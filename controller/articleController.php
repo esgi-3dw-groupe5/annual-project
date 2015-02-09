@@ -56,10 +56,10 @@ function validate_article($POST,$value){
 		}
 		$author = $_SESSION['user']['pseudo'];
 		if($value == "create"){
-			$sucess = submit_article($title, $title, $content, $id_category, $author);
+			$sucess = submit_article($title, $content, $id_category, $author);
 		}
 		elseif ($value == "update") {
-			$success = update_article($title, $title,$content,$id_category,$value);
+			$success = update_article($title, $content,$id_category,$value);
 		}
 	}
 
@@ -77,10 +77,11 @@ function get_error_article($item, $parm1){
 	return $msg;
 }
 
-function submit_article($title,$title,$content,$id_category,$author)
+function submit_article($title,$content,$id_category,$author)
 {
+	$title_id = nettoyerChaine($title);
 	$link = db_connect();
-	$req  = db_create_article($link,$title,$title,$content,$id_category,$author);
+	$req  = db_create_article($link,$title,$title_id,$content,$id_category,$author);
 	return $req;
 }
 
@@ -91,10 +92,11 @@ function delete_article($id)
 	return $req;
 }
 
-function update_article($title,$title,$content,$id_category,$value)
+function update_article($title,$content,$id_category,$value)
 {
+	$title_id = nettoyerChaine($title);
 	$link = db_connect();
-	$req  = db_update_article($link, $title,$title,$content,$id_category,$value);
+	$req  = db_update_article($link, $title,$title_id,$content,$id_category,$value);
 	return $req;
 }
 

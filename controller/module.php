@@ -4,8 +4,7 @@
 		$link = db_connect();
 		$result = db_get_category($link);
 		while($data = $result -> fetch()){
-			if($page == "index"){}
-			elseif($data['tag'] == $page){
+			if($data['tag'] == $page ){
 				display_article();
 			}
 		}
@@ -39,6 +38,7 @@
 		require('config.php');
 		$link = db_connect();
 		$page = get_param('p', '');
+
 		$result = db_get_category_id($link, $page);
 		$data = $result -> fetch();
 		$value = $data['id']; 
@@ -49,12 +49,11 @@
 				require(__ROOT__.'/template/articleList.tpl');
 			$article = get_param('article', '');
 			if($article != ''){
-				$title_id = html_entity_decode( preg_replace('/-/', ' ', $article) );
 					
 				$result_cat = db_get_category_id($link, $page);
 				$data_cat = $result_cat -> fetch();
 
-				$result = db_get_article($link, $title_id, $data_cat['id']);
+				$result = db_get_article($link, $article, $data_cat['id']);
 				$data = $result -> fetch();
 			if( $result -> rowCount() > 0){
 				require(__ROOT__.'/template/articleRead.tpl');
@@ -64,10 +63,12 @@
 				while($data_comment = $result_id ->fetch()){
 					require(__ROOT__.'/template/commentRead.tpl');
 				}
+				break;
 			}
 			else{
 				// require tpl
 				echo '<h1>Oups,<br>Aucun article trouvé !<br><b>:-/</b></h1>';
+				break;
 				}
 			}
 		}
