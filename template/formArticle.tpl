@@ -7,11 +7,11 @@
 <form action="http://127.0.0.1/annual-project/" method="post" name="at_form" id="at_form">
   <div>
     <label for="at_title">Titre : </label>
-      <input type="text" id="at_title" name="at_title" required><br>    
+      <input type="text" id="at_title" name="at_title"required><br>    
   </div>
   <div>
     <label for="at_content">Texte : </label>
-      <textarea name="at_content" id="at_content" required></textarea>
+      <textarea name="at_content" id="at_content"></textarea>
   </div>
   <p>Catégorie :<br/>
     <select name="at_category" id="at_category">
