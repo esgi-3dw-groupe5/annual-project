@@ -34,13 +34,12 @@ function validate_comment($POST){
 		/*******************************************************************/
 		/*******************************CONTENT******************************/
 		/*******************************************************************/
-			$content = $POST["co_content"];
+			$content = strip_tags($POST["co_content"],'<p>');
 		}
 		else{
 				$errorMessage[0] = get_error_comment("default", null);
 					$error++;
 		}
-		//FIXME : access to $id_article and $id_author
 		$link =db_connect();
 
 		$id_author = $_SESSION['user']['pseudo'];
@@ -48,12 +47,11 @@ function validate_comment($POST){
 		$article = get_param('article','');
 		$page = get_param('p', '');
 
-		$title_id = html_entity_decode( preg_replace('/-/', ' ', $article) );
 
 		$result_cat = db_get_category_id($link, $page);
 		$data_cat = $result_cat -> fetch();
 
-		$result = db_get_article($link,$title_id,$data_cat['id']);
+		$result = db_get_article($link,$article,$data_cat['id']);
 		$data = $result -> fetch();
 
 		// if nb error = 0 -> COmment
@@ -63,6 +61,14 @@ function validate_comment($POST){
 	}
 
 	return $errorMessage;
+}
+
+function report_comment($POST){
+	//FIXME access id_comment
+	$link = db_connect();
+	$id_comment = $POST['id'];
+	$req = db_report_comment($link,$id_comment);
+	return $req;
 }
 
 function get_error_comment($item, $parm1){

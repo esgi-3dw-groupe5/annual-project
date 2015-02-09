@@ -1,8 +1,10 @@
 		<footer>
-			<a id="footer" href="">Mentions Légales</a> -
-			<a id="footer" href="">Conditions génerales d'utilisation</a> -
-			<a id="footer" href="">lien 3</a> -
-			<a id="footer" href="">lien 4</a> 
+			<div class="footer">
+				<a href="">Mentions Légales</a> -
+				<a href="">Conditions génerales d'utilisation</a> -
+				<a href="">lien 3</a> -
+				<a href="http://localhost/annual-project/flux_rss.xml">RSS</a>
+			</div>
 		</footer>
 	</body>
 </html>

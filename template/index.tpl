@@ -6,7 +6,6 @@
         <meta name="description" content="description de ma page">
 
 
-
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/coreAjax.js"></script>
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/datepicker.js"></script>

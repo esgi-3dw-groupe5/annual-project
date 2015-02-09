@@ -6,7 +6,8 @@ require_once($source."model/dbusers.php");
 require_once($source."model/dbarticle.php");
 
 
-function validate_article($POST){
+function validate_article($POST,$value){
+	access_control();
 	$eror = 0;
 	$errorMessage = array(
 		'0' => ""
@@ -52,7 +53,13 @@ function validate_article($POST){
 		/*******************************************************************/
 			$id_category = $POST["at_category"];
 		}
-		$sucess = submit_article($title, $title, $content, $id_category);
+		$author = $_SESSION['user']['pseudo'];
+		if($value == "create"){
+			$sucess = submit_article($title, $content, $id_category, $author);
+		}
+		elseif ($value == "update") {
+			$success = update_article($title, $content,$id_category,$value);
+		}
 	}
 
 	return $errorMessage;
@@ -69,24 +76,26 @@ function get_error_article($item, $parm1){
 	return $msg;
 }
 
-function submit_article($title,$title,$content,$id_category)
+function submit_article($title,$content,$id_category,$author)
 {
+	$title_id = nettoyerChaine($title);
 	$link = db_connect();
-	$req  = db_create_article($link,$title,$title,$content,$id_category);
+	$req  = db_create_article($link,$title,$title_id,$content,$id_category,$author);
 	return $req;
 }
 
-function delete_article($id_category)
+function delete_article($id)
 {
 	$link = db_connect();
-	$req  = db_delete_article($link,$id_category);
+	$req  = db_delete_article($link,$id);
 	return $req;
 }
 
-function update_article($title, $content, $id_category)
+function update_article($title,$content,$id_category,$value)
 {
+	$title_id = nettoyerChaine($title);
 	$link = db_connect();
-	$req  = db_update_article($link, $title, $content, $id_category);
+	$req  = db_update_article($link, $title,$title_id,$content,$id_category,$value);
 	return $req;
 }
 
