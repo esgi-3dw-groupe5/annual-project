@@ -1,9 +1,21 @@
-body{
-	background-image: url('../images/fond.jpg');
+html { 
+  margin:0;
+  padding:0;
+  /*background: url('../images/fondadmin1.jpg') no-repeat center fixed; */
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
+}
+
+body {
+	  margin:0;
+  padding:0;
 }
 header {
-	height: 90px;
+	height: 80px;
 	padding: 10px 10px 10px 10px;
+	background-color: rgb(67, 67, 67);
+	border: 5px solid grey;
+
 }
 
 h1 {
@@ -12,31 +24,52 @@ h1 {
 	position: relative;
 	top:-25px;
 	font-size: 30px;
+	margin-top: 45px;
+	color: rgba(241, 90, 36,0.8);
+}
+
+h2 {
+	text-align: center;
 }
 .img-top-left {
-	width: 100px;
-	height: 80px;
+	width: 280px;
+	height: 140px;
+	z-index: 50;
+	position: absolute;
+	top:-10px;	
+}
 
+.img-bottom-left {
+	width: 100%;
+	height: 50%;
+	z-index: 50;
 }
 .left-block {
 
-		width:19%;
+		width:18%;
 		display: inline-block;
 		vertical-align: top;
-		min-height: 600px;
-		background: rgba(54, 25, 25, .3);
+		min-height: 1000px;
+		border-right: 1px solid white;
 		margin:auto;
-		padding: 10px;
-		margin-right:5px;
+		padding: 0 0 20px 20px;
+		margin-right:40px;
+		background-color: rgb(217, 217, 217);
+		border: 5px solid grey;
+		border-top: 0;
+
 }
+
+.link {
+	margin-top: 20px;
+	float: right;
+}
+
 
 ul {
 	padding: 0;
 }
 
-h1 {
-	text-align: center;
-}
 h3{
 	display: inline-block;
 	width:15%;
@@ -49,10 +82,11 @@ h3{
 a {
 	color: black;
 	text-decoration: none;
-	margin-left: 10px;
+	margin-left: 5px 5px 0px 5px;
 }
 
 li{
+	
 	width: 100%;
 	list-style: none;
 	height: 30px;
@@ -60,8 +94,47 @@ li{
 	display: inline-block;
 }
 
+.menu-box {
+	padding: 10px 0px 2px 10px;
+	width: 100%;
+	border: 1px solid black;
+	border-left: 5px solid rgba(241, 90, 36,0.6);
+	background-color: rgb(67, 67, 67);
+
+}
+
+
+.menu-box li{
+    padding:10px;
+    color:#666;
+    text-decoration:none;
+    -webkit-transition: color .6s ease-in;
+    -moz-transition: color .6s ease-in;
+    -o-transition: color .6s ease-in;
+    transition: color .6s ease-in;
+}
+.menu-box:hover{
+   
+	border-left: 5px solid rgba(241, 90, 36,1);
+	text-decoration: none;
+	margin-left: 5px 5px 0px 5px;
+
+
+}
+
+.menu-box:active{
+   
+	border-left: 5px solid rgba(241, 90, 36,1);
+	text-decoration: none;
+	margin-left: 5px 5px 0px 5px;
+
+}
+
 .right-block {
-		width:78%;
+		width:70%;
 		display: inline-block;
 		vertical-align: top;
 }
+
+
+

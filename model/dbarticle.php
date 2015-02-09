@@ -42,6 +42,7 @@ function db_get_articles_rss($link,$limitation,$index_selection){
 	return $req;
 }
 
+
 function db_get_articles_by_cat($link, $value){
 
 	$req = $link -> prepare("SELECT * FROM pp_article WHERE pp_article.id_category = :id");
@@ -84,6 +85,15 @@ function db_get_article($link, $value, $id_category){
 	));
 	return $req;
 }
+
+function db_get_one_article($link,$value){
+
+	 $req = $link -> prepare("SELECT * FROM pp_article WHERE id = :value");
+	 $req->execute(array(
+	  ':value' => $value
+	 ));
+	 return $req;
+	}
 
 function db_delete_article($link, $value){
 	$req = $link -> prepare("DELETE FROM pp_article WHERE id = :value");

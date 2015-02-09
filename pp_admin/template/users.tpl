@@ -1,9 +1,13 @@
 <li>
 <?php 
-	printf('<a href="http://127.0.0.1/annual-project/pp_admin/%s"><h3>%s</h3><h3 class="email">%s</h3></a>
-				<h3>%s</h3>
-				<a href="">Modifier</a>
-				<a href="href="http://127.0.0.1/annual-project/pp_admin/%s">Supprimer</a>
-				', $data['id'], $data['pseudo'], $data['email'],$data['role'], $data['id']); ?>
+	printf('<h3>%s</h3>
+			<h3 class="email">%s</h3>
+			<h3>%s</h3>
+			<span class="link"> 
+				<a href="http://127.0.0.1/annual-project/pp_admin/?id=%s&edit=edit">Modifier</a>
+				<a href="http://127.0.0.1/annual-project/pp_admin/?id=%s&delete=delete">Supprimer</a>			
+			</span>			
+			
+			', $data['pseudo'], $data['email'],$data['role'], $data['id'], $data['id']); ?>
 </li>
 <hr>

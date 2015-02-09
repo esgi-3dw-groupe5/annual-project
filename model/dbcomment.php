@@ -43,11 +43,11 @@ function db_update_comment($link,$content,$value){
 	));
 }
 
-function db_get_all_comments($link){
+function db_get_all_report_comments($link){
 
-	$req = $link -> prepare("SELECT * FROM pp_comment");
-	$req->execute();
-	return $req;
+ $req = $link -> prepare("SELECT * FROM pp_comment WHERE status =1 ");
+ $req->execute();
+ return $req;
 }
 
 function db_report_comment($link, $id_comment){
