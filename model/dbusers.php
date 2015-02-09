@@ -28,17 +28,18 @@ function db_get_user($link, $value, $case = "email"){
 	return $req;
 }
 
-function db_create_user($link, $gender, $name, $firstname, $email, $password, $pseudo, $date){
+function db_create_user($link, $gender, $name, $firstname, $email, $password, $pseudo, $date, $cle){
 	try{
 		$req = $link -> prepare("INSERT INTO pp_users 
-			(gender, firstname, name, pseudo, email, password, birth_date)
+			(gender, firstname, name, pseudo, email, password, birth_date,cle)
 			VALUES( :gender,
 					:firstname,
 					:name,
 					:pseudo,
 					:email,
 					:password,
-					:birth_date) ");
+					:birth_date,
+                    :cle) ");
 		$success = $req->execute(array(
 					':gender' => $gender,
 					':firstname' => $firstname,
@@ -46,7 +47,8 @@ function db_create_user($link, $gender, $name, $firstname, $email, $password, $p
 					':pseudo' => $pseudo,
 					':email' => $email,
 					':password' => $password,
-					':birth_date' => $date
+					':birth_date' => $date,
+					':cle' => $cle
 				));
 		return $success;
 	}
