@@ -8,24 +8,34 @@ if(!file_exists('config.php')){
 	die();
 }
 require('config.php');
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project"); // php function ?
-require_once(__ROOT__."/controller/accessControl.php");
-require_once(__ROOT__."/controller/routeControl.php");
-require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/inscriptionController.php");
-require_once(__ROOT__."/controller/corePHP.php");
-require_once(__ROOT__."/controller/module.php");
+$source = $config['include_path'];
+require_once($source."controller/common.php");
+require_once($source."controller/accessControl.php");
+require_once($source."controller/routeControl.php");
+require_once($source."controller/corePHP.php");
+require_once($source."controller/inscriptionController.php");
+
+require_once($source."controller/module.php");
+
 access_control();
 route_control();
-
 
 $page = get_param('p', '');
 $article = get_param('article', '');
 	
 // debug($_GET);
 // debug($_SERVER['REQUEST_URI']);
-require_once(__ROOT__."/template/index.tpl");
-	render_articles($page);
-include(__ROOT__."/template/footer.tpl");
-debug($_SESSION);
+require_once($source."template/index.tpl");
+	// render_articles($page);
+include($source."template/footer.tpl");
+// debug($_SESSION);
 // debug($_SERVER['REQUEST_URI']);
+
+
+echo'<pre>';
+var_dump(__ROOT__);
+var_dump($page);
+var_dump($article);
+// var_dump($source);
+// var_dump($_SERVER);
+echo'</pre>';

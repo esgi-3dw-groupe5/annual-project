@@ -2,7 +2,7 @@
 <!--********** ARTICLE TEMPLATE *********-->
 <!--*************************************-->
 <?php
-    require_once(__ROOT__."/model/dbconnect.php");
+    require_once($source."model/dbconnect.php");
 ?>
 <form action="http://127.0.0.1/annual-project/" method="post" name="at_form" id="at_form">
   <div>

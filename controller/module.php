@@ -1,25 +1,23 @@
 <?php
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
-require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/accessControl.php");
-require_once(__ROOT__."/model/dbconnect.php");
-require_once(__ROOT__."/model/dbusers.php");
-require_once(__ROOT__."/model/dbcontent.php");
+require_once($source."controller/accessControl.php");
+require_once($source."model/dbconnect.php");
+require_once($source."model/dbusers.php");
+require_once($source."model/dbcontent.php");
 	function render_contents($content){
 		$link = db_connect();
 		switch ($content) {
 			case 'connection':
 				/*$result = db_get_content($link);*/
-				if( !$_SESSION['user']['connected'] ){include_once(__ROOT__."/template/formLogin.tpl");} 
+				if( !$_SESSION['user']['connected'] ){include_once($source."template/formLogin.tpl");} 
 				break;
 			case 'inscription':	
-				if( !$_SESSION['user']['connected'] ){include_once(__ROOT__."/template/formSignin.tpl");}
+				if( !$_SESSION['user']['connected'] ){include_once($source."template/formSignin.tpl");}
 				break;
 			case 'menu':
 				$result = db_get_content($link,'menu');
 
 				while ($data = $result -> fetch()) {
-					require(__ROOT__.'/template/contentList.tpl');
+					require($source.'template/contentList.tpl');
 				}
 
 				break;

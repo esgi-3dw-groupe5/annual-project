@@ -1,10 +1,9 @@
 <?php
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
-require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/accessControl.php");
-require_once(__ROOT__."/model/dbconnect.php");
-require_once(__ROOT__."/model/dbusers.php");
-require_once(__ROOT__."/model/dbarticle.php");
+require_once($source."controller/common.php");
+require_once($source."controller/accessControl.php");
+require_once($source."model/dbconnect.php");
+require_once($source."model/dbusers.php");
+require_once($source."model/dbarticle.php");
 
 
 function validate_article($POST){

@@ -1,6 +1,6 @@
 <?php
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
 function route_control(){
+	global $source;
 	$link = db_connect();
 	
 	$page = get_param('p', ''); 
@@ -17,7 +17,7 @@ function route_control(){
 
 		if ( !in_array($page, $category) ){
 			header("HTTP/1.x 404 Not Found");
-			$error = file_get_contents(__ROOT__."/template/documents/404.html");
+			$error = file_get_contents($source."template/documents/404.html");
 			echo $error;
 			exit;
 		}

@@ -9,7 +9,7 @@ function access_control(){
     }
 
     $page = get_param('p', '');
-    debug($_SESSION);
+    // debug($_SESSION);
     if( $page == "pp_admin" ){
     //     if(!isset($_SESSION['admin'] )){
     // //         $_SESSION['admin'] = [];

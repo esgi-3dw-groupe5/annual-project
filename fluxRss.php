@@ -70,7 +70,7 @@ function add_news_node(&$parent, $root, $id, $titre, $date)
 function rebuild_rss()
 {
         // on se connecte à la BDD
-        require_once(__ROOT__."/model/dbconnect.php");
+        require_once($source."model/dbconnect.php");
         $link = db_connect();
  
         // on récupère les news

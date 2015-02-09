@@ -1,7 +1,7 @@
 <?php
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
-require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/inscriptionController.php");
+if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."/annual-project/";
+require_once($source."controller/common.php");
+require_once($source."controller/inscriptionController.php");
 $displayErr=null;
 $action=null;
 
