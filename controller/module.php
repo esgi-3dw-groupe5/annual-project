@@ -62,6 +62,7 @@ require_once($source."model/dbcontent.php");
 	}
 
 	function display_article(){
+		global $source;
 		global $co_msgErr;
 
 		require('config.php');
@@ -75,7 +76,7 @@ require_once($source."model/dbcontent.php");
 		while($data = $req->fetch()){
 			$result_cat = db_get_category_tag($link, $data['id_category']);
 			$data_cat = $result_cat -> fetch();
-				require(__ROOT__.'/template/articleList.tpl');
+				require($source.'template/articleList.tpl');
 			$article = get_param('article', '');
 			if($article != ''){
 					
@@ -85,12 +86,12 @@ require_once($source."model/dbcontent.php");
 				$result = db_get_article($link, $article, $data_cat['id']);
 				$data = $result -> fetch();
 			if( $result -> rowCount() > 0){
-				require(__ROOT__.'/template/articleRead.tpl');
-				if( $_SESSION['user']['connected'] ){require(__ROOT__.'/template/formComment.tpl');}
+				require($source.'template/articleRead.tpl');
+				if( $_SESSION['user']['connected'] ){require($source.'template/formComment.tpl');}
 				
 				$result_id = db_get_comments($link, $data['id']);
 				while($data_comment = $result_id ->fetch()){
-					require(__ROOT__.'/template/commentRead.tpl');
+					require($source.'template/commentRead.tpl');
 				}
 				break;
 			}
