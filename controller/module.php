@@ -4,6 +4,7 @@ require_once($source."model/dbconnect.php");
 require_once($source."model/dbusers.php");
 require_once($source."model/dbcontent.php");
 	function render_contents($content){
+		global $source;
 		$link = db_connect();
 		switch ($content) {
 			case 'connection':

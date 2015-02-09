@@ -5,11 +5,7 @@
         <title>Pinnackl</title>
         <meta name="description" content="description de ma page">
 
-        <link href="<?php print($config['source']); ?>/assets/css/header.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/footer.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/form.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/main.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/formSignin.css" rel="stylesheet" media="all"/>
+
 
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/coreAjax.js"></script>
