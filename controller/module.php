@@ -32,33 +32,26 @@ require_once($source."model/dbcontent.php");
 		require('config.php');
 		$link = db_connect();
 		$result = db_get_category($link);
+		if($page == ''){display_all_articles();}
 		while($data = $result -> fetch()){
 			if($data['tag'] == $page ){
 				display_article();
 			}
+			else{}
 		}
-		/*switch ($page) { 
-			case 'technologie' :
-			display_article();
-				break;
-			case 'jeux-video' :
-			display_article();
-				break;
-			case 'cine-serie' :
-			display_article();
-				break;
-			case 'musique' :
-			display_article();
-				break;
-			case 'sport' :
-			display_article();
-				break;
-			case 'home';
-				break;				
-			default:
-			display_article();
-				break;
-		}*/
+	}
+
+	function display_all_articles(){
+		global $source;
+		require('config.php');
+		$link = db_connect();
+		$result = db_get_articles($link);
+		while($data = $result -> fetch()){
+			$result_cat = db_get_category_tag($link, $data['id_category']);
+			$data_cat = $result_cat -> fetch();
+			require($source.'template/articleList.tpl');
+		}
+		
 	}
 
 	function display_article(){
@@ -68,17 +61,20 @@ require_once($source."model/dbcontent.php");
 		require('config.php');
 		$link = db_connect();
 		$page = get_param('p', '');
+		$article = get_param('article', '');
 
 		$result = db_get_category_id($link, $page);
 		$data = $result -> fetch();
 		$value = $data['id']; 
 		$req = db_get_articles_by_cat($link, $value);
+
 		while($data = $req->fetch()){
-			$result_cat = db_get_category_tag($link, $data['id_category']);
-			$data_cat = $result_cat -> fetch();
-				require($source.'template/articleList.tpl');
-			$article = get_param('article', '');
-			if($article != ''){
+			if($article == ''){
+				$result_cat = db_get_category_tag($link, $data['id_category']);
+				$data_cat = $result_cat -> fetch();
+					require($source.'template/articleList.tpl');
+			}
+			elseif($article != ''){
 					
 				$result_cat = db_get_category_id($link, $page);
 				$data_cat = $result_cat -> fetch();
