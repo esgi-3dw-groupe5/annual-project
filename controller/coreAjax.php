@@ -16,6 +16,9 @@ if(isset($_POST['co_submit']) && !empty($_POST['co_submit'])) {
 if(isset($_POST['co_report']) && !empty($_POST['co_report'])) {
     $action = $_POST['co_report'];
 }
+if(isset($_POST['at_submit']) && !empty($_POST['at_submit'])) {
+    $action = $_POST['at_submit'];
+}
 if( isset($_POST['act']) && !empty($_POST['act']) ) {
     $action = $_POST['act'];
 }
@@ -65,6 +68,10 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
 
             echo $displayErr;
             return;
+        case 'envoyer' :
+            $displayErr = validate_article($_POST);
+            $displayErr = json_encode($displayErr);
+            $at_msgErr  = $displayErr[0];
         case 'co_report' :
             report_comment($_POST);
             return;
