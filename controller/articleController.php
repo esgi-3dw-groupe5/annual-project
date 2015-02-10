@@ -8,7 +8,7 @@ require_once($source."model/dbarticle.php");
 
 function validate_article($POST,$value){
 	access_control();
-	$eror = 0;
+	$error = 0;
 	$errorMessage = array(
 		'0' => ""
 	);
@@ -24,21 +24,17 @@ function validate_article($POST,$value){
 
 	if(isset($POST["at_submit"])){
 		if(isset($POST['ajax'])) $ajax = $POST['ajax'];
-		/*******************************************************************/
-		/****************************REQUIRE********************************/
-		/*******************************************************************/
-		if(	empty($POST["at_title"]) &&
-			empty($POST["at_content"]) &&
-			empty($POST["at_category"]) ){
-				$errorMessage[0] = get_error_article("default", null);
-					$error++;
-		}
+
 
 		if(!empty($POST["at_title"])){
 		/*******************************************************************/
 		/*******************************TITLE*******************************/
 		/*******************************************************************/
 			$title = $POST["at_title"];
+		}
+		else{
+			$errorMessage[0] = get_error_article("default", null);
+			$error++;
 		}
 
 		if(!empty($POST["at_content"])){
@@ -47,18 +43,31 @@ function validate_article($POST,$value){
 		/*******************************************************************/
 			$content = $POST["at_content"];
 		}
+		else{
+			$errorMessage[0] = get_error_article("default", null);
+			$error++;
+		}
 		if(!empty($POST["at_category"])){
 		/*******************************************************************/
 		/******************************CATEGORY*****************************/
 		/*******************************************************************/
 			$id_category = $POST["at_category"];
 		}
-		$author = $_SESSION['user']['pseudo'];
-		if($value == "create"){
-			$sucess = submit_article($title, $content, $id_category, $author);
+		else{
+			$errorMessage[0] = get_error_article("default", null);
+			$error++;
 		}
-		elseif ($value == "update") {
-			$success = update_article($title, $content,$id_category,$value);
+		$author = $_SESSION['user']['pseudo'];
+		if ($error == 0
+			&& !empty($title)
+			&& !empty($content)
+			&& !empty($id_category)){
+			if($value == "create"){
+				$sucess = submit_article($title, $content, $id_category, $author);
+			}
+			elseif ($value == "update") {
+				$success = update_article($title, $content,$id_category,$value);
+			}
 		}
 	}
 

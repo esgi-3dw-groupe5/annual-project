@@ -18,7 +18,7 @@ require_once($source."controller/inscriptionController.php");
 require_once($source."fluxRss.php");
 
 require_once($source."controller/module.php");
-
+update_fluxRSS();
 access_control();
 route_control();
 

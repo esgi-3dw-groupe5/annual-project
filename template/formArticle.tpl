@@ -5,10 +5,11 @@
     require_once($source."model/dbconnect.php");
 ?>
 <form action="http://127.0.0.1/annual-project/" method="post" name="at_form" id="at_form">
+      <span class="form-error" id="at_msgErr"><?php if(!empty($at_msgErr))echo $at_msgErr; ?></span>
   <div>
     <label for="at_title">Titre : </label>
 
-      <input type="text" id="at_title" name="at_title"required><br>    
+      <input type="text" id="at_title" name="at_title"><br>    
 
   </div>
   <div>
@@ -29,8 +30,8 @@
       ?>
     </select>
   </p>
-    <span class="form-error" id="at_msgErr"><?php if(!empty($si_msgErr_psw_1))echo $si_msgErr_psw_1; ?></span>
+
   <div>
-    <input type="submit" name="at_submit" value="Envoyer">
+    <input type="submit" name="at_submit" value="envoyer">
   </div>
 </form>
