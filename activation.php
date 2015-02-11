@@ -1,6 +1,6 @@
 <?php
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
-require_once(__ROOT__."/model/dbconnect.php");
+if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."annual-project/";
+require_once($source."/model/dbconnect.php");
 
 $db=db_connect();
 // Récupération des variables nécessaires à l'activation
@@ -21,14 +21,14 @@ if($req->execute(array(':pseudo' => $pseudo)) && $row = $req->fetch())
     // On teste la valeur de la variable $actif récupéré dans la BDD
     if($actif == '1') // Si le compte est déjà actif on prévient
     {
-        echo "Votre compte est d&eacute;j&agrave; actif !";
+        $message = "Votre compte est d&eacute;j&agrave; actif !";
     }
     else // Si ce n'est pas le cas on passe aux comparaisons
     {
         if($cle == $clebdd) // On compare nos deux clés	
         {
             // Si elles correspondent on active le compte !	
-            echo "Votre compte a bien &eacute;t&eacute; activ&eacute; !";
+            $message = "Votre compte a bien &eacute;t&eacute; activ&eacute; !";
 
             // La requête qui va passer notre champ actif de 0 à 1
             $req = $db->prepare("UPDATE pp_users SET actif = 1 WHERE pseudo like :pseudo ");
@@ -37,7 +37,7 @@ if($req->execute(array(':pseudo' => $pseudo)) && $row = $req->fetch())
         }
         else // Si les deux clés sont différentes on provoque une erreur...
         {
-            echo "Erreur ! Votre compte ne peut &ecirc;tre activ&eacute;...";
+            $message = "Erreur ! Votre compte ne peut &ecirc;tre activ&eacute;...";
         }
     }
 
@@ -46,10 +46,10 @@ if($req->execute(array(':pseudo' => $pseudo)) && $row = $req->fetch())
 }
 else // Si les deux clés sont différentes on provoque une erreur...
 {
-    echo "Erreur ! Votre compte ne peut &ecirc;tre activ&eacute;...";
+    $message = "Erreur ! Votre compte ne peut &ecirc;tre activ&eacute;...";
 }
 
 
-
+require_once($source."template/confirmail.tpl");
 
 ?>
