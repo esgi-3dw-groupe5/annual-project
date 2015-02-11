@@ -24,8 +24,6 @@
                 }    
                 td[class=w20]{ display:none; }    
             }
-            
-            
         </style>
 
     </head>
@@ -92,13 +90,11 @@
                                                                         </div>
                                                                     </td>
                                                                 </tr>
-                                                                
                                                             </tbody>
                                                         </table>
                                                         <!-- fin zone -->                                                   
 
                                                     </td>
-                                                    <td class="w30" class="w30"  width="30"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
