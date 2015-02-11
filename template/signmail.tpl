@@ -24,8 +24,8 @@
                 }    
                 td[class=w20]{ display:none; }    
             }
-            
-            
+
+
         </style>
 
     </head>
@@ -92,13 +92,12 @@
                                                                         </div>
                                                                     </td>
                                                                 </tr>
-                                                                
+
                                                             </tbody>
                                                         </table>
                                                         <!-- fin zone -->                                                   
 
                                                     </td>
-                                                    <td class="w30" class="w30"  width="30"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -122,7 +121,7 @@
                                                     <td class="w30"  width="30"></td>
                                                     <td class="w580"  width="580" valign="top">
                                                         <p align="right" class="pagebottom-content-left">
-                                                            <a style="color:#255D5C;" href="www.alsacreations.com"><span style="color:#255D5C;">Créé pour Alsacreations.com</span></a>
+                                                            <a style="color:#255D5C;" href="127.0.0.1/annual-project/"><span style="color:#255D5C;">Pinnackl</span></a>
                                                         </p>
                                                     </td>
 
