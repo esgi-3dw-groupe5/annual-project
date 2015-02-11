@@ -1,6 +1,8 @@
 RewriteEngine On
 RewriteBase /annual-project/
 
+# Activation
+RewriteRule ^activation/([a-z0-9_-]+)/?([a-z0-9_-]*)/?$    	activation.php?log=$1&cle=$2	[NC,L]
 
 RewriteRule ^index\.php$ - [L]
 
