@@ -6,6 +6,16 @@ require_once($source."model/dbcontent.php");
 	function render_contents($content){
 		global $source;
 		$link = db_connect();
+
+		$result = db_get_category($link);
+		if($content == ''){display_all_articles();}
+		while($data = $result -> fetch()){
+			if($data['tag'] == $content ){
+				display_article();
+			}
+			else{}
+		}	
+
 		switch ($content) {
 			case 'connection':
 				/*$result = db_get_content($link);*/
@@ -22,24 +32,17 @@ require_once($source."model/dbcontent.php");
 				}
 
 				break;
+			case 'form_article':
+				global $at_msgErr;
+
+				if( $_SESSION['user']['connected'] ){include_once($source."template/formArticle.tpl");}
+				break;
 			default:
 				# code...
 				break;
 		}
 	}
 
-	function render_articles($page){
-		require('config.php');
-		$link = db_connect();
-		$result = db_get_category($link);
-		if($page == ''){display_all_articles();}
-		while($data = $result -> fetch()){
-			if($data['tag'] == $page ){
-				display_article();
-			}
-			else{}
-		}
-	}
 
 	function display_all_articles(){
 		global $source;

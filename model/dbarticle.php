@@ -28,7 +28,6 @@ function db_create_article($link, $title, $title_id, $content, $id_category, $au
 function db_get_articles($link){
 
 	$req = $link -> query("SELECT * FROM pp_article");
-	// $req->execute();
 	return $req;
 }
 
@@ -54,8 +53,7 @@ function db_get_articles_by_cat($link, $value){
 
 function db_get_category($link){
 
-	$req = $link -> prepare("SELECT * FROM pp_categorie");
-	$req->execute();
+	$req = $link -> query("SELECT * FROM pp_categorie");
 	return $req;
 }
 

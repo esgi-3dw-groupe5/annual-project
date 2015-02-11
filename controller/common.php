@@ -28,7 +28,7 @@ echo '<pre>';
 echo '</pre>';
 }
 
-function nettoyerChaine($chaine)
+function cleanString($string)
 {
 	$caracteres = array(
 		'À' => 'a', 'Á' => 'a', 'Â' => 'a', 'Ä' => 'a', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ä' => 'a', '@' => 'a',
@@ -39,12 +39,12 @@ function nettoyerChaine($chaine)
 		'Œ' => 'oe', 'œ' => 'oe',
 		'$' => 's');
  
-	$chaine = strtr($chaine, $caracteres);
-	$chaine = preg_replace('#[^A-Za-z0-9]+#', '-', $chaine);
-	$chaine = trim($chaine, '-');
-	$chaine = strtolower($chaine);
+	$string = strtr($string, $caracteres);
+	$string = preg_replace('#[^A-Za-z0-9]+#', '-', $string);
+	$string = trim($string, '-');
+	$string = strtolower($string);
  
-	return $chaine;
+	return $string;
 }
 
 function is_submited($type){

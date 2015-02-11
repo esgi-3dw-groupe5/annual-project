@@ -26,5 +26,5 @@ $page = get_param('p', '');
 $article = get_param('article', '');
 
 require_once($source."template/index.tpl");
-	render_articles($page);
+	render_contents($page);
 include($source."template/footer.tpl");
