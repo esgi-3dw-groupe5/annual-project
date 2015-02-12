@@ -1,10 +1,12 @@
 <?php
+if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."annual-project/";
 
 function signmail($pseudo,$firstname,$email,$cle){
     
+    global $source;
     
     ob_start(); // turn on output buffering
-    include('signmail.php');
+    include($source.'template/signmail.tpl');
     $res = ob_get_contents(); // get the contents of the output buffer
     ob_end_clean(); //  clean (erase) the output buffer and turn off output buffering
 
@@ -59,7 +61,7 @@ function signmail($pseudo,$firstname,$email,$cle){
 
 
 
-    ini_set("SMTP", "smtp.celeste.fr");
+    ini_set("SMTP", "smtp.numericable.fr");
     ini_set("sendmail_from", $mail);
 
 

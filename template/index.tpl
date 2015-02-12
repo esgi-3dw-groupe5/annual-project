@@ -55,7 +55,7 @@
                 <div>
                     <?php render_contents('connection') ?>
                     <?php render_contents('inscription') ?>
-                     <?php if( $_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
+                    <?php render_contents('form_article') ?>
                 </div>
 
             </section>

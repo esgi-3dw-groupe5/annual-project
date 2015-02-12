@@ -10,7 +10,7 @@ function update_fluxRSS(){
         $xml .= ' <language>fr</language>';
         $xml .= ' <copyright>Pinnackl.eu</copyright>';
         $xml .= ' <managingEditor>rss@monsite-craym.eu</managingEditor>';
-        $xml .= ' <category>Tutoriel</category>';
+        $xml .= ' <category>Flux RSS</category>';
         $xml .= ' <generator>PHP/MySQL</generator>';
         $xml .= ' <docs>http://www.rssboard.org</docs>';
 
@@ -23,7 +23,7 @@ function update_fluxRSS(){
                 $cat = db_get_category_tag($link,$data['id_category']);
                 $data_cat = $cat->fetch();
                 $xml .= '<item>';
-                $xml .= '<title>'.'['.$data['author'].']'.stripcslashes($data['title']).'</title>';
+                $xml .= '<title>'.'['.$data_cat['tag'].']'.stripcslashes($data['title']).'</title>';
                 $xml .= '<link>'.'http://localhost/annual-project/'.$data_cat['tag'].'/'.$data['title_id'].'</link>';
                 $xml .= '<guid isPermaLink="true">'.'http://localhost/annual-project/'.$data_cat['tag'].'/'.$data['title_id'].'</guid>';
                 $xml .= '<pubDate>'.(date("D, d M Y H:i:s O", strtotime($data['date']))).'</pubDate>';

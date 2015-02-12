@@ -87,14 +87,12 @@
                                                                                 ou copier/coller dans votre navigateur internet
                                                                             </p>
                                                                             <p>
-                                                                                http://127.0.0.1/annual-project/activation.php?log=<?php echo urlencode($pseudo);?>&cle=<?php echo urlencode($cle);?>
+                                                                                http://127.0.0.1/annual-project/activation/<?php echo urlencode($pseudo);?>/<?php echo urlencode($cle);?>
                                                                             </p>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td class="w580"  width="580" height="1" bgcolor="#c7c5c5"></td>
-                                                                </tr>
+                                                                
                                                             </tbody>
                                                         </table>
                                                         <!-- fin zone -->                                                   

@@ -18,7 +18,7 @@ require_once($source."controller/inscriptionController.php");
 require_once($source."fluxRss.php");
 
 require_once($source."controller/module.php");
-
+update_fluxRSS();
 access_control();
 route_control();
 
@@ -26,5 +26,5 @@ $page = get_param('p', '');
 $article = get_param('article', '');
 
 require_once($source."template/index.tpl");
-	render_articles($page);
+	render_contents($page);
 include($source."template/footer.tpl");

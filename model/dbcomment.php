@@ -45,8 +45,7 @@ function db_update_comment($link,$content,$value){
 
 function db_get_all_report_comments($link){
 
- $req = $link -> prepare("SELECT * FROM pp_comment WHERE status =1 ");
- $req->execute();
+ $req = $link -> query("SELECT * FROM pp_comment WHERE status =1 ");
  return $req;
 }
 
