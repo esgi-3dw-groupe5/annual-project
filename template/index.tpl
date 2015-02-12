@@ -55,7 +55,7 @@
                 <div>
                     <?php render_contents('connection') ?>
                     <?php render_contents('inscription') ?>
-                    <?php render_contents('form_article') ?>
+                    <?php //render_contents('form_article') ?>
                 </div>
 
             </section>

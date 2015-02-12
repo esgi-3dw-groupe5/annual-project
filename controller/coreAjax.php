@@ -44,6 +44,8 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             // 10 -> Un-valid email address given
             // 11 -> All required field not filled
             // 12 -> Bad login given
+            // *********************Article*******************
+            // 13 -> Wrong image's format
 
             $displayErr = json_encode($displayErr);
 
@@ -69,9 +71,14 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             echo $displayErr;
             return;
         case 'envoyer' :
-            $displayErr = validate_article($_POST);
-            $displayErr = json_encode($displayErr);
-            $at_msgErr  = $displayErr[0];
+            $value = "create";
+            $displayErr       = validate_article($_POST,$_FILES,$value);
+            $displayErr       = json_encode($displayErr);
+            $at_msgErr        = $displayErr[0];
+            $at_msgErr_image  = $displayErr[13];
+            $at_msgErr_image1 = $displayErr[14];
+
+            echo $displayErr;
         case 'co_report' :
             report_comment($_POST);
             return;
