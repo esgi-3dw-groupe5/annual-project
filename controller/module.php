@@ -34,7 +34,8 @@ require_once($source."model/dbcontent.php");
 				break;
 			case 'form_article':
 				global $at_msgErr;
-
+				global $at_msgErr_image1;
+				global $at_msgErr_image;
 				if( $_SESSION['user']['connected'] ){include_once($source."template/formArticle.tpl");}
 				break;
 			default:

@@ -72,7 +72,6 @@ function validate_article($POST,$FILES,$value){
 			if ( !in_array($extension_upload,$valid_extension) ){
 				$errorMessage[13] = get_error_article("format", null);
 				$error++;
-				echo 'plop';
 			}
 
 			if ($FILES['at_image']['size'] > 2095125){

@@ -77,6 +77,7 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             $at_msgErr        = $displayErr[0];
             $at_msgErr_image  = $displayErr[13];
             $at_msgErr_image1 = $displayErr[14];
+            var_dump($displayErr);
 
             echo $displayErr;
         case 'co_report' :
