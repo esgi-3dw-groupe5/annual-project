@@ -9,8 +9,9 @@ require_once($source."model/dbcontent.php");
 
 		$result = db_get_category($link);
 		if($content == ''){display_all_articles();}
+		if($content == 'home'){display_user_article();}
 		while($data = $result -> fetch()){
-			if($data['tag'] == $content ){
+			if($data['tag'] == $content && $data['tag'] != 'home'){
 				display_article();
 			}
 			else{}
@@ -101,6 +102,28 @@ require_once($source."model/dbcontent.php");
 				break;
 				}
 			}
+		}
+	}
+
+	function display_user_article(){
+		global $source;
+		$link = db_connect();
+		access_control();
+		require('config.php');
+
+		$pseudo = $_SESSION['user']['pseudo'];
+		$result = db_get_user_id($link,$pseudo,'pseudo');
+		$data = $result->fetch();
+
+		$req = db_get_user_article($link,$data['id']);
+
+		while ($data_article = $req -> fetch()){
+			$result_article = db_get_one_article($link,$data_article['id_article']);
+			$data = $result_article -> fetch();
+			$result_cat = db_get_category_tag($link, $data['id_category']);
+
+			$data_cat = $result_cat -> fetch();
+			require($source.'template/articleList.tpl');
 		}
 	}
 ?>

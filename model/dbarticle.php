@@ -98,6 +98,7 @@ function db_delete_article($link, $value){
 	$req->execute(array(
 		':value' => $value
 	));
+	return $req;
 }
 
 function db_update_article($link,$title,$title_id,$content,$id_category,$value){
@@ -112,4 +113,32 @@ function db_update_article($link,$title,$title_id,$content,$id_category,$value){
 		':id_category'=> $id_category,
 		':value'   => $value
 	));
+	return $req;
+}
+
+function db_read_later($link,$id_user,$id_article){
+	$req = $link -> prepare("INSERT INTO pp_user_history (id_user,id_article,status) VALUES (:id_user,:id_article,1)");
+	$req->execute(array(
+		':id_user' 	  => $id_user,
+		':id_article' => $id_article
+	));
+	return $req;
+}
+
+function db_read($link,$id_user,$id_article){
+	$req = $link -> prepare("UPDATE pp_user_history SET status = 0 WHERE id_user = :id_user AND id_article = :id_article");
+	$req->execute(array(
+		':id_user' 	  => $id_user,
+		':id_article' => $id_article
+	));
+	return $req;
+}
+
+function db_get_user_article($link,$id_user){
+	$req = $link -> prepare("SELECT id_article FROM pp_user_history WHERE id_user = :id_user AND status = 1");
+	$req->execute(array(
+		':id_user' => $id_user
+	));
+
+	return $req;
 }

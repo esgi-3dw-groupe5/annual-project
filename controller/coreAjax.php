@@ -16,6 +16,12 @@ if(isset($_POST['co_submit']) && !empty($_POST['co_submit'])) {
 if(isset($_POST['co_report']) && !empty($_POST['co_report'])) {
     $action = $_POST['co_report'];
 }
+if(isset($_POST['at_read_later']) && !empty($_POST['at_read_later'])) {
+    $action = $_POST['at_read_later'];
+}
+if(isset($_POST['at_read']) && !empty($_POST['at_read'])) {
+    $action = $_POST['at_read'];
+}
 if(isset($_POST['at_submit']) && !empty($_POST['at_submit'])) {
     $action = $_POST['at_submit'];
 }
@@ -82,6 +88,14 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             echo $displayErr;
         case 'co_report' :
             report_comment($_POST);
+            return;
+            break;
+        case 'at_read_later' :
+            read_later($_POST);
+            return;
+            break;
+        case 'at_read' :
+            read($_POST);
             return;
             break;
         default:
