@@ -182,4 +182,20 @@ function read($POST){
 	$req = db_read($link,$data['id'],$id_article);
 	return $req;
 }
+
+function read_again($POST){
+	$link = db_connect();
+
+	//Récupération id utilisateur
+	access_control();
+	$pseudo = $_SESSION['user']['pseudo'];
+	$result = db_get_user_id($link,$pseudo,'pseudo');
+	$data = $result->fetch();
+
+	//Récupération id article
+	$id_article = $POST['id_article'];
+
+	$req = db_read_again($link,$data['id'],$id_article);
+	return $req;
+}
 ?>

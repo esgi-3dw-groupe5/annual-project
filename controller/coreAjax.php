@@ -19,9 +19,6 @@ if(isset($_POST['co_report']) && !empty($_POST['co_report'])) {
 if(isset($_POST['at_read_later']) && !empty($_POST['at_read_later'])) {
     $action = $_POST['at_read_later'];
 }
-if(isset($_POST['at_read']) && !empty($_POST['at_read'])) {
-    $action = $_POST['at_read'];
-}
 if(isset($_POST['at_submit']) && !empty($_POST['at_submit'])) {
     $action = $_POST['at_submit'];
 }
@@ -91,11 +88,22 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             return;
             break;
         case 'at_read_later' :
-            read_later($_POST);
-            return;
-            break;
-        case 'at_read' :
-            read($_POST);
+            $link = db_connect();
+            access_control();
+            $pseudo = $_SESSION['user']['pseudo'];
+            $result = db_get_user_id($link,$pseudo,'pseudo');
+            $data = $result->fetch();
+            $req = $link -> prepare("SELECT status FROM pp_user_history WHERE id_user = :id_user AND id_article = :id_article");
+            $req->execute(array(
+                ':id_user'    => $data['id'],
+                ':id_article' => $_POST['id_article']
+            ));
+            $data = $req -> fetch();
+            var_dump($data);
+
+            if($data['status'] == 'nonlu'){read_again($_POST);}
+            elseif($data['status'] == 'lu'){read($_POST);}
+            elseif($data['status'] == false){read_later($_POST);}
             return;
             break;
         default:
