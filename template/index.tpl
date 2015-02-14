@@ -14,6 +14,7 @@
         <script type="text/javascript" src="<?php print($uri); ?>/assets/js/datepicker.js"></script>
         <script type="text/javascript" src="<?php print($uri); ?>/assets/js/clock.js"></script>
         <script type="text/javascript" src="<?php print($uri); ?>/assets/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/cookie.js"></script>
         <script type="text/javascript">
         tinymce.init({
             selector: "textarea#at_content",
@@ -56,5 +57,7 @@
         </header>
         <aside>
             <?php render_contents('connection') ?>
+            <?php render_contents('facet_range') ?>
+
         </aside>
         <section >
