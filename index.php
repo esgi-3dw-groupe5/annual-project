@@ -28,7 +28,7 @@ route_control();
 
 $page = get_param('p', '');
 $article = get_param('article', '');
-
+create_coockie();
 require($source."template/index.tpl");
 	page_controller($mode, $page);
 	// render_contents('form_article');
