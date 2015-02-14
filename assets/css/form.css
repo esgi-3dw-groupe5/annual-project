@@ -1,0 +1,58 @@
+.form-error {
+    color:darkred;
+    
+}
+.form-error:before {
+	/*content:"x";*/
+}
+a {
+	color: white;
+}
+a:hover {
+	color: black;
+}
+label.li_form {
+	font-size: 90%;
+	display: inline-block;
+	width: 70px;
+	text-align: center;
+	color: #D9D9D9;
+}
+label {
+	font-size: 90%;
+	display: inline-block;
+	width: 110px;
+	text-align: center;
+	color: #D9D9D9;
+}
+#li_form {
+	margin-top: 10px;
+	margin-bottom: 30px;
+	text-align: center;
+	/*border: 2px solid black;*/
+	width: 100%;
+	/*box-shadow: 8px 8px 10px #D83F3D;*/
+	background-color: #222222;
+}
+#si_form {
+	/*float: right;*/
+	text-align: center;
+	/*border: 2px solid black;*/
+	padding: 10px;
+	margin-right: 300px;
+	width: 400px;
+	/*box-shadow: 8px 8px 10px #D83F3D;*/
+	background-color: #222222;
+}
+@media screen and (max-width: 1200px) and (min-width: 960px) {
+	#li_form{font-size: 90%; width: 280px; margin-left: 50px;}
+	#si_form{font-size: 90%; width: 280px; margin-right: 50px;}
+}
+@media screen and (max-width: 960px) and (min-width: 480px) {
+	#li_form{font-size: 80%; width: 280px; margin-left: auto; margin-right: auto; float: center;}
+	#si_form{font-size: 80%; width: 280px; margin-left: auto; margin-right: auto; float: center;}
+}
+@media screen and (max-width: 480px) {
+	#li_form{font-size: 70%; width: 230px; margin-left: auto; margin-right: auto; float: center;}
+	#si_form{font-size: 70%; width: 230px; margin-left: auto; margin-right: auto; float: center;}
+}

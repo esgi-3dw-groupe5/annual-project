@@ -1,17 +1,18 @@
 RewriteEngine On
-RewriteBase /annual-project/
+RewriteBase /annual-project
+#	home access
+RewriteRule    ^home/([a-z0-9]+)/?$    index.php?p=home&usr=$1	   			[NC,L]
 
-# Activation
-RewriteRule ^activation/([a-z0-9_-]+)/?([a-z0-9_-]*)/?$    	activation.php?log=$1&cle=$2	[NC,L]
-
-RewriteRule ^index\.php$ - [L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+#	categorie access
+RewriteRule    ^cine-serie/?$    	index.php?p=cine-serie			   		[NC,L]
+RewriteRule    ^technologie/?$  	index.php?p=technologie			   		[NC,L]
+RewriteRule    ^jeux-video/?$  		index.php?p=jeux-video				   	[NC,L]
+RewriteRule    ^musique/?$   		index.php?p=musique					   	[NC,L]
+RewriteRule    ^sport/?$   			index.php?p=sport					   	[NC,L]
 
 #	article categorie access
-RewriteRule    ^([a-z0-9_-]+)/?([a-z0-9_-]*)/?$    	index.php?p=$1&article=$2	[NC,L]
+RewriteRule    ^([a-z0-9_-]+)/([a-z0-9_-]+)/?$    index.php?p=$1&article=$2			   	[NC,L]
 
 #	document error
-#ErrorDocument 403 /annual-project/template/documents/403.html
-#ErrorDocument 404 /annual-project/template/documents/404.html
+ErrorDocument 403 /annual-project/template/documents/403.html
+ErrorDocument 404 /annual-project/template/documents/404.html

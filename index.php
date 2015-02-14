@@ -8,28 +8,17 @@ if(!file_exists('config.php')){
 	die();
 }
 require('config.php');
-
-$uri = $config['source'];
-$source = $config['include_path'];
-$color = "";
-$mode = "article";
-
-require_once($source."controller/common.php");
-require_once($source."controller/accessControl.php");
-require_once($source."controller/routeControl.php");
-require_once($source."controller/corePHP.php");
-require_once($source."controller/inscriptionController.php");
-require_once($source."fluxRss.php");
-
-require_once($source."controller/module.php");
-update_fluxRSS();
+if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
+require_once(__ROOT__."/controller/accessControl.php");
+require_once(__ROOT__."/controller/common.php");
+require_once(__ROOT__."/controller/inscriptionController.php");
+require_once(__ROOT__."/controller/corePHP.php");
+require_once(__ROOT__."/controller/module.php");
 access_control();
-route_control();
-
 $page = get_param('p', '');
 $article = get_param('article', '');
-create_coockie();
-require($source."template/index.tpl");
-	page_controller($mode, $page);
-	// render_contents('form_article');
-require($source."template/footer.tpl");
+require_once(__ROOT__."/template/index.tpl");
+	render_articles($page);
+include(__ROOT__."/template/footer.tpl");
+// debug($_SESSION);
+// debug($_SERVER);

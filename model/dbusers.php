@@ -28,18 +28,17 @@ function db_get_user($link, $value, $case = "email"){
 	return $req;
 }
 
-function db_create_user($link, $gender, $name, $firstname, $email, $password, $pseudo, $date, $cle){
+function db_create_user($link, $gender, $name, $firstname, $email, $password, $pseudo, $date){
 	try{
 		$req = $link -> prepare("INSERT INTO pp_users 
-			(gender, firstname, name, pseudo, email, password, birth_date,cle)
+			(gender, firstname, name, pseudo, email, password, birth_date)
 			VALUES( :gender,
 					:firstname,
 					:name,
 					:pseudo,
 					:email,
 					:password,
-					:birth_date,
-                    :cle) ");
+					:birth_date) ");
 		$success = $req->execute(array(
 					':gender' => $gender,
 					':firstname' => $firstname,
@@ -47,8 +46,7 @@ function db_create_user($link, $gender, $name, $firstname, $email, $password, $p
 					':pseudo' => $pseudo,
 					':email' => $email,
 					':password' => $password,
-					':birth_date' => $date,
-					':cle' => $cle
+					':birth_date' => $date
 				));
 		return $success;
 	}
@@ -57,31 +55,4 @@ function db_create_user($link, $gender, $name, $firstname, $email, $password, $p
 		debug($e);
 		die();
 	}
-
-
 }
-
-function db_get_all_user($link){
-
-	$req = $link -> prepare("SELECT * FROM pp_users");
-	$req->execute();
-	return $req;
-}
-
-function db_get_role_user($link,$value){
-
-	$req = $link -> prepare("SELECT role FROM pp_users WHERE id:value");
-	$req->execute(array(
-		':value'   => $value
-	));
-	return $req;
-}
-
-function db_get_user_id($link,$pseudo){
-	$req = $link -> prepare("SELECT id FROM pp_users WHERE pseudo = :pseudo");
-	$req->execute(array(
-		':pseudo'   => $pseudo
-	));
-	return $req;	
-}
-
