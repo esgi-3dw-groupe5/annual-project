@@ -9,7 +9,11 @@ if(!file_exists('config.php')){
 }
 require('config.php');
 
+$uri = $config['source'];
 $source = $config['include_path'];
+$color = "";
+$mode = "article";
+
 require_once($source."controller/common.php");
 require_once($source."controller/accessControl.php");
 require_once($source."controller/routeControl.php");
@@ -25,6 +29,7 @@ route_control();
 $page = get_param('p', '');
 $article = get_param('article', '');
 
-require_once($source."template/index.tpl");
-	render_contents($page);
-include($source."template/footer.tpl");
+require($source."template/index.tpl");
+	page_controller($mode, $page);
+	// render_contents('form_article');
+require($source."template/footer.tpl");

@@ -5,12 +5,15 @@
         <title>Pinnackl</title>
         <meta name="description" content="description de ma page">
 
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/main.css">
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/nav.css">
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/sidebar.css">
 
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/coreAjax.js"></script>
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/datepicker.js"></script>
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/clock.js"></script>
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/coreAjax.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/datepicker.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/clock.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript">
         tinymce.init({
             selector: "textarea#at_content",
@@ -36,31 +39,22 @@
         });
         
         </script>
+        <?php set_page_color($color); ?>
     </head>
     <body>
-        <?php 
-        include("header.tpl"); 
-        ?>
-
-        <div  class="content">
-            <section >
-                <h1>
-                    <?php
-                        if( $_SESSION['user']['connected'] ){
-                            print($_SESSION['user']['pseudo']);
-                            printf("<a href='%s?act=logout'>logout</a>",$config['source']);
-                        }
-                    ?>
-                </h1>
-                <div>
-                    <?php render_contents('connection') ?>
-                    <?php render_contents('inscription') ?>
-                    <?php //render_contents('form_article') ?>
-                </div>
-
-            </section>
-
-            <section class="">
-                <div id="clock">
-                </div>
-                <div class="core-article">
+        <header>
+            <nav role='navigation' class="main-nav" id="main-nav">
+                <ul id="main-nav-list">
+                    <li>
+                      <a class="h-logo" href="/annual-project/">
+                        <img src="<?php print($uri); ?>/img/logo-gris-01.png">
+                      </a>
+                    </li>
+                    <?php render_contents('menu') ?>
+                </ul>
+            </nav>
+        </header>
+        <aside>
+            <?php render_contents('connection') ?>
+        </aside>
+        <section >

@@ -72,3 +72,21 @@ function wd_remove_accents($str, $charset='utf-8')
     
     return $str;
 }
+
+function set_page_color($color){
+	if($color == ""){
+		$color = "#696969";
+	}
+	$style = sprintf("
+		<style>
+			header{
+				border-bottom: solid %s thin;
+			}
+			footer{
+				border-top: solid %s thin;
+			}
+
+		</style>
+		",$color,$color);
+	print $style;
+}

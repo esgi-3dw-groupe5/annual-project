@@ -98,6 +98,7 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
 
             break;
         case 'connexion' :
+            // use PRG pattern V2
             $displayErr =  validate_field($_POST);
 
             $li_msgErr          =   $displayErr[12];

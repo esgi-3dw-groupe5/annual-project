@@ -16,11 +16,11 @@
       <option value="">Selectionnez une catégorie</option>
       <?php
         $link = db_connect();
-        $categorie = $link -> prepare("SELECT * FROM pp_categorie");
+        $categorie = $link -> prepare("SELECT * FROM pp_page");
         $categorie -> execute();
         while($affiche = $categorie->fetch())
         {
-          echo '<option value="'.$affiche['id'].'">'.$affiche['name_categ'].'</option>';
+          echo '<option value="'.$affiche['id'].'">'.$affiche['name_category'].'</option>';
         } 
       ?>
     </select>

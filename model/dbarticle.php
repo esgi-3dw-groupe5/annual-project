@@ -1,6 +1,6 @@
 <?php
 function db_create_article($link, $title, $title_id, $content, $id_category, $author){
-	// FIXME crate an article title column with : strtolower and a preg replace special character as éèà...
+	// FIXME crate an article title column with : strtolower and a preg replace special character AS éèà...
 
 	try{
 		$req = $link -> prepare("INSERT INTO pp_article 
@@ -25,18 +25,30 @@ function db_create_article($link, $title, $title_id, $content, $id_category, $au
 	}
 }
 
-function db_get_articles($link){
+function db_get_articles($link){ // complete with the session limit values
+	access_control();
+	
+	$range = range('b', 'z');
+	$request = sprintf("SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = 1 LIMIT %s) AS a ", 2);
+	$i = 0;
+	$result = db_get_category($link);
 
-	$req = $link -> query("SELECT * FROM pp_article");
+	while($data = $result -> fetch()){
+		$request .= sprintf(" UNION SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT %s) AS %s", $data['id'], 2 , $range[$i]);
+		$i++;
+	}
+	$query = $request." order by a_date DESC";
+	$req = $link -> prepare($query);
+	$req -> execute();
 	return $req;
 }
 
-function db_get_articles_rss($link,$limitation,$index_selection){
+function db_get_articles_rss($link,$LIMITation,$index_selection){
 
 	$req = $link -> prepare("SELECT * FROM pp_article ORDER BY `date` DESC LIMIT 0, 10");
 	$req->execute(array(
 		/*':index_selection' => $index_selection,
-		':limitation' => $limitation*/
+		':LIMITation' => $LIMITation*/
 	));
 	return $req;
 }
@@ -44,7 +56,7 @@ function db_get_articles_rss($link,$limitation,$index_selection){
 
 function db_get_articles_by_cat($link, $value){
 
-	$req = $link -> prepare("SELECT * FROM pp_article WHERE pp_article.id_category = :id");
+	$req = $link -> prepare("SELECT * FROM pp_article WHERE pp_article.id_category = :id order by date DESC");
 	$req->execute(array(
 		':id' => $value
 	));
@@ -53,13 +65,13 @@ function db_get_articles_by_cat($link, $value){
 
 function db_get_category($link){
 
-	$req = $link -> query("SELECT * FROM pp_categorie");
+	$req = $link -> query("SELECT * FROM pp_category");
 	return $req;
 }
 
 function db_get_category_tag($link, $value){
 
-	$req = $link -> prepare("SELECT * FROM pp_categorie WHERE pp_categorie.id = :id");
+	$req = $link -> prepare("SELECT * FROM pp_category WHERE pp_category.id = :id");
 	$req->execute(array(
 		':id' => $value
 	));
@@ -67,7 +79,7 @@ function db_get_category_tag($link, $value){
 }
 function db_get_category_id($link, $value){
 
-	$req = $link -> prepare("SELECT * FROM pp_categorie WHERE pp_categorie.tag = :tag");
+	$req = $link -> prepare("SELECT * FROM pp_category WHERE pp_category.tag = :tag");
 	$req->execute(array(
 		':tag' => $value
 	));

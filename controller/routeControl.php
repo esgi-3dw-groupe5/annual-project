@@ -1,5 +1,10 @@
 <?php
 function route_control(){
+	// Pages colors
+	global $color;
+	// Pages mode
+	global $mode;
+	
 	global $source;
 	$link = db_connect();
 	
@@ -7,12 +12,17 @@ function route_control(){
 	$article = get_param('article', '');
 
 	if($page != ''){
-		$result = db_get_content($link,'menu');	
+		$result = db_get_content($link,'page');
 		$data = $result -> fetchAll();
 
 		$category = [];
+
 		foreach ($data as $key => $value) {
 			$category[] = $value['tag'];
+
+			if($value['tag'] == $page){
+				$color = $value['color'];
+			}
 		}
 
 		if ( !in_array($page, $category) ){

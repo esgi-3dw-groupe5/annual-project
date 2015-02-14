@@ -57,7 +57,7 @@
 			  </ul>
 			</nav>
 		</header>
-		<hr class="style-one">
+		<!-- <hr class="style-one"> -->
 		<aside>
 			<div class="range">
 			    <h1>Fréquences des actus</h1>
