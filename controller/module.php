@@ -156,6 +156,7 @@ require_once($source."model/dbcontent.php");
 
 	function display_user_article(){
 		global $source;
+		global $uri;
 		$link = db_connect();
 		access_control();
 		require('config.php');
