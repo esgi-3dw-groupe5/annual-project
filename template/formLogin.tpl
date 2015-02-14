@@ -1,7 +1,7 @@
 <!--*************************************-->
 <!--*********** LOGIN TEMPLATE **********-->
 <!--*************************************-->
-<div >
+<div class="li_form">
     <form method="post" action="<?php print($_SESSION['url']); ?>" class="" id="li_form" name="li_form">
         <h2>Connexion</h2>
             <div>
