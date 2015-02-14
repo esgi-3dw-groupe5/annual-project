@@ -90,3 +90,19 @@ function set_page_color($color){
 		",$color,$color);
 	print $style;
 }
+
+function create_coockie(){
+	$link = db_connect();
+	$result = db_get_category($link);
+
+	$facet  = [];
+
+	while($data = $result -> fetch()){
+		$facet[$data['tag']] = 5;
+	}
+
+	$cookie_value = serialize($facet);
+	$cookie_name = "facet";
+	
+	setcookie($cookie_name, $cookie_value, 0, "/");
+}

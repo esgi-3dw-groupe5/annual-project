@@ -67,6 +67,10 @@ require_once($source."model/dbcontent.php");
 				global $at_msgErr_image;
 				if( $_SESSION['user']['connected'] ){include_once($source."template/formArticle.tpl");}
 				break;
+			case 'facet_range':
+
+				require($source.'template/asideFacet.tpl');
+				break;
 			default:
 				# code...
 				break;
