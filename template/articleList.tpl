@@ -20,11 +20,11 @@
 				function change_state(article){
 					var id_article = $(article).attr('data-id-article');
 					var id_img = "at_read_later_"+id_article;
-					if(document.getElementById(id_img).src=="http://127.0.0.1/annual-project/images/etoile_pleine.png"){
-					document.getElementById(id_img).src="http://127.0.0.1/annual-project/images/etoile_vide.png";
+					if(document.getElementById(id_img).src=="/images/etoile_pleine.png"){
+					document.getElementById(id_img).src="/annual-project/images/etoile_vide.png";
 					}
 					else{
-					document.getElementById(id_img).src="http://127.0.0.1/annual-project/images/etoile_pleine.png";
+					document.getElementById(id_img).src="/annual-project/images/etoile_pleine.png";
 					}
 					var send = {};
 
@@ -34,7 +34,7 @@
 
 					$.ajax({
 						type : "POST",
-	     				url  : "http://127.0.0.1/annual-project/controller/coreAjax.php",
+	     				url  : "/annual-project/controller/coreAjax.php",
 	     				data : send,
 	     				success: function(data){
 	     					console.log(data);
