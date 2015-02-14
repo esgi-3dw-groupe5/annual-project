@@ -148,7 +148,7 @@ function db_read($link,$id_user,$id_article,$status){
 	return $req;
 }
 
-function db_get_status($link,$id_user,$id_article){
+function db_get_status($link, $id_user, $id_article){
 	$req = $link -> prepare("SELECT status FROM pp_user_history WHERE id_user = :id_user AND id_article = :id_article");
     $req->execute(array(
         ':id_user'    => $id_user,
@@ -158,7 +158,7 @@ function db_get_status($link,$id_user,$id_article){
 }
 
 function db_get_user_article($link,$id_user){
-	$req = $link -> prepare("SELECT id_article FROM pp_user_history WHERE id_user = :id_user AND status = 'nonlu'");
+	$req = $link -> prepare("SELECT id_article FROM pp_user_history WHERE id_user = :id_user AND status = 'unread'");
 	$req->execute(array(
 		':id_user' => $id_user
 	));

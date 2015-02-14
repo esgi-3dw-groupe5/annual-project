@@ -71,6 +71,10 @@ require_once($source."model/dbcontent.php");
 
 				require($source.'template/asideFacet.tpl');
 				break;
+			case 'read_state':
+
+
+				break;
 			default:
 				# code...
 				break;
@@ -102,6 +106,19 @@ require_once($source."model/dbcontent.php");
 		while($data = $result -> fetch()){
 			$result_cat = db_get_category_tag($link, $data['id_category']);
 			$data_cat = $result_cat -> fetch();
+
+			$data_user = db_get_user_id($link) -> fetch();
+			$id_user = $data_user['id'];
+			$data_status = db_get_status($link, $id_user, $data['id']) -> fetch();
+
+			if( $data_status == false ||  $data_status['status'] == "read"){
+				$read = "";
+				$unread = "style='display:none'";
+			}
+			else{
+				$read = "style='display:none'";
+				$unread = "";
+			}
 			require($source.'template/articleList.tpl');
 		}
 		

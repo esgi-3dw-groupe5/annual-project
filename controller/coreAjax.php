@@ -19,9 +19,6 @@ if(isset($_POST['co_report']) && !empty($_POST['co_report'])) {
 if(isset($_POST['at_read_later']) && !empty($_POST['at_read_later'])) {
     $action = $_POST['at_read_later'];
 }
-if(isset($_POST['at_historic']) && !empty($_POST['at_historic'])) {
-    $action = $_POST['at_historic'];
-}
 if(isset($_POST['at_submit']) && !empty($_POST['at_submit'])) {
     $action = $_POST['at_submit'];
 }
@@ -83,6 +80,7 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             $at_msgErr        = $displayErr[0];
             $at_msgErr_image  = $displayErr[13];
             $at_msgErr_image1 = $displayErr[14];
+            var_dump($displayErr);
 
             echo $displayErr;
         case 'co_report' :
@@ -91,30 +89,22 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             break;
         case 'at_read_later' :
             $link = db_connect();
-
-            $result = db_get_user_id($link);
+            access_control();
+            $pseudo = $_SESSION['user']['pseudo'];
+            $result = db_get_user_id($link,$pseudo,'pseudo');
             $data = $result->fetch();
-            $id_user = $data['id'];
-            $id_article = $_POST['id_article'];
-            $req = db_get_status($link,$id_user,$id_article);
+            $req = $link -> prepare("SELECT status FROM pp_user_history WHERE id_user = :id_user AND id_article = :id_article");
+            $req->execute(array(
+                ':id_user'    => $data['id'],
+                ':id_article' => $_POST['id_article']
+            ));
             $data = $req -> fetch();
+            var_dump($data);
 
-            if($data['status'] == 'nonlu'){$status = 'lu'; read($_POST,$status,$id_user,$id_article);}
-            elseif($data['status'] == 'lu'){$status = 'nonlu'; read($_POST,$status,$id_user,$id_article);}
-            elseif($data['status'] == false){$status = 'notset_nonlu'; read($_POST,$status,$id_user,$id_article);}
+            if($data['status'] == 'unread'){read_again($_POST);}
+            elseif($data['status'] == 'read'){read($_POST);}
+            elseif($data['status'] == false){read_later($_POST);}
             return;
-            break;
-        case 'at_historic':
-            $link = db_connect();
-            $result = db_get_user_id($link);
-            $data = $result->fetch();
-            $id_user = $data['id'];
-            $id_article = $_POST['id_article'];
-            $req = db_get_status($link,$id_user,$id_article);
-            $data = $req -> fetch();
-
-            if($data['status'] == false){$status = 'notset_lu'; read($_POST,$status,$id_user,$id_article);}
-            elseif($data['status'] == 'nonlu'){$status = 'lu'; read($_POST,$status,$id_user,$id_article);}
             break;
         default:
             
