@@ -17,6 +17,8 @@ require_once($source."controller/corePHP.php");
 
 require('../config.php');
 
+secure_admin();
+
 $comment = get_param('comment', '');
 $category = get_param('category', '');
 $article = get_param('article', '');
@@ -39,21 +41,22 @@ if($comment != '' && $delete  == "delete")
 {	
     render_contents('deletecomment'); 
 }
-	else if($article != '' && $delete  == "delete")
-	{	
-	    render_contents('deletearticle'); 
-	}
-		else if( $delete == 'delete' && $id != '')
-		{	
-		    render_contents('deleteuser');                         
-		} 
-			else if( $edit == "edit" && $id != '')
-			{	
-			    render_contents('editusers');                        
-			}
-				else if($article != '' &&  $edit == "edit")
-				{
-				     render_contents('editarticle');
-				}else include($source."pp_admin/template/content.tpl");
+else if($article != '' && $delete  == "delete")
+{	
+    render_contents('deletearticle'); 
+}
+else if( $delete == 'delete' && $id != '')
+{	
+    render_contents('deleteuser');                         
+} 
+else if( $edit == "edit" && $id != '')
+{	
+    render_contents('editusers');                        
+}
+else if($article != '' &&  $edit == "edit")
+{
+     render_contents('editarticle');
+}else include($source."pp_admin/template/content.tpl");
 
+echo $_SESSION['Message'];
 ?>
