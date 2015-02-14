@@ -154,15 +154,15 @@ function update_article($title,$title_id,$content,$id_category,$value)
 
 function read($POST,$status,$id_user,$id_article){
 	$link = db_connect();
-	if($status == 'lu' || $status == 'nonlu'){
+	if($status == 'read' || $status == 'unread'){
 		$req = db_read($link,$id_user,$id_article,$status);		
 	}
 	elseif($status == 'notset_nonlu'){
-		$status = 'nonlu';
+		$status = 'unread';
 		$req = db_read_later($link,$id_user,$id_article,$status);
 	}
 	elseif($status == 'notset_lu'){
-		$status = 'lu';
+		$status = 'read';
 		$req = db_read_later($link,$id_user,$id_article,$status);
 	}	
 

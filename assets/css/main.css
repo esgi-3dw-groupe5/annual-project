@@ -115,3 +115,20 @@ hr.style-one {
 .content{
 	margin: 3%;
 }
+.read{
+	margin:none;
+	border: none;
+	width: 20px;
+	height: 20px;
+	background: url("/annual-project/images/etoile_vide.png");
+	background-repeat: no-repeat;
+	
+}
+.unread{
+	margin:none;
+	border: none;
+	width: 20px;
+	height: 20px;
+	background: url("/annual-project/images/etoile_pleine.png") !important;
+	background-repeat: no-repeat;
+}
