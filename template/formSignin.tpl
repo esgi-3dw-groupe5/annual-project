@@ -1,6 +1,7 @@
 <!--*************************************-->
 <!--********** SIGNIN TEMPLATE **********-->
 <!--*************************************-->
+<div class="content">
 <?php if( !isset( $gender_male ) ){ $gender_male="checked"; }?>
 <form method="POST" action="<?php print($_SESSION['url']); ?>" class="" id="si_form" name="si_form">
     <h2>S'inscrire</h2>
@@ -66,3 +67,4 @@
 </br>
     <span class="form-error" id="si_msgErr"><?php if( !empty( $si_msgErr ) ){ echo $si_msgErr; }?></span>
 </form>
+</div>

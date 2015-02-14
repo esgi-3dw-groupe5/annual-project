@@ -1,6 +1,6 @@
 <?php
 function db_create_article($link, $title, $title_id, $content, $id_category, $author){
-	// FIXME crate an article title column with : strtolower and a preg replace special character as éèà...
+	// FIXME crate an article title column with : strtolower and a preg replace special character AS éèà...
 
 	try{
 		$req = $link -> prepare("INSERT INTO pp_article 
@@ -25,18 +25,30 @@ function db_create_article($link, $title, $title_id, $content, $id_category, $au
 	}
 }
 
-function db_get_articles($link){
+function db_get_articles($link){ // complete with the session limit values
+	access_control();
+	
+	$range = range('b', 'z');
+	$request = sprintf("SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = 1 LIMIT %s) AS a ", 2);
+	$i = 0;
+	$result = db_get_category($link);
 
-	$req = $link -> query("SELECT * FROM pp_article");
+	while($data = $result -> fetch()){
+		$request .= sprintf(" UNION SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT %s) AS %s", $data['id'], 2 , $range[$i]);
+		$i++;
+	}
+	$query = $request." order by a_date DESC";
+	$req = $link -> prepare($query);
+	$req -> execute();
 	return $req;
 }
 
-function db_get_articles_rss($link,$limitation,$index_selection){
+function db_get_articles_rss($link,$LIMITation,$index_selection){
 
 	$req = $link -> prepare("SELECT * FROM pp_article ORDER BY `date` DESC LIMIT 0, 10");
 	$req->execute(array(
 		/*':index_selection' => $index_selection,
-		':limitation' => $limitation*/
+		':LIMITation' => $LIMITation*/
 	));
 	return $req;
 }
@@ -44,7 +56,7 @@ function db_get_articles_rss($link,$limitation,$index_selection){
 
 function db_get_articles_by_cat($link, $value){
 
-	$req = $link -> prepare("SELECT * FROM pp_article WHERE pp_article.id_category = :id");
+	$req = $link -> prepare("SELECT * FROM pp_article WHERE pp_article.id_category = :id order by date DESC");
 	$req->execute(array(
 		':id' => $value
 	));
@@ -53,13 +65,13 @@ function db_get_articles_by_cat($link, $value){
 
 function db_get_category($link){
 
-	$req = $link -> query("SELECT * FROM pp_categorie");
+	$req = $link -> query("SELECT * FROM pp_category");
 	return $req;
 }
 
 function db_get_category_tag($link, $value){
 
-	$req = $link -> prepare("SELECT * FROM pp_categorie WHERE pp_categorie.id = :id");
+	$req = $link -> prepare("SELECT * FROM pp_category WHERE pp_category.id = :id");
 	$req->execute(array(
 		':id' => $value
 	));
@@ -67,7 +79,7 @@ function db_get_category_tag($link, $value){
 }
 function db_get_category_id($link, $value){
 
-	$req = $link -> prepare("SELECT * FROM pp_categorie WHERE pp_categorie.tag = :tag");
+	$req = $link -> prepare("SELECT * FROM pp_category WHERE pp_category.tag = :tag");
 	$req->execute(array(
 		':tag' => $value
 	));
@@ -98,6 +110,7 @@ function db_delete_article($link, $value){
 	$req->execute(array(
 		':value' => $value
 	));
+	return $req;
 }
 
 function db_update_article($link,$title,$title_id,$content,$id_category,$value){
@@ -112,4 +125,43 @@ function db_update_article($link,$title,$title_id,$content,$id_category,$value){
 		':id_category'=> $id_category,
 		':value'   => $value
 	));
+	return $req;
+}
+
+function db_read_later($link,$id_user,$id_article,$status){
+	$req = $link -> prepare("INSERT INTO pp_user_history (id_user,id_article,status) VALUES (:id_user,:id_article,:status)");
+	$req->execute(array(
+		':id_user' 	  => $id_user,
+		':id_article' => $id_article,
+		':status'     => $status
+	));
+	return $req;
+}
+
+function db_read($link,$id_user,$id_article,$status){
+	$req = $link -> prepare("UPDATE pp_user_history SET status = :status WHERE id_user = :id_user AND id_article = :id_article");
+	$req->execute(array(
+		'status'	  => $status,
+		':id_user' 	  => $id_user,
+		':id_article' => $id_article
+	));
+	return $req;
+}
+
+function db_get_status($link, $id_user, $id_article){
+	$req = $link -> prepare("SELECT status FROM pp_user_history WHERE id_user = :id_user AND id_article = :id_article");
+    $req->execute(array(
+        ':id_user'    => $id_user,
+        ':id_article' => $id_article
+    ));
+    return $req;
+}
+
+function db_get_user_article($link,$id_user){
+	$req = $link -> prepare("SELECT id_article FROM pp_user_history WHERE id_user = :id_user AND status = 'unread'");
+	$req->execute(array(
+		':id_user' => $id_user
+	));
+
+	return $req;
 }

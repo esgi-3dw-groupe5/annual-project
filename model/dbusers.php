@@ -77,3 +77,13 @@ function db_get_role_user($link,$value){
 	return $req;
 }
 
+function db_get_user_id($link){
+	access_control();
+	$pseudo = $_SESSION['user']['pseudo'];
+	$req = $link -> prepare("SELECT id FROM pp_users WHERE pseudo = :pseudo");
+	$req->execute(array(
+		':pseudo'   => $pseudo
+	));
+	return $req;	
+}
+

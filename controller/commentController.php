@@ -64,7 +64,6 @@ function validate_comment($POST){
 }
 
 function report_comment($POST){
-	//FIXME access id_comment
 	$link = db_connect();
 	$id_comment = $POST['id'];
 	$req = db_report_comment($link,$id_comment);

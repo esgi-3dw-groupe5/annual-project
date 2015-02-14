@@ -59,6 +59,8 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
             // 10 -> Un-valid email address given
             // 11 -> All required field not filled
             // 12 -> Bad login given
+            // *********************Article*******************
+            // 13 -> Wrong image's format
 
             $si_msgErr         = $displayErr[0];
             $si_msgErr_mail_1  = $displayErr[1];
@@ -96,6 +98,7 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
 
             break;
         case 'connexion' :
+            // use PRG pattern V2
             $displayErr =  validate_field($_POST);
 
             $li_msgErr          =   $displayErr[12];
@@ -110,13 +113,16 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
 
         case 'envoyer' :
                 $value = "create";
-                $displayErr     =   validate_article($_POST,$value);
-                $at_msgErr      =   $displayErr[0];
+                $displayErr           =   validate_article($_POST,$_FILES,$value);
+                $at_msgErr            =   $displayErr[0];
+                $at_msgErr_image      =   $displayErr[13];
+                $at_msgErr_image1     =   $displayErr[14];
+                return;
             break;
 
         case 'modifier' :
                 $value = "update";
-                $displayErr     =   validate_article($_POST,$value);
+                $displayErr     =   validate_article($_POST,$_FILES,$value);
                 $at_msgErr      =   $displayErr[0];
             break;
             

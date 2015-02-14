@@ -1,0 +1,70 @@
+.main-nav {
+/*padding: 0 40px 0 25px;*/
+}
+.main-nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+.main-nav a {
+  display: block;
+  font-weight: bold;
+  text-decoration: none;
+  align-items: center;
+  color: #888;
+}
+.main-nav a:hover, .main-nav a:focus {
+  background: #121314;
+  opacity: 0.9;
+  text-decoration: underline #696969;
+
+}
+.main-nav .h-logo img:hover, .main-nav .h-logo img:focus {
+  background: #121314;
+  border-radius: 100%;
+  opacity: 0.9;
+
+}
+.main-nav li:hover, .main-nav li:focus {
+/*  background: #ccc;
+  text-decoration: underline #696969;
+  color: black;*/
+}
+.main-nav span {
+  display: block;
+  padding: 1.6em;
+}
+
+#main-nav-list li{
+  flex: 1 1 auto;
+  text-align: center;
+}
+#main-nav-list li a:before{
+  content: "";
+  /*background: red;*/
+/*  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 2px;
+  height: 2px;
+  width: 100%;*/
+}
+
+#main-nav-list li a.m-technologie:hover, #main-nav-list li a.m-technologie:focus{
+  border-bottom: inset thin red;
+}
+#main-nav-list li a.m-sport:hover, #main-nav-list li a.m-sport:focus{
+  border-bottom: inset thin blue;
+}
+#main-nav-list li a.m-jeux-video:hover, #main-nav-list li a.m-jeux-video:focus{
+  border-bottom: inset thin green;
+}
+#main-nav-list li a.m-cine-serie:hover, #main-nav-list li a.m-cine-serie:focus{
+  border-bottom: inset thin orange;
+}
+#main-nav-list li a.m-musique:hover, #main-nav-list li a.m-musique:focus{
+  border-bottom: inset thin purple;
+}

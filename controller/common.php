@@ -72,3 +72,37 @@ function wd_remove_accents($str, $charset='utf-8')
     
     return $str;
 }
+
+function set_page_color($color){
+	if($color == ""){
+		$color = "#696969";
+	}
+	$style = sprintf("
+		<style>
+			header{
+				border-bottom: solid %s thin;
+			}
+			footer{
+				border-top: solid %s thin;
+			}
+
+		</style>
+		",$color,$color);
+	print $style;
+}
+
+function create_coockie(){
+	$link = db_connect();
+	$result = db_get_category($link);
+
+	$facet  = [];
+
+	while($data = $result -> fetch()){
+		$facet[$data['tag']] = 5;
+	}
+
+	$cookie_value = serialize($facet);
+	$cookie_name = "facet";
+	
+	setcookie($cookie_name, $cookie_value, 0, "/");
+}

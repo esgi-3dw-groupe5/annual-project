@@ -49,21 +49,21 @@ INSERT INTO `pp_article` (`id`, `title_id`, `title`, `content`, `id_category`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pp_categorie`
+-- Table structure for table `pp_page`
 --
 
-CREATE TABLE IF NOT EXISTS `pp_categorie` (
+CREATE TABLE IF NOT EXISTS `pp_page` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `tag` varchar(45) NOT NULL,
-  `name_categ` varchar(50) NOT NULL,
+  `name_category` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `pp_categorie`
+-- Dumping data for table `pp_page`
 --
 
-INSERT INTO `pp_categorie` (`id`, `tag`, `name_categ`) VALUES
+INSERT INTO `pp_page` (`id`, `tag`, `name_category`) VALUES
 (1, 'sport', 'Sport'),
 (2, 'jeux-video', 'Jeux-vidéo'),
 (3, 'musique', 'Musique'),
