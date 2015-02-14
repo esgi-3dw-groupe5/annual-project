@@ -5,6 +5,7 @@
         <title>Pinnackl</title>
         <meta name="description" content="description de ma page">
 
+<<<<<<< HEAD
         <link href="assets/css/header.css" rel="stylesheet" media="all"/>
         <link href="assets/css/footer.css" rel="stylesheet" media="all"/>
         <link href="assets/css/form.css" rel="stylesheet" media="all"/>
@@ -26,6 +27,17 @@
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/datepicker.js"></script>
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/clock.js"></script>
         <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/tinymce/tinymce.min.js"></script>
+=======
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/main.css">
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/nav.css">
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/sidebar.css">
+
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/coreAjax.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/datepicker.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/clock.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/tinymce/tinymce.min.js"></script>
+>>>>>>> parent of fe0cc0f... [feature] ajax facet
         <script type="text/javascript">
         tinymce.init({
             selector: "textarea",
@@ -65,4 +77,10 @@
         </section>
 
         <aside>
+<<<<<<< HEAD
         </aside>
+=======
+            <?php render_contents('connection') ?>
+        </aside>
+        <section >
+>>>>>>> parent of fe0cc0f... [feature] ajax facet

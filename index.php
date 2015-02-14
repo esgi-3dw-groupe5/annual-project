@@ -17,8 +17,16 @@ require_once(__ROOT__."/controller/module.php");
 access_control();
 $page = get_param('p', '');
 $article = get_param('article', '');
+<<<<<<< HEAD
 require_once(__ROOT__."/template/index.tpl");
 	render_articles($page);
 include(__ROOT__."/template/footer.tpl");
 // debug($_SESSION);
 // debug($_SERVER);
+=======
+
+require($source."template/index.tpl");
+	page_controller($mode, $page);
+	// render_contents('form_article');
+require($source."template/footer.tpl");
+>>>>>>> parent of fe0cc0f... [feature] ajax facet

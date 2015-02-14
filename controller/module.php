@@ -22,11 +22,14 @@
 			case 'musique' :
 			display_article();
 				break;
+<<<<<<< HEAD
 			case 'sport' :
 			display_article();
 				break;
 			case 'home';
 				break;				
+=======
+>>>>>>> parent of fe0cc0f... [feature] ajax facet
 			default:
 			display_article();
 				break;
