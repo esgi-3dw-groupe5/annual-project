@@ -8,6 +8,6 @@
     <label for="co_content">Commentaire : </label>
       <textarea name="co_content" id="co_content"></textarea>  
   </div>
-    <input type="submit" name="co_submit" value="Commenter">
+    <input type="submit" name="co_submit" value="commenter">
   </div>
 </form>

@@ -1,75 +1,174 @@
 <?php
-	function render_articles($page){
-		require('config.php');
+require_once($source."controller/accessControl.php");
+require_once($source."model/dbconnect.php");
+require_once($source."model/dbusers.php");
+require_once($source."model/dbcontent.php");
+    /*********************************************************************************/
+    /********************************* Call display method****************************/
+    /*********************************************************************************/
+	function page_controller($mode, $page){
+		switch ($mode) {
+			case 'article':
+				render_contents($page);
+				render_article($page);
+				break;
+			case 'gallery':
+				echo '<div class="content"><h1>gallery mode Page</h1></div>';
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	}
+
+	function render_contents($content){
+		global $source;
 		$link = db_connect();
-		$result = db_get_category($link);
-		while($data = $result -> fetch()){
-			if($page == "home"){}
-			elseif($data['tag'] == $page){
-				display_article();
+		switch ($content) {
+            /***************************/
+            /********page content*******/
+            /***************************/
+			case 'connection':
+				global $li_msgErr_login;
+				global $li_msgErr_psw;
+				global $li_msgErr;
+				if( !$_SESSION['user']['connected'] ){include_once($source."template/formLogin.tpl");} 
+				break;
+			case 'inscription':	
+				if( !$_SESSION['user']['connected'] ){
+					include_once($source."template/formSignin.tpl");
+				}
+				break;
+			case 'activation':
+				if( !$_SESSION['user']['connected'] ){
+					include_once($source."template/formSignin.tpl");
+				}
+				echo '<div class="content"><h1>Activation Page</h1></div>';
+				break;
+			case 'home':
+				display_user_article();
+				echo '<div class="content"><h1>Home Page</h1></div>';
+				break;
+
+            /***************************/
+            /*******proper content******/
+            /***************************/
+			case 'menu':
+				$result = db_get_content($link,'menu');
+
+				while ($data = $result -> fetch()) {
+					require($source.'template/header.tpl');
+				}
+				break;
+			case 'form_article':
+				global $at_msgErr;
+				global $at_msgErr_image1;
+				global $at_msgErr_image;
+				if( $_SESSION['user']['connected'] ){include_once($source."template/formArticle.tpl");}
+				break;
+			default:
+				# code...
+				break;
+		}
+	}
+    /*********************************************************************************/
+    /********************************* display method*********************************/
+    /*********************************************************************************/
+	function render_article($content){
+		$link = db_connect();
+		if($content != ""){
+			$result = db_get_category($link);
+			while($data = $result -> fetch()){
+				if($data['tag'] == $content && $data['tag'] != 'home'){
+					display_article();
+				}
 			}
 		}
-		/*switch ($page) { 
-			case 'technologie' :
-			display_article();
-				break;
-			case 'jeux-video' :
-			display_article();
-				break;
-			case 'cine-serie' :
-			display_article();
-				break;
-			case 'musique' :
-			display_article();
-				break;
-			case 'sport' :
-			display_article();
-				break;
-			case 'home';
-				break;				
-			default:
-			display_article();
-				break;
-		}*/
+		else{
+			display_all_articles();
+		}
+	}
+
+	function display_all_articles(){
+		global $uri;
+		global $source;
+		$link = db_connect();
+		$result = db_get_articles($link);
+		while($data = $result -> fetch()){
+			$result_cat = db_get_category_tag($link, $data['id_category']);
+			$data_cat = $result_cat -> fetch();
+			require($source.'template/articleList.tpl');
+		}
+		
 	}
 
 	function display_article(){
+		global $uri;
+		global $source;
 		global $co_msgErr;
 
-		require('config.php');
 		$link = db_connect();
 		$page = get_param('p', '');
+		$article = get_param('article', '');
+
 		$result = db_get_category_id($link, $page);
 		$data = $result -> fetch();
 		$value = $data['id']; 
 		$req = db_get_articles_by_cat($link, $value);
+
 		while($data = $req->fetch()){
-			$result_cat = db_get_category_tag($link, $data['id_category']);
-			$data_cat = $result_cat -> fetch();
-				require(__ROOT__.'/template/articleList.tpl');
-			$article = get_param('article', '');
-			if($article != ''){
-				$title_id = html_entity_decode( preg_replace('/-/', ' ', $article) );
+			if($article == ''){
+				$result_cat = db_get_category_tag($link, $data['id_category']);
+				$data_cat = $result_cat -> fetch();
+					require($source.'template/articleList.tpl');
+			}
+			elseif($article != ''){
 					
 				$result_cat = db_get_category_id($link, $page);
 				$data_cat = $result_cat -> fetch();
 
-				$result = db_get_article($link, $title_id, $data_cat['id']);
+				$result = db_get_article($link, $article, $data_cat['id']);
 				$data = $result -> fetch();
+
 			if( $result -> rowCount() > 0){
-				require(__ROOT__.'/template/articleRead.tpl');
-				if( $_SESSION['user']['connected'] ){require(__ROOT__.'/template/formComment.tpl');}
+				require($source.'template/articleRead.tpl');
+				if( $_SESSION['user']['connected'] ){require($source.'template/formComment.tpl');}
 				
 				$result_id = db_get_comments($link, $data['id']);
 				while($data_comment = $result_id ->fetch()){
-					require(__ROOT__.'/template/commentRead.tpl');
+					require($source.'template/commentRead.tpl');
 				}
+				break;
 			}
 			else{
 				// require tpl
-				echo '<h1>Oups,<br>Aucun article trouvé !<br><b>:-/</b></h1>';
+				echo '<div class="content"><h1>Oups,<br>Aucun article trouvé !<br><b>:-/</b></h1></div>';
+				break;
 				}
 			}
+		}
+	}
+
+	function display_user_article(){
+		global $source;
+		$link = db_connect();
+		access_control();
+		require('config.php');
+
+		$pseudo = $_SESSION['user']['pseudo'];
+		$result = db_get_user_id($link,$pseudo,'pseudo');
+		$data = $result->fetch();
+
+		$req = db_get_user_article($link,$data['id']);
+
+		while ($data_article = $req -> fetch()){
+			$result_article = db_get_one_article($link,$data_article['id_article']);
+			$data = $result_article -> fetch();
+			$result_cat = db_get_category_tag($link, $data['id_category']);
+
+			$data_cat = $result_cat -> fetch();
+			require($source.'template/articleList.tpl');
 		}
 	}
 ?>

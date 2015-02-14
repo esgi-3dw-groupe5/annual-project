@@ -1,11 +1,10 @@
 <?php
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
-require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/accessControl.php");
-require_once(__ROOT__."/model/dbconnect.php");
-require_once(__ROOT__."/model/dbusers.php");
-require_once(__ROOT__."/model/dbarticle.php");
-require_once(__ROOT__."/model/dbcomment.php");
+require_once($source."controller/common.php");
+require_once($source."controller/accessControl.php");
+require_once($source."model/dbconnect.php");
+require_once($source."model/dbusers.php");
+require_once($source."model/dbarticle.php");
+require_once($source."model/dbcomment.php");
 
 
 function validate_comment($POST){
@@ -35,7 +34,7 @@ function validate_comment($POST){
 		/*******************************************************************/
 		/*******************************CONTENT******************************/
 		/*******************************************************************/
-			$content = $POST["co_content"];
+			$content = strip_tags($POST["co_content"],'<p>');
 		}
 		else{
 				$errorMessage[0] = get_error_comment("default", null);
@@ -48,12 +47,11 @@ function validate_comment($POST){
 		$article = get_param('article','');
 		$page = get_param('p', '');
 
-		$title_id = html_entity_decode( preg_replace('/-/', ' ', $article) );
 
 		$result_cat = db_get_category_id($link, $page);
 		$data_cat = $result_cat -> fetch();
 
-		$result = db_get_article($link,$title_id,$data_cat['id']);
+		$result = db_get_article($link,$article,$data_cat['id']);
 		$data = $result -> fetch();
 
 		// if nb error = 0 -> COmment
@@ -66,9 +64,8 @@ function validate_comment($POST){
 }
 
 function report_comment($POST){
-	//FIXME access id_comment
 	$link = db_connect();
-	$id_comment = $data_comment;
+	$id_comment = $POST['id'];
 	$req = db_report_comment($link,$id_comment);
 	return $req;
 }

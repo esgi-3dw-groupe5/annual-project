@@ -1,10 +1,9 @@
 <?php
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
-require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/accessControl.php");
-require_once(__ROOT__."/controller/inscriptionController.php");
-require_once(__ROOT__."/controller/articleController.php");
-require_once(__ROOT__."/controller/commentController.php");
+require_once($source."controller/common.php");
+require_once($source."controller/accessControl.php");
+require_once($source."controller/inscriptionController.php");
+require_once($source."controller/articleController.php");
+require_once($source."controller/commentController.php");
 $displayErr=null;
 $action=null;
 
@@ -17,6 +16,10 @@ if( isset($_POST['li_submit']) && !empty($_POST['li_submit']) ) {
 
 if( isset($_POST['at_submit']) && !empty($_POST['at_submit']) ) {
     $action = $_POST['at_submit'];
+}
+
+if( isset($_POST['at_update_submit']) && !empty($_POST['at_update_submit']) ) {
+    $action = $_POST['at_update_submit'];
 }
 
 if( isset($_POST['at_delete']) && !empty($_POST['at_delete']) ) {
@@ -56,6 +59,8 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
             // 10 -> Un-valid email address given
             // 11 -> All required field not filled
             // 12 -> Bad login given
+            // *********************Article*******************
+            // 13 -> Wrong image's format
 
             $si_msgErr         = $displayErr[0];
             $si_msgErr_mail_1  = $displayErr[1];
@@ -93,6 +98,7 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
 
             break;
         case 'connexion' :
+            // use PRG pattern V2
             $displayErr =  validate_field($_POST);
 
             $li_msgErr          =   $displayErr[12];
@@ -105,12 +111,22 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
                 redirect();
             break;
 
-        case 'Envoyer' :
-                $displayErr     =   validate_article($_POST);
-                $at_msgErr      =   $displayErr[0];
+        case 'envoyer' :
+                $value = "create";
+                $displayErr           =   validate_article($_POST,$_FILES,$value);
+                $at_msgErr            =   $displayErr[0];
+                $at_msgErr_image      =   $displayErr[13];
+                $at_msgErr_image1     =   $displayErr[14];
+                return;
             break;
 
-        case 'Commenter' :
+        case 'modifier' :
+                $value = "update";
+                $displayErr     =   validate_article($_POST,$_FILES,$value);
+                $at_msgErr      =   $displayErr[0];
+            break;
+            
+        case 'commenter' :
                 $displayErr     =   validate_comment($_POST);
                 $co_msgErr      =   $displayErr[0];
             break;

@@ -1,7 +1,9 @@
 <?php
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
-require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/inscriptionController.php");
+if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."/annual-project/";
+require_once($source."controller/common.php");
+require_once($source."controller/inscriptionController.php");
+require_once($source."controller/articleController.php");
+require_once($source."controller/commentController.php");
 $displayErr=null;
 $action=null;
 
@@ -10,6 +12,15 @@ if(isset($_POST['si_submit']) && !empty($_POST['si_submit'])) {
 }
 if(isset($_POST['co_submit']) && !empty($_POST['co_submit'])) {
     $action = $_POST['co_submit'];
+}
+if(isset($_POST['co_report']) && !empty($_POST['co_report'])) {
+    $action = $_POST['co_report'];
+}
+if(isset($_POST['at_read_later']) && !empty($_POST['at_read_later'])) {
+    $action = $_POST['at_read_later'];
+}
+if(isset($_POST['at_submit']) && !empty($_POST['at_submit'])) {
+    $action = $_POST['at_submit'];
 }
 if( isset($_POST['act']) && !empty($_POST['act']) ) {
     $action = $_POST['act'];
@@ -36,6 +47,8 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             // 10 -> Un-valid email address given
             // 11 -> All required field not filled
             // 12 -> Bad login given
+            // *********************Article*******************
+            // 13 -> Wrong image's format
 
             $displayErr = json_encode($displayErr);
 
@@ -53,16 +66,48 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             return;
 
             break;
-        case 'Commenter' :
+        case 'commenter' :
             $displayErr = validate_comment($_POST);
             $displayErr = json_encode($displayErr);
             $co_msgErr  = $displayErr[0];
 
             echo $displayErr;
             return;
+        case 'envoyer' :
+            $value = "create";
+            $displayErr       = validate_article($_POST,$_FILES,$value);
+            $displayErr       = json_encode($displayErr);
+            $at_msgErr        = $displayErr[0];
+            $at_msgErr_image  = $displayErr[13];
+            $at_msgErr_image1 = $displayErr[14];
+            var_dump($displayErr);
 
+            echo $displayErr;
+        case 'co_report' :
+            report_comment($_POST);
+            return;
+            break;
+        case 'at_read_later' :
+            $link = db_connect();
+            access_control();
+            $pseudo = $_SESSION['user']['pseudo'];
+            $result = db_get_user_id($link,$pseudo,'pseudo');
+            $data = $result->fetch();
+            $req = $link -> prepare("SELECT status FROM pp_user_history WHERE id_user = :id_user AND id_article = :id_article");
+            $req->execute(array(
+                ':id_user'    => $data['id'],
+                ':id_article' => $_POST['id_article']
+            ));
+            $data = $req -> fetch();
+            var_dump($data);
+
+            if($data['status'] == 'nonlu'){read_again($_POST);}
+            elseif($data['status'] == 'lu'){read($_POST);}
+            elseif($data['status'] == false){read_later($_POST);}
+            return;
             break;
         default:
             
             break;
     }
+

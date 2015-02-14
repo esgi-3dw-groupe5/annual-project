@@ -43,10 +43,16 @@ function db_update_comment($link,$content,$value){
 	));
 }
 
+function db_get_all_report_comments($link){
+
+ $req = $link -> query("SELECT * FROM pp_comment WHERE status =1 ");
+ return $req;
+}
+
 function db_report_comment($link, $id_comment){
-	$req = $link -> prepare("UPDATE FROM pp_comment SET status = :status WHERE id = :value");
+	$req = $link -> prepare("UPDATE pp_comment SET status = :status WHERE id = :value");
 	$req->execute(array(
 		':status' => 1,
-		':value'  => $value
+		':value'  => $id_comment
 		));
 }

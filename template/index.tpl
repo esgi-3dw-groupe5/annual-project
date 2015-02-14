@@ -5,30 +5,19 @@
         <title>Pinnackl</title>
         <meta name="description" content="description de ma page">
 
-        <link href="assets/css/header.css" rel="stylesheet" media="all"/>
-        <link href="assets/css/footer.css" rel="stylesheet" media="all"/>
-        <link href="assets/css/form.css" rel="stylesheet" media="all"/>
-        <link href="assets/css/main.css" rel="stylesheet" media="all"/>
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/main.css">
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/nav.css">
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/sidebar.css">
 
-        <script type="text/javascript" src="assets/js/libs/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="assets/js/coreAjax.js"></script>
-        <script type="text/javascript" src="assets/js/datepicker.js"></script>
-        <script type="text/javascript" src="assets/js/clock.js"></script>
-        <script type="text/javascript" src="assets/js/tinymce/tinymce.min.js"></script>
-        <link href="<?php print($config['source']); ?>/assets/css/header.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/footer.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/main.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/form.css" rel="stylesheet" media="all"/>
-        <link href="<?php print($config['source']); ?>/assets/css/sidebar.css" rel="stylesheet" media="all"/>
-
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/coreAjax.js"></script>
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/datepicker.js"></script>
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/clock.js"></script>
-        <script type="text/javascript" src="<?php print($config['source']); ?>/assets/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/coreAjax.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/datepicker.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/clock.js"></script>
+        <script type="text/javascript" src="<?php print($uri); ?>/assets/js/tinymce/tinymce.min.js"></script>
         <script type="text/javascript">
         tinymce.init({
-            selector: "textarea",
+            selector: "textarea#at_content",
+            elements : "at_content",
             width : 1000,
             height : 500,
             plugins: "textcolor media preview image",
@@ -37,32 +26,35 @@
             "alignleft aligncenter alignright"
             ]
         });
+
+        tinymce.init({
+            selector: "textarea#co_content",
+            elements : "at_content",
+            width : 500,
+            height : 150,
+            menubar : false,
+            toolbar: [
+            "undo redo | bold italic | alignleft aligncenter alignright "
+            ]
+        });
+        
         </script>
+        <?php set_page_color($color); ?>
     </head>
     <body>
-        <?php include("header.tpl"); ?>
-
-        <section class="sidebar">
-            <?php include_once("sidebar.tpl"); ?>
-        </section>
-
-        <section class="content">
-            
-            <div>
-
-            <?php if( !$_SESSION['user']['connected'] ){include_once("formSignin.tpl");} ?>
-            <?php //if( !$_SESSION['user']['connected'] ){include_once("formArticle.tpl");} ?>
-
-            </div>
-
-        </section>
-
-        <section class="">
-            <div id="clock">
-            </div>
-            <div class="core-article">
-            </div>
-        </section>
-
+        <header>
+            <nav role='navigation' class="main-nav" id="main-nav">
+                <ul id="main-nav-list">
+                    <li>
+                      <a class="h-logo" href="/annual-project/">
+                        <img src="<?php print($uri); ?>/img/logo-gris-01.png">
+                      </a>
+                    </li>
+                    <?php render_contents('menu') ?>
+                </ul>
+            </nav>
+        </header>
         <aside>
+            <?php render_contents('connection') ?>
         </aside>
+        <section >

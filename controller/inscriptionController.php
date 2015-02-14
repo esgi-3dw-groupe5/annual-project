@@ -1,9 +1,10 @@
 <?php
-if(!defined('__ROOT__'))define('__ROOT__', $_SERVER['DOCUMENT_ROOT']."/annual-project");
-require_once(__ROOT__."/controller/common.php");
-require_once(__ROOT__."/controller/accessControl.php");
-require_once(__ROOT__."/model/dbconnect.php");
-require_once(__ROOT__."/model/dbusers.php");
+global $source;
+require_once($source."controller/common.php");
+require_once($source."controller/accessControl.php");
+require_once($source."model/dbconnect.php");
+require_once($source."model/dbusers.php");
+require_once($source."controller/mail.php");
 
 function validate_field($POST){
 	$ajax = null;
@@ -163,12 +164,15 @@ function validate_field($POST){
 			&& $ajax === null
 			&& isset($POST['si_submit'])
 		){
-		$success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date);
+            $cle = md5(microtime(TRUE)*100000);
+		$success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date,$cle);
 		access_control();
-		set_user_session(true, $pseudo, $email);
+		set_user_session(false, $pseudo, $email);
 			// header('location: http://127.0.0.1/annual-project/');
 			header('location: '.$_SESSION['url']);
+            signmail($pseudo,$firstname,$email,$cle);
 		}
+        
 	}
 
 	if(isset($POST['li_submit'])){
@@ -340,7 +344,7 @@ function get_error($item, $parm1, $parm2 = null){
 	return $msg;
 }
 
-function register($pseudo,$name,$firstname,$gender,$email,$password,$date){
+function register($pseudo,$name,$firstname,$gender,$email,$password,$date,$cle){
 	$link = db_connect();
 	
 	$hash_psw = password_hash($password, PASSWORD_DEFAULT);
@@ -362,6 +366,6 @@ function register($pseudo,$name,$firstname,$gender,$email,$password,$date){
 		// echo $db_date;
 	}
 
-	$req = db_create_user($link, $gender, $name, $firstname, $email, $hash_psw, $pseudo, $db_date);
+	$req = db_create_user($link, $gender, $name, $firstname, $email, $hash_psw, $pseudo, $db_date,$cle);
 	return $req;
 }
