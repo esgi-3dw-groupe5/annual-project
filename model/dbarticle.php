@@ -128,35 +128,37 @@ function db_update_article($link,$title,$title_id,$content,$id_category,$value){
 	return $req;
 }
 
-function db_read_later($link,$id_user,$id_article){
-	$req = $link -> prepare("INSERT INTO pp_user_history (id_user,id_article,status) VALUES (:id_user,:id_article,'lu')");
+function db_read_later($link,$id_user,$id_article,$status){
+	$req = $link -> prepare("INSERT INTO pp_user_history (id_user,id_article,status) VALUES (:id_user,:id_article,:status)");
 	$req->execute(array(
+		':id_user' 	  => $id_user,
+		':id_article' => $id_article,
+		':status'     => $status
+	));
+	return $req;
+}
+
+function db_read($link,$id_user,$id_article,$status){
+	$req = $link -> prepare("UPDATE pp_user_history SET status = :status WHERE id_user = :id_user AND id_article = :id_article");
+	$req->execute(array(
+		'status'	  => $status,
 		':id_user' 	  => $id_user,
 		':id_article' => $id_article
 	));
 	return $req;
 }
 
-function db_read($link,$id_user,$id_article){
-	$req = $link -> prepare("UPDATE pp_user_history SET status = 'nonlu' WHERE id_user = :id_user AND id_article = :id_article");
-	$req->execute(array(
-		':id_user' 	  => $id_user,
-		':id_article' => $id_article
-	));
-	return $req;
-}
-
-function db_read_again($link,$id_user,$id_article){
-	$req = $link -> prepare("UPDATE pp_user_history SET status = 'lu' WHERE id_user = :id_user AND id_article = :id_article");
-	$req->execute(array(
-		':id_user' 	  => $id_user,
-		':id_article' => $id_article
-	));
-	return $req;
+function db_get_status($link,$id_user,$id_article){
+	$req = $link -> prepare("SELECT status FROM pp_user_history WHERE id_user = :id_user AND id_article = :id_article");
+    $req->execute(array(
+        ':id_user'    => $id_user,
+        ':id_article' => $id_article
+    ));
+    return $req;
 }
 
 function db_get_user_article($link,$id_user){
-	$req = $link -> prepare("SELECT id_article FROM pp_user_history WHERE id_user = :id_user AND status = 'lu'");
+	$req = $link -> prepare("SELECT id_article FROM pp_user_history WHERE id_user = :id_user AND status = 'nonlu'");
 	$req->execute(array(
 		':id_user' => $id_user
 	));

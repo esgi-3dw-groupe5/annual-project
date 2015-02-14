@@ -151,51 +151,23 @@ function update_article($title,$title_id,$content,$id_category,$value)
 	return $req;
 }
 
-function read_later($POST){
+
+function read($POST,$status,$id_user,$id_article){
 	$link = db_connect();
+	if($status == 'lu' || $status == 'nonlu'){
+		$req = db_read($link,$id_user,$id_article,$status);		
+	}
+	elseif($status == 'notset_nonlu'){
+		$status = 'nonlu';
+		$req = db_read_later($link,$id_user,$id_article,$status);
+	}
+	elseif($status == 'notset_lu'){
+		$status = 'lu';
+		$req = db_read_later($link,$id_user,$id_article,$status);
+	}	
 
-	//Récupération id utilisateur
-	access_control();
-	$pseudo = $_SESSION['user']['pseudo'];
-	$result = db_get_user_id($link,$pseudo,'pseudo');
-	$data = $result->fetch();
-
-	//Récupération id article
-	$id_article = $POST['id_article'];
-
-	$req = db_read_later($link,$data['id'],$id_article);
 	return $req;
 }
 
-function read($POST){
-	$link = db_connect();
 
-	//Récupération id utilisateur
-	access_control();
-	$pseudo = $_SESSION['user']['pseudo'];
-	$result = db_get_user_id($link,$pseudo,'pseudo');
-	$data = $result->fetch();
-
-	//Récupération id article
-	$id_article = $POST['id_article'];
-
-	$req = db_read($link,$data['id'],$id_article);
-	return $req;
-}
-
-function read_again($POST){
-	$link = db_connect();
-
-	//Récupération id utilisateur
-	access_control();
-	$pseudo = $_SESSION['user']['pseudo'];
-	$result = db_get_user_id($link,$pseudo,'pseudo');
-	$data = $result->fetch();
-
-	//Récupération id article
-	$id_article = $POST['id_article'];
-
-	$req = db_read_again($link,$data['id'],$id_article);
-	return $req;
-}
 ?>
