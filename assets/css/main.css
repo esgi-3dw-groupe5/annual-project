@@ -112,12 +112,11 @@ aside{
 section{
 	/*background-color: #f2f2f3;*/
 	background-color: #121314;
-	color: #FFFFFF;
-
+	color: #dcdcdc;
     margin: 0;
 	display: block;
-	position: absolute;
-	top:9%;
+	position: relative;
+	top: -5%;
 	left:18%;
     width: 82%;
     height: 88%;
@@ -145,10 +144,6 @@ a.footer{
 a.footer:hover{
 	color: grey;
 }
-.logout{
-	float: right;	
-	margin-right: 1%;
-}
 hr.style-one {
 	border: 0;
 	height: 1px;
@@ -160,7 +155,13 @@ hr.style-one {
 }
 /*==========================================*/
 .logout{
-	font-size: 90%;
+	bottom:2%;
+	font-size:90%;
+	position:relative;
+	left: 5%;
+}
+a.logout:hover{
+	color: grey;
 }
 
 /*==========================================*/
