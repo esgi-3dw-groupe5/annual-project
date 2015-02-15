@@ -86,7 +86,6 @@ if( isset($_POST['facet_search']) && !empty($_POST['facet_search']) ) {
             $at_msgErr        = $displayErr[0];
             $at_msgErr_image  = $displayErr[13];
             $at_msgErr_image1 = $displayErr[14];
-            var_dump($displayErr);
 
             echo $displayErr;
         case 'co_report' :
@@ -115,7 +114,6 @@ if( isset($_POST['facet_search']) && !empty($_POST['facet_search']) ) {
             $id_article = $_POST['id_article'];
             $req = db_get_status($link,$id_user,$id_article);
             $data = $req -> fetch();
-            var_dump($data['status']);
 
             if($data['status'] == 'unread'){$status = 'read';read($_POST,$status,$id_user,$id_article);}
             elseif($data['status'] == 'read'){$status = 'read';read($_POST,$status,$id_user,$id_article);}

@@ -18,16 +18,16 @@ html, body{
     font-family: MeriendaOne-Regular;
 }
 h1{
-	font-size: 100%;
+	font-size: 140%;
 }
 h2{
-	font-size: 80%;
+	font-size: 120%;
 }
 h3{
-	font-size: 50%;
+	font-size: 100%;
 }
 h4{
-	font-size: 30%;
+	font-size: 80%;
 }
 h5{
 	font-size: 30%;
@@ -229,4 +229,8 @@ hr.style-one {
 	background: url("/annual-project/images/etoile_pleine.png") !important;
 	background-repeat: no-repeat;
 	float: right;
+}
+.article-preview{
+	font-size: 60%;
+	margin-left: 2%;
 }

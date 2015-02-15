@@ -25,6 +25,7 @@ require_once($source."model/dbcontent.php");
 	function render_contents($content){
 		global $uri;
 		global $source;
+		access_control();
 		$link = db_connect();
 		switch ($content) {
             /***************************/
@@ -160,6 +161,7 @@ require_once($source."model/dbcontent.php");
 				$read = "style='display:none'";
 				$unread = "";
 			}
+			$preview = preview($data['content']);
 			require($source.'template/articleList.tpl');
 		}
 		
@@ -196,6 +198,7 @@ require_once($source."model/dbcontent.php");
 					$read = "style='display:none'";
 					$unread = "";
 				}
+				$preview = preview($data['content']);
 				require($source.'template/articleList.tpl');
 			}
 			elseif($article != ''){
@@ -208,12 +211,12 @@ require_once($source."model/dbcontent.php");
 
 			if( $result -> rowCount() > 0){
 				require($source.'template/articleRead.tpl');
-				if( $_SESSION['user']['connected'] ){require($source.'template/formComment.tpl');}
 				
 				$result_id = db_get_comments($link, $data['id']);
 				while($data_comment = $result_id ->fetch()){
 					require($source.'template/commentRead.tpl');
 				}
+				if( $_SESSION['user']['connected'] ){require($source.'template/formComment.tpl');}
 				break;
 			}
 			else{
@@ -256,7 +259,9 @@ require_once($source."model/dbcontent.php");
 				$read = "style='display:none'";
 				$unread = "";
 			}
+			$preview = preview($data['content']);
 			require($source.'template/articleList.tpl');
 		}
+		require($source.'template/formArticle.tpl');
 	}
 ?>
