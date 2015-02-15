@@ -1,21 +1,26 @@
 <?php
-require_once($source."controller/common.php");
-require_once($source."controller/accessControl.php");
-require_once($source."model/dbconnect.php");
-require_once($source."model/dbusers.php");
-require_once($source."model/dbarticle.php");
-require_once($source."model/dbcomment.php");
-require_once($source."model/dbcontent.php");
+require('../config.php');
+$source = $config['include_path'];
+
+require_once($source."/controller/common.php");
+require_once($source."/controller/accessControl.php");
+require_once($source."/model/dbconnect.php");
+require_once($source."/model/dbusers.php");
+require_once($source."/model/dbarticle.php");
+require_once($source."/model/dbcomment.php");
+require_once($source."/model/dbcontent.php");
+
 
 function render_contents($content){
-	global $source;
+    global $source;
+    
 	$link = db_connect();
 	switch ($content) {
 		case 'users':
 			$result = db_get_all_user($link);
 
 			while ($data = $result -> fetch()) {
-				require($source.'pp_admin/template/users.tpl');
+				require($source.'/pp_admin/template/users.tpl');
 
 			}
 
@@ -26,7 +31,7 @@ function render_contents($content){
 			while ($data = $result -> fetch()) {
 				$result_cat = db_get_category_tag($link, $data['id_category']);
 				$data_cat = $result_cat -> fetch();
-				require($source.'pp_admin/template/articles.tpl');
+				require($source.'/pp_admin/template/articles.tpl');
 			}
 
 			break;
@@ -35,7 +40,7 @@ function render_contents($content){
 			global $category;
 			$result =  db_get_articles_by_cat($link,$category);
 			while ($data = $result -> fetch()) {
-				require($source.'pp_admin/template/articlesbytag.tpl');
+				require($source.'/pp_admin/template/articlesbytag.tpl');
 			}
 
 			break;
@@ -47,7 +52,7 @@ function render_contents($content){
 
 					if ($data['id'] <= '5')
 					{
-						require($source.'pp_admin/template/categories.tpl');
+						require($source.'/pp_admin/template/categories.tpl');
 					}
 				}
 
@@ -57,7 +62,7 @@ function render_contents($content){
 			$result =  db_get_all_comments($link);//tous les commetaires
 
 			while ($data = $result -> fetch()) {
-				require($source.'pp_admin/template/commentaires.tpl');
+				require($source.'/pp_admin/template/commentaires.tpl');
 			}
 
 			break;
@@ -66,7 +71,7 @@ function render_contents($content){
 			$result_report =  db_get_all_report_comments($link);//commentaire signalés
 			
 			while ($data = $result_report -> fetch()) {
-				require($source.'pp_admin/template/commentaires.tpl');
+				require($source.'/pp_admin/template/commentaires.tpl');
 			}
 
 			break;
@@ -76,14 +81,14 @@ function render_contents($content){
 		    $user = db_get_one_user($link,$id);
 		    $data = $user -> fetch();
 			
-			require($source.'pp_admin/template/edituser.tpl');
+			require($source.'/pp_admin/template/edituser.tpl');
 
 			break;
 
 		case 'deleteuser':
 			global $id;
 		    db_delete_user($link,$id);
-		    require($source.'pp_admin/template/deleteuser.tpl');
+		    require($source.'/pp_admin/template/deleteuser.tpl');
 			break;
 
 		case 'editarticle':
@@ -95,13 +100,13 @@ function render_contents($content){
 		    $result_cat = db_get_category_tag($link, $data['id_category']);
 			$data_cat = $result_cat -> fetch();
 
-			require($source.'pp_admin/template/editarticle.tpl');
+			require($source.'/pp_admin/template/editarticle.tpl');
 
 
 			$comments = db_get_comments($link, $data['id']);
 			while($data_comment = $comments ->fetch()){
-				//require($source.'template/commentRead.tpl');
-				require($source.'pp_admin/template/editcomment.tpl');
+				//require($source.'/template/commentRead.tpl');
+				require($source.'/pp_admin/template/editcomment.tpl');
 			}
 			
 			break;
@@ -121,7 +126,7 @@ function render_contents($content){
 			$result =  db_get_articles($link);
 
 			while ($data = $result -> fetch()) {
-				require($source.'pp_admin/template/categories.tpl');
+				require($source.'/pp_admin/template/categories.tpl');
 			}
 
 			break;

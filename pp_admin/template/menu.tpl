@@ -22,4 +22,5 @@
         <a href="#" id="toggler_menu_theme"><li class="menu-box  toggler_click">Thèmes</li>  </a>
     </ul>
 
+    <img class="img-bottom-left" src="../images/logo-gris.gif">
 </div>

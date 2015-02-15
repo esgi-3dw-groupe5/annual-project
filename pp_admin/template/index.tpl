@@ -23,6 +23,7 @@
             </nav>      
         </header>
 
+        <img class="img-top-left" src="../images/titre.gif">
         
         <?php 
         include("menu.tpl"); 

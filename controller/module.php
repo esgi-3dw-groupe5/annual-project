@@ -49,6 +49,9 @@ require_once($source."model/dbcontent.php");
 			case 'home':
 				display_user_article();
 				echo '<div class="content"><h1>Home Page</h1></div>';
+                if(permissions($_SESSION['user']['role'],'editor')){
+                    render_contents('form_article');
+                }
 				break;
 			case '404':
 				echo '<div class="content"><h1>404 ERROR</h1></div>';

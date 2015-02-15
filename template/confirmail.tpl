@@ -24,6 +24,8 @@
                 }    
                 td[class=w20]{ display:none; }    
             }
+
+
         </style>
 
     </head>
@@ -40,7 +42,7 @@
                                 </tr>
                                 <!-- entete -->
                                 <tr class="pagetoplogo">
-                                    <td class="w640"  width="640">
+                                    <td class="w640"  width="40">
                                         <table  class="w640"  width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#7c7c7c">
                                             <tbody>
                                                 <tr>
@@ -63,7 +65,7 @@
                                 </tr>
 
                                 <!-- contenu -->
-                                <tr class="content">
+                                <tr class="content" height="400">
                                     <td class="w640" class="w640"  width="640" bgcolor="#ffffff">
                                         <table class="w640"  width="640" cellpadding="0" cellspacing="0" border="0">
                                             <tbody>
@@ -75,19 +77,7 @@
                                                             <tbody>                                                            
                                                                 <tr>
                                                                     <td class="w580"  width="580">
-                                                                        <h2 style="color:#0E7693; font-size:22px; padding-top:12px;">
-                                                                            Bonjour <?php echo $pseudo;?> </h2>
-
-                                                                        <div align="left" class="article-content">
-                                                                            <p> Bienvenue sur Pinnackl</p>
-                                                                            <p>
-                                                                                Pour activer votre compte, veuillez cliquer sur le lien ci dessous
-                                                                                ou copier/coller dans votre navigateur internet
-                                                                            </p>
-                                                                            <p>
-                                                                                http://127.0.0.1/annual-project/activation/<?php echo urlencode($pseudo);?>/<?php echo urlencode($cle);?>
-                                                                            </p>
-                                                                        </div>
+                                                                        <p><?php echo $message;?></p>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
@@ -95,6 +85,7 @@
                                                         <!-- fin zone -->                                                   
 
                                                     </td>
+                                                    <td class="w30" class="w30"  width="30"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -118,7 +109,7 @@
                                                     <td class="w30"  width="30"></td>
                                                     <td class="w580"  width="580" valign="top">
                                                         <p align="right" class="pagebottom-content-left">
-                                                            <a style="color:#255D5C;" href="127.0.0.1/annual-project/"><span style="color:#255D5C;">Pinnackl</span></a>
+                                                            <a style="color:#255D5C;" href="http://127.0.0.1/annual-project/"><span style="color:#255D5C;">Pinnackl.com</span></a>
                                                         </p>
                                                     </td>
 
