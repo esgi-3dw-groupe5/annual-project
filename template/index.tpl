@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/main.css">
         <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/nav.css">
         <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/sidebar.css">
+        <link rel="stylesheet" href="<?php print($uri); ?>/assets/css/form.css">
 
         <script type="text/javascript" src="<?php print($uri); ?>/assets/js/libs/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="<?php print($uri); ?>/assets/js/coreAjax.js"></script>

@@ -3,6 +3,10 @@
 	padding:0px;
  	box-sizing: border-box;
 }
+@font-face {
+	font-family: "MeriendaOne-Regular"; 
+	src: url('MeriendaOne-Regular.ttf');
+}
 html, body{
 	background-color: #f3f3f3;
 	/*position: relative;*/
@@ -51,6 +55,18 @@ header{
 	/*border-radius: 100%;*/
 	/*opacity: 0.9;*/
 }
+.nav {
+	font-family: MeriendaOne-Regular;
+	font-size: 90%;
+	text-align: center;
+}
+a.subnav {
+	color: white;
+	text-decoration: none;
+}
+a.subnav:hover {
+	color: black;
+}
 /*==================================================*/
 
 aside{
@@ -83,7 +99,8 @@ section{
 }
 
 footer{
-	display: block;
+	display: inline-block;
+	text-align: center;
 	position: absolute;
 	bottom:0;
 	left:0;
@@ -101,7 +118,16 @@ footer{
 	-webkit-box-shadow: 0 -3px 4px 0 #080808;
 	box-shadow: 0 -3px 4px 0 #080808;
 }
-
+a.footer{
+	color: white;
+}
+a.footer:hover{
+	color: grey;
+}
+.logout{
+	float: right;	
+	margin-right: 1%;
+}
 hr.style-one {
 	border: 0;
 	height: 1px;

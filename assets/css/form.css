@@ -1,0 +1,29 @@
+.form-error {
+    color:darkred;
+}
+h2{
+	text-decoration: underline;
+	margin-bottom: 1%;
+}
+span{
+	font-size: 80%;
+}
+label{
+	font-size: 80%;
+	text-align: center;
+}
+.li_form{
+	border: solid #696969 2px;
+	text-align: center;
+	margin-top: -2%;
+	display: inline-block;
+}
+.si_form{
+	border: solid #696969 2px;
+	text-align: center;
+	padding: 1%;
+	width: 60%;
+	position: relative;
+	left: 20%;
+	display: inline-block;
+}

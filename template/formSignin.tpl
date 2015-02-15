@@ -3,7 +3,7 @@
 <!--*************************************-->
 <div class="content">
 <?php if( !isset( $gender_male ) ){ $gender_male="checked"; }?>
-<form method="POST" action="<?php print($_SESSION['url']); ?>" class="" id="si_form" name="si_form">
+<form class="si_form" method="POST" action="<?php print($_SESSION['url']); ?>" class="" id="si_form" name="si_form">
     <h2>S'inscrire</h2>
     <div>
         <input id="male" type="radio" name="gender" value="0" <?php if(!empty($gender_male))echo $gender_male ?> ><label for="male">Monsieur</label>
@@ -54,10 +54,11 @@
 </br>
     <div>
         <label for="date">Date de naissance </label>
-        <div style="display:inline-block;position:relative;width:300px;">
+        <!-- <div style="display:inline-block;position:relative;width:300px;"> -->
             <input id="date" type="text" name="date" placeholder="  JJ/MM/AAAA"  
             <?php if(!empty($value_date))echo "value=".$value_date."" ?> required>
-        </div></br>
+        <!-- </div> -->
+    </br>
         <span class="form-error" id="msgErr_date"><?php if(!empty($si_msgErr_date))echo $si_msgErr_date; ?></span>
     </div>
 </br>
