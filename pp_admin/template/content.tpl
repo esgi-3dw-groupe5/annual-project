@@ -1,3 +1,11 @@
+<!-- <section class="right-block">
+    <h2>Articles de la catég </h2>
+    <ul>
+        <li><h3 class="email">Titre</h3><h3>Catégories</h3></li>
+        <?php  render_contents('articlesbytag'); ?>
+    </ul>
+</section>
+ -->
 <section class="right-block toggle_user" >
     <h2>Utilisateurs</h2>
     <ul>

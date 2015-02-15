@@ -59,6 +59,5 @@
         <aside>
             <?php render_contents('connection') ?>
             <?php render_contents('facet_range') ?>
-
         </aside>
         <section >

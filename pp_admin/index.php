@@ -1,21 +1,14 @@
 
 <?php
-if(!file_exists('../config.php')){
-	echo '
-		<h1>Super fatal error : <h1>
-		<h2> Configuration file is missing ! <h2>
-		<h3>This file contains important information for the proper functioning of this website.<h3>
-		';
-	die();
-}
-require('../config.php');
-$source = $config['include_path'];
-require_once($source."controller/accessControl.php");
-require_once($source."pp_admin/controller/adminController.php");
-require_once($source."controller/articleController.php");
-require_once($source."controller/corePHP.php");
 
 require('../config.php');
+$source = $config['include_path'];
+
+require_once($source."/controller/accessControl.php");
+require_once($source."/pp_admin/controller/adminController.php");
+require_once($source."/controller/articleController.php");
+require_once($source."/controller/corePHP.php");
+
 
 secure_admin();
 
@@ -27,10 +20,10 @@ $edit = get_param('edit', '');
 $update = get_param('update', '');
 $delete = get_param('delete', '');
 
-require_once($source."pp_admin/template/index.tpl");
+require_once($source."/pp_admin/template/index.tpl");
 if($category != '');
 {	
-	// echo  $category;
+	echo  $category;
     render_contents('articlesbytag'); 
 }
 if($article != '' &&  $update == "true")
@@ -56,7 +49,8 @@ else if( $edit == "edit" && $id != '')
 else if($article != '' &&  $edit == "edit")
 {
      render_contents('editarticle');
-}else include($source."pp_admin/template/content.tpl");
+}else include($source."/pp_admin/template/content.tpl");
 
-echo $_SESSION['Message'];
+
+
 ?>
