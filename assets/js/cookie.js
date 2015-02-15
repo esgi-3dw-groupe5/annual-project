@@ -6,10 +6,10 @@ $(document).ready(function(){
 
 		},"text");
 	});
-	var send = getFacet();
-	ajax_send(send, function(data){
-		console.log(data);
-	});
+	// var send = getFacet();
+	// ajax_send(send, function(data){
+	// 	console.log(data);
+	// });
 
 });
 
