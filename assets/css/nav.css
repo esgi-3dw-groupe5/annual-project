@@ -22,6 +22,10 @@
   text-decoration: underline #696969;
 
 }
+.main-nav a.no-hover:hover, .main-nav a.no-hover:focus {
+  background: none;
+  text-decoration: none;
+}
 .main-nav .h-logo img:hover, .main-nav .h-logo img:focus {
   background: #121314;
   border-radius: 100%;
@@ -39,7 +43,7 @@
 }
 
 #main-nav-list li{
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   text-align: center;
 }
 #main-nav-list li a:before{
@@ -53,18 +57,18 @@
   width: 100%;*/
 }
 
-#main-nav-list li a.m-technologie:hover, #main-nav-list li a.m-technologie:focus{
+#main-nav-list li a.technologie:hover, #main-nav-list li a.technologie:focus{
   border-bottom: inset thin red;
 }
-#main-nav-list li a.m-sport:hover, #main-nav-list li a.m-sport:focus{
+#main-nav-list li a.sport:hover, #main-nav-list li a.sport:focus{
   border-bottom: inset thin blue;
 }
-#main-nav-list li a.m-jeux-video:hover, #main-nav-list li a.m-jeux-video:focus{
+#main-nav-list li a.jeux-video:hover, #main-nav-list li a.jeux-video:focus{
   border-bottom: inset thin green;
 }
-#main-nav-list li a.m-cine-serie:hover, #main-nav-list li a.m-cine-serie:focus{
+#main-nav-list li a.cine-serie:hover, #main-nav-list li a.cine-serie:focus{
   border-bottom: inset thin orange;
 }
-#main-nav-list li a.m-musique:hover, #main-nav-list li a.m-musique:focus{
+#main-nav-list li a.musique:hover, #main-nav-list li a.musique:focus{
   border-bottom: inset thin purple;
 }

@@ -25,6 +25,9 @@ if(isset($_POST['at_submit']) && !empty($_POST['at_submit'])) {
 if( isset($_POST['act']) && !empty($_POST['act']) ) {
     $action = $_POST['act'];
 }
+if( isset($_POST['facet_search']) && !empty($_POST['facet_search']) ) {
+    $action = $_POST['facet_search'];
+}
 
     switch($action) {
         case 'valider' : 
@@ -104,6 +107,10 @@ if( isset($_POST['act']) && !empty($_POST['act']) ) {
             if($data['status'] == 'unread'){read_again($_POST);}
             elseif($data['status'] == 'read'){read($_POST);}
             elseif($data['status'] == false){read_later($_POST);}
+            return;
+            break;
+        case 'facet_search' :
+            create_coockie();
             return;
             break;
         default:

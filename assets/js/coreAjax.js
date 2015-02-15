@@ -6,27 +6,27 @@ $(document).ready(function(){
 function signin(){
 	$('input[name="si_email"]').change(function(){
 		var send = get_form_values('signin');
-		ajax_send_signin(send);
+		ajax_send(send, write_error);
 	});
 	$('input[name="si_conf_email"]').change(function(){
 		var send = get_form_values('signin');
-		ajax_send_signin(send);
+		ajax_send(send, write_error);
 	});
 	$('input[name="si_psw"]').change(function(){
 		var send = get_form_values('signin');
-		ajax_send_signin(send);
+		ajax_send(send, write_error);
 	});
 	$('input[name="si_conf_psw"]').change(function(){
 		var send = get_form_values('signin');
-		ajax_send_signin(send);
+		ajax_send(send, write_error);
 	});
 	$('input[name="si_pseudo"]').change(function(){
 		var send = get_form_values('signin');
-		ajax_send_signin(send);
+		ajax_send(send, write_error);
 	});
 	$('input[name="date"]').change(function(){
 		var send = get_form_values('signin');
-		ajax_send_signin(send);
+		ajax_send(send, write_error);
 	});
 
 }
@@ -51,16 +51,15 @@ function get_form_values(form){
 
 	return send;
 }
-function ajax_send_signin(send){
+function ajax_send(send, callback, type){
+	callback = (typeof callback === "undefined") ? function(){} : callback;
+	type = (typeof type === "undefined") ? "json" : type;
 	$.ajax({
 		type: "POST",
 		url: "http://127.0.0.1/annual-project/controller/coreAjax.php",
 		data: send,
-		success: function(data){
-			console.log( data );
-			write_error(data);
-		}, 
-		dataType: "json"
+		success: function(data){callback(data)}, 
+		dataType: type
 	});
 }
 

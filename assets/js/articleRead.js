@@ -11,14 +11,8 @@ function change_state(){
 		send.id_article = $(this).attr('id');
 		send.at_read_later = "at_read_later";
 
-		$.ajax({
-		type : "POST",
-			url  : "http://127.0.0.1/annual-project/controller/coreAjax.php",
-			data : send,
-			success: function(data){
-			},
-			dataType :"json"
-		});
+		// user existing function
+		ajax_send(send);
 
 		if( $(this).attr('class') == "read" ){
 			$(this).removeClass('read');
@@ -39,14 +33,8 @@ function change_state(){
 		send.id_article = $(this).attr('id');
 		send.at_read_later = "at_read_later";
 
-		$.ajax({
-		type : "POST",
-			url  : "http://127.0.0.1/annual-project/controller/coreAjax.php",
-			data : send,
-			success: function(data){
-			},
-			dataType :"json"
-		});
+		// user existing function
+		ajax_send(send);
 
 		if( $(this).attr('class') == "unread" ){
 			$(this).removeClass('read');

@@ -58,6 +58,7 @@
         </header>
         <aside>
             <?php render_contents('connection') ?>
+            <h1>Fréquences des actus</h1>
             <?php render_contents('facet_range') ?>
 
         </aside>

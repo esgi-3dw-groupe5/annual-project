@@ -28,6 +28,7 @@ route_control();
 
 $page = get_param('p', '');
 $article = get_param('article', '');
+$facet = get_cookie();
 
 require($source."template/index.tpl");
 	page_controller($mode, $page);

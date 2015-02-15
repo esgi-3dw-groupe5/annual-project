@@ -50,6 +50,9 @@ require_once($source."model/dbcontent.php");
 				display_user_article();
 				echo '<div class="content"><h1>Home Page</h1></div>';
 				break;
+			case '404':
+				echo '<div class="content"><h1>404 ERROR</h1></div>';
+				break;
 
             /***************************/
             /*******proper content******/
@@ -58,6 +61,7 @@ require_once($source."model/dbcontent.php");
 				$result = db_get_content($link,'menu');
 
 				while ($data = $result -> fetch()) {
+					$class = $data['tag'];
 					require($source.'template/header.tpl');
 				}
 				break;
@@ -68,8 +72,13 @@ require_once($source."model/dbcontent.php");
 				if( $_SESSION['user']['connected'] ){include_once($source."template/formArticle.tpl");}
 				break;
 			case 'facet_range':
-
-				require($source.'template/asideFacet.tpl');
+				$result = db_get_category($link);
+				$facet = get_cookie();
+				while($data = $result -> fetch()){
+					if( array_key_exists($data['tag'], $facet) ){
+						require($source.'template/asideFacet.tpl');
+					}
+				}
 				break;
 			case 'read_state':
 
@@ -142,7 +151,20 @@ require_once($source."model/dbcontent.php");
 			if($article == ''){
 				$result_cat = db_get_category_tag($link, $data['id_category']);
 				$data_cat = $result_cat -> fetch();
-					require($source.'template/articleList.tpl');
+				
+				$data_user = db_get_user_id($link) -> fetch();
+				$id_user = $data_user['id'];
+				$data_status = db_get_status($link, $id_user, $data['id']) -> fetch();
+				
+				if( $data_status == false ||  $data_status['status'] == "read"){
+					$read = "";
+					$unread = "style='display:none'";
+				}
+				else{
+					$read = "style='display:none'";
+					$unread = "";
+				}
+				require($source.'template/articleList.tpl');
 			}
 			elseif($article != ''){
 					

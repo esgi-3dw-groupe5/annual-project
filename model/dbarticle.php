@@ -29,12 +29,19 @@ function db_get_articles($link){ // complete with the session limit values
 	access_control();
 	
 	$range = range('b', 'z');
-	$request = sprintf("SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = 1 LIMIT %s) AS a ", 2);
+
 	$i = 0;
 	$result = db_get_category($link);
 
-	while($data = $result -> fetch()){
-		$request .= sprintf(" UNION SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT %s) AS %s", $data['id'], 2 , $range[$i]);
+	$facet = get_cookie();
+	$request = "";
+	while ($data = $result -> fetch()){
+		if(array_key_exists($data['tag'], $facet)){
+			if($request == "")
+				$request = sprintf("SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT %s) AS a ",$data['id'] , $facet[$data['tag']]);
+			else
+				$request .= sprintf(" UNION SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT %s) AS %s", $data['id'], $facet[$data['tag']] , $range[$i]);
+		}	
 		$i++;
 	}
 	$query = $request." order by a_date DESC";
