@@ -1,5 +1,11 @@
 .main-nav {
-/*padding: 0 40px 0 25px;*/
+  padding: 0 40px 0 25px;
+  font-family: MeriendaOne-Regular;
+  font-size: 100%;
+  text-align: center;
+}
+span.nav{
+  font-size: 90%;
 }
 .main-nav ul {
   margin: 0;
@@ -14,7 +20,7 @@
   font-weight: bold;
   text-decoration: none;
   align-items: center;
-  color: #888;
+  color: #dcdcdc;
 }
 .main-nav a:hover, .main-nav a:focus {
   background: #121314;
@@ -96,4 +102,6 @@
   background: #121314;
   border-bottom: inset thin #009245;
 }
-
+@media screen and (max-width: 960px) {
+  span.nav{font-size: 70%;}
+}

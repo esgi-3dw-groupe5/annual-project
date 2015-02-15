@@ -38,8 +38,8 @@ require_once($source."model/dbcontent.php");
 				break;
 			case 'deconnection':
 			    if( $_SESSION['user']['connected'] ){
-			        print("<div class='logout'><span>Bienvenue ".$_SESSION['user']['pseudo']."| </span>");
-			        printf("<a href='%s?act=logout'>Déconnection</a></div>",$uri);
+			        print("<div class='logout'><span>Bienvenue ".$_SESSION['user']['pseudo']." </span>");
+			        printf("<a class='logout' href='%s?act=logout'>Déconnection</a></div>",$uri);
 			    }
 				break;
 			case 'inscription':	
