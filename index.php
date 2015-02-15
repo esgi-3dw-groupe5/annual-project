@@ -31,5 +31,4 @@ $article = get_param('article', '');
 
 require($source."template/index.tpl");
 	page_controller($mode, $page);
-	// render_contents('form_article');
 require($source."template/footer.tpl");

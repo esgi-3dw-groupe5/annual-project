@@ -103,4 +103,43 @@ function secure_admin() {
     }
 }
 
+function permissions($role,$permission){
+    $roles = array(
+        "administrator"  => array(
+            0  => "administrator",
+            1  => "editor",
+            2  => "author",
+            3  => "moderator",
+            4  => "viewer"    ),
+
+        "editor"  => array(
+            0  => "editor",
+            1  => "author",
+            2  => "moderator",
+            3  => "viewer"    ),
+
+        "author"  => array(
+            0  => "author",
+            1  => "moderator",
+            2  => "viewer"    ),
+
+        "moderator"  => array(
+            0  => "moderator",
+            1  => "viewer"    ),
+    );
+
+
+    foreach($roles as $key_1 => $data_1)
+    {
+        foreach($data_1 as $key_2 => $data_2)
+        {
+            if($data_2 == $permission)
+            {
+                if($key_1 == $role)
+                    return true;
+            }
+        }
+    }
+}
+
 ?>
