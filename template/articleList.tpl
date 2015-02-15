@@ -4,6 +4,7 @@
 <?php 
 $title = preg_replace('/\s+/', '-', strtolower($data['title_id']));
 ?>
+
 <div class="article-inline">
 	<span class="article-image" style="background:#<?php print($data_cat['color']);?>;"></span>
 	<?php printf('<a class="article-title" href="%s/%s/%s">', $uri, $data_cat['tag'], $title); ?>
@@ -16,5 +17,6 @@ $title = preg_replace('/\s+/', '-', strtolower($data['title_id']));
 		<input id="<?php print($data['id']);?>" class="unread" 	<?php print$unread 	?> 	type="button" name="" value="">
 	<?php } ?>
 </div>
+
 
 	
