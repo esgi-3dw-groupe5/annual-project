@@ -1,0 +1,232 @@
+*{
+	margin:0px;
+	padding:0px;
+ 	box-sizing: border-box;
+}
+@font-face {
+	font-family: "MeriendaOne-Regular"; 
+	src: url('MeriendaOne-Regular.ttf');
+}
+html, body{
+	background-color: #f3f3f3;
+	overflow: hidden;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    color: #FFFFFF;
+
+    font-family: MeriendaOne-Regular;
+}
+h1{
+	font-size: 100%;
+}
+h2{
+	font-size: 80%;
+}
+h3{
+	font-size: 50%;
+}
+h4{
+	font-size: 30%;
+}
+h5{
+	font-size: 30%;
+}
+h6{
+	font-size: 30%;
+}
+/* unvisited link */
+a{
+	color: #FFFFFF;
+}
+a:link {
+    color: #FFFFFF;
+}
+/* visited link */
+a:visited {
+    color: #FFFFFF;
+}
+/* mouse over link */
+a:hover {
+/*    text-shadow: 0 0 2px #f2f2f3;
+    color : #f2f2f3;*/
+}
+/* selected link */
+a:active {
+    color: #0000FF;
+}
+
+header{
+	display: block;
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	min-height: 9%;
+	background-color: #222326;
+	/*overflow: hidden;*/
+	z-index: 11;
+	-webkit-box-shadow: 0 3px 4px 0 #080808;
+	box-shadow: 0 3px 4px 0 #080808;
+}
+.h-logo{
+	margin-top: -2%;
+	margin-left: auto;
+    margin-right: auto;
+    /*width: 18%;*/
+	text-align: center;
+	z-index: 20;
+}
+.h-logo img{
+	/*margin-top: -1%;*/
+	width: 11%;
+	z-index: 20;
+	position: absolute;
+	top: 1%;
+	left: 1%;
+	
+	/*background: #121314;*/
+	/*border-radius: 100%;*/
+	/*opacity: 0.9;*/
+}
+.nav {
+	font-family: MeriendaOne-Regular;
+	font-size: 100%;
+	text-align: center;
+}
+a.subnav {
+	color: white;
+	text-decoration: none;
+}
+a.subnav:hover {
+	color: black;
+}
+/*==================================================*/
+
+aside{
+	display: block;
+	position: absolute;
+	top:9%;
+	left:0;
+	width: 18%;
+	height: 88%;
+  	padding-top: 8%;
+	background-color:#222326;
+	overflow: auto;
+	/*border-right: solid #1c1c1f 10px;*/
+	-webkit-box-shadow: 3px 0 4px 0 #080808;
+	box-shadow: 3px 0 4px 0 #080808;
+	z-index: 10;
+}
+
+section{
+	/*background-color: #f2f2f3;*/
+	background-color: #121314;
+	color: #FFFFFF;
+
+    margin: 0;
+	display: block;
+	position: absolute;
+	top:9%;
+	left:18%;
+    width: 82%;
+    height: 88%;
+    overflow-y: scroll;
+    z-index: 9;
+}
+
+footer{
+    background-color: #222222;
+    bottom: 0;
+    box-shadow: 0 -3px 4px 0 #080808;
+    display: inline-block;
+    font-size: 80%;
+    height: 3%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+}
+a.footer{
+	color: white;
+}
+a.footer:hover{
+	color: grey;
+}
+.logout{
+	float: right;	
+	margin-right: 1%;
+}
+hr.style-one {
+	border: 0;
+	height: 1px;
+	background: #333333;
+	background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+	background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
+	background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
+	background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
+}
+/*==========================================*/
+.logout{
+	font-size: 90%;
+}
+
+/*==========================================*/
+.content{
+	padding: 1%;
+}
+.article-title{
+	margin: 2% 0 0 2%;
+	position: relative;
+}
+.article-title b{
+    font-weight: normal;
+}
+.article-image{
+    float: left;
+    height: 100%;
+    width: 2px;
+}
+.article-inline{
+    background-color: #222222;
+    border-bottom: thin solid #ccc;
+    height: 8%;
+    text-decoration: none;
+}
+.article-inline:nth-child(even){
+	background-color: #121314;
+}
+.article-inline:hover,.article-inline:nth-child(even):hover{
+	cursor: pointer;
+	background-color: #333333;
+}
+.article-inline a{
+	text-decoration: none;
+}
+.article-inline a:hover{
+    text-shadow: 0 0 5px #999;
+}
+.article-inline:last-child{
+	border-bottom: none;
+}
+.read{
+	margin:0;
+	border: none;
+	width: 20px;
+	height: 20px;
+	background: url("/annual-project/images/etoile_vide.png");
+	background-repeat: no-repeat;
+	float: right;
+	
+}
+.unread{
+	margin:0;
+	border: none;
+	width: 20px;
+	height: 20px;
+	background: url("/annual-project/images/etoile_pleine.png") !important;
+	background-repeat: no-repeat;
+	float: right;
+}

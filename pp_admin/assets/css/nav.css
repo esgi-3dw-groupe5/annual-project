@@ -1,0 +1,99 @@
+.main-nav {
+/*padding: 0 40px 0 25px;*/
+}
+.main-nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+.main-nav a {
+  display: block;
+  font-weight: bold;
+  text-decoration: none;
+  align-items: center;
+  color: #888;
+}
+.main-nav a:hover, .main-nav a:focus {
+  background: #121314;
+  opacity: 0.9;
+  text-decoration: underline #696969;
+
+}
+.main-nav a.no-hover:hover, .main-nav a.no-hover:focus {
+  background: none;
+  text-decoration: none;
+}
+.main-nav .h-logo img:hover, .main-nav .h-logo img:focus {
+  background: #121314;
+  border-radius: 100%;
+  opacity: 0.9;
+
+}
+.main-nav li:hover, .main-nav li:focus {
+/*  background: #ccc;
+  text-decoration: underline #696969;
+  color: black;*/
+}
+.main-nav span {
+  display: block;
+  padding: 1.6em;
+}
+
+#main-nav-list li{
+  flex: 0 1 auto;
+  text-align: center;
+}
+#main-nav-list li a:before{
+  content: "";
+  /*background: red;*/
+/*  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 2px;
+  height: 2px;
+  width: 100%;*/
+}
+
+#main-nav-list li a:hover, #main-nav-list li a:focus{
+  border-bottom: inset thin #696969;
+}
+#main-nav-list li a.technologie:hover, #main-nav-list li a.technologie:focus{
+  border-bottom: inset thin #ed1b24;
+}
+#main-nav-list li a.sport:hover, #main-nav-list li a.sport:focus{
+  border-bottom: inset thin #d2691e;
+}
+#main-nav-list li a.jeux-video:hover, #main-nav-list li a.jeux-video:focus{
+  border-bottom: inset thin #0070bc;
+}
+#main-nav-list li a.cine-serie:hover, #main-nav-list li a.cine-serie:focus{
+  border-bottom: inset thin #d200ff;
+}
+#main-nav-list li a.musique:hover, #main-nav-list li a.musique:focus{
+  border-bottom: inset thin #009245;
+}
+
+#main-nav-list li a.technologie.active, #main-nav-list li a.technologie.active{
+  background: #121314;
+  border-bottom: inset thin #ed1b24;
+}
+#main-nav-list li a.sport.active, #main-nav-list li a.sport.active{
+  background: #121314;
+  border-bottom: inset thin #d2691e;
+}
+#main-nav-list li a.jeux-video.active, #main-nav-list li a.jeux-video.active{
+  background: #121314;
+  border-bottom: inset thin #0070bc;
+}
+#main-nav-list li a.cine-serie.active, #main-nav-list li a.cine-serie.active{
+  background: #121314;
+  border-bottom: inset thin #d200ff;
+}
+#main-nav-list li a.musique.active, #main-nav-list li a.musique.active{
+  background: #121314;
+  border-bottom: inset thin #009245;
+}
+
