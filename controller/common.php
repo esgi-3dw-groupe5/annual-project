@@ -47,6 +47,17 @@ function cleanString($string)
 	return $string;
 }
 
+function preview($preview){
+	$preview = strip_tags($preview);
+
+	$preview = substr($preview,0,200);
+
+	$preview = trim($preview," \t\n\r\0\x0B\&nbsp;");
+
+
+	return $preview;
+}
+
 function is_submited($type){
 	if($type == '_POST'){
 		if( count($_POST) > 0)

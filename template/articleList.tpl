@@ -10,6 +10,9 @@ $title = preg_replace('/\s+/', '-', strtolower($data['title_id']));
 	<?php printf('<a class="article-title" href="%s/%s/%s">', $uri, $data_cat['tag'], $title); ?>
 		<span>
 			<?php printf('<b>%s</b>', $data['title']); ?>
+		</span><br>
+		<span class="article-preview">
+			<?php printf('%s...',$preview); ?>
 		</span>
 	</a>
 	<?php if( $_SESSION['user']['connected'] ){?>

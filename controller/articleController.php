@@ -94,8 +94,8 @@ function validate_article($POST,$FILES,$value){
 				global $source;
 				imagepng(imagecreatefromstring(file_get_contents($FILES['at_image']['tmp_name'])),$source."images/image_article/{$title_id}.png");
 				list($width,$height)=getimagesize($source."images/image_article/{$title_id}.png");
-				$newwidth=60;
-				$newheight=($height/$width)*$newwidth;
+				$newwidth=84;
+				$newheight=84;
 				$src = imagecreatefrompng($source."images/image_article/{$title_id}.png");
 				$tmp = imagecreatetruecolor($newwidth,$newheight);
 				imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight,$width,$height);
