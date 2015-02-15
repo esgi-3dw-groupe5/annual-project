@@ -55,28 +55,28 @@
                       </a>
                     </li>
                     <li>
-                      <a class="" href="/annual-project/page">
+                      <a class="" href="/annual-project/pp_admin/page">
                         <div>
                             <span>page</span>
                         </div>
                       </a>
                     </li>
                     <li>
-                      <a class="" href="/annual-project/menu">
+                      <a class="" href="/annual-project/pp_admin/menu">
                         <div>
                             <span>menu</span>
                         </div>
                       </a>
                     </li>
                     <li>
-                      <a class="" href="/annual-project/article">
+                      <a class="" href="/annual-project/pp_admin/article">
                         <div>
                             <span>article</span>
                         </div>
                       </a>
                     </li>
                     <li>
-                      <a class="" href="/annual-project/utilisateur">
+                      <a class="" href="/annual-project/pp_admin/utilisateur">
                         <div>
                             <span>utilisateur</span>
                         </div>

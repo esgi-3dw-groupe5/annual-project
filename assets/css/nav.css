@@ -103,5 +103,5 @@ span.nav{
   border-bottom: inset thin #009245;
 }
 @media screen and (max-width: 960px) {
-  span.nav{font-size: 70%;}
+  /*span.nav{font-size: 70%;}*/
 }

@@ -6,7 +6,7 @@ require_once($source."pp_admin/model/dbcontent.php");
     /*********************************************************************************/
     /********************************* Call display method****************************/
     /*********************************************************************************/
-	function page_controller($mode, $page){
+	function page_controller($mode, $page, $edit){
 		switch ($mode) {
 			case 'article':
 				render_contents($page);
@@ -14,6 +14,10 @@ require_once($source."pp_admin/model/dbcontent.php");
 				break;
 			case 'gallery':
 				echo '<div class="content"><h1>gallery mode Page</h1></div>';
+				break;
+			case 'administrator':
+				render_contents($page);
+				// display_edit($page, $edit);
 				break;
 			
 			default:
@@ -27,6 +31,25 @@ require_once($source."pp_admin/model/dbcontent.php");
 		global $source;
 		$link = db_connect();
 		switch ($content) {
+            /***************************/
+            /******admin page content***/
+            /***************************/
+            case 'page':
+            		echo '<div class="content"><h1>List of page</h1></div>';
+            		render_contents("list_page");
+            	break;
+        	case 'menu':
+            	echo '<div class="content"><h1>List of menu</h1></div>';
+            		render_contents("list_menu");
+            	break;
+        	case 'article':
+        			echo '<div class="content"><h1>List of articles</h1></div>';
+        			render_article("");
+            	break;
+        	case 'utilisateur':
+            	echo '<div class="content"><h1>List of utilisateur</h1></div>';
+            	break;
+
             /***************************/
             /********page content*******/
             /***************************/
@@ -112,9 +135,25 @@ require_once($source."pp_admin/model/dbcontent.php");
 					}
 				}
 				break;
-			case 'read_state':
-
-
+			case 'list_page':
+				$result = db_get_content($link, 'allpage');
+				echo'<table style="background:#222326; height:9% border:none;">';
+					echo '<tbody>';
+				while($data = $result -> fetch()){
+					require($source.'pp_admin/template/pageList.tpl');
+				}
+					echo '</tbody>';
+				echo'</table>';
+				break;
+			case 'list_menu':
+				$result = db_get_content($link, 'menu');
+				echo'<table style="background:#222326; height:9% border:none;">';
+					echo '<tbody>';
+				while($data = $result -> fetch()){
+					require($source.'pp_admin/template/menuList.tpl');
+				}
+					echo '</tbody>';
+				echo'</table>';
 				break;
 			default:
 				# code...
@@ -259,4 +298,33 @@ require_once($source."pp_admin/model/dbcontent.php");
 			require($source.'template/articleList.tpl');
 		}
 	}
+
+	// 
+
+	// function display_edit($page,){
+	// 	switch ($page) {
+	// 		case 'article':
+	// 			global $article;
+
+	// 		    $idarticle = db_get_one_article($link, $article);
+	// 		    $data = $idarticle -> fetch();
+			    
+	// 		    $result_cat = db_get_category_tag($link, $data['id_category']);
+	// 			$data_cat = $result_cat -> fetch();
+
+	// 			require($source.'/pp_admin/template/editarticle.tpl');
+
+
+	// 			$comments = db_get_comments($link, $data['id']);
+	// 			while($data_comment = $comments ->fetch()){
+	// 				//require($source.'/template/commentRead.tpl');
+	// 				require($source.'/pp_admin/template/editcomment.tpl');
+	// 			}
+	// 			break;
+			
+	// 		default:
+	// 			# code...
+	// 			break;
+	// 	}
+	// }
 ?>

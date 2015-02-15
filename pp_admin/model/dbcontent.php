@@ -33,6 +33,11 @@ function db_get_content($link, $content = null){
 			':role' => $role
 			));
 			break;
+		case 'allpage':
+			$query = "SELECT * FROM pp_page ORDER BY pp_page.order";
+			$req	=	$link -> prepare($query);
+			$req	->	execute();
+			break;
 		case 'menu':
 			if($_SESSION['user']['connected']){ // makea connectedf status table
 				$connected = 'yes';

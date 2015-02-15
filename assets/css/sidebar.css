@@ -30,19 +30,19 @@ input[type=range]::-webkit-slider-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
 }
 input[type=range][name="cine-serie"]::-webkit-slider-thumb {
-  background: #6495ED;
+  background: #d200ff;
 }
 input[type=range][name="technologie"]::-webkit-slider-thumb {
-  background: #B8860B;
+  background: #ed1b24;
 }
 input[type=range][name="jeux-video"]::-webkit-slider-thumb {
-  background: #9932CC;
+  background: #0070bc;
 }
 input[type=range][name="musique"]::-webkit-slider-thumb {
-  background: #32CD32;
+  background: #009245;
 }
 input[type=range][name="sport"]::-webkit-slider-thumb {
-  background: #8B0000;
+  background: #d2691e;
 }
 
 /* All the same stuff for Firefox */

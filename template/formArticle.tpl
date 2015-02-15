@@ -28,7 +28,7 @@
       <option value="">Selectionnez une catégorie</option>
       <?php
         $link = db_connect();
-        $categorie = $link -> prepare("SELECT * FROM pp_page");
+        $categorie = $link -> prepare("SELECT * FROM pp_category");
         $categorie -> execute();
         while($affiche = $categorie->fetch())
         {

@@ -26,14 +26,8 @@ create_cookie();
 secure_admin();
 
 $page = get_param('p', '');
-$element = get_param('element', '');
+$edit = get_param('edit', '');
 
-echo 'Pinnackl Press';
-echo '<br>';
-echo $page;
-echo '<br>';
-echo $element;
-echo '<br>';
- require($source."pp_admin/template/index.tpl");
-// 	page_controller($mode, $page);
+require($source."pp_admin/template/index.tpl");
+	page_controller($mode, $page, $edit);
 require($source."pp_admin/template/footer.tpl");
