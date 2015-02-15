@@ -25,7 +25,7 @@ require_once($source."controller/module.php");
 update_fluxRSS();
 access_control();
 route_control();
-create_coockie("create");
+create_coockie();
 
 $page = get_param('p', '');
 $article = get_param('article', '');

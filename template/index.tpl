@@ -58,8 +58,9 @@
             </nav>
         </header>
         <aside>
+            <?php render_contents('deconnection') ?>
             <?php render_contents('connection') ?>
             <h1>Fréquences des actus</h1>
             <?php render_contents('facet_range') ?>
         </aside>
-        <section >
+        <section class="content">

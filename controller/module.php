@@ -23,6 +23,7 @@ require_once($source."model/dbcontent.php");
 	}
 
 	function render_contents($content){
+		global $uri;
 		global $source;
 		$link = db_connect();
 		switch ($content) {
@@ -34,6 +35,12 @@ require_once($source."model/dbcontent.php");
 				global $li_msgErr_psw;
 				global $li_msgErr;
 				if( !$_SESSION['user']['connected'] ){include_once($source."template/formLogin.tpl");} 
+				break;
+			case 'deconnection':
+			    if( $_SESSION['user']['connected'] ){
+			        print("<div class='logout'><span>Bienvenue ".$_SESSION['user']['pseudo']."| </span>");
+			        printf("<a href='%s?act=logout'>Déconnection</a></div>",$uri);
+			    }
 				break;
 			case 'inscription':	
 				if( !$_SESSION['user']['connected'] ){
@@ -47,11 +54,29 @@ require_once($source."model/dbcontent.php");
 				echo '<div class="content"><h1>Activation Page</h1></div>';
 				break;
 			case 'home':
-				display_user_article();
-				echo '<div class="content"><h1>Home Page</h1></div>';
-                if(permissions($_SESSION['user']['role'],'editor')){
-                    render_contents('form_article');
+                $result = db_get_actif_user($link);
+                while ($data = $result -> fetch()) {
+                    if(isset($_SESSION['user']['actif'])){
+                        $_SESSION['user']['actif'] = $data['actif'];
+                    }
                 }
+            
+                if($_SESSION['user']['actif']==1)
+                {
+                    display_user_article();
+                    echo '<div class="content"><h1>Home Page</h1></div>';
+                    if(permissions($_SESSION['user']['role'],'editor')){
+                        render_contents('form_article');
+                    }
+                }
+                else
+                {
+                    echo '<div class="content"><h1>Activer votre compte pour accéder à votre Home Page</h1></div>
+                     <form method="POST" action="'.$_SESSION['url'].'" class="" id="mail_form" name="mail_form">
+                     <input type="submit" name="mail_submit" value="Renvoyer un Mail">
+                     </form>';
+                }
+                    
 				break;
 			case '404':
 				echo '<div class="content"><h1>404 ERROR</h1></div>';
@@ -61,10 +86,14 @@ require_once($source."model/dbcontent.php");
             /*******proper content******/
             /***************************/
 			case 'menu':
+				$page = get_param('p','');
 				$result = db_get_content($link,'menu');
-
 				while ($data = $result -> fetch()) {
+					$active = "";
 					$class = $data['tag'];
+					if($page == $data['tag']){
+						$active = "active";
+					}
 					require($source.'template/header.tpl');
 				}
 				break;
@@ -215,6 +244,18 @@ require_once($source."model/dbcontent.php");
 			$result_cat = db_get_category_tag($link, $data['id_category']);
 
 			$data_cat = $result_cat -> fetch();
+			$data_user = db_get_user_id($link) -> fetch();
+			$id_user = $data_user['id'];
+			$data_status = db_get_status($link, $id_user, $data['id']) -> fetch();
+
+			if( $data_status == false ||  $data_status['status'] == "read"){
+				$read = "";
+				$unread = "style='display:none'";
+			}
+			else{
+				$read = "style='display:none'";
+				$unread = "";
+			}
 			require($source.'template/articleList.tpl');
 		}
 	}
