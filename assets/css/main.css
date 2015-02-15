@@ -3,10 +3,6 @@
 	padding:0px;
  	box-sizing: border-box;
 }
-@font-face {
-	font-family: "MeriendaOne-Regular"; 
-	src: url('MeriendaOne-Regular.ttf');
-}
 html, body{
 	background-color: #f3f3f3;
 	/*position: relative;*/
@@ -15,7 +11,15 @@ html, body{
     height: 100%;
     color: #FFFFFF;
 }
-
+@font-face {
+	font-family: "MeriendaOne-Regular"; 
+	src: url('MeriendaOne-Regular.ttf');
+}
+h1{
+	text-align: center;
+	text-decoration: underline;
+	margin-bottom: 2%;
+}
 header{
 	display: block;
 	position: fixed;
@@ -54,18 +58,6 @@ header{
 	/*background: #121314;*/
 	/*border-radius: 100%;*/
 	/*opacity: 0.9;*/
-}
-.nav {
-	font-family: MeriendaOne-Regular;
-	font-size: 90%;
-	text-align: center;
-}
-a.subnav {
-	color: white;
-	text-decoration: none;
-}
-a.subnav:hover {
-	color: black;
 }
 /*==================================================*/
 

@@ -1,5 +1,8 @@
 .main-nav {
-/*padding: 0 40px 0 25px;*/
+  padding: 0 40px 0 25px;
+  font-family: MeriendaOne-Regular;
+  font-size: 100%;
+  text-align: center;
 }
 .main-nav ul {
   margin: 0;

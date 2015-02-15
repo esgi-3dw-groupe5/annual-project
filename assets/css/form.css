@@ -10,12 +10,11 @@ span{
 }
 label{
 	font-size: 80%;
-	text-align: center;
 }
 .li_form{
 	border: solid #696969 2px;
 	text-align: center;
-	margin-top: -2%;
+	margin-top: -10%;
 	display: inline-block;
 }
 .si_form{
