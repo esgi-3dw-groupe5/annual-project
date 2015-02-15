@@ -15,7 +15,7 @@ function db_get_user($link, $value, $case = "email"){
 			break;
 
 		case 'connexion':
-				$req = $link -> prepare("SELECT pseudo, email, password, status, role FROM pp_users WHERE email = :value");
+				$req = $link -> prepare("SELECT pseudo, email, password, status, role, actif FROM pp_users WHERE email = :value");
 				$req->execute(array(
 					':value' => $value
 				));
@@ -87,3 +87,21 @@ function db_get_user_id($link){
 	return $req;	
 }
 
+function db_update_cle_user($link,$cle){
+    access_control();
+    $pseudo = $_SESSION['user']['pseudo'];
+    $req = $link->prepare("UPDATE pp_users SET cle = :cle WHERE pseudo like :pseudo ");
+    $req->bindParam(':cle', $cle);
+    $req->bindParam(':pseudo', $pseudo);
+    $req->execute();
+}
+
+function db_get_actif_user($link){
+    access_control();
+    $pseudo = $_SESSION['user']['pseudo'];
+    $req = $link -> prepare("SELECT actif FROM pp_users WHERE pseudo = :pseudo");
+    $req->execute(array(
+        ':pseudo'   => $pseudo
+    ));
+    return $req;	
+}

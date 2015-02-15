@@ -54,11 +54,29 @@ require_once($source."model/dbcontent.php");
 				echo '<div class="content"><h1>Activation Page</h1></div>';
 				break;
 			case 'home':
-				display_user_article();
-				echo '<div class="content"><h1>Home Page</h1></div>';
-                if(permissions($_SESSION['user']['role'],'editor')){
-                    render_contents('form_article');
+                $result = db_get_actif_user($link);
+                while ($data = $result -> fetch()) {
+                    if(isset($_SESSION['user']['actif'])){
+                        $_SESSION['user']['actif'] = $data['actif'];
+                    }
                 }
+            
+                if($_SESSION['user']['actif']==1)
+                {
+                    display_user_article();
+                    echo '<div class="content"><h1>Home Page</h1></div>';
+                    if(permissions($_SESSION['user']['role'],'editor')){
+                        render_contents('form_article');
+                    }
+                }
+                else
+                {
+                    echo '<div class="content"><h1>Activer votre compte pour accéder à votre Home Page</h1></div>
+                     <form method="POST" action="'.$_SESSION['url'].'" class="" id="mail_form" name="mail_form">
+                     <input type="submit" name="mail_submit" value="Renvoyer un Mail">
+                     </form>';
+                }
+                    
 				break;
 			case '404':
 				echo '<div class="content"><h1>404 ERROR</h1></div>';
