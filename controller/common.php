@@ -91,7 +91,7 @@ function set_page_color($color){
 	print $style;
 }
 
-function create_coockie(){
+function create_cookie(){
 	if( get_cookie() == null){
 		$facet = [];
 		$link = db_connect();
@@ -103,6 +103,8 @@ function create_coockie(){
 		$cookie_name = "facet";
 		
 		setcookie($cookie_name, $cookie_value, 0, "/");
+		// create a cookie array to direct access cookie after create it
+		$_COOKIE[$cookie_name] = $cookie_value;
 	}
 }
 
