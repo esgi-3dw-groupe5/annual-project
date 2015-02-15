@@ -15,7 +15,7 @@ function db_get_user($link, $value, $case = "email"){
 			break;
 
 		case 'connexion':
-				$req = $link -> prepare("SELECT pseudo, email, password, status, role FROM pp_users WHERE email = :value");
+				$req = $link -> prepare("SELECT pseudo, email, password, status, role, actif FROM pp_users WHERE email = :value");
 				$req->execute(array(
 					':value' => $value
 				));

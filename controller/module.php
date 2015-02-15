@@ -47,11 +47,19 @@ require_once($source."model/dbcontent.php");
 				echo '<div class="content"><h1>Activation Page</h1></div>';
 				break;
 			case 'home':
-				display_user_article();
-				echo '<div class="content"><h1>Home Page</h1></div>';
-                if(permissions($_SESSION['user']['role'],'editor')){
-                    render_contents('form_article');
+                if($_SESSION['user']['actif']==1)
+                {
+                    display_user_article();
+                    echo '<div class="content"><h1>Home Page</h1></div>';
+                    if(permissions($_SESSION['user']['role'],'editor')){
+                        render_contents('form_article');
+                    }
                 }
+                else
+                {
+                    echo '<div class="content"><h1>Activer votre compte pour accéder à votre Home Page</h1></div>';
+                }
+                    
 				break;
 
             /***************************/

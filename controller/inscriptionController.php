@@ -218,7 +218,7 @@ function validate_field($POST){
 			$connection = get_error("connection", $email, $password);
 			if( isset($connection['pseudo']) ){
 				access_control();
-				set_user_session( true, $connection['pseudo'], $connection['email'], $connection['role'] );
+				set_user_session( true, $connection['pseudo'], $connection['email'], $connection['role'], $connection['actif'] );
 					header('location: '.$_SESSION['url']);
 					// header('location: /');
 			}
@@ -321,7 +321,8 @@ function get_error($item, $parm1, $parm2 = null){
 						'email' 	=> $data['email'], 
 						'password' 	=> $data['password'], 
 						'status' 	=> $data['status'], 
-						'role' 		=> $data['role'] 
+						'role' 		=> $data['role'],
+                        'actif'     => $data['actif'],
 						);
 					return $connection;
 				}
