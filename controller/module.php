@@ -23,6 +23,7 @@ require_once($source."model/dbcontent.php");
 	}
 
 	function render_contents($content){
+		global $uri;
 		global $source;
 		$link = db_connect();
 		switch ($content) {
@@ -34,6 +35,12 @@ require_once($source."model/dbcontent.php");
 				global $li_msgErr_psw;
 				global $li_msgErr;
 				if( !$_SESSION['user']['connected'] ){include_once($source."template/formLogin.tpl");} 
+				break;
+			case 'deconnection':
+			    if( $_SESSION['user']['connected'] ){
+			        print("<div class='logout'><span>Bienvenue ".$_SESSION['user']['pseudo']."| </span>");
+			        printf("<a href='%s?act=logout'>Déconnection</a></div>",$uri);
+			    }
 				break;
 			case 'inscription':	
 				if( !$_SESSION['user']['connected'] ){
@@ -61,10 +68,14 @@ require_once($source."model/dbcontent.php");
             /*******proper content******/
             /***************************/
 			case 'menu':
+				$page = get_param('p','');
 				$result = db_get_content($link,'menu');
-
 				while ($data = $result -> fetch()) {
+					$active = "";
 					$class = $data['tag'];
+					if($page == $data['tag']){
+						$active = "active";
+					}
 					require($source.'template/header.tpl');
 				}
 				break;
