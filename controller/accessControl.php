@@ -16,7 +16,7 @@ function access_control(){
             $_SESSION['url']                =   $url;
 }
 
-function set_user_session($success, $pseudo = null, $email = null, $role = null){
+function set_user_session($success, $pseudo = null, $email = null, $role = null, $actif=null){
     if(is_session_started() === FALSE){
        session_start();
     }
@@ -25,6 +25,7 @@ function set_user_session($success, $pseudo = null, $email = null, $role = null)
         $_SESSION['user']['pseudo']     =   $pseudo;
         $_SESSION['user']['email']      =   $email;
         $_SESSION['user']['role']       =   $role;
+        $_SESSION['user']['actif']      =   $actif;
         $_SESSION['user']['connected']  =   true;
         if(!is_submited('_POST'))
             $_SESSION['url']                =   $url;
@@ -33,6 +34,7 @@ function set_user_session($success, $pseudo = null, $email = null, $role = null)
         $_SESSION['user']['pseudo']     =   null;
         $_SESSION['user']['email']      =   null;
         $_SESSION['user']['role']       =   'viewer';
+        $_SESSION['user']['actif']      =   null;
         $_SESSION['user']['connected']  =   false;
         if(!is_submited('_POST'))
             $_SESSION['url']                =   $url;

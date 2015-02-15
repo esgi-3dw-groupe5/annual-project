@@ -38,6 +38,10 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
     $action = $_GET['act'];
 }
 
+if( isset($_POST['mail_submit']) && !empty($_POST['mail_submit']) ) {
+    $action = $_POST['mail_submit'];
+}
+
    switch($action) {
         case 'valider' : 
             $displayErr =  validate_field($_POST);
@@ -133,6 +137,10 @@ if( isset($_GET['act']) && !empty($_GET['act']) ) {
 
         case 'signaler' : 
                 report_comment($_POST);
+            break;
+       
+       case 'Renvoyer un Mail' : 
+                validate_field($_POST);
             break;
         default:
             
