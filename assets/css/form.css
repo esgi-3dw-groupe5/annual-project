@@ -2,23 +2,31 @@
     color:darkred;
 }
 span{
-	font-size: 80%;
+	font-size: 70%;
 }
 label{
-	font-size: 80%;
+	font-size: 70%;
+	display: inline-block;
+	width: 10%;
+}
+label[for=li_login]{
+	width: 30%;
+}
+label[for=li_password]{
+	width: 30%;
 }
 .li_form{
 	/*border: solid #696969 2px;*/
 	text-align: center;
 	margin-top: -10%;
 	display: inline-block;
+	border-bottom: solid 1px;
 }
 .si_form{
 	/*border: solid #696969 2px;*/
 	text-align: center;
 	padding: 1%;
-	width: 60%;
 	/*position: relative;*/
-	left: 20%;
 	/*display: inline-block;*/
 }
+6

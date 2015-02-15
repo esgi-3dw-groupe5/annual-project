@@ -5,13 +5,13 @@
     <form method="post" action="<?php print($_SESSION['url']); ?>" class="" id="li_form" name="li_form">
         <h2>Connexion</h2>
             <div>
-            	<label for="li_login">Login : </label>
+            	<label for="li_login">Email :</label>
             		<input id="li_login" type="text" name="li_login" required><br>
             		<span class="form-error" id="msgErr_gender"><?php if(!empty($li_msgErr_login))echo $li_msgErr_login ?></span>
             </div>
         </br>
             <div>
-            	<label for="li_password">Password : </label>
+            	<label for="li_password">Password :</label>
             		<input id="li_password" type="password" name="li_password" required><br>
             		<span class="form-error" id="msgErr_gender"><?php if(!empty($li_msgErr_psw))echo $li_msgErr_psw ?></span>
             </div>
