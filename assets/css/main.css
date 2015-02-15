@@ -9,11 +9,51 @@
 }
 html, body{
 	background-color: #f3f3f3;
-	/*position: relative;*/
+	overflow: hidden;
     margin: 0;
     width: 100%;
     height: 100%;
     color: #FFFFFF;
+
+    font-family: MeriendaOne-Regular;
+}
+h1{
+	font-size: 100%;
+}
+h2{
+	font-size: 80%;
+}
+h3{
+	font-size: 50%;
+}
+h4{
+	font-size: 30%;
+}
+h5{
+	font-size: 30%;
+}
+h6{
+	font-size: 30%;
+}
+/* unvisited link */
+a{
+	color: #FFFFFF;
+}
+a:link {
+    color: #FFFFFF;
+}
+/* visited link */
+a:visited {
+    color: #FFFFFF;
+}
+/* mouse over link */
+a:hover {
+/*    text-shadow: 0 0 2px #f2f2f3;
+    color : #f2f2f3;*/
+}
+/* selected link */
+a:active {
+    color: #0000FF;
 }
 
 header{
@@ -25,12 +65,6 @@ header{
 	min-height: 9%;
 	background-color: #222326;
 	/*overflow: hidden;*/
-	/*border-bottom: solid #696969 thin;*/	/*gris*/
-	/*border-bottom: solid #d2691e thin;*/	/*orange*/
-	/*border-bottom: solid #009245 thin;*/	/*vert*/
-	/*border-bottom: solid #ed1b24 thin;*/	/*rouge*/
-	/*border-bottom: solid #0070bc thin;*/	/*bleu*/
-	/*border-bottom: solid #d200ff thin;*/ /*violet*/
 	z-index: 11;
 	-webkit-box-shadow: 0 3px 4px 0 #080808;
 	box-shadow: 0 3px 4px 0 #080808;
@@ -57,7 +91,7 @@ header{
 }
 .nav {
 	font-family: MeriendaOne-Regular;
-	font-size: 90%;
+	font-size: 100%;
 	text-align: center;
 }
 a.subnav {
@@ -78,7 +112,7 @@ aside{
 	height: 88%;
   	padding-top: 8%;
 	background-color:#222326;
-	overflow: hidden;
+	overflow: auto;
 	/*border-right: solid #1c1c1f 10px;*/
 	-webkit-box-shadow: 3px 0 4px 0 #080808;
 	box-shadow: 3px 0 4px 0 #080808;
@@ -86,6 +120,7 @@ aside{
 }
 
 section{
+	/*background-color: #f2f2f3;*/
 	background-color: #121314;
     margin: 0;
 	display: block;
@@ -139,22 +174,44 @@ hr.style-one {
 }
 /*==========================================*/
 .content{
-	margin: 3%;
+	padding: 1%;
+}
+.article-image{
+    float: left;
+    height: 100%;
+    width: 2px;
+}
+.article-inline{
+    background-color: #222222;
+    border-bottom: thin solid #ccc;
+    height: 8%;
+    text-decoration: none;
+}
+.article-inline a{
+	text-decoration: none;
+}
+.article-inline a:hover{
+    text-shadow: 0 0 5px #999;
+}
+.article-inline:last-child{
+	border-bottom: none;
 }
 .read{
-	margin:none;
+	margin:0;
 	border: none;
 	width: 20px;
 	height: 20px;
 	background: url("/annual-project/images/etoile_vide.png");
 	background-repeat: no-repeat;
+	/*float: right;*/
 	
 }
 .unread{
-	margin:none;
+	margin:0;
 	border: none;
 	width: 20px;
 	height: 20px;
 	background: url("/annual-project/images/etoile_pleine.png") !important;
 	background-repeat: no-repeat;
+	/*float: right;*/
 }

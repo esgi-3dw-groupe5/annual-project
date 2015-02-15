@@ -62,4 +62,4 @@
             <h1>Fréquences des actus</h1>
             <?php render_contents('facet_range') ?>
         </aside>
-        <section >
+        <section class="content">

@@ -91,17 +91,25 @@ function set_page_color($color){
 	print $style;
 }
 
-function create_coockie($create = null){
-	
-	if(isset($_POST['values'])) $facet  = $_POST['values'];
-	if($create != null){
+function create_coockie(){
+	if( get_cookie() == null){
 		$facet = [];
 		$link = db_connect();
 		$result = db_get_category($link);
 		while($data = $result -> fetch()){
 			$facet[$data['tag']] = 5;
 		}
+		$cookie_value = serialize($facet);
+		$cookie_name = "facet";
+		
+		setcookie($cookie_name, $cookie_value, 0, "/");
 	}
+}
+
+function update_cookie(){
+	if(isset($_POST['values']))
+		$facet  = $_POST['values'];
+	
 	$cookie_value = serialize($facet);
 	$cookie_name = "facet";
 	
@@ -112,10 +120,5 @@ function get_cookie(){
 	if(isset($_COOKIE['facet'])){
 		return unserialize($_COOKIE['facet']);
 	}
-	$link = db_connect();
-	$result = db_get_category($link);
-	while($data = $result -> fetch()){
-		$facet[$data['tag']] = 5;
-	}
-	return $facet;
+	return null;
 }

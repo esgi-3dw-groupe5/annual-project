@@ -110,7 +110,7 @@ if( isset($_POST['facet_search']) && !empty($_POST['facet_search']) ) {
             return;
             break;
         case 'facet_search' :
-            create_coockie();
+            update_cookie();
             return;
             break;
         default:
