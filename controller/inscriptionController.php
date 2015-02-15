@@ -6,6 +6,8 @@ require_once($source."model/dbconnect.php");
 require_once($source."model/dbusers.php");
 require_once($source."controller/mail.php");
 
+access_control();
+
 function validate_field($POST){
 	$ajax = null;
 
@@ -227,6 +229,21 @@ function validate_field($POST){
 			}
 		}
 	}
+    
+    if(isset($POST['mail_submit'])){
+        
+        $pseudo = $_SESSION['user']['pseudo'];
+        $email = $_SESSION['user']['email'];
+        $firstname = $_SESSION['user']['pseudo'];
+        $cle = md5(microtime(TRUE)*100000);
+        $link = db_connect();
+        $req = db_update_cle_user($link,$cle);
+        signmail($pseudo,$firstname,$email,$cle);
+        redirect();
+
+
+        
+    }
 
 	return $errorMessage;
 }

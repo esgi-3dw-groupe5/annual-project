@@ -47,6 +47,13 @@ require_once($source."model/dbcontent.php");
 				echo '<div class="content"><h1>Activation Page</h1></div>';
 				break;
 			case 'home':
+                $result = db_get_all_user($link);
+                while ($data = $result -> fetch()) {
+                    if(isset($_SESSION['user']['actif'])){
+                        $_SESSION['user']['actif'] = $data['actif'];
+                    }
+                }
+            
                 if($_SESSION['user']['actif']==1)
                 {
                     display_user_article();
@@ -57,7 +64,10 @@ require_once($source."model/dbcontent.php");
                 }
                 else
                 {
-                    echo '<div class="content"><h1>Activer votre compte pour accéder à votre Home Page</h1></div>';
+                    echo '<div class="content"><h1>Activer votre compte pour accéder à votre Home Page</h1></div>
+                     <form method="POST" action="'.$_SESSION['url'].'" class="" id="mail_form" name="mail_form">
+                     <input type="submit" name="mail_submit" value="Renvoyer un Mail">
+                     </form>';
                 }
                     
 				break;
