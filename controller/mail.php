@@ -2,36 +2,36 @@
 if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."annual-project/";
 
 function signmail($pseudo,$firstname,$email,$cle){
-    
+
     global $source;
-    
+
     ob_start(); // turn on output buffering
     include($source.'template/signmail.tpl');
     $res = ob_get_contents(); // get the contents of the output buffer
     ob_end_clean(); //  clean (erase) the output buffer and turn off output buffering
 
-    
-    
-        
-    
+
+
+
+
     $mail = $email; // Déclaration de l'adresse de destination.
-    if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
+    if (!preg_match("#^[a-z0-9._-]+@(gmail|hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
     {
-    $passage_ligne = "\r\n";
+        $passage_ligne = "\r\n";
     }
     else
     {
-    $passage_ligne = "\n";
+        $passage_ligne = "\n";
     }
     //=====Déclaration des messages au format texte et au format HTML.
     //$message_txt = "Salut à tous, voici un e-mail envoyé par un script PHP.";
-    
-    
+
+
     $message_html = $res;
     //==========
 
-    
-    
+
+
     //=====Création de la boundary
     $boundary = "-----=".md5(rand());
     //==========
@@ -42,7 +42,7 @@ function signmail($pseudo,$firstname,$email,$cle){
 
     //=====Création du header de l'e-mail.
     $header = "From: \"Pinnackl\"<pinnakle.work@gmail.com>".$passage_ligne;
-    $header.= "Reply-to: \"Pinnackl\" <pinnakle.work.com>".$passage_ligne;
+    $header.= "Reply-to: \"Pinnackl\"<pinnakle.work@gmail.com>".$passage_ligne;
     $header.= "MIME-Version: 1.0".$passage_ligne;
     $header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
     //==========
@@ -69,4 +69,4 @@ function signmail($pseudo,$firstname,$email,$cle){
     mail($mail,$sujet,$message,$header);
     //==========
 }
-    ?>
+?>
