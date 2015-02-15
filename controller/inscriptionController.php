@@ -170,8 +170,10 @@ function validate_field($POST){
 		$success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date,$cle);
 		access_control();
 		set_user_session(false, $pseudo, $email);
-			// header('location: http://127.0.0.1/annual-project/');
-			header('location: '.$_SESSION['url']);
+            if($_SESSION['url']=="http://127.0.0.1/annual-project/inscription")
+                header('location: http://127.0.0.1/annual-project/');
+            else
+                header('location: '.$_SESSION['url']);
             signmail($pseudo,$firstname,$email,$cle);
 		}
         
@@ -222,7 +224,6 @@ function validate_field($POST){
 				access_control();
 				set_user_session( true, $connection['pseudo'], $connection['email'], $connection['role'], $connection['actif'] );
 					header('location: '.$_SESSION['url']);
-					// header('location: /');
 			}
 			else{
 				$errorMessage[12] = $connection;

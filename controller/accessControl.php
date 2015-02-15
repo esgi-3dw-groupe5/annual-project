@@ -109,24 +109,24 @@ function permissions($role,$permission){
     $roles = array(
         "administrator"  => array(
             0  => "administrator",
+            1  => "moderator",
+            2  => "editor",
+            3  => "author",
+            4  => "viewer"    ),
+
+        "moderator"  => array(
+            0  => "moderator",
             1  => "editor",
             2  => "author",
-            3  => "moderator",
-            4  => "viewer"    ),
+            3  => "viewer"    ),
 
         "editor"  => array(
             0  => "editor",
             1  => "author",
-            2  => "moderator",
-            3  => "viewer"    ),
+            2  => "viewer"    ),
 
         "author"  => array(
             0  => "author",
-            1  => "moderator",
-            2  => "viewer"    ),
-
-        "moderator"  => array(
-            0  => "moderator",
             1  => "viewer"    ),
     );
 
