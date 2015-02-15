@@ -96,7 +96,7 @@ function db_update_cle_user($link,$cle){
     $req->execute();
 }
 
-function db_get_actif_id($link){
+function db_get_actif_user($link){
     access_control();
     $pseudo = $_SESSION['user']['pseudo'];
     $req = $link -> prepare("SELECT actif FROM pp_users WHERE pseudo = :pseudo");

@@ -47,7 +47,7 @@ require_once($source."model/dbcontent.php");
 				echo '<div class="content"><h1>Activation Page</h1></div>';
 				break;
 			case 'home':
-                $result = db_get_all_user($link);
+                $result = db_get_actif_user($link);
                 while ($data = $result -> fetch()) {
                     if(isset($_SESSION['user']['actif'])){
                         $_SESSION['user']['actif'] = $data['actif'];
