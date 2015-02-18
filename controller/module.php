@@ -127,6 +127,7 @@ require_once($source."model/dbcontent.php");
     /*********************************************************************************/
 	function render_article($content){
 		$link = db_connect();
+		// Si il n'y a pas d'article dans l'url ..
 		if($content != ""){
 			$result = db_get_category($link);
 			while($data = $result -> fetch()){
@@ -139,7 +140,7 @@ require_once($source."model/dbcontent.php");
 			display_all_articles();
 		}
 	}
-
+	/*Display method for index*/
 	function display_all_articles(){
 		global $uri;
 		global $source;
@@ -149,24 +150,16 @@ require_once($source."model/dbcontent.php");
 			$result_cat = db_get_category_tag($link, $data['id_category']);
 			$data_cat = $result_cat -> fetch();
 
-			$data_user = db_get_user_id($link) -> fetch();
-			$id_user = $data_user['id'];
-			$data_status = db_get_status($link, $id_user, $data['id']) -> fetch();
+			$res = change_state($link,$data['id']);
+			$read = $res[0];
+			$unread = $res[1];
 
-			if( $data_status == false ||  $data_status['status'] == "read"){
-				$read = "";
-				$unread = "style='display:none'";
-			}
-			else{
-				$read = "style='display:none'";
-				$unread = "";
-			}
 			$preview = preview($data['content']);
 			require($source.'template/articleList.tpl');
 		}
 		
 	}
-
+	/*Display method for categories*/
 	function display_article(){
 		global $uri;
 		global $source;
@@ -186,18 +179,10 @@ require_once($source."model/dbcontent.php");
 				$result_cat = db_get_category_tag($link, $data['id_category']);
 				$data_cat = $result_cat -> fetch();
 				
-				$data_user = db_get_user_id($link) -> fetch();
-				$id_user = $data_user['id'];
-				$data_status = db_get_status($link, $id_user, $data['id']) -> fetch();
-				
-				if( $data_status == false ||  $data_status['status'] == "read"){
-					$read = "";
-					$unread = "style='display:none'";
-				}
-				else{
-					$read = "style='display:none'";
-					$unread = "";
-				}
+				$res = change_state($link,$data['id']);
+				$read = $res[0];
+				$unread = $res[1];
+
 				$preview = preview($data['content']);
 				require($source.'template/articleList.tpl');
 			}
@@ -227,7 +212,7 @@ require_once($source."model/dbcontent.php");
 			}
 		}
 	}
-
+	/*Display method for user home*/
 	function display_user_article(){
 		global $source;
 		global $uri;
@@ -244,24 +229,37 @@ require_once($source."model/dbcontent.php");
 		while ($data_article = $req -> fetch()){
 			$result_article = db_get_one_article($link,$data_article['id_article']);
 			$data = $result_article -> fetch();
+
 			$result_cat = db_get_category_tag($link, $data['id_category']);
-
 			$data_cat = $result_cat -> fetch();
-			$data_user = db_get_user_id($link) -> fetch();
-			$id_user = $data_user['id'];
-			$data_status = db_get_status($link, $id_user, $data['id']) -> fetch();
 
-			if( $data_status == false ||  $data_status['status'] == "read"){
-				$read = "";
-				$unread = "style='display:none'";
-			}
-			else{
-				$read = "style='display:none'";
-				$unread = "";
-			}
+			$res = change_state($link,$data_article['id_article']);
+			$read = $res[0];
+			$unread = $res[1];
+
 			$preview = preview($data['content']);
 			require($source.'template/articleList.tpl');
 		}
 		require($source.'template/formArticle.tpl');
+	}
+
+	function change_state($link,$id_article){
+		$data_user = db_get_user_id($link) -> fetch();
+		$id_user = $data_user['id'];
+		$data_status = db_get_status($link, $id_user, $id_article) -> fetch();
+
+		if( $data_status == false ||  $data_status['status'] == "read"){
+			$read = "";
+			$unread = "style='display:none'";
+		}
+		else{
+			$read = "style='display:none'";
+			$unread = "";
+		}	
+
+		$res[0] = $read;
+		$res[1] = $unread;
+
+		return $res;
 	}
 ?>

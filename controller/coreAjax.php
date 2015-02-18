@@ -55,6 +55,7 @@ if( isset($_POST['facet_search']) && !empty($_POST['facet_search']) ) {
             // 12 -> Bad login given
             // *********************Article*******************
             // 13 -> Wrong image's format
+            // 14 -> File too heavy
 
             $displayErr = json_encode($displayErr);
 
@@ -92,6 +93,7 @@ if( isset($_POST['facet_search']) && !empty($_POST['facet_search']) ) {
             report_comment($_POST);
             return;
             break;
+        /*Changement de l'état lors d'un clique sur le bouton à lire plus tard*/
         case 'at_read_later' :
             $link = db_connect();
             $result = db_get_user_id($link);
@@ -100,12 +102,15 @@ if( isset($_POST['facet_search']) && !empty($_POST['facet_search']) ) {
             $id_article = $_POST['id_article'];
             $req = db_get_status($link,$id_user,$id_article);
             $data = $req -> fetch();
-
+            // Si le statut est : à lire plus tard : on le passe à lu
             if($data['status'] == 'unread'){$status = 'read';read($_POST,$status,$id_user,$id_article);}
+            // Si le statut est : lu, on le passe à : lire plus tard
             elseif($data['status'] == 'read'){$status = 'unread';read($_POST,$status,$id_user,$id_article);}
+            // Si le statut est : null , on rajoute l'association id_user / id_article dans la bdd avec le statut : à lire plus tard
             elseif($data['status'] == null){$status = 'notset_nonlu';read($_POST,$status,$id_user,$id_article);}
             return;
             break;
+        /*Changement de l'état lors de la lecture d'un article*/
         case 'at_historic';
             $link = db_connect();
             $result = db_get_user_id($link);

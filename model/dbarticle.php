@@ -52,7 +52,7 @@ function db_get_articles($link){ // complete with the session limit values
 
 function db_get_articles_rss($link,$LIMITation,$index_selection){
 
-	$req = $link -> prepare("SELECT * FROM pp_article ORDER BY `date` DESC LIMIT 0, 10");
+	$req = $link -> prepare("SELECT * FROM pp_article ORDER BY `date` DESC LIMIT 0, 50");
 	$req->execute(array(
 		/*':index_selection' => $index_selection,
 		':LIMITation' => $LIMITation*/

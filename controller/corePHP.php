@@ -65,6 +65,7 @@ if( isset($_POST['mail_submit']) && !empty($_POST['mail_submit']) ) {
             // 12 -> Bad login given
             // *********************Article*******************
             // 13 -> Wrong image's format
+            // 14 -> File too heavy
 
             $si_msgErr         = $displayErr[0];
             $si_msgErr_mail_1  = $displayErr[1];
