@@ -1,8 +1,13 @@
 <?php
 function db_connect(){
+	global $config;
+	$db_host = $config['db_host'];
+	$db_name = $config['db_name'];
+	$db_login = $config['db_login'];
+	$db_password = $config['db_password'];
 	try
 	{
-		$link = new PDO('mysql:host=82.239.61.199;dbname=pp_pinnackl','root','123456az.',
+		$link = new PDO('mysql:host='.$db_host.';dbname='.$db_name,$db_login,$db_password,
 		array(
 			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 			PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"

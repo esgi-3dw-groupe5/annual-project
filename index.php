@@ -30,8 +30,7 @@ create_cookie();
 $page = get_param('p', '');
 $article = get_param('article', '');
 $facet = get_cookie();
-debug($facet);
 
 require($source."template/index.tpl");
-	page_controller($mode, $page);
+	// page_controller($mode, $page);
 require($source."template/footer.tpl");

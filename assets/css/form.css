@@ -16,18 +16,13 @@ label[for=li_password]{
 	width: 30%;
 }
 .li_form{
-	/*border: solid #696969 2px;*/
 	text-align: center;
-	margin-top: -10%;
-	display: inline-block;
-	border-bottom: solid 1px;
+/*	margin-top: -10%;
+	display: inline-block;*/
 }
 .si_form{
-	/*border: solid #696969 2px;*/
 	text-align: center;
 	padding: 1%;
-	/*position: relative;*/
-	/*display: inline-block;*/
 }
 @media screen and (max-width: 960px) {
   input{width: 50%;}

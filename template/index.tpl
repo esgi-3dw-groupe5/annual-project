@@ -29,7 +29,7 @@
                 <ul id="main-nav-list">
                     <li>
                       <a class="h-logo" href="/annual-project/">
-                        <img src="<?php print($uri); ?>/img/logo-gris-01.png">
+                        <!-- <img src="<?php print($uri); ?>/img/logo-gris-01.png"> -->
                       </a>
                     </li>
                     <?php render_contents('menu') ?>
@@ -37,9 +37,9 @@
             </nav>
         </header>
         <aside>
-            <?php render_contents('deconnection') ?>
-            <?php render_contents('connection') ?>
-            <h2>Fréquences des actus</h2>
-            <?php render_contents('facet_range') ?>
+            <?php // render_contents('deconnection') ?>
+            <?php // render_contents('connection') ?>
+            <!-- <h2>Fréquences des actus</h2> -->
+            <?php // render_contents('facet_range') ?>
         </aside>
         <section class="content">
