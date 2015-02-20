@@ -23,10 +23,7 @@ function signmail($pseudo,$firstname,$email,$cle){
     {
         $passage_ligne = "\n";
     }
-    //=====Déclaration des messages au format texte et au format HTML.
-    //$message_txt = "Salut à tous, voici un e-mail envoyé par un script PHP.";
-
-
+    //=====Appel du template pour le contenu du message
     $message_html = $res;
     //==========
 

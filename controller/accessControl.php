@@ -89,48 +89,52 @@ function start_session(){
 }
 
 function access_denied() {
-    end_session();
+    end_session();//Ferme la session en cours
     session_start();                                                              
     $errorMessage = "Accès Refusé";
-    $_SESSION['errorMessage'] = $errorMessage;
-    redirect();
+    $_SESSION['errorMessage'] = $errorMessage;//Message d'erreur à afficher sur la page d'accueil   
+    redirect();//redirige vers la page d'accueil
 }
 
 
 function secure_admin() {
+    //Si le user n'a pas de rôle défini OU que que son rôle est différent du rôle admin
     start_session();
     if(!isset($_SESSION['user']['role'])
        ||($_SESSION['user']['role']!='administrator')){
         access_denied();
     }
+    //On le redirige vers la page d'accueil
 }
 
 function permissions($role,$permission){
+    //Permet d'afficher du contenu suivant le rôle utilisateur
     $roles = array(
-        "administrator"  => array(
+        //admin à la fois tous les autres roles
+        "administrator"  => array( 
             0  => "administrator",
             1  => "moderator",
             2  => "editor",
             3  => "author",
             4  => "viewer"    ),
-
+        //idem pour moderateur sauf role admin
         "moderator"  => array(
             0  => "moderator",
             1  => "editor",
             2  => "author",
             3  => "viewer"    ),
-
+        //etc
         "editor"  => array(
             0  => "editor",
             1  => "author",
             2  => "viewer"    ),
-
+        //etc
         "author"  => array(
             0  => "author",
             1  => "viewer"    ),
     );
 
-
+    //Si le rôle du user correspond au rôle défini, on affiche le contenu (true)
     foreach($roles as $key_1 => $data_1)
     {
         foreach($data_1 as $key_2 => $data_2)

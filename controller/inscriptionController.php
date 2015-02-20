@@ -166,15 +166,15 @@ function validate_field($POST){
 			&& $ajax === null
 			&& isset($POST['si_submit'])
 		){
-            $cle = md5(microtime(TRUE)*100000);
-		$success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date,$cle);
+            $cle = md5(microtime(TRUE)*100000); //création clé d'activation
+		$success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date,$cle);//envoi vers BDD
 		access_control();
 		set_user_session(false, $pseudo, $email);
             if($_SESSION['url']=="http://127.0.0.1/annual-project/inscription")
                 header('location: http://127.0.0.1/annual-project/');
             else
                 header('location: '.$_SESSION['url']);
-            signmail($pseudo,$firstname,$email,$cle);
+            signmail($pseudo,$firstname,$email,$cle);//Envoi email activation compte
 		}
         
 	}
@@ -231,7 +231,7 @@ function validate_field($POST){
 		}
 	}
     
-    if(isset($POST['mail_submit'])){
+    if(isset($POST['mail_submit'])){ //Si le user veut renvoyer le mail d'activation de compte
         
         $pseudo = $_SESSION['user']['pseudo'];
         $email = $_SESSION['user']['email'];
@@ -239,8 +239,9 @@ function validate_field($POST){
         $cle = md5(microtime(TRUE)*100000);
         $link = db_connect();
         $req = db_update_cle_user($link,$cle);
+        //On renvoit son pseudo, mail et sa nouvelle clé d'activation
         signmail($pseudo,$firstname,$email,$cle);
-        redirect();
+        redirect();//redirige vers la page d'accueil
 
 
         

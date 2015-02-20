@@ -9,7 +9,7 @@ $db=db_connect();
 $pseudo = $_GET['log'];
 $cle = $_GET['cle'];
 
-if(!empty($pseudo)&&(!empty($cle)))
+if(!empty($pseudo)&&(!empty($cle)))//Si le pseudo et la clé sont bien dans le lien
 {
     // Récupération de la clé correspondant au $pseudo dans la base de données
     $req = $db->prepare("SELECT cle,actif FROM pp_users WHERE pseudo like :pseudo ");
@@ -48,17 +48,17 @@ if(!empty($pseudo)&&(!empty($cle)))
 
 
     }
-    else // Si les deux clés sont différentes on provoque une erreur...
+    else // Si le pseudo n'existe pas
     {
         $message = "Erreur ! Votre compte ne peut &ecirc;tre activ&eacute;...";
     }
 }
 else
 {
-    redirect();
+    redirect(); //redirection vers la page d'accueil
 }
 
 
-require_once($source."template/confirmail.tpl");
+require_once($source."template/confirmail.tpl");//Appel du template
 
 ?>
