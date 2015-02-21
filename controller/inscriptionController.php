@@ -170,8 +170,8 @@ function validate_field($POST){
 		$success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date,$cle);
 		access_control();
 		set_user_session(false, $pseudo, $email);
-            if($_SESSION['url']=="http://127.0.0.1/annual-project/inscription")
-                header('location: http://127.0.0.1/annual-project/');
+            if($_SESSION['url']=="http://127.0.0.1/inscription")
+                header('location: http://127.0.0.1/');
             else
                 header('location: '.$_SESSION['url']);
             signmail($pseudo,$firstname,$email,$cle);

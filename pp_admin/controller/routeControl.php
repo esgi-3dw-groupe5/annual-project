@@ -27,7 +27,7 @@ function route_control(){
 
 		if ( !in_array($page, $category) ){
 			header("HTTP/1.x 404 Not Found");
-			$error = file_get_contents("http://127.0.0.1/annual-project/404");
+			$error = file_get_contents("http://127.0.0.1/404");
 			echo $error;
 			exit;
 		}

@@ -153,7 +153,7 @@ section{
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	/*background-color: #f2f2f3;*/
 	/*background-color: #121314;*/
-	background-image: url('/annual-project/img/backgroud.PNG');
+	background-image: url('/img/backgroud.PNG');
 	color: #b4b4b4;
 
     margin: 0;
@@ -254,7 +254,7 @@ hr.style-one {
 	border: none;
 	width: 20px;
 	height: 20px;
-	background: url("/annual-project/images/etoile_vide.png");
+	background: url("/images/etoile_vide.png");
 	background-repeat: no-repeat;
 	float: right;
 	
@@ -264,7 +264,7 @@ hr.style-one {
 	border: none;
 	width: 20px;
 	height: 20px;
-	background: url("/annual-project/images/etoile_pleine.png") !important;
+	background: url("/images/etoile_pleine.png") !important;
 	background-repeat: no-repeat;
 	float: right;
 }

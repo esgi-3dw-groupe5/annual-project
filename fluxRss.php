@@ -5,7 +5,7 @@ function update_fluxRSS(){
         $xml .= '<rss version="2.0">';
         $xml .= '<channel>';
         $xml .= ' <title>Pinnackl</title>';
-        $xml .= ' <link>http://localhost/annual-project</link>';
+        $xml .= ' <link>http://localhost</link>';
         $xml .= ' <description>Pinnackl ! Agrégateur d\'actualités</description>';
         $xml .= ' <language>fr</language>';
         $xml .= ' <copyright>Pinnackl.eu</copyright>';
@@ -24,8 +24,8 @@ function update_fluxRSS(){
                 $data_cat = $cat->fetch();
                 $xml .= '<item>';
                 $xml .= '<title>'.'['.$data_cat['tag'].']'.stripcslashes($data['title']).'</title>';
-                $xml .= '<link>'.'http://localhost/annual-project/'.$data_cat['tag'].'/'.$data['title_id'].'</link>';
-                $xml .= '<guid isPermaLink="true">'.'http://localhost/annual-project/'.$data_cat['tag'].'/'.$data['title_id'].'</guid>';
+                $xml .= '<link>'.'http://localhost/'.$data_cat['tag'].'/'.$data['title_id'].'</link>';
+                $xml .= '<guid isPermaLink="true">'.'http://localhost/'.$data_cat['tag'].'/'.$data['title_id'].'</guid>';
                 $xml .= '<pubDate>'.(date("D, d M Y H:i:s O", strtotime($data['date']))).'</pubDate>';
                 $xml .= '<author>'.stripcslashes($data['author']).'</author>';
                 $xml .= '</item>'; 

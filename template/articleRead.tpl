@@ -27,7 +27,7 @@
 		send.at_historic = "at_historic";
 		$.ajax({
 			type : "POST",
-   				url  : "http://127.0.0.1/annual-project/controller/coreAjax.php",
+   				url  : "http://127.0.0.1/controller/coreAjax.php",
    				data : send,
    				success: function(data){
    					console.log(data);

@@ -1,5 +1,5 @@
 <?php
-if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."annual-project/";
+if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."/";
 require_once($source."/model/dbconnect.php");
 require_once($source."controller/accessControl.php");
 

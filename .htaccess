@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /annual-project/
+RewriteBase /
 
 # Activation
 RewriteRule ^activation/([a-z0-9_-]+)/?([a-z0-9_-]*)/?$    	activation.php?log=$1&cle=$2	[NC,L]
@@ -13,5 +13,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule    ^([a-z0-9_-]+)/?([a-z0-9_-]*)/?$    	index.php?p=$1&article=$2	[NC,L]
 
 #	document error
-#ErrorDocument 403 /annual-project/template/documents/403.html
-#ErrorDocument 404 /annual-project/template/documents/404.html
+#ErrorDocument 403 /template/documents/403.html
+#ErrorDocument 404 /template/documents/404.html

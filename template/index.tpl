@@ -28,7 +28,7 @@
             <nav role='navigation' class="main-nav" id="main-nav">
                 <ul id="main-nav-list">
                     <li style="align-self:flex-end;">
-                      <a class="h-logo" href="/annual-project/">
+                      <a class="h-logo" href="/">
                         <img src="<?php print($uri); ?>/img/logo-gris-01.png">
                       </a>
                     </li>

@@ -79,7 +79,7 @@ function end_session(){
 
 function redirect(){
     // redirect user to his current location after login
-    header('location: http://127.0.0.1/annual-project/');
+    header('location: http://127.0.0.1/');
 }
 
 function start_session(){
