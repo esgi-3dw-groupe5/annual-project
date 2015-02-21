@@ -6,7 +6,7 @@ require_once($source."pp_admin/model/dbcontent.php");
     /*********************************************************************************/
     /********************************* Call display method****************************/
     /*********************************************************************************/
-	function page_controller($mode, $page, $edit){
+	function page_controller($mode, $page){
 		switch ($mode) {
 			case 'article':
 				render_contents($page);
@@ -17,7 +17,7 @@ require_once($source."pp_admin/model/dbcontent.php");
 				break;
 			case 'administrator':
 				render_contents($page);
-				// display_edit($page, $edit);
+				render_edit($page);
 				break;
 			
 			default:
@@ -136,6 +136,7 @@ require_once($source."pp_admin/model/dbcontent.php");
 				}
 				break;
 			case 'list_page':
+				$page = get_param('p','');
 				$result = db_get_content($link, 'allpage');
 				echo'<table style="background:#222326; height:9% border:none;">';
 					echo '<tbody>';
@@ -176,6 +177,38 @@ require_once($source."pp_admin/model/dbcontent.php");
 		else{
 			display_all_articles();
 		}
+	}
+
+	function render_edit($content){
+		$link = db_connect();
+		if($content != ""){
+			$result = db_get_content($link, '');
+			echo'<pre>
+					<form id="edit" action="" method="post">';
+			while($data = $result -> fetch()){
+				printf('<div><input name="id" value="%s"></div>', $data['id']);
+				printf('<div><input name="tag" value="%s"></div>', $data['tag']);
+				printf('<div><input name="name_category" value="%s"></div>', $data['name_category']);
+				printf('<div><input name="order" value="%s"></div>', $data['order']);
+				printf('<div><input name="display" value="%s"></div>', $data['display']);
+				printf('<div><input name="connected" value="%s"></div>', $data['connected']);
+				printf('<div><input name="color" value="%s"></div>', $data['color']);
+			}
+			echo'</form>
+					</pre>';
+		}
+	}
+
+	function display_edit(){
+		global $uri;
+		global $source;
+		$page = get_param('p', '');
+		$link = db_connect();
+		$result = db_get_content($link, $page);
+		$data = $result -> fetch();
+		var_dump($data);
+
+
 	}
 
 	function display_all_articles(){

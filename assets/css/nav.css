@@ -56,6 +56,7 @@ span.nav{
 
 #main-nav-list li{
   flex: 0 1 auto;
+  align-self:flex-end;
   text-align: center;
 }
 #main-nav-list li a:before{
@@ -67,6 +68,10 @@ span.nav{
   margin-top: 2px;
   height: 2px;
   width: 100%;*/
+}
+
+#main-nav-list li a{
+  border-bottom: inset medium #222326;
 }
 
 #main-nav-list li a:hover, #main-nav-list li a:focus{
