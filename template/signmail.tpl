@@ -85,7 +85,7 @@
                                                                                 ou copier/coller dans votre navigateur internet
                                                                             </p>
                                                                             <p>
-                                                                                http://127.0.0.1/activation/<?php echo urlencode($pseudo);?>/<?php echo urlencode($cle);?>
+                                                                                http://pinnackl.com/activation/<?php echo urlencode($pseudo);?>/<?php echo urlencode($cle);?>
                                                                             </p>
                                                                         </div>
                                                                     </td>

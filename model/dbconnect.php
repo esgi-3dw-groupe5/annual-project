@@ -1,12 +1,17 @@
 <?php
 function db_connect(){
 	global $config;
+	if(!isset($config)){
+		$source = $_SERVER['DOCUMENT_ROOT'].'/annual-project/';
+		require_once($source."config.php");
+	}
 	$db_host = $config['db_host'];
 	$db_name = $config['db_name'];
 	$db_login = $config['db_login'];
 	$db_password = $config['db_password'];
 	try
 	{
+		// $link = new PDO('mysql:host=pinnacklpwpadmin.mysql.db;dbname='.$db_name,$db_login,$db_password,
 		$link = new PDO('mysql:host='.$db_host.';dbname='.$db_name,$db_login,$db_password,
 		array(
 			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

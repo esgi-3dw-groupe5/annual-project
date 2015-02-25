@@ -164,7 +164,7 @@ require_once($source."model/dbcontent.php");
 			$preview = preview($data['content']);
 			require($source.'template/articleList.tpl');
 		}
-		
+		echo '<div><span> <a href="'.$uri.'.P/1">1</a> </span></div>';
 	}
 
 	function display_article(){

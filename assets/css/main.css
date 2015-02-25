@@ -21,27 +21,27 @@ html, body{
 }
 
 h1{
-	font-size: 140%;
+	/*font-size: 140%;*/
 	color: #FFFFFF;
 }
 h2{
-	font-size: 120%;
+	/*font-size: 120%;*/
 	color: #FFFFFF;
 }
 h3{
-	font-size: 100%;
+	/*font-size: 100%;*/
 	color: #FFFFFF;
 }
 h4{
-	font-size: 80%;
+	/*font-size: 80%;*/
 	color: #FFFFFF;
 }
 h5{
-	font-size: 30%;
+	/*font-size: 30%;*/
 	color: #FFFFFF;
 }
 h6{
-	font-size: 30%;
+	/*font-size: 30%;*/
 	color: #FFFFFF;
 }
 /* unvisited link */
@@ -55,35 +55,25 @@ a:link {
 a:visited {
     color: #FFFFFF;
 }
-/* mouse over link */
-a:hover {
-/*    text-shadow: 0 0 2px #f2f2f3;
-    color : #f2f2f3;*/
-}
+
 /* selected link */
 a:active {
-    color: #0000FF;
+    color: #FFFFFF;
 }
 
 .h-logo{
 	margin-top: -2%;
 	margin-left: auto;
     margin-right: auto;
-    /*width: 18%;*/
 	text-align: center;
 	z-index: 20;
 }
 .h-logo img{
-	/*margin-top: -1%;*/
 	width: 11%;
 	z-index: 20;
 	position: absolute;
 	top: 1%;
 	left: 1%;
-	
-	/*background: #121314;*/
-	/*border-radius: 100%;*/
-	/*opacity: 0.9;*/
 }
 .nav {
 	font-family: MeriendaOne-Regular;
@@ -109,12 +99,8 @@ body{
 
 header{
 	order:1;
-	/*float: left;*/
-		/*position: fixed;*/
-		position: relative;
-		top:0;
-		/*top:0;*/
-		/*left:0;*/
+	position: relative;
+	top:0;
 	display: block;
 	width: 100%;
 	min-height: 9%;
@@ -126,10 +112,6 @@ header{
 
 aside{
 	order:2;
-	/*float: left;*/
-		/*position: absolute;*/
-		/*top:9%;*/
-		/*left:0;*/
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	display: block;
 	width: 18%;
@@ -137,7 +119,6 @@ aside{
   	padding: 8% 1% 0 1%;
 	background-color:#222326;
 	overflow: auto;
-	/*border-right: solid #1c1c1f 10px;*/
 	-webkit-box-shadow: 3px 0 4px 0 #080808;
 	box-shadow: 3px 0 4px 0 #080808;
 	z-index: 10;
@@ -146,16 +127,10 @@ aside{
 
 section{
 	order:3;
-	/*float: left;*/
-		/*position: absolute;*/
-		/*top:9%;*/
-		/*left:18%;*/
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	/*background-color: #f2f2f3;*/
-	/*background-color: #121314;*/
-	background-image: url('/img/backgroud.PNG');
+	background-color: #121314;
+	/*background-image: url('/img/backgroud.PNG');*/
 	color: #b4b4b4;
-
     margin: 0;
 	display: block;
     width: 82%;
@@ -166,10 +141,6 @@ section{
 
 footer{
 	order:4;
-	/*float: left;*/
-		/*position: absolute;*/
-		/*left: 0;*/
-		/*bottom: 0;*/
     background-color: #222222;
     box-shadow: 0 -3px 4px 0 #080808;
     display: inline-block;
@@ -189,8 +160,7 @@ a.footer:hover{
 	color: grey;
 }
 .logout{
-	float: right;	
-	margin-right: 1%;
+
 }
 hr.style-one {
 	border: 0;
@@ -203,7 +173,7 @@ hr.style-one {
 }
 /*==========================================*/
 .logout{
-	font-size: 90%;
+	/*font-size: 90%;*/
 }
 
 /*==========================================*/
@@ -228,9 +198,13 @@ hr.style-one {
     background-color: #222222;
     border-bottom: thin solid #ccc;
     min-height: 46.375px;
-    height: 8%;
+    height: 12%;
+    max-height: 12%;
     text-decoration: none;
     text-align: justify;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis; 
 }
 .article-inline:nth-child(even){
 	background-color: #121314;
@@ -254,7 +228,7 @@ hr.style-one {
 	border: none;
 	width: 20px;
 	height: 20px;
-	background: url("/images/etoile_vide.png");
+	background: url("/annual-project/images/etoile_vide.png");
 	background-repeat: no-repeat;
 	float: right;
 	
@@ -264,7 +238,7 @@ hr.style-one {
 	border: none;
 	width: 20px;
 	height: 20px;
-	background: url("/images/etoile_pleine.png") !important;
+	background: url("/annual-project/images/etoile_pleine.png") !important;
 	background-repeat: no-repeat;
 	float: right;
 }

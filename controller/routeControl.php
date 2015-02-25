@@ -5,7 +5,7 @@ function route_control(){
 	// Pages mode
 	global $mode;
 	
-	global $source;
+	global $config;
 	$link = db_connect();
 	
 	$page = get_param('p', ''); 
@@ -26,8 +26,8 @@ function route_control(){
 		}
 
 		if ( !in_array($page, $category) ){
-			header("HTTP/1.x 404 Not Found");
-			$error = file_get_contents("http://127.0.0.1/404");
+			// header("HTTP/1.x 404 Not Found");
+			$error = file_get_contents($config['source']."404");
 			echo $error;
 			exit;
 		}

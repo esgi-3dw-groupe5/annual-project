@@ -4,21 +4,22 @@
 <div class="li_form">
     <form method="post" action="<?php print($_SESSION['url']); ?>" class="" id="li_form" name="li_form">
         <h2>Connexion</h2>
-            <div>
+            <div class="label-input">
             	<label for="li_login">Email :</label>
-            		<input id="li_login" type="text" name="li_login" required><br>
+            		<input id="li_login" class="text-input" type="text" name="li_login" placeholder="Email" required><br>
             		<span class="form-error" id="msgErr_gender"><?php if(!empty($li_msgErr_login))echo $li_msgErr_login ?></span>
             </div>
-        </br>
-            <div>
-            	<label for="li_password">Password :</label>
-            		<input id="li_password" type="password" name="li_password" required><br>
+            <div class="label-input">
+            	<label for="li_password">Mot de passe :</label>
+            		<input id="li_password" class="text-input" type="password" name="li_password" placeholder="Mot de passe" required><br>
             		<span class="form-error" id="msgErr_gender"><?php if(!empty($li_msgErr_psw))echo $li_msgErr_psw ?></span>
             </div>
-        </br>
-            <input type="submit" name="li_submit" value="connexion">
-        </br>
-            <span class="form-error" id="li_msgErr"><?php if( !empty( $li_msgErr ) ){ echo $li_msgErr; }?></span>
+            <div>
+                <input type="submit" name="li_submit" value="connexion">
+            </div>
+            <div>
+                <span class="form-error" id="li_msgErr"><?php if( !empty( $li_msgErr ) ){ echo $li_msgErr; }?></span>
+            </div>
     </form>
-    <span>Pas de compte ? <a href="/inscription">Incription</a><span>
+    <span>Pas de compte ? <a href="<?php echo$uri?>inscription">Incription</a><span>
 </div>

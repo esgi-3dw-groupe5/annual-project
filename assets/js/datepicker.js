@@ -1,10 +1,46 @@
 $(document).ready(function(){
 	datepicker.date.datebox();
-	$('#date').focus(function(){
+	$('#date').click(function(event){
+		event.stopPropagation();
 		$('#core-datebox').toggle(true);
 	});
 	$('#close').click(function(){
 		$('#core-datebox').toggle(false);
+	});
+	$(document).click(function(event){
+		event.stopPropagation();
+		$('#core-datebox').toggle(false);
+	});
+
+	$('#day').click(function(event){
+		event.stopPropagation();
+	});
+	$('#month').click(function(event){
+		event.stopPropagation();
+	});
+	$('#year').click(function(event){
+		event.stopPropagation();
+	});
+	$('#y_left').click(function(event){
+		event.stopPropagation();
+	});
+	$('#y_right').click(function(event){
+		event.stopPropagation();
+	});
+	$('#m_left').click(function(event){
+		event.stopPropagation();
+	});
+	$('#m_right').click(function(event){
+		event.stopPropagation();
+	});
+	$('#d_left').click(function(event){
+		event.stopPropagation();
+	});
+	$('#d_right').click(function(event){
+		event.stopPropagation();
+	});
+	$('#centre').click(function(event){
+		event.stopPropagation();
 	});
 });
 function datepicker(){};
@@ -270,7 +306,7 @@ function datepicker(){};
 				$('#core-datebox')
 					.css('border','solid #ccc 1px')
 					.css('float','right')
-					// .css('width','225px')	
+					.css('width','225px')	
 					.css('position','absolute')
 					.css('top','0')
 					.css('background-color','#f5f5dc');
@@ -292,7 +328,8 @@ function datepicker(){};
 						.css('background-color','#f5f5f5')
 						.css('border','solid #ccc 1px');
 				$('#current-date')
-					.css('text-align','center');
+					.css('text-align','center')
+					.css('color','black');
 				$('.selected').css('background-color','lightgrey');
 			},
 
