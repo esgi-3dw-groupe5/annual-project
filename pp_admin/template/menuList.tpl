@@ -16,7 +16,7 @@
 	</td>
 	<td>
 		<a href="">
-		<?php print$data['order'] ?>
+		<?php print$data['p_order'] ?>
 		</a>
 	</td>
 	<td>

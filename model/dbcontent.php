@@ -25,7 +25,7 @@ function db_get_content($link, $content = null){
 						connected IN (SELECT connected FROM pp_page WHERE connected = :role)
 						OR
 						connected = 'all')
-					ORDER BY pp_page.order";
+					ORDER BY pp_page.p_order";
 
 			$req	=	$link -> prepare($query);
 			$req	->	execute(array(
@@ -56,7 +56,7 @@ function db_get_content($link, $content = null){
 						OR
 						connected = 'all')
 					AND display = 'yes'
-					ORDER BY pp_page.order";
+					ORDER BY pp_page.p_order";
 
 		$req	=	$link -> prepare($query);
 		$req	->	execute(array(

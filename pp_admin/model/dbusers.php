@@ -105,3 +105,21 @@ function db_get_actif_user($link){
     ));
     return $req;	
 }
+
+function db_update_user($id,$firstname,$name,$pseudo,$role){
+	$link = db_connect();
+	$req = $link -> prepare("UPDATE pp_users SET 	firstname = :firstname,
+													name = :name, 
+													pseudo = :pseudo, 
+													role = :role
+													WHERE id = :id");
+	$req->execute(array(
+		':id' 		=> $id,
+		':firstname'=> $firstname,
+		':name' 	=> $name,
+		':pseudo'	=> $pseudo,
+		':role'		=> $role,
+	));
+	return $req;
+
+}

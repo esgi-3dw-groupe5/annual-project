@@ -82,6 +82,13 @@
                         </div>
                       </a>
                     </li>
+                    <li>
+                      <a class="" href="/annual-project/pp_admin/commentaire">
+                        <div>
+                            <span>commentaires signalés</span>
+                        </div>
+                      </a>
+                    </li>
 
                 </ul>
             </nav>
