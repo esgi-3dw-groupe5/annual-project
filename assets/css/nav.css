@@ -11,8 +11,10 @@ span.nav{
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow:  row nowrap;
   justify-content: center;
+  align-items : stretch;
+  align-content : center;
   list-style: none;
 }
 .main-nav a {
@@ -21,9 +23,13 @@ span.nav{
   text-decoration: none;
   align-items: center;
   color: #dcdcdc;
+
+  background: none;
+  transition: background 0.2s;
 }
 .main-nav a:hover, .main-nav a:focus {
   background: #121314;
+  transition: background 0.5s;
   opacity: 0.9;
   text-decoration: underline #696969;
 
@@ -38,11 +44,6 @@ span.nav{
   opacity: 0.9;
 
 }
-.main-nav li:hover, .main-nav li:focus {
-/*  background: #ccc;
-  text-decoration: underline #696969;
-  color: black;*/
-}
 .main-nav span {
   display: block;
   padding: 1.6em;
@@ -50,57 +51,52 @@ span.nav{
 
 #main-nav-list li{
   flex: 0 1 auto;
+  align-self:flex-end;
   text-align: center;
 }
-#main-nav-list li a:before{
-  content: "";
-  /*background: red;*/
-/*  position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 2px;
-  height: 2px;
-  width: 100%;*/
+
+#main-nav-list li a{
+  border-bottom: solid medium #222326;
 }
 
 #main-nav-list li a:hover, #main-nav-list li a:focus{
-  border-bottom: inset thin #696969;
+  border-bottom: solid medium #696969;
 }
 #main-nav-list li a.technologie:hover, #main-nav-list li a.technologie:focus{
-  border-bottom: inset thin #ed1b24;
+  border-bottom: solid medium #ed1b24;
 }
 #main-nav-list li a.sport:hover, #main-nav-list li a.sport:focus{
-  border-bottom: inset thin #d2691e;
+  border-bottom: solid medium #d2691e;
 }
 #main-nav-list li a.jeux-video:hover, #main-nav-list li a.jeux-video:focus{
-  border-bottom: inset thin #0070bc;
+  border-bottom: solid medium #0070bc;
 }
 #main-nav-list li a.cine-serie:hover, #main-nav-list li a.cine-serie:focus{
-  border-bottom: inset thin #d200ff;
+  border-bottom: solid medium #d200ff;
 }
 #main-nav-list li a.musique:hover, #main-nav-list li a.musique:focus{
-  border-bottom: inset thin #009245;
+  border-bottom: solid medium #009245;
 }
 
 #main-nav-list li a.technologie.active, #main-nav-list li a.technologie.active{
   background: #121314;
-  border-bottom: inset thin #ed1b24;
+  border-bottom: solid medium #ed1b24;
 }
 #main-nav-list li a.sport.active, #main-nav-list li a.sport.active{
   background: #121314;
-  border-bottom: inset thin #d2691e;
+  border-bottom: solid medium #d2691e;
 }
 #main-nav-list li a.jeux-video.active, #main-nav-list li a.jeux-video.active{
   background: #121314;
-  border-bottom: inset thin #0070bc;
+  border-bottom: solid medium #0070bc;
 }
 #main-nav-list li a.cine-serie.active, #main-nav-list li a.cine-serie.active{
   background: #121314;
-  border-bottom: inset thin #d200ff;
+  border-bottom: solid medium #d200ff;
 }
 #main-nav-list li a.musique.active, #main-nav-list li a.musique.active{
   background: #121314;
-  border-bottom: inset thin #009245;
+  border-bottom: solid medium #009245;
 }
 @media screen and (max-width: 960px) {
   /*span.nav{font-size: 70%;}*/

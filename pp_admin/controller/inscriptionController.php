@@ -170,7 +170,7 @@ function validate_field($POST){
 		$success = register(trim($pseudo),trim($name),trim($firstname),trim($gender),$email,$password,$date,$cle);
 		access_control();
 		set_user_session(false, $pseudo, $email);
-			// header('location: http://127.0.0.1/annual-project/');
+			// header('location: http://127.0.0.1/');
 			header('location: '.$_SESSION['url']);
             signmail($pseudo,$firstname,$email,$cle);
 		}

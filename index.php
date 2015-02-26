@@ -24,13 +24,13 @@ require_once($source."fluxRss.php");
 require_once($source."controller/module.php");
 update_fluxRSS();
 access_control();
-route_control();
+// route_control();
 create_cookie();
 
 $page = get_param('p', '');
 $article = get_param('article', '');
+$n = get_param('n', '');
 $facet = get_cookie();
-debug($facet);
 
 require($source."template/index.tpl");
 	page_controller($mode, $page);

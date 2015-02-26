@@ -85,7 +85,7 @@
                                                                                 ou copier/coller dans votre navigateur internet
                                                                             </p>
                                                                             <p>
-                                                                                http://127.0.0.1/annual-project/activation/<?php echo urlencode($pseudo);?>/<?php echo urlencode($cle);?>
+                                                                                http://pinnackl.com/activation/<?php echo urlencode($pseudo);?>/<?php echo urlencode($cle);?>
                                                                             </p>
                                                                         </div>
                                                                     </td>
@@ -118,7 +118,7 @@
                                                     <td class="w30"  width="30"></td>
                                                     <td class="w580"  width="580" valign="top">
                                                         <p align="right" class="pagebottom-content-left">
-                                                            <a style="color:#255D5C;" href="127.0.0.1/annual-project/"><span style="color:#255D5C;">Pinnackl</span></a>
+                                                            <a style="color:#255D5C;" href="127.0.0.1/"><span style="color:#255D5C;">Pinnackl</span></a>
                                                         </p>
                                                     </td>
 

@@ -9,7 +9,7 @@ require_once($source."pp_admin/controller/common.php");
     /*********************************************************************************/
     /********************************* Call display method****************************/
     /*********************************************************************************/
-	function page_controller($mode, $page, $edit){
+	function page_controller($mode, $page){
 		switch ($mode) {
 			case 'article':
 				render_contents($page);
@@ -21,7 +21,6 @@ require_once($source."pp_admin/controller/common.php");
 			case 'administrator':
 				render_contents($page);
 				render_edit($page);
-				// display_edit($page, $edit);
 				break;
 			
 			default:
@@ -146,6 +145,7 @@ require_once($source."pp_admin/controller/common.php");
 				}
 				break;
 			case 'list_page':
+				$page = get_param('p','');
 				$result = db_get_content($link, 'allpage');
 				echo'<table style="background:#222326; height:9% border:none;">';
 					echo '<tbody>';

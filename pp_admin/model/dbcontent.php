@@ -92,8 +92,11 @@ function db_get_content($link, $content = null){
 		));
 		break;
 
-		default:
-
+	default:
+		$req	=	$link -> prepare("SELECT * FROM pp_page WHERE tag = :page");
+		$req	->	execute(array(
+		':page' => $content,
+		));
 		break;
 	}
 	return $req;

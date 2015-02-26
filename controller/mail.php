@@ -1,5 +1,5 @@
 <?php
-if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."annual-project/";
+if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."/";
 
 function signmail($pseudo,$firstname,$email,$cle){
 
@@ -40,33 +40,70 @@ function signmail($pseudo,$firstname,$email,$cle){
     $sujet = "Bienvenue sur Pinnackl ".$firstname." !";
     //=========
 
-    //=====Création du header de l'e-mail.
-    $header = "From: \"Pinnackl\"<pinnakle.work@gmail.com>".$passage_ligne;
-    $header.= "Disposition-Notification-To: \"Pinnackl\"<pinnakle.work@gmail.com>".$passage_ligne;
-    $header.= "MIME-Version: 1.0".$passage_ligne;
-    $header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
-    //==========
+    require_once($source.'controller/mailer/PHPMailerAutoload.php');
+
+    $mail = new PHPMailer;
+
+    //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.pinnackl.com';                    // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'noreply@pinnackl.com';                 // SMTP username
+    $mail->Password = 'Icge0ylb!';                           // SMTP password
+    // $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+
+    $mail->From = 'noreply@pinnackl.com';
+    $mail->FromName = 'Pinnackl.com';
+    $mail->addAddress($mail);     // Add a recipient
+    // $mail->addAddress('ellen@example.com');               // Name is optional
+    // $mail->addReplyTo('pinnackl.work@gmail.com', 'Information');
+    // $mail->addCC('pinnackl.work@gmail.com');
+    // $mail->addBCC('bcc@example.com');
+
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+    $mail->isHTML(true);                                  // Set email format to HTML
+
+    // //=====Création du header de l'e-mail.
+    // $header = "From: \"Pinnackl\"<pinnakle.work@gmail.com>".$passage_ligne;
+    // $header.= "Disposition-Notification-To: \"Pinnackl\"<pinnakle.work@gmail.com>".$passage_ligne;
+    // $header.= "MIME-Version: 1.0".$passage_ligne;
+    // $header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
+    // //==========
 
     //=====Création du message.
-    $message = $passage_ligne."--".$boundary.$passage_ligne;
+    // $message = $passage_ligne."--".$boundary.$passage_ligne;
 
     //=====Ajout du message au format HTML
-    $message.= "Content-Type: text/html; charset=\"UTF-8\"".$passage_ligne;
-    $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
-    $message.= $passage_ligne.$message_html.$passage_ligne;
+    // $message.= "Content-Type: text/html; charset=\"UTF-8\"".$passage_ligne;
+    // $message.= "Content-Transfer-Encoding: 8bit".$passage_ligne;
+    $message= $passage_ligne.$message_html.$passage_ligne;
     //==========
-    $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
-    $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
+    // $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
+    // $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
     //==========
 
 
 
-    ini_set("SMTP", "smtp.numericable.fr");
-    ini_set("sendmail_from", $mail);
+    // ini_set("SMTP", "smtp.numericable.fr");
+    // ini_set("sendmail_from", $mail);
 
 
-    //=====Envoi de l'e-mail.
-    mail($mail,$sujet,$message,$header);
-    //==========
+    // //=====Envoi de l'e-mail.
+    // mail($mail,$sujet,$message,$header);
+    // //==========
+
+    $mail->Subject = $sujet;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    if(!$mail->send()) {
+    // echo 'Message could not be sent.';
+    // echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+    // echo 'Message has been sent';
+    }
 }
 ?>

@@ -10,8 +10,12 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 #	article categorie access
-RewriteRule    ^([a-z0-9_-]+)/?([a-z0-9_-]*)/?$    	index.php?p=$1&article=$2	[NC,L]
+RewriteRule    ^([a-z_-]+)/?([a-z0-9_-]*)/?$    	index.php?p=$1&article=$2	[NC,L]
+
+#	pagination
+RewriteRule    ^([a-z_-]+)?/?.P/([0-9]+)/?$   	 	index.php?p=$1&o=$2			[NC,L]
 
 #	document error
-#ErrorDocument 403 /annual-project/template/documents/403.html
-#ErrorDocument 404 /annual-project/template/documents/404.html
+#ErrorDocument 403 /template/documents/403.html
+#ErrorDocument 404 /template/documents/404.html
+#ErrorDocument 500 /template/documents/404.html
