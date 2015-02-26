@@ -118,7 +118,7 @@
                                                     <td class="w30"  width="30"></td>
                                                     <td class="w580"  width="580" valign="top">
                                                         <p align="right" class="pagebottom-content-left">
-                                                            <a style="color:#255D5C;" href="127.0.0.1/"><span style="color:#255D5C;">Pinnackl</span></a>
+                                                            <a style="color:#255D5C;" href="http://www.pinnackl.com"><span style="color:#255D5C;">Pinnackl.com</span></a>
                                                         </p>
                                                     </td>
 

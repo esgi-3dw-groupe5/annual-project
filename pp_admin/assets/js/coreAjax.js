@@ -56,7 +56,7 @@ function ajax_send(send, callback, type){
 	type = (typeof type === "undefined") ? "json" : type;
 	$.ajax({
 		type: "POST",
-		url: "http://127.0.0.1/controller/coreAjax.php",
+		url: location.protocol+"//"+location.host+"/controller/coreAjax.php",
 		data: send,
 		success: function(data){callback(data)}, 
 		dataType: type

@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style type="text/css">
             /* Fonts and Content */
-            body, td { font-family: 'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif; font-size:14px; }
-            body { background-color: #2A374E; margin: 0; padding: 0; -webkit-text-size-adjust:none; -ms-text-size-adjust:none; }
+            /*body, td { font-family: 'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif; font-size:14px; }*/
+            /*body { background-color: #2A374E; margin: 0; padding: 0; -webkit-text-size-adjust:none; -ms-text-size-adjust:none; }*/
             h2{ padding-top:12px; /* ne fonctionnera pas sous Outlook 2007+ */color:#0E7693; font-size:22px; }
 
             @media only screen and (max-width: 480px) { 
@@ -109,7 +109,7 @@
                                                     <td class="w30"  width="30"></td>
                                                     <td class="w580"  width="580" valign="top">
                                                         <p align="right" class="pagebottom-content-left">
-                                                            <a style="color:#255D5C;" href="http://127.0.0.1/"><span style="color:#255D5C;">Pinnackl.com</span></a>
+                                                            <a style="color:#255D5C;" href="http://www.pinnackl.com"><span style="color:#255D5C;">Pinnackl.com</span></a>
                                                         </p>
                                                     </td>
 
