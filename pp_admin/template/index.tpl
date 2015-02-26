@@ -48,42 +48,42 @@
             <nav role='navigation' class="main-nav" id="main-nav">
                 <ul id="main-nav-list">
                     <li>
-                      <a class="" href="/annual-project/pp_admin">
+                      <a class="" href="/pp_admin">
                         <div>
                             <span>Pinnackl Press</span>
                         </div>
                       </a>
                     </li>
                     <li>
-                      <a class="" href="/annual-project/pp_admin/page">
+                      <a class="" href="/pp_admin/page">
                         <div>
                             <span>page</span>
                         </div>
                       </a>
                     </li>
                     <li>
-                      <a class="" href="/annual-project/pp_admin/menu">
+                      <a class="" href="/pp_admin/menu">
                         <div>
                             <span>menu</span>
                         </div>
                       </a>
                     </li>
                     <li>
-                      <a class="" href="/annual-project/pp_admin/article">
+                      <a class="" href="/pp_admin/article">
                         <div>
                             <span>article</span>
                         </div>
                       </a>
                     </li>
                     <li>
-                      <a class="" href="/annual-project/pp_admin/utilisateur">
+                      <a class="" href="/pp_admin/utilisateur">
                         <div>
                             <span>utilisateur</span>
                         </div>
                       </a>
                     </li>
                     <li>
-                      <a class="" href="/annual-project/pp_admin/commentaire">
+                      <a class="" href="/pp_admin/commentaire">
                         <div>
                             <span>commentaires signalés</span>
                         </div>

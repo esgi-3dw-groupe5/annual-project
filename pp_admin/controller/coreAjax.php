@@ -1,5 +1,5 @@
 <?php
-if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."/annual-project/";
+if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."/";
 require_once($source."pp_admin/controller/common.php");
 require_once($source."pp_admin/controller/inscriptionController.php");
 require_once($source."pp_admin/controller/articleController.php");

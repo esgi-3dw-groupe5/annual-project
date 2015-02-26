@@ -1,5 +1,5 @@
 <?php
-if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."annual-project/";
+if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT']."/";
 
 function signmail($pseudo,$firstname,$email,$cle){
     

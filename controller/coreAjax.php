@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', 1);
-if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT'].'/annual-project/';
+if(!isset($source)) $source = $_SERVER['DOCUMENT_ROOT'].'/';
 require_once($source."controller/common.php");
 require_once($source."controller/inscriptionController.php");
 require_once($source."controller/articleController.php");

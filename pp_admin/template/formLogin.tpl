@@ -20,5 +20,5 @@
         </br>
             <span class="form-error" id="li_msgErr"><?php if( !empty( $li_msgErr ) ){ echo $li_msgErr; }?></span>
     </form>
-    <span>Pas de compte ? <a href="/annual-project/inscription">Incription</a><span>
+    <span>Pas de compte ? <a href="<?php echo $uri;?>inscription">Incription</a><span>
 </div>
