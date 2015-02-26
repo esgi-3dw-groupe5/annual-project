@@ -56,7 +56,7 @@ function signmail($pseudo,$firstname,$email,$cle){
 
     $mail->From = 'noreply@pinnackl.com';
     $mail->FromName = 'Pinnackl.com';
-    $mail->addAddress($mail);     // Add a recipient
+    $mail->addAddress($email);     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     // $mail->addReplyTo('pinnackl.work@gmail.com', 'Information');
     // $mail->addCC('pinnackl.work@gmail.com');
