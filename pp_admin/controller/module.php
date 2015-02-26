@@ -3,6 +3,7 @@ require_once($source."pp_admin/controller/accessControl.php");
 require_once($source."pp_admin/model/dbconnect.php");
 require_once($source."pp_admin/model/dbusers.php");
 require_once($source."pp_admin/model/dbcontent.php");
+require_once($source."pp_admin/model/dbcomment.php");
     /*********************************************************************************/
     /********************************* Call display method****************************/
     /*********************************************************************************/
@@ -17,6 +18,7 @@ require_once($source."pp_admin/model/dbcontent.php");
 				break;
 			case 'administrator':
 				render_contents($page);
+				render_edit($page);
 				// display_edit($page, $edit);
 				break;
 			
@@ -29,6 +31,7 @@ require_once($source."pp_admin/model/dbcontent.php");
 	function render_contents($content){
 		global $uri;
 		global $source;
+		global $config;
 		$link = db_connect();
 		switch ($content) {
             /***************************/
@@ -48,6 +51,11 @@ require_once($source."pp_admin/model/dbcontent.php");
             	break;
         	case 'utilisateur':
             	echo '<div class="content"><h1>List of utilisateur</h1></div>';
+            	render_contents("list_user");
+            	break;
+            case 'commentaire':
+            	echo '<div class="content"><h1>List of reports comments</h1></div>';
+            	render_contents("list_comment");
             	break;
 
             /***************************/
@@ -155,6 +163,27 @@ require_once($source."pp_admin/model/dbcontent.php");
 					echo '</tbody>';
 				echo'</table>';
 				break;
+
+			case 'list_user':
+				$result =  db_get_all_user($link);
+				echo'<table style="background:#222326; height:9% border:none;">';
+					echo '<tbody>';
+				while($data = $result -> fetch()){
+					require($source.'pp_admin/template/userList.tpl');
+				}
+					echo '</tbody>';
+				echo'</table>';
+				break;
+			case 'list_comment':
+				$result =  db_get_all_report_comments($link);
+				echo'<table style="background:#222326; height:9% border:none;">';
+					echo '<tbody>';
+				while($data = $result -> fetch()){
+					require($source.'pp_admin/template/commentList.tpl');
+				}
+					echo '</tbody>';
+				echo'</table>';
+				break;
 			default:
 				# code...
 				break;
@@ -176,6 +205,40 @@ require_once($source."pp_admin/model/dbcontent.php");
 		else{
 			display_all_articles();
 		}
+	}
+
+	function render_edit($content){
+		global $source;
+		global $config;
+
+		$link = db_connect();
+
+		switch ($content) {
+			case 'page-edit':
+			 	$data_page = db_get_content($link,'page-edit');			   
+				while($data = $data_page -> fetch()){
+					require($source.'/pp_admin/template/editpage.tpl');
+				}
+				break;
+
+			case 'user-edit':
+			 	$data_user = db_get_content($link,'user-edit');			   
+				while($data = $data_user -> fetch()){
+					echo $data['id'];
+					require($source.'/pp_admin/template/edituser.tpl');
+				}
+				break;
+
+			case 'comment-edit':
+				$edit = get_param('edit', '');
+
+			 	$data = db_update_no_report_comment($link,$edit);		   
+				break;
+			
+			default:
+				# code...
+				break;
+			}
 	}
 
 	function display_all_articles(){

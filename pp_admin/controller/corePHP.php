@@ -4,6 +4,7 @@ require_once($source."pp_admin/controller/accessControl.php");
 require_once($source."pp_admin/controller/inscriptionController.php");
 require_once($source."pp_admin/controller/articleController.php");
 require_once($source."pp_admin/controller/commentController.php");
+require_once($source."pp_admin/model/dbcontent.php");
 $displayErr=null;
 $action=null;
 
@@ -20,6 +21,16 @@ if( isset($_POST['at_submit']) && !empty($_POST['at_submit']) ) {
 
 if( isset($_POST['at_update_submit']) && !empty($_POST['at_update_submit']) ) {
     $action = $_POST['at_update_submit'];
+}
+
+if( isset($_POST['at_update_page_submit']) && !empty($_POST['at_update_page_submit']) ) {
+    echo "bien arrivé ";
+    $action = $_POST['at_update_page_submit'];
+}
+
+if( isset($_POST['at_update_user_submit']) && !empty($_POST['at_update_user_submit']) ) {
+    echo "bien arrivé ";
+    $action = $_POST['at_update_user_submit'];
 }
 
 if( isset($_POST['at_delete']) && !empty($_POST['at_delete']) ) {
@@ -127,6 +138,16 @@ if( isset($_POST['mail_submit']) && !empty($_POST['mail_submit']) ) {
         case 'modifier' :
                 $value = "update";
                 $displayErr     =   validate_article($_POST,$_FILES,$value);
+                $at_msgErr      =   $displayErr[0];
+            break;
+
+         case 'modifier_page' :
+                $displayErr     =   validate_page($_POST,$_FILES);
+                $at_msgErr      =   $displayErr[0];
+            break;
+
+         case 'modifier_user' :
+                $displayErr     =   validate_user($_POST,$_FILES);
                 $at_msgErr      =   $displayErr[0];
             break;
             
