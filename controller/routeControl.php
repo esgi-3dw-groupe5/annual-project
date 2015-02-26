@@ -8,7 +8,9 @@ function route_control(){
 	global $config;
 	$link = db_connect();
 	
-	$page = get_param('p', ''); 
+	$page = get_param('p', '');
+	// echo $page;
+	// die();
 	$article = get_param('article', '');
 
 	if($page != ''){
@@ -26,7 +28,7 @@ function route_control(){
 		}
 
 		if ( !in_array($page, $category) ){
-			// header("HTTP/1.x 404 Not Found");
+			header("HTTP/1.x 404 Not Found");
 			$error = file_get_contents($config['source']."404");
 			echo $error;
 			exit;

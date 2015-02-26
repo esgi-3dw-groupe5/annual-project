@@ -223,22 +223,24 @@ hr.style-one {
 .article-inline:last-child{
 	border-bottom: none;
 }
-.read{
-	margin:0;
-	border: none;
+input[type=button].read{
+	margin:0 1% 0 0;
+	/*border: none;*/
 	width: 20px;
 	height: 20px;
-	background: url("/annual-project/images/etoile_vide.png");
+	background-color: none;
+	/*background: url("/annual-project/images/etoile_vide.png");*/
 	background-repeat: no-repeat;
 	float: right;
 	
 }
-.unread{
-	margin:0;
-	border: none;
+input[type=button].unread{
+	margin:0 1% 0 0;
+	/*border: none;*/
 	width: 20px;
 	height: 20px;
-	background: url("/annual-project/images/etoile_pleine.png") !important;
+	background-color: #FFFFFF;
+	/*background: url("/annual-project/images/etoile_pleine.png") !important;*/
 	background-repeat: no-repeat;
 	float: right;
 }

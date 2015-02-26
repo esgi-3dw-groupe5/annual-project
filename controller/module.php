@@ -40,7 +40,7 @@ require_once($source."model/dbcontent.php");
 			case 'deconnection':
 			    if( $_SESSION['user']['connected'] ){
 			        print("<div class='logout'><span>Bienvenue ".$_SESSION['user']['pseudo']." </span>");
-			        printf("<a class='logout' href='%s?act=logout'>Déconnection</a></div>",$uri);
+			        printf("<a class='logout' href='%s?act=logout'>Déconnexion</a></div>",$uri);
 			    }
 				break;
 			case 'inscription':	
@@ -77,7 +77,9 @@ require_once($source."model/dbcontent.php");
                      <input type="submit" name="mail_submit" value="Renvoyer un Mail">
                      </form>';
                 }
-                    
+				break;
+			case 'cgu':
+				include_once($source.'template/cgu.tpl');
 				break;
 			case '404':
 				echo '<div class="content"><h1>404 ERROR</h1></div>';

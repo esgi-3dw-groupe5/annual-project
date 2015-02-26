@@ -148,3 +148,9 @@ input[type=range]:focus::-ms-fill-upper {
 .facet{
   margin-top: 3%;
 }
+
+.reload{
+  width: 40px;
+  height: 40px;
+  font-weight: bold;
+}

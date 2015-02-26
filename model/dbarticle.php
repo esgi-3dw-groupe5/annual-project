@@ -38,9 +38,9 @@ function db_get_articles($link){ // complete with the session limit values
 	while ($data = $result -> fetch()){
 		if(array_key_exists($data['tag'], $facet)){
 			if($request == "")
-				$request = sprintf("SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT %s) AS a ",$data['id'] , $facet[$data['tag']]);
+				$request = sprintf("SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT 5, %s) AS a ",$data['id'] , $facet[$data['tag']]);
 			else
-				$request .= sprintf(" UNION SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT %s) AS %s", $data['id'], $facet[$data['tag']] , $range[$i]);
+				$request .= sprintf(" UNION SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT 5, %s) AS %s", $data['id'], $facet[$data['tag']] , $range[$i]);
 		}	
 		$i++;
 	}

@@ -24,7 +24,7 @@ require_once($source."fluxRss.php");
 require_once($source."controller/module.php");
 update_fluxRSS();
 access_control();
-// route_control();
+route_control();
 create_cookie();
 
 $page = get_param('p', '');
