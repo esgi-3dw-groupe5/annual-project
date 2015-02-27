@@ -38,9 +38,9 @@ function db_get_articles($link){ // complete with the session limit values
 	while ($data = $result -> fetch()){
 		if(array_key_exists($data['tag'], $facet)){
 			if($request == "")
-				$request = sprintf("SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT 5, %s) AS a ",$data['id'] , $facet[$data['tag']]);
+				$request = sprintf("SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT %s) AS a ",$data['id'] , $facet[$data['tag']]);
 			else
-				$request .= sprintf(" UNION SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT 5, %s) AS %s", $data['id'], $facet[$data['tag']] , $range[$i]);
+				$request .= sprintf(" UNION SELECT * FROM (SELECT *, pp_article.date AS a_date FROM pp_article WHERE id_category = %s LIMIT %s) AS %s", $data['id'], $facet[$data['tag']] , $range[$i]);
 		}	
 		$i++;
 	}
@@ -52,7 +52,7 @@ function db_get_articles($link){ // complete with the session limit values
 
 function db_get_articles_rss($link,$LIMITation,$index_selection){
 
-	$req = $link -> prepare("SELECT * FROM pp_article ORDER BY `date` DESC LIMIT 0, 50");
+	$req = $link -> prepare("SELECT * FROM pp_article ORDER BY `date` DESC LIMIT 0, 10");
 	$req->execute(array(
 		/*':index_selection' => $index_selection,
 		':LIMITation' => $LIMITation*/
