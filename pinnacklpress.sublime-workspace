@@ -183,7 +183,7 @@
 			"file": "template/index.tpl",
 			"settings":
 			{
-				"buffer_size": 2779,
+				"buffer_size": 2316,
 				"line_ending": "Windows"
 			}
 		},
@@ -191,7 +191,7 @@
 			"file": "template/header.tpl",
 			"settings":
 			{
-				"buffer_size": 221,
+				"buffer_size": 213,
 				"line_ending": "Windows"
 			}
 		},
@@ -199,7 +199,7 @@
 			"file": "template/footer.tpl",
 			"settings":
 			{
-				"buffer_size": 288,
+				"buffer_size": 285,
 				"line_ending": "Windows"
 			}
 		},
@@ -207,7 +207,7 @@
 			"file": "template/formArticle.tpl",
 			"settings":
 			{
-				"buffer_size": 1663,
+				"buffer_size": 1593,
 				"line_ending": "Windows"
 			}
 		},
@@ -215,7 +215,7 @@
 			"file": "template/formSignin.tpl",
 			"settings":
 			{
-				"buffer_size": 3866,
+				"buffer_size": 4823,
 				"line_ending": "Windows"
 			}
 		},
@@ -223,7 +223,7 @@
 			"file": "template/formLogin.tpl",
 			"settings":
 			{
-				"buffer_size": 1209,
+				"buffer_size": 1376,
 				"line_ending": "Windows"
 			}
 		},
@@ -231,7 +231,7 @@
 			"file": "template/articleRead.tpl",
 			"settings":
 			{
-				"buffer_size": 908,
+				"buffer_size": 900,
 				"line_ending": "Windows",
 				"name": "<div>"
 			}
@@ -240,7 +240,7 @@
 			"file": "assets/css/main.css",
 			"settings":
 			{
-				"buffer_size": 3858,
+				"buffer_size": 4284,
 				"line_ending": "Windows"
 			}
 		},
@@ -248,7 +248,7 @@
 			"file": "assets/css/nav.css",
 			"settings":
 			{
-				"buffer_size": 2558,
+				"buffer_size": 2522,
 				"line_ending": "Windows"
 			}
 		},
@@ -256,7 +256,7 @@
 			"file": "assets/css/sidebar.css",
 			"settings":
 			{
-				"buffer_size": 3341,
+				"buffer_size": 3903,
 				"line_ending": "Windows"
 			}
 		},
@@ -264,7 +264,7 @@
 			"file": "template/asideFacet.tpl",
 			"settings":
 			{
-				"buffer_size": 180,
+				"buffer_size": 211,
 				"line_ending": "Windows"
 			}
 		},
@@ -272,7 +272,7 @@
 			"file": "assets/js/coreAjax.js",
 			"settings":
 			{
-				"buffer_size": 4922,
+				"buffer_size": 4943,
 				"line_ending": "Windows"
 			}
 		},
@@ -280,7 +280,7 @@
 			"file": "template/articleList.tpl",
 			"settings":
 			{
-				"buffer_size": 798,
+				"buffer_size": 881,
 				"line_ending": "Windows"
 			}
 		},
@@ -304,7 +304,7 @@
 			"file": "assets/css/form.css",
 			"settings":
 			{
-				"buffer_size": 526,
+				"buffer_size": 1588,
 				"line_ending": "Windows"
 			}
 		},
@@ -312,7 +312,7 @@
 			"file": "controller/module.php",
 			"settings":
 			{
-				"buffer_size": 7826,
+				"buffer_size": 7923,
 				"line_ending": "Windows",
 				"name": "<?php"
 			}
@@ -321,7 +321,7 @@
 			"file": "index.php",
 			"settings":
 			{
-				"buffer_size": 983,
+				"buffer_size": 993,
 				"line_ending": "Windows"
 			}
 		},
@@ -329,7 +329,7 @@
 			"file": "pp_admin/controller/adminController.php",
 			"settings":
 			{
-				"buffer_size": 3109,
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
@@ -337,7 +337,7 @@
 			"file": "fluxRss.php",
 			"settings":
 			{
-				"buffer_size": 1900,
+				"buffer_size": 1855,
 				"line_ending": "Windows"
 			}
 		},
@@ -345,7 +345,7 @@
 			"file": "controller/common.php",
 			"settings":
 			{
-				"buffer_size": 2985,
+				"buffer_size": 3159,
 				"line_ending": "Windows"
 			}
 		},
@@ -353,7 +353,7 @@
 			"file": "controller/accessControl.php",
 			"settings":
 			{
-				"buffer_size": 3928,
+				"buffer_size": 3891,
 				"line_ending": "Windows"
 			}
 		},
@@ -361,7 +361,7 @@
 			"file": "controller/routeControl.php",
 			"settings":
 			{
-				"buffer_size": 641,
+				"buffer_size": 653,
 				"line_ending": "Windows"
 			}
 		},
@@ -377,7 +377,7 @@
 			"file": "controller/corePHP.php",
 			"settings":
 			{
-				"buffer_size": 4851,
+				"buffer_size": 4887,
 				"line_ending": "Windows"
 			}
 		},
@@ -385,7 +385,7 @@
 			"file": "controller/coreAjax.php",
 			"settings":
 			{
-				"buffer_size": 5013,
+				"buffer_size": 5422,
 				"line_ending": "Windows"
 			}
 		},
@@ -393,7 +393,7 @@
 			"file": "controller/inscriptionController.php",
 			"settings":
 			{
-				"buffer_size": 12817,
+				"buffer_size": 12890,
 				"line_ending": "Windows"
 			}
 		},
@@ -401,7 +401,7 @@
 			"file": "controller/articleController.php",
 			"settings":
 			{
-				"buffer_size": 4973,
+				"buffer_size": 5666,
 				"line_ending": "Windows"
 			}
 		},
@@ -409,15 +409,15 @@
 			"file": "config.php",
 			"settings":
 			{
-				"buffer_size": 176,
-				"line_ending": "Unix"
+				"buffer_size": 0,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "model/dbconnect.php",
 			"settings":
 			{
-				"buffer_size": 956,
+				"buffer_size": 1334,
 				"line_ending": "Windows"
 			}
 		},
@@ -433,7 +433,7 @@
 			"file": "model/dbcontent.php",
 			"settings":
 			{
-				"buffer_size": 1618,
+				"buffer_size": 1622,
 				"line_ending": "Windows"
 			}
 		},
@@ -465,7 +465,7 @@
 			"file": "pp_admin/template/editarticle.tpl",
 			"settings":
 			{
-				"buffer_size": 1331,
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
@@ -519,6 +519,7 @@
 	},
 	"file_history":
 	[
+		"/D/Developpement/EasyPHP-DevServer/data/localweb/annual-project/design/index.php",
 		"/D/Developpement/EasyPHP-DevServer/data/localweb/annual-project/pp_admin/.htaccess",
 		"/D/Developpement/EasyPHP-DevServer/data/localweb/annual-project/.gitignore",
 		"/D/Developpement/EasyPHP-DevServer/data/localweb/annual-project/.htaccess",
@@ -706,7 +707,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -714,15 +715,15 @@
 					"file": "template/index.tpl",
 					"settings":
 					{
-						"buffer_size": 2779,
+						"buffer_size": 2316,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2706,
-								2706
+								0,
+								0
 							]
 						],
 						"settings":
@@ -742,15 +743,15 @@
 					"file": "template/header.tpl",
 					"settings":
 					{
-						"buffer_size": 221,
+						"buffer_size": 213,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								191,
-								191
+								0,
+								0
 							]
 						],
 						"settings":
@@ -770,15 +771,15 @@
 					"file": "template/footer.tpl",
 					"settings":
 					{
-						"buffer_size": 288,
+						"buffer_size": 285,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								18,
-								18
+								0,
+								0
 							]
 						],
 						"settings":
@@ -797,15 +798,15 @@
 					"file": "template/formArticle.tpl",
 					"settings":
 					{
-						"buffer_size": 1663,
+						"buffer_size": 1593,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1508,
-								1521
+								0,
+								0
 							]
 						],
 						"settings":
@@ -825,7 +826,7 @@
 					"file": "template/formSignin.tpl",
 					"settings":
 					{
-						"buffer_size": 3866,
+						"buffer_size": 4823,
 						"regions":
 						{
 						},
@@ -853,7 +854,7 @@
 					"file": "template/formLogin.tpl",
 					"settings":
 					{
-						"buffer_size": 1209,
+						"buffer_size": 1376,
 						"regions":
 						{
 						},
@@ -881,15 +882,15 @@
 					"file": "template/articleRead.tpl",
 					"settings":
 					{
-						"buffer_size": 908,
+						"buffer_size": 900,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								65,
-								65
+								0,
+								0
 							]
 						],
 						"settings":
@@ -909,15 +910,15 @@
 					"file": "assets/css/main.css",
 					"settings":
 					{
-						"buffer_size": 3858,
+						"buffer_size": 4284,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3298,
-								3298
+								0,
+								0
 							]
 						],
 						"settings":
@@ -926,7 +927,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1440.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -936,15 +937,15 @@
 					"file": "assets/css/nav.css",
 					"settings":
 					{
-						"buffer_size": 2558,
+						"buffer_size": 2522,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2558,
-								2558
+								975,
+								960
 							]
 						],
 						"settings":
@@ -964,15 +965,15 @@
 					"file": "assets/css/sidebar.css",
 					"settings":
 					{
-						"buffer_size": 3341,
+						"buffer_size": 3903,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1114,
-								1114
+								0,
+								0
 							]
 						],
 						"settings":
@@ -982,7 +983,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -992,15 +993,15 @@
 					"file": "template/asideFacet.tpl",
 					"settings":
 					{
-						"buffer_size": 180,
+						"buffer_size": 211,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								45,
-								45
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1019,15 +1020,15 @@
 					"file": "assets/js/coreAjax.js",
 					"settings":
 					{
-						"buffer_size": 4922,
+						"buffer_size": 4943,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								842,
-								842
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1046,15 +1047,15 @@
 					"file": "template/articleList.tpl",
 					"settings":
 					{
-						"buffer_size": 798,
+						"buffer_size": 881,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								209,
-								209
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1128,15 +1129,15 @@
 					"file": "assets/css/form.css",
 					"settings":
 					{
-						"buffer_size": 526,
+						"buffer_size": 1588,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								524,
-								524
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1161,15 +1162,15 @@
 					"file": "controller/module.php",
 					"settings":
 					{
-						"buffer_size": 7826,
+						"buffer_size": 7923,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3825,
-								3833
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1179,7 +1180,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1260.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1189,15 +1190,15 @@
 					"file": "index.php",
 					"settings":
 					{
-						"buffer_size": 983,
+						"buffer_size": 993,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								983,
-								983
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1215,7 +1216,7 @@
 					"file": "pp_admin/controller/adminController.php",
 					"settings":
 					{
-						"buffer_size": 3109,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -1242,7 +1243,7 @@
 					"file": "fluxRss.php",
 					"settings":
 					{
-						"buffer_size": 1900,
+						"buffer_size": 1855,
 						"regions":
 						{
 						},
@@ -1270,15 +1271,15 @@
 					"file": "controller/common.php",
 					"settings":
 					{
-						"buffer_size": 2985,
+						"buffer_size": 3159,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2621,
-								2621
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1297,7 +1298,7 @@
 					"file": "controller/accessControl.php",
 					"settings":
 					{
-						"buffer_size": 3928,
+						"buffer_size": 3891,
 						"regions":
 						{
 						},
@@ -1325,15 +1326,15 @@
 					"file": "controller/routeControl.php",
 					"settings":
 					{
-						"buffer_size": 641,
+						"buffer_size": 653,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								632,
-								632
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1379,7 +1380,7 @@
 					"file": "controller/corePHP.php",
 					"settings":
 					{
-						"buffer_size": 4851,
+						"buffer_size": 4887,
 						"regions":
 						{
 						},
@@ -1407,7 +1408,7 @@
 					"file": "controller/coreAjax.php",
 					"settings":
 					{
-						"buffer_size": 5013,
+						"buffer_size": 5422,
 						"regions":
 						{
 						},
@@ -1435,7 +1436,7 @@
 					"file": "controller/inscriptionController.php",
 					"settings":
 					{
-						"buffer_size": 12817,
+						"buffer_size": 12890,
 						"regions":
 						{
 						},
@@ -1462,7 +1463,7 @@
 					"file": "controller/articleController.php",
 					"settings":
 					{
-						"buffer_size": 4973,
+						"buffer_size": 5666,
 						"regions":
 						{
 						},
@@ -1489,15 +1490,15 @@
 					"file": "config.php",
 					"settings":
 					{
-						"buffer_size": 176,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								176,
-								176
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1521,15 +1522,15 @@
 					"file": "model/dbconnect.php",
 					"settings":
 					{
-						"buffer_size": 956,
+						"buffer_size": 1334,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								15,
-								27
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1575,15 +1576,15 @@
 					"file": "model/dbcontent.php",
 					"settings":
 					{
-						"buffer_size": 1618,
+						"buffer_size": 1622,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								672,
-								672
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1687,7 +1688,7 @@
 					"file": "pp_admin/template/editarticle.tpl",
 					"settings":
 					{
-						"buffer_size": 1331,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -1829,8 +1830,8 @@
 		"cols":
 		[
 			0.0,
-			0.874788494078,
-			0.957698815567,
+			0.936788874842,
+			0.968394437421,
 			1.0
 		],
 		"rows":

@@ -1,0 +1,190 @@
+/*
+*	Core Header is a css file the containe 
+*	a lot of pre-define css propeties
+*	for stling header o yout web site
+*/
+
+*{
+	margin:0;
+	padding:0;
+}
+html, body{
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	position: relative;
+}
+
+.core-header{
+	display: block;
+	background: #455A64;
+	color: #000000;
+	z-index: 10;
+	width: 100%;
+	min-height: 5%;
+	height: auto;
+}
+
+.core-nav{
+	display: block;
+	background: #455A64;
+	color: #ffffff;
+	z-index: 11;
+	width: 100%;
+	height: 100%
+}
+.core-nav.align-right ul li {
+  float: right;
+}
+.core-nav.align-center ul {
+  text-align: center;
+}
+
+/*
+*	Horizontal menu
+*/
+ul.core-horizontal-menu{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	display: block;
+}
+
+ul.core-horizontal-menu:after{
+	content: " ";
+	display: block;
+	font-size: 0;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+ul.core-horizontal-menu li{
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+ul.core-horizontal-menu li a {
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+	padding: 15px 25px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 14px;
+	position: relative;
+	-webkit-transition: color .25s;
+	-moz-transition: color .25s;
+	-ms-transition: color .25s;
+	-o-transition: color .25s;
+	transition: color .25s;
+}
+
+ul.core-horizontal-menu li a:hover {
+  color: #333333;
+}
+.item-after{
+
+}
+ul.core-horizontal-menu li a.item-after:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -3px;
+  top: 19px;
+  height: 6px;
+  width: 6px;
+  background: #ffffff;
+  opacity: .5;
+}
+
+.item-underline-hover{
+
+}
+ul.core-horizontal-menu li a.item-underline-hover:hover:before {
+  width: 100%;
+}
+ul.core-horizontal-menu li a.item-underline-hover:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: #333333;
+  -webkit-transition: width .25s;
+  -moz-transition: width .25s;
+  -ms-transition: width .25s;
+  -o-transition: width .25s;
+  transition: width .25s;
+}
+
+ul.core-horizontal-menu li.last > a.item-after:after,
+ul.core-horizontal-menu li:last-child > a.item-after:after {
+  display: none;
+}
+ul.core-horizontal-menu li.active a {
+  color: #333333;
+}
+ul.core-horizontal-menu li.active a:before {
+  width: 100%;
+}
+.align-right li.last > a.item-after:after,
+.align-right li:last-child > a.item-after:after {
+  display: block;
+}
+.align-right li:first-child a.item-after:after {
+  display: none;
+}
+
+/*
+*	A bit of responsive
+*/
+@media screen and (max-width: 768px) {
+	.core-nav:after{
+		font-size: 30;
+		content: ":::";
+	}
+	.core-nav:hover:after{
+		cursor: pointer;
+	}
+	.core-nav:hover  ul.core-horizontal-menu{
+		display: block;
+	}
+	.core-nav:hover:after{
+		display: none;
+	}
+
+	ul.core-horizontal-menu{
+		display: none;
+	}
+
+	ul.core-horizontal-menu li {
+		float: none;
+		display: block;
+	}
+	ul.core-horizontal-menu li a {
+		width: 100%;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		border-bottom: thin solid #FFFFFF;
+	}
+	ul.core-horizontal-menu li.last > a,
+	ul.core-horizontal-menu li:last-child > a {
+		border: 0;
+	}
+	ul.core-horizontal-menu li a.item-after:after {
+		display: none;
+	}
+	ul.core-horizontal-menu li a.item-after:before {
+		display: none;
+	}
+}
+
+ul.core-vertical-menu{
+}
